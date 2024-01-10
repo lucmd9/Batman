@@ -1,5 +1,5 @@
 """
-created by @ll1ilt
+created by @luc_md9
 Idea by @kreem
 """
 
@@ -15,7 +15,7 @@ from ..sql_helper.echo_sql import (
     remove_echos,
 )
 from . import (
-    Qrh9,
+    lucmd9,
     edit_delete,
     get_user_from_event,
 )
@@ -23,7 +23,7 @@ from . import (
 plugin_category = "fun"
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="تقليد$",
     command=("تقليد", plugin_category),
     info={
@@ -40,7 +40,7 @@ async def echo(event):
     user, rank = await get_user_from_event(event, catevent, nogroup=True)
     if not user:
         return
-    if user.id == 6320583148:
+    if user.id == 1045489068:
         return await edit_delete(event, "**᯽︙ لا يمڪنني تقليد مطـوري لك فاشل **")
     reply_msg = await event.get_reply_message()
     chat_id = event.chat_id
@@ -63,7 +63,7 @@ async def echo(event):
         await edit_or_reply(catevent, "⌁︙تـم تفعـيل امـر التقليد علـى هذا الشـخص\n ⌁︙سـيتم تقليـد جميع رسائلـه هـنا")
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="مسح المقلدهم",
     command=("مسح المقلدهم", plugin_category),
     info={
@@ -92,7 +92,7 @@ async def echo(event):
         await edit_or_reply(event, "The user is not activated with echo")
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="الغاء التقليد( -a)?",
     command=("الغاء التقليد", plugin_category),
     info={
@@ -138,7 +138,7 @@ async def echo(event):
             )
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="المقلدهم( -a)?$",
     command=("المقلدهم", plugin_category),
     info={
@@ -202,7 +202,7 @@ async def echo(event):  # sourcery no-metrics
     await edit_or_reply(event, output_str)
 
 
-@Qrh9.ar_cmd(incoming=True, edited=False)
+@lucmd9.ar_cmd(incoming=True, edited=False)
 async def samereply(event):
     if is_echo(event.chat_id, event.sender_id) and (
         event.message.text or event.message.sticker

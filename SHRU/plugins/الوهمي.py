@@ -5,9 +5,9 @@ import aiohttp
 from telethon.errors import ChatAdminRequiredError as no_admin
 from telethon.tl.functions.messages import ExportChatInviteRequest
 
-from Qrh9.razan.resources.strings import *
-from SHRU import Qrh9
-from SHRU.utils import admin_cmd
+from lucmd9.razan.resources.strings import *
+from batt import lucmd9
+from batt.utils import admin_cmd
 
 from ..core.managers import edit_or_reply
 from ..core.managers import edit_or_reply as eod
@@ -15,7 +15,7 @@ from ..helpers import get_user_from_event
 from . import *
 
 
-@Qrh9.on(admin_cmd(pattern="كتابة(?: |$)(.*)"))
+@lucmd9.on(admin_cmd(pattern="كتابة(?: |$)(.*)"))
 async def _(event):
     t = event.pattern_match.group(1)
     if not (t or t.isdigit()):
@@ -33,7 +33,7 @@ async def _(event):
         await asyncio.sleep(t)
 
 
-@Qrh9.on(admin_cmd(pattern="صوتية(?: |$)(.*)"))
+@lucmd9.on(admin_cmd(pattern="صوتية(?: |$)(.*)"))
 async def _(event):
     t = event.pattern_match.group(1)
     if not (t or t.isdigit()):
@@ -51,7 +51,7 @@ async def _(event):
         await asyncio.sleep(t)
 
 
-@Qrh9.on(admin_cmd(pattern="فيد(?: |$)(.*)"))
+@lucmd9.on(admin_cmd(pattern="فيد(?: |$)(.*)"))
 async def _(event):
     t = event.pattern_match.group(1)
     if not (t or t.isdigit()):
@@ -69,7 +69,7 @@ async def _(event):
         await asyncio.sleep(t)
 
 
-@Qrh9.on(admin_cmd(pattern="لعبة(?: |$)(.*)"))
+@lucmd9.on(admin_cmd(pattern="لعبة(?: |$)(.*)"))
 async def _(event):
     t = event.pattern_match.group(1)
     if not (t or t.isdigit()):
@@ -87,7 +87,7 @@ async def _(event):
         await asyncio.sleep(t)
 
 
-@Qrh9.on(admin_cmd(pattern="الرابط$"))
+@lucmd9.on(admin_cmd(pattern="الرابط$"))
 async def _(e):
     rr = await edit_or_reply(e, "**يتم جلب الرابط انتظر **")
     try:
@@ -99,16 +99,16 @@ async def _(e):
     await eod(rr, f"- رابط الدردشة\n {r.link}")
 
 
-@Qrh9.on(admin_cmd(pattern="للكل تاك$"))
-async def listall(SHRU):
-    if SHRU.fwd_from:
+@lucmd9.on(admin_cmd(pattern="للكل تاك$"))
+async def listall(batt):
+    if batt.fwd_from:
         return
     mentions = "- هذه هي قائمة جميع الاعضاء هنا: "
     chat = await bot.get_input_chat()
     async for x in borg.iter_participants(chat, 2000):
         mentions += f" \n[{x.first_name}](tg://user?id={x.id})"
-    await SHRU.reply(mentions)
-    await SHRU.delete()
+    await batt.reply(mentions)
+    await batt.delete()
 
 R = (
     "┈┈╱▔▔▔▔▔▔▔▔▔▔▔▏\n"
@@ -122,7 +122,7 @@ R = (
 )
 
 
-@Qrh9.on(admin_cmd(pattern=r"سبونج"))
+@lucmd9.on(admin_cmd(pattern=r"سبونج"))
 async def kerz(kerz):
     await kerz.edit(R)
 
@@ -138,7 +138,7 @@ M = (
 )
 
 
-@Qrh9.on(admin_cmd(pattern=r"كلب"))
+@lucmd9.on(admin_cmd(pattern=r"كلب"))
 async def dog(dog):
     await dog.edit(M)
 Z = (
@@ -188,21 +188,21 @@ N = (
 
 
 
-@Qrh9.on(admin_cmd(pattern=r"ذئب"))
+@lucmd9.on(admin_cmd(pattern=r"ذئب"))
 async def fox(fox):
     await fox.edit(H)
 
 
-@Qrh9.on(admin_cmd(pattern=r"فيل"))
+@lucmd9.on(admin_cmd(pattern=r"فيل"))
 async def elephant(elephant):
     await elephant.edit(A)
 
 
-@Qrh9.on(admin_cmd(pattern=r"هومر"))
+@lucmd9.on(admin_cmd(pattern=r"هومر"))
 async def homer(homer):
     await homer.edit(N)
 
 
-@Qrh9.on(admin_cmd(pattern=r"بك"))
+@lucmd9.on(admin_cmd(pattern=r"بك"))
 async def pig(pig):
     await pig.edit(Z)

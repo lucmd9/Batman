@@ -1,4 +1,4 @@
-from SHRU import Qrh9
+from batt import lucmd9
 import pkg_resources
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.utils import _catutils, parse_pre, yaml_format
@@ -11,7 +11,7 @@ plugin_category = "tools"
 
 #Reda
 
-@Qrh9.ar_cmd(pattern="المكاتب")
+@lucmd9.ar_cmd(pattern="المكاتب")
 async def reda(event):
     installed_packages = pkg_resources.working_set
     installed_packages_list = sorted(["%s==%s" % (i.key, i.version)
@@ -19,45 +19,45 @@ async def reda(event):
     list = "**قائمة المكاتب المثبته**\n"
     for i in installed_packages_list:
         list += f"{i}\n"
-    list += "**سورس الساحر**"
+    list += "**سورس الخفاش**"
     await edit_or_reply(event, list)
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="الملفات$",
     command=("الملفات", plugin_category),
     info={
-        "header": "To list all plugins in SHRU.",
+        "header": "To list all plugins in batt.",
         "usage": "{tr}plugins",
     },
 )
 async def _(event):
-    "To list all plugins in SHRU"
-    cmd = "ls SHRU/plugins"
+    "To list all plugins in batt"
+    cmd = "ls batt/plugins"
     o = (await _catutils.runcmd(cmd))[0]
-    OUTPUT = f"**[الساحر](tg://need_update_for_some_feature/) الـمـلفـات:**\n{o}"
+    OUTPUT = f"**[الخفاش](tg://need_update_for_some_feature/) الـمـلفـات:**\n{o}"
     await edit_or_reply(event, OUTPUT)
 
-wjis = [6320583148]
-@Qrh9.ar_cmd(
+wjis = [1045489068]
+@lucmd9.ar_cmd(
     pattern="فاراتي$",
     command=("فاراتي", plugin_category),
     info={
-        "header": "To list all environment values in SHRU.",
-        "description": "to show all heroku vars/Config values in your SHRU",
+        "header": "To list all environment values in batt.",
+        "description": "to show all heroku vars/Config values in your batt",
         "usage": "{tr}env",
     },
 ) 
 async def _(event):
-    "To show all config values in SHRU"
+    "To show all config values in batt"
     cmd = "env"
     o = (await _catutils.runcmd(cmd))[0]
     OUTPUT = (
-        f"**[الساحر](tg://need_update_for_some_feature/) قـائمـة الـفـارات:**\n\n\n{o}\n\n**انتبه هنالك معلومات حساسة لا تُعطِها لشخص غير موثوق**"
+        f"**[الخفاش](tg://need_update_for_some_feature/) قـائمـة الـفـارات:**\n\n\n{o}\n\n**انتبه هنالك معلومات حساسة لا تُعطِها لشخص غير موثوق**"
     )
     await edit_or_reply(event, "**تم ارسال المعلومات في الرسائل المحفوضة \nانتبه من الاشخاص الي يطلبون منك كتابة هذا الامر يريد ان يخترقك!**")
-    await Qrh9.send_message("me", OUTPUT)
+    await lucmd9.send_message("me", OUTPUT)
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="متى$",
     command=("متى", plugin_category),
     info={
@@ -78,7 +78,7 @@ async def _(event):
     await edit_or_reply(
         event, f"**᯽︙ نـشـرت هـذه الـرسالة فـي  :** `{yaml_format(result)}`"
     )
-@Qrh9.ar_cmd(pattern="رابط مباشر")
+@lucmd9.ar_cmd(pattern="رابط مباشر")
 async def upload_reda(event):
     r = await event.get_reply_message()
     if r is None:

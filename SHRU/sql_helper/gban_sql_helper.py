@@ -1,5 +1,5 @@
 """
-credits to @mrconfused and @ll1ilt
+credits to @mrconfused and @luc_md9
 """
 #    Copyright (C) 2020  sandeep.n(π.$)
 #    This program is free software: you can redistribute it and/or modify

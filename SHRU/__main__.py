@@ -1,9 +1,9 @@
 import sys
-import SHRU
-from SHRU import BOTLOG_CHATID, HEROKU_APP, PM_LOGGER_GROUP_ID
+import batt
+from batt import BOTLOG_CHATID, HEROKU_APP, PM_LOGGER_GROUP_ID
 from .Config import Config
 from .core.logger import logging
-from .core.session import Qrh9
+from .core.session import lucmd9
 from .utils import (
     add_bot_to_logger_group,
     install_externalrepo,
@@ -16,16 +16,16 @@ from .utils import (
     saves,
 )
 
-LOGS = logging.getLogger("SHRU")
+LOGS = logging.getLogger("batt")
 
-print(SHRU.__copyright__)
-print("Licensed under the terms of the " + SHRU.__license__)
+print(batt.__copyright__)
+print("Licensed under the terms of the " + batt.__license__)
 
 cmdhr = Config.COMMAND_HAND_LER
 
 try:
-    LOGS.info("جارِ بدء بوت الساحر ✓")
-    Qrh9.loop.run_until_complete(setup_bot())
+    LOGS.info("جارِ بدء بوت الخفاش ✓")
+    lucmd9.loop.run_until_complete(setup_bot())
     LOGS.info("تم اكتمال تنصيب البوت ✓")
 except Exception as e:
     LOGS.error(f"{str(e)}")
@@ -33,7 +33,7 @@ except Exception as e:
 
 try:
     LOGS.info("يتم تفعيل وضع الانلاين")
-    Qrh9.loop.run_until_complete(mybot())
+    lucmd9.loop.run_until_complete(mybot())
     LOGS.info("تم تفعيل وضع الانلاين بنجاح ✓")
 except Exception as jep:
     LOGS.error(f"- {jep}")
@@ -55,13 +55,13 @@ async def startup_process():
     await verifyLoggerGroup()
     await load_plugins("plugins")
     await load_plugins("assistant")
-    print("✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨")
-    print("᯽︙بـوت الساحر يعـمل بـنجاح ")
+    print("🕷🕷🕷🕷🕷🕷🕷🕷🕷🕷🕷🕷🕷🕷🕷🕷🕷🕷🕷🕷")
+    print("᯽︙بـوت الخفاش يعـمل بـنجاح ")
     print(
         f"تم تشغيل الانلاين تلقائياً ارسل {cmdhr}الاوامر لـرؤيـة اوامر السورس\
-        \nللمسـاعدة تواصـل  https://t.me/SXYO3"
+        \nللمسـاعدة تواصـل  https://t.me/angthon"
     )
-    print("✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨")
+    print("🕷🕷🕷🕷🕷🕷🕷🕷🕷🕷🕷🕷🕷🕷🕷🕷🕷🕷🕷")
     await verifyLoggerGroup()
     await saves()
     await add_bot_to_logger_group(BOTLOG_CHATID)
@@ -73,18 +73,18 @@ async def startup_process():
 
 async def externalrepo():
     if Config.VCMODE:
-        await install_externalrepo("https://github.com/Qrh9/music", "main", "music")
+        await install_externalrepo("https://github.com/lucmd9/music", "main", "music")
 
-Qrh9.loop.run_until_complete(externalrepo())
-Qrh9.loop.run_until_complete(startup_process())
+lucmd9.loop.run_until_complete(externalrepo())
+lucmd9.loop.run_until_complete(startup_process())
 
 if len(sys.argv) not in (1, 3, 4):
-    Qrh9.disconnect()
+    lucmd9.disconnect()
 elif not Catcheck.sucess:
     if HEROKU_APP is not None:
         HEROKU_APP.restart()
 else:
     try:
-        Qrh9.run_until_disconnected()
+        lucmd9.run_until_disconnected()
     except ConnectionError:
         pass

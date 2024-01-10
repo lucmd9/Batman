@@ -1,16 +1,16 @@
 import os
 from telethon import functions 
 import subprocess
-from SHRU.helpers.functions.functions import translate
+from batt.helpers.functions.functions import translate
 from datetime import datetime
-from ALSAHER import get_string
+from thebatman import get_string
 
 
 
 from gtts import gTTS
 
 
-from SHRU import Qrh9
+from batt import lucmd9
 
 
 from ..core.managers import edit_delete, edit_or_reply
@@ -18,18 +18,18 @@ from ..core.managers import edit_delete, edit_or_reply
 from . import deEmojify, reply_id
 
 
-@Qrh9.ar_cmd(pattern="test(?:\s|$)([\s\S]*)")
+@lucmd9.ar_cmd(pattern="test(?:\s|$)([\s\S]*)")
 async def reda(event):
     tr = translate("انا عراقي", lang_tgt="fa").replace("\ N", "\n")
     await edit_or_reply(event, tr)
-    result = await Qrh9(functions.users.GetFullUserRequest(
+    result = await lucmd9(functions.users.GetFullUserRequest(
         id='earthlink_telecommunications'
     ))
     await event.reply(result.stringify())
 
 
 
-@Qrh9.ar_cmd(pattern="تكلم(?:\s|$)([\s\S]*)")
+@lucmd9.ar_cmd(pattern="تكلم(?:\s|$)([\s\S]*)")
 
 async def _(event):
 

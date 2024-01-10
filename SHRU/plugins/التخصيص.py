@@ -1,6 +1,6 @@
 from urlextract import URLExtract
-from SHRU import Qrh9
-from SHRU.core.logger import logging
+from batt import lucmd9
+from batt.core.logger import logging
 from ..Config import Config
 from ..core.managers import edit_delete, edit_or_reply
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
@@ -17,7 +17,7 @@ oldvars = {
     "PM_BLOCK": "pmblock",
 }
 
-@Qrh9.ar_cmd(pattern="جلب (.*)")
+@lucmd9.ar_cmd(pattern="جلب (.*)")
 async def getvar(event):
     input = event.pattern_match.group(1)
     if input is None:
@@ -31,7 +31,7 @@ async def getvar(event):
     await edit_or_reply(event, gvarstatus(input))
 
 
-@Qrh9.ar_cmd(pattern="اضف (.*)")
+@lucmd9.ar_cmd(pattern="اضف (.*)")
 async def custom_Qrue(event):
     reply = await event.get_reply_message()
     text = None
@@ -146,7 +146,7 @@ async def custom_Qrue(event):
         )
 
 
-@Qrh9.ar_cmd(pattern="حذف (.*)")
+@lucmd9.ar_cmd(pattern="حذف (.*)")
 async def custom_Qrue(event):
     input_str = event.pattern_match.group(1)
     if (

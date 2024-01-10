@@ -67,7 +67,7 @@ class NewMessage(events.NewMessage):
                 event._client.loop.create_task(edit_or_reply(event, text))
                 return
         if gvarstatus("blockedfrom") == "yes":
-            event._client.loop.create_task(edit_or_reply(event, "**᯽︙ لا يمكنك أستخدام سورس الساحر لأنك محظور من قبل المطور**"))
+            event._client.loop.create_task(edit_or_reply(event, "**᯽︙ لا يمكنك أستخدام سورس الخفاش لأنك محظور من قبل المطور**"))
             return
         return event
 
@@ -95,9 +95,9 @@ async def safe_check_text(msg):  # sourcery no-metrics
     if not msg:
         return False
     msg = str(msg)
-    from .session import SHRU
+    from .session import batt
 
-    phone = str((await catub.get_entity(SHRU.uid)).phone)
+    phone = str((await catub.get_entity(batt.uid)).phone)
     return bool(
         (
             (Config.STRING_SESSION in msg)

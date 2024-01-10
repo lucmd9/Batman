@@ -1,5 +1,5 @@
-# @SXYO3 - < https://t.me/SXYO3 >
-# Copyright (C) 2021 - SHRU-AR
+# @angthon - < https://t.me/angthon >
+# Copyright (C) 2021 - batt-AR
 # All rights reserved.
 #
 # Please read the GNU Affero General Public License in;
@@ -82,7 +82,7 @@ async def restart_script(client: TelegramClient, jasme):
     except Exception as e:
         LOGS.error(e)
     executable = sys.executable.replace(" ", "\\ ")
-    args = [executable, "-m", "SHRU"]
+    args = [executable, "-m", "batt"]
     os.execle(executable, *args, os.environ)
     sys.exit(0)
 

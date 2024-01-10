@@ -1,17 +1,17 @@
-# Copyright (C) 2021 SHRU TEAM
+# Copyright (C) 2021 batt TEAM
 # FILES WRITTEN BY  @SX9OO
 
 import requests
 from validators.url import url
 
-from SHRU import Qrh9
+from batt import lucmd9
 
 from ..core.managers import edit_delete, edit_or_reply
 
 plugin_category = "utils"
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="دنس(?:\s|$)([\s\S]*)",
     command=("دنس", plugin_category),
     info={
@@ -45,8 +45,8 @@ async def _(event):
             event, f"᯽︙ - لم استطع ايجاد `{input_str}` في الانترنت"
         )
 
-# urltools for Qrh9 
-@Qrh9.ar_cmd(
+# urltools for lucmd9 
+@lucmd9.ar_cmd(
     pattern="مصغر(?:\s|$)([\s\S]*)",
     command=("مصغر", plugin_category),
     info={
@@ -82,9 +82,9 @@ async def _(event):
     else:
         await edit_or_reply(event, "᯽︙  هـنالك شي خطـا حاول لاحقـا")
 
-# urltools for Qrh9
+# urltools for lucmd9
   
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="اخفاء(?:\s|$)([\s\S]*)",
     command=("اخفاء", plugin_category),
     info={

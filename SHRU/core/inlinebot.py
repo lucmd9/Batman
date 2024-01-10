@@ -11,7 +11,7 @@ from telethon.errors import QueryIdInvalidError
 from telethon.events import CallbackQuery, InlineQuery
 from youtubesearchpython import VideosSearch
 
-from SHRU import Qrh9
+from batt import lucmd9
 
 from ..Config import Config
 from ..helpers.functions import rand_key
@@ -53,10 +53,10 @@ def ibuild_keyboard(buttons):
 
 
 def main_menu():
-    text = f"**- [سـورس الساحر](https://t.me/SXYO3)\
+    text = f"**- [سـورس الخفاش](https://t.me/angthon)\
         \n المسـاعد\
         \n\
-        \n◽ الساحر لـ {mention}**"
+        \n◽ الخفاش لـ {mention}**"
     buttons = [
         (Button.inline("ℹ️ • التعليمات •", data="check"),),
         (
@@ -207,7 +207,7 @@ def paginate_help(
     return pairs
 
 
-@Qrh9.tgbot.on(InlineQuery)
+@lucmd9.tgbot.on(InlineQuery)
 async def inline_handler(event):  # sourcery no-metrics
     builder = event.builder
     result = None
@@ -224,11 +224,11 @@ async def inline_handler(event):  # sourcery no-metrics
         match2 = re.findall(inf, query)
         hid = re.compile("اخفاء (.*)")
         match3 = re.findall(hid, query)
-        if query.startswith("Qrh9"):
+        if query.startswith("lucmd9"):
             buttons = [
                 (
                     Button.inline("الحـالة ⚒️", data="stats"),
-                    Button.url(" SHRU UsᴇʀBoᴛ", "https://t.me/SXYO3"),
+                    Button.url(" batt UsᴇʀBoᴛ", "https://t.me/angthon"),
                 )
             ]
             ALIVE_PIC = gvarstatus("ALIVE_PIC")
@@ -300,7 +300,7 @@ async def inline_handler(event):  # sourcery no-metrics
             query = query[7:]
             user, txct = query.split(" ", 1)
             builder = event.builder
-            troll = os.path.join("./SHRU", "troll.txt")
+            troll = os.path.join("./batt", "troll.txt")
             try:
                 jsondata = json.load(open(troll))
             except Exception:
@@ -336,7 +336,7 @@ async def inline_handler(event):  # sourcery no-metrics
 
             buttons = [Button.inline("عـرض الـرسـالة 🔐", data=f"troll_{timestamp}")]
             result = builder.article(
-                title="رسـالة تـرول من سـورس الساحر 🧸♥",
+                title="رسـالة تـرول من سـورس الخفاش 🧸♥",
                 text=f"فقـط {razan} هـو مـن يستـطيع مشـاهدتهـا !",
                 buttons=buttons,
             )
@@ -350,7 +350,7 @@ async def inline_handler(event):  # sourcery no-metrics
             query = query[7:]
             user, txct = query.split(" ", 1)
             builder = event.builder
-            secret = os.path.join("./SHRU", "secrets.txt")
+            secret = os.path.join("./batt", "secrets.txt")
             try:
                 jsondata = json.load(open(secret))
             except Exception:
@@ -386,7 +386,7 @@ async def inline_handler(event):  # sourcery no-metrics
 
             buttons = [Button.inline("عـرض الـرسـالة 🔐", data=f"rzan_{timestamp}")]
             result = builder.article(
-                title="همسـة سـرية من سـورس الساحر 🧸♥",
+                title="همسـة سـرية من سـورس الخفاش 🧸♥",
                 text=f"فقـط {razan} هـو مـن يستـطيع مشـاهدتهـا !",
                 buttons=buttons,
             )
@@ -399,7 +399,7 @@ async def inline_handler(event):  # sourcery no-metrics
         elif match3:
             query = query[5:]
             builder = event.builder
-            hide = os.path.join("./SHRU", "hide.txt")
+            hide = os.path.join("./batt", "hide.txt")
             try:
                 jsondata = json.load(open(hide))
             except Exception:
@@ -409,7 +409,7 @@ async def inline_handler(event):  # sourcery no-metrics
 
             buttons = [Button.inline("قراءة الـرسالـة ", data=f"hide_{timestamp}")]
             result = builder.article(
-                title="رسـالة مخفيـة من سـورس الساحر 🧸♥",
+                title="رسـالة مخفيـة من سـورس الخفاش 🧸♥",
                 text=f"✖✖✖",
                 buttons=buttons,
             )
@@ -422,8 +422,8 @@ async def inline_handler(event):  # sourcery no-metrics
         elif string == "help":
             _result = main_menu()
             result = builder.article(
-                title="© SHRU Help",
-                description="Help menu for SHRU",
+                title="© batt Help",
+                description="Help menu for batt",
                 text=_result[0],
                 buttons=_result[1],
                 link_preview=False,
@@ -559,10 +559,10 @@ async def inline_handler(event):  # sourcery no-metrics
     else:
         buttons = [
             (
-                Button.url("قنـاة السـورس ⚒️", "https://t.me/SXYO3"),
+                Button.url("قنـاة السـورس ⚒️", "https://t.me/angthon"),
                 Button.url(
                     "كـروب المـساعدة 📬",
-                    "https://t.me/SXYO3",
+                    "https://t.me/angthon",
                 ),
             )
         ]
@@ -571,12 +571,12 @@ async def inline_handler(event):  # sourcery no-metrics
             url=ROZLOGO, size=0, mime_type="image/jpeg", attributes=[]
         )
         text, msg_entities = await event.client._parse_message_text(
-            "**[بـوت الساحر 🧸♥](https://t.me/SXYO3)**\
+            "**[بـوت الخفاش 🧸♥](https://t.me/angthon)**\
             \n\
-            \n❤ الساحر هـو بـوت بسـيط يدخـل الـى حسـابك لجعـلك تتحـكم به معـ اوامـر معينـة.\
+            \n❤ الخفاش هـو بـوت بسـيط يدخـل الـى حسـابك لجعـلك تتحـكم به معـ اوامـر معينـة.\
             \n\
             \n**اذا كـنت تـرغب بتـنصيـب السـورس عـلى حسـابك ,\
-            \n🐾 تعال الـى [كروب المسـاعدة](https://t.me/SXYO4)!**",
+            \n🐾 تعال الـى [كروب المسـاعدة](https://t.me/HelpBat_source)!**",
             "md",
         )
         result = types.InputBotInlineResult(
@@ -584,7 +584,7 @@ async def inline_handler(event):  # sourcery no-metrics
             type="photo",
             title="Quest 🧸♥",
             description="ادخـل كـروب المسـاعدة",
-            url="https://t.me/SXYO4",
+            url="https://t.me/HelpBat_source",
             thumb=photo,
             content=photo,
             send_message=types.InputBotInlineMessageMediaAuto(
@@ -594,7 +594,7 @@ async def inline_handler(event):  # sourcery no-metrics
         await event.answer([result] if result else None)
 
 
-@Qrh9.tgbot.on(CallbackQuery(data=re.compile(b"close")))
+@lucmd9.tgbot.on(CallbackQuery(data=re.compile(b"close")))
 @check_owner
 async def on_plug_in_callback_query_handler(event):
     buttons = [
@@ -603,7 +603,7 @@ async def on_plug_in_callback_query_handler(event):
     await event.edit("Menu Closed", buttons=buttons)
 
 
-@Qrh9.tgbot.on(CallbackQuery(data=re.compile(b"check")))
+@lucmd9.tgbot.on(CallbackQuery(data=re.compile(b"check")))
 async def on_plugin_callback_query_handler(event):
     text = f"𝙿𝚕𝚞𝚐𝚒𝚗𝚜: {len(PLG_INFO)}\
         \n𝙲𝚘𝚖𝚖𝚊𝚗𝚍𝚜: {len(CMD_INFO)}\
@@ -614,7 +614,7 @@ async def on_plugin_callback_query_handler(event):
     await event.answer(text, cache_time=0, alert=True)
 
 
-@Qrh9.tgbot.on(CallbackQuery(data=re.compile(b"(.*)_menu")))
+@lucmd9.tgbot.on(CallbackQuery(data=re.compile(b"(.*)_menu")))
 @check_owner
 async def on_plug_in_callback_query_handler(event):
     category = str(event.pattern_match.group(1).decode("UTF-8"))
@@ -625,7 +625,7 @@ async def on_plug_in_callback_query_handler(event):
     await event.edit(text, buttons=buttons)
 
 
-@Qrh9.tgbot.on(
+@lucmd9.tgbot.on(
     CallbackQuery(
         data=re.compile(b"back_([a-z]+)_([a-z1-9]+)_([0-9]+)_?([a-z1-9]+)?_?([0-9]+)?")
     )
@@ -657,14 +657,14 @@ async def on_plug_in_callback_query_handler(event):
     await event.edit(text, buttons=buttons)
 
 
-@Qrh9.tgbot.on(CallbackQuery(data=re.compile(rb"mainmenu")))
+@lucmd9.tgbot.on(CallbackQuery(data=re.compile(rb"mainmenu")))
 @check_owner
 async def on_plug_in_callback_query_handler(event):
     _result = main_menu()
     await event.edit(_result[0], buttons=_result[1])
 
 
-@Qrh9.tgbot.on(
+@lucmd9.tgbot.on(
     CallbackQuery(data=re.compile(rb"(.*)_prev\((.+?)\)_([a-z]+)_?([a-z]+)?_?(.*)?"))
 )
 @check_owner
@@ -695,7 +695,7 @@ async def on_plug_in_callback_query_handler(event):
     await event.edit(buttons=buttons)
 
 
-@Qrh9.tgbot.on(
+@lucmd9.tgbot.on(
     CallbackQuery(data=re.compile(rb"(.*)_next\((.+?)\)_([a-z]+)_?([a-z]+)?_?(.*)?"))
 )
 @check_owner
@@ -723,7 +723,7 @@ async def on_plug_in_callback_query_handler(event):
     await event.edit(buttons=buttons)
 
 
-@Qrh9.tgbot.on(
+@lucmd9.tgbot.on(
     CallbackQuery(
         data=re.compile(b"(.*)_cmdhelp_([a-z1-9]+)_([0-9]+)_([a-z]+)_([0-9]+)")
     )

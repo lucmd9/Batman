@@ -2,7 +2,7 @@ import time
 
 from prettytable import PrettyTable
 
-from SHRU import Qrh9
+from batt import lucmd9
 
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.tools import media_type
@@ -29,7 +29,7 @@ def weird_division(n, d):
     return n / d if d else 0
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="تخزين الكروب(?:\s|$)([\s\S]*)",
     command=("تخزين الكروب", plugin_category),
     info={
@@ -114,12 +114,12 @@ async def _(event):  # sourcery no-metrics
         str(round((weird_division((endtime - starttime), totalcount)) * 1000, 2))
         + " ms"
     )
-    totalstring = f"<code><b>᯽︙ جمـيع الـملفات ✨ </b>       | {str(totalcount)}\
-                  \n᯽︙ حجـم الـملف الكـلي ✨    | {humanbytes(totalsize)}\
-                  \n᯽︙ حـجم الـملف ✨    | {avghubytes}\
+    totalstring = f"<code><b>᯽︙ جمـيع الـملفات 🕷 </b>       | {str(totalcount)}\
+                  \n᯽︙ حجـم الـملف الكـلي 🕷    | {humanbytes(totalsize)}\
+                  \n᯽︙ حـجم الـملف 🕷    | {avghubytes}\
                   \n</code>"
-    runtimestring = f"<code>᯽︙ وقـت الـتشغيل ✨            | {runtime}\
-                    \n᯽︙ وقـت الـتشغيل لـكل مـلف ✨    | {avgruntime}\
+    runtimestring = f"<code>᯽︙ وقـت الـتشغيل 🕷            | {runtime}\
+                    \n᯽︙ وقـت الـتشغيل لـكل مـلف 🕷    | {avgruntime}\
                     \n</code>"
     line = "<code>+--------------------+-----------+</code>\n"
     result = f"<b>᯽︙ الـكـروب : {link}</b>\n\n"
@@ -131,7 +131,7 @@ async def _(event):  # sourcery no-metrics
     await catevent.edit(result, parse_mode="HTML", link_preview=False)
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="تخزين المستخدم(?:\s|$)([\s\S]*)",
     command=("تخزين المستخدم", plugin_category),
     info={
@@ -238,17 +238,17 @@ async def _(event):  # sourcery no-metrics
         str(round((weird_division((endtime - starttime), totalcount)) * 1000, 2))
         + " ms"
     )
-    totalstring = f"<code> ᯽︙ إجمالـي الملفـات ✨ :    | {str(totalcount)}\
-                  \n ᯽︙ الحجـم الإجمالـي للملـف ✨ :   | {humanbytes(totalsize)}\
+    totalstring = f"<code> ᯽︙ إجمالـي الملفـات 🕷 :    | {str(totalcount)}\
+                  \n ᯽︙ الحجـم الإجمالـي للملـف 🕷 :   | {humanbytes(totalsize)}\
                   \n ᯽︙ حجم الملف  :  | {avghubytes}\
                   \n</code>"
-    runtimestring = f"<code> ᯽︙ وقـت التشغيـل ✨ :            | {runtime}\
-                    \n وقـت التشغيـل لـكـل ملـف ✨ : | {avgruntime}\
+    runtimestring = f"<code> ᯽︙ وقـت التشغيـل 🕷 :            | {runtime}\
+                    \n وقـت التشغيـل لـكـل ملـف 🕷 : | {avgruntime}\
                     \n</code>"
     line = "<code>+--------------------+-----------+</code>\n"
-    result = f"᯽︙ المجموعـة ✨ : {link}\nUser : {_format.htmlmentionuser(userdata.first_name,userdata.id)}\n\n"
-    result += f"<code>᯽︙ مجمـوع الرسائـل ✨ : {msg_count}</code>\n"
-    result += "⌔︙ملخـص الملـف ✨ :\n"
+    result = f"᯽︙ المجموعـة 🕷 : {link}\nUser : {_format.htmlmentionuser(userdata.first_name,userdata.id)}\n\n"
+    result += f"<code>᯽︙ مجمـوع الرسائـل 🕷 : {msg_count}</code>\n"
+    result += "⌔︙ملخـص الملـف 🕷 :\n"
     result += f"<code>{str(x)}</code>\n"
     result += f"{largest}"
     result += line + totalstring + line + runtimestring + line

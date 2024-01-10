@@ -1,5 +1,5 @@
 import sys
-from SHRU.core.logger import logging
+from batt.core.logger import logging
 from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
 from telethon.sessions import StringSession
 from telethon.errors import AccessTokenExpiredError, AccessTokenInvalidError
@@ -14,10 +14,10 @@ loop = None
 if Config.STRING_SESSION:
     session = StringSession(str(Config.STRING_SESSION))
 else:
-    session = "SHRU"
+    session = "batt"
 
 try:
-    Qrh9 = QrueClient(
+    lucmd9 = QrueClient(
         session=session,
         api_id=Config.APP_ID,
         api_hash=Config.API_HASH,
@@ -32,7 +32,7 @@ except Exception as e:
     sys.exit()
 
 try:
-    Qrh9.tgbot = tgbot = QrueClient(
+    lucmd9.tgbot = tgbot = QrueClient(
         session="arTgbot",
         api_id=Config.APP_ID,
         api_hash=Config.API_HASH,

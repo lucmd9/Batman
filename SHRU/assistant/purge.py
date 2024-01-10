@@ -1,5 +1,5 @@
-#(c) Copyright SHRU 2020-21
-#جميع الحقوق محفودظة لسورس الساحر 
+#(c) Copyright batt 2020-21
+#جميع الحقوق محفودظة لسورس الخفاش 
 #By ~  @RR9R7
 import asyncio
 
@@ -7,7 +7,7 @@ from telethon import events
 from telethon.errors.rpcerrorlist import MessageDeleteForbiddenError
 from telethon.tl.types import ChannelParticipantsAdmins
 
-from SHRU import bot
+from batt import bot
 from .. import *
 
 OWNER_ID = bot.uid

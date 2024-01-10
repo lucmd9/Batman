@@ -18,7 +18,7 @@ from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.functions import delete_conv, name_dl, song_dl, video_dl, yt_search
 from ..helpers.tools import media_type
 from ..helpers.utils import _catutils, reply_id
-from . import Qrh9
+from . import lucmd9
 
 plugin_category = "utils"
 LOGS = logging.getLogger(__name__)
@@ -33,7 +33,7 @@ SONG_SENDING_STRING = "<code>جارِ الارسال انتظر قليلا...</c
 #                                                             #
 # =========================================================== #
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="بحث(320)?(?:\s|$)([\s\S]*)",
     command=("بحث", plugin_category),
     info={
@@ -56,7 +56,7 @@ async def _(event):
         query = reply.message
     else:
         return await edit_or_reply(event, "⌔∮ يرجى الرد على ما تريد البحث عنه")
-    cat = base64.b64decode("U1hZTzM=")
+    cat = base64.b64decode("QEFuZ3Rob24=")
     catevent = await edit_or_reply(event, "⌔∮ جاري البحث عن المطلوب انتظر")
     video_link = await yt_search(str(query))
     if not url(video_link):
@@ -113,7 +113,7 @@ async def _(event):
         await catevent.edit("لا يمكن ارسال المقطع الصوتي هنا")
         LOGS.error(str(err))
 
-@Qrh9.ar_cmd(pattern="اسم الاغنية$")
+@lucmd9.ar_cmd(pattern="اسم الاغنية$")
 async def shazamcmd(event):
     reply = await event.get_reply_message()
     mediatype = media_type(reply)
@@ -150,7 +150,7 @@ async def shazamcmd(event):
     await catevent.delete()
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="بحث2(?:\s|$)([\s\S]*)",
     command=("بحث2", plugin_category),
     info={

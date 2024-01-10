@@ -2,12 +2,12 @@
 import asyncio
 from collections import deque
 
-from . import Qrh9, edit_delete, edit_or_reply, mention
+from . import lucmd9, edit_delete, edit_or_reply, mention
 
 plugin_category = "fun"
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="نجمه$",
     command=("نجمه", plugin_category),
     info={
@@ -18,14 +18,14 @@ plugin_category = "fun"
 async def _(event):
     "animation command"
     event = await edit_or_reply(event, "`نجمه.....`")
-    deq = deque(list("🦋✨🦋✨🦋✨🦋✨"))
+    deq = deque(list("🦋🕷🦋🕷🦋🕷🦋🕷"))
     for _ in range(48):
         await asyncio.sleep(0.3)
         await event.edit("".join(deq))
         deq.rotate(1)
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="مكعبات$",
     command=("مكعبات", plugin_category),
     info={
@@ -43,7 +43,7 @@ async def _(event):
         deq.rotate(1)
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="مطر$",
     command=("مطر", plugin_category),
     info={
@@ -61,7 +61,7 @@ async def _(event):
         deq.rotate(1)
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="deploy$",
     command=("deploy", plugin_category),
     info={
@@ -82,10 +82,10 @@ async def _(event):
         "**State changed from up to starting**",
         "**Stopping all processes with SIGTERM**",
         "**Process exited with** `status 143`",
-        "**Starting process with command** `python3 -m SHRU`",
+        "**Starting process with command** `python3 -m batt`",
         "**State changed from starting to up**",
-        "__INFO:SHRU:Logged in as 557667062__",
-        "__INFO:SHRU:Successfully loaded all plugins__",
+        "__INFO:batt:Logged in as 557667062__",
+        "__INFO:batt:Successfully loaded all plugins__",
         "**Build Succeeded**",
     ]
     for i in animation_ttl:
@@ -93,7 +93,7 @@ async def _(event):
         await event.edit(animation_chars[i % 12])
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="تفريغ(?: |$)(.*)",
     command=("تفريغ", plugin_category),
     info={
@@ -139,7 +139,7 @@ async def _(event):
             await event.edit(something_else)
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="فليم$",
     command=("فليم", plugin_category),
     info={
@@ -170,7 +170,7 @@ async def _(event):
         await event.edit(animation_chars[i % 10])
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="احبك$",
     command=("احبك", plugin_category),
     info={
@@ -225,7 +225,7 @@ async def _(event):
         await event.edit(animation_chars[i % 35])
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="طائره$",
     command=("طائره", plugin_category),
     info={
@@ -253,7 +253,7 @@ async def _(event):
     await asyncio.sleep(3)
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="شرطه$",
     command=("شرطه", plugin_category),
     info={
@@ -285,7 +285,7 @@ async def _(event):
         await event.edit(animation_chars[i % 12])
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="jio$",
     command=("jio", plugin_category),
     info={
@@ -324,7 +324,7 @@ async def _(event):
         await event.edit(animation_chars[i % 19])
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="النضام الشمسي$",
     command=("النضام الشمسي", plugin_category),
     info={

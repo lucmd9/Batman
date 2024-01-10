@@ -1,6 +1,6 @@
 #from here loaded islamic 
 
-from SHRU.Config import roza_config 
+from batt.Config import roza_config 
 
 razan = [
 """

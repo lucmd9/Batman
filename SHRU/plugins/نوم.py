@@ -1,4 +1,4 @@
-#SHRU - @ll1ilt - @313
+#batt - @luc_md9 - @313
 # L E O - M U H A M M E D
 
 
@@ -7,7 +7,7 @@ from datetime import datetime
 
 from telethon.tl import functions, types
 
-from SHRU import Qrh9
+from batt import lucmd9
 
 from ..Config import Config
 from ..core.logger import logging
@@ -19,7 +19,7 @@ from . import BOTLOG, BOTLOG_CHATID
 plugin_category = "utils"
 
 LOGS = logging.getLogger(__name__)
-#SHRU - ll1ilt - 313
+#batt - luc_md9 - 313
 # L E O - M U H A M M E D
 
 class AFK:
@@ -38,7 +38,7 @@ class AFK:
 
 AFK_ = AFK()
 
-@Qrh9.ar_cmd(outgoing=True, edited=False)
+@lucmd9.ar_cmd(outgoing=True, edited=False)
 async def set_not_afk(event):
     if AFK_.afk_on is False:
         return
@@ -82,10 +82,10 @@ async def set_not_afk(event):
                 + endtime
                 + "`",
             )
-#SHRU - ll1ilt - 313
+#batt - luc_md9 - 313
 # L E O - M U H A M M E D
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     incoming=True, func=lambda e: bool(e.mentioned or e.is_private), edited=False
 )
 async def on_afk(event):  # sourcery no-metrics
@@ -168,10 +168,10 @@ async def on_afk(event):  # sourcery no-metrics
                 parse_mode="html",
                 link_preview=False,
             )
-#SHRU - ll1ilt - 313
+#batt - luc_md9 - 313
 # L E O - M U H A M M E D
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="نوم(?:\s|$)([\s\S]*)",
     command=("نوم", plugin_category),
     info={
@@ -233,5 +233,5 @@ async def _(event):
                 BOTLOG_CHATID,
                 f"**᯽︙ امـر النوم 💤 :** \n **تم تشغيل الامر ❕**",
             )
-#SHRU - ll1ilt - 313
+#batt - luc_md9 - 313
 

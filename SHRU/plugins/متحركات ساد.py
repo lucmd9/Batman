@@ -1,31 +1,31 @@
-#edit  ~ @ll1ilt for Qrh9 
+#edit  ~ @luc_md9 for lucmd9 
 
 from telethon import events
-from SHRU.utils import admin_cmd
-from SHRU import Qrh9
+from batt.utils import admin_cmd
+from batt import lucmd9
 from . import *
  
-#جميع الحقوق محفوظة لسـورس الساحر تخـمط تبيـن فشلـك
+#جميع الحقوق محفوظة لسـورس الخفاش تخـمط تبيـن فشلـك
 
 plugin_category = "extra"
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="س1$",
     command=("س1", plugin_category),
            )
 async def tmgif(event):
     if event.fwd_from:
         return
-    ll1ilt = await reply_id(event)
+    luc_md9 = await reply_id(event)
     if sad:
-        Qrh9 = f"**˛ 𝘼𝙇𝙨𝙖𝙝𝙚𝙧 . .**\n"
-        Qrh9 += f"✛━━━━━━━━━━━━━✛\n"
-        Qrh9 += f"**الـمتحـرڪـة الأولـى **"
-        await event.client.send_file(event.chat_id, sad, caption=Qrh9, reply_to=ll1ilt)
+        lucmd9 = f"**˛ 𝘼𝙇𝙨𝙖𝙝𝙚𝙧 . .**\n"
+        lucmd9 += f"✛━━━━━━━━━━━━━✛\n"
+        lucmd9 += f"**الـمتحـرڪـة الأولـى **"
+        await event.client.send_file(event.chat_id, sad, caption=lucmd9, reply_to=luc_md9)
 
-#edit  ~ @ll1ilt for Qrh9 
-#جميع الحقوق محفوظة لسـورس الساحر تخـمط تبيـن فشلـك
+#edit  ~ @luc_md9 for lucmd9 
+#جميع الحقوق محفوظة لسـورس الخفاش تخـمط تبيـن فشلـك
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="س2$",
     command=("س2", plugin_category),
            )
@@ -39,10 +39,10 @@ async def tmgif(event):
         RAZAN += f"**الـمتحـرڪـة الـثـانيـة **"
         await event.client.send_file(event.chat_id, sad2, caption=RAZAN, reply_to=leo)
 
-#edit  ~ @ll1ilt for Qrh9 
-#جميع الحقوق محفوظة لسـورس الساحر تخـمط تبيـن فشلـك
+#edit  ~ @luc_md9 for lucmd9 
+#جميع الحقوق محفوظة لسـورس الخفاش تخـمط تبيـن فشلـك
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="س3$",
     command=("س3", plugin_category),
            )
@@ -56,10 +56,10 @@ async def tmgif(event):
         RAZAN += f"**الـمتحـرڪـة الـثـالثـة**\n"
         await event.client.send_file(event.chat_id, sad3, caption=RAZAN, reply_to=sic_id)
 
-#edit  ~ @ll1ilt for Qrh9 
-#جميع الحقوق محفوظة لسـورس الساحر تخـمط تبيـن فشلـك
+#edit  ~ @luc_md9 for lucmd9 
+#جميع الحقوق محفوظة لسـورس الخفاش تخـمط تبيـن فشلـك
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="س4$",
     command=("س4", plugin_category),
            )
@@ -75,10 +75,10 @@ async def tmgif(event):
             event.chat_id, sad4, caption=RAZAN, reply_to=reply_to_id
         )
 
-#edit  ~ @ll1ilt for Qrh9 
-#جميع الحقوق محفوظة لسـورس الساحر تخـمط تبيـن فشلـك
+#edit  ~ @luc_md9 for lucmd9 
+#جميع الحقوق محفوظة لسـورس الخفاش تخـمط تبيـن فشلـك
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="س5$",
     command=("س5", plugin_category),
            )
@@ -95,10 +95,10 @@ async def tmgif(event):
             event.chat_id, sad5, caption=RAZAN, reply_to=reply_to_id
         )
 
-#edit  ~ @ll1ilt for Qrh9 
-#جميع الحقوق محفوظة لسـورس الساحر تخـمط تبيـن فشلـك
+#edit  ~ @luc_md9 for lucmd9 
+#جميع الحقوق محفوظة لسـورس الخفاش تخـمط تبيـن فشلـك
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="س6$",
     command=("س6", plugin_category),
            )
@@ -115,10 +115,10 @@ async def tmgif(event):
             event.chat_id, sad6, caption=RAZAN, reply_to=reply_to_id
         )
 
-#edit  ~ @ll1ilt for Qrh9 
-#جميع الحقوق محفوظة لسـورس الساحر تخـمط تبيـن فشلـك
+#edit  ~ @luc_md9 for lucmd9 
+#جميع الحقوق محفوظة لسـورس الخفاش تخـمط تبيـن فشلـك
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="س7$",
     command=("س7", plugin_category),
            )
@@ -135,7 +135,7 @@ async def tmgif(event):
         )
       
       
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="س8$",
     command=("س8", plugin_category),
            )
@@ -151,7 +151,7 @@ async def tmgif(event):
             event.chat_id, sad8, caption=RAZAN, reply_to=reply_to_id
         )
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="س9$",
     command=("س9", plugin_category),
            )
@@ -166,5 +166,5 @@ async def tmgif(event):
         await event.client.send_file(
             event.chat_id, sad9, caption=RAZAN, reply_to=reply_to_id
         )
-#edit  ~ @ll1ilt for Qrh9 
-#جميع الحقوق محفوظة لسـورس الساحر تخـمط تبيـن فشلـك
+#edit  ~ @luc_md9 for lucmd9 
+#جميع الحقوق محفوظة لسـورس الخفاش تخـمط تبيـن فشلـك

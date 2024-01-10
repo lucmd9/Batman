@@ -5,7 +5,7 @@ import heroku3
 import requests
 import urllib3
 
-from SHRU import Qrh9
+from batt import lucmd9
 
 from ..Config import Config
 from ..core.managers import edit_delete, edit_or_reply
@@ -18,7 +18,7 @@ HEROKU_APP_NAME = Config.HEROKU_APP_NAME
 HEROKU_API_KEY = Config.HEROKU_API_KEY
 
 
-@Qrh9.ar_cmd(pattern="وضع (.*)")
+@lucmd9.ar_cmd(pattern="وضع (.*)")
 async def variable(var):
     if Config.HEROKU_API_KEY is None:
         return await edit_delete(
@@ -241,7 +241,7 @@ async def variable(var):
         heroku_var[variable] = vra
 
 
-@Qrh9.ar_cmd(pattern="محو (.*)")
+@lucmd9.ar_cmd(pattern="محو (.*)")
 async def variable(event):
     if Config.HEROKU_API_KEY is None:
         return await edit_delete(
@@ -370,7 +370,7 @@ async def variable(event):
         del heroku_var[variable]
 
 
-@Qrh9.ar_cmd(pattern="وقت(?:\s|$)([\s\S]*)")
+@lucmd9.ar_cmd(pattern="وقت(?:\s|$)([\s\S]*)")
 async def variable(event):
     if Config.HEROKU_API_KEY is None:
         return await edit_delete(
@@ -477,7 +477,7 @@ async def variable(event):
             )
         heroku_var[variable] = Syria
         
-@Qrh9.ar_cmd(pattern="زخرفة الصورة(?:\s|$)([\s\S]*)")
+@lucmd9.ar_cmd(pattern="زخرفة الصورة(?:\s|$)([\s\S]*)")
 async def variable(event):
     if Config.HEROKU_API_KEY is None:
         return await edit_delete(
@@ -496,7 +496,7 @@ async def variable(event):
     jep = await edit_or_reply(event, "**جـاري اضـافة زخـرفـة الوقتيـه لـ حسابك ✅ . . .**")
     if input_str == "1":
         variable = "DEFAULT_PIC"
-        zinfo = "SHRU/helpers/styles/SXYO3.ttf"
+        zinfo = "batt/helpers/styles/angthon.ttf"
         await asyncio.sleep(1.5)
         if variable in heroku_var:
             await jep.edit("**⌔∮ تم بنجاح تغيير زخرفة الصورة الوقتية\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**".format(input_str))
@@ -505,7 +505,7 @@ async def variable(event):
         heroku_var[variable] = zinfo
     elif input_str == "2":
         variable = "DEFAULT_PIC"
-        zinfo = "SHRU/helpers/styles/Starjedi.ttf"
+        zinfo = "batt/helpers/styles/Starjedi.ttf"
         await asyncio.sleep(1.5)
         if variable in heroku_var:
             await jep.edit("**⌔∮ تم بنجاح تغيير زخرفة الصورة الوقتية\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**".format(input_str))
@@ -514,7 +514,7 @@ async def variable(event):
         heroku_var[variable] = zinfo
     elif input_str == "3":
         variable = "DEFAULT_PIC"
-        zinfo = "SHRU/helpers/styles/Papernotes.ttf"
+        zinfo = "batt/helpers/styles/Papernotes.ttf"
         await asyncio.sleep(1.5)
         if variable in heroku_var:
             await jep.edit("**⌔∮ تم بنجاح تغيير زخرفة الصورة الوقتية\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**".format(input_str))
@@ -523,7 +523,7 @@ async def variable(event):
         heroku_var[variable] = zinfo
     elif input_str == "4":
         variable = "DEFAULT_PIC"
-        zinfo = "SHRU/helpers/styles/Terserah.ttf"
+        zinfo = "batt/helpers/styles/Terserah.ttf"
         await asyncio.sleep(1.5)
         if variable in heroku_var:
             await jep.edit("**⌔∮ تم بنجاح تغيير زخرفة الصورة الوقتية\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**".format(input_str))
@@ -532,7 +532,7 @@ async def variable(event):
         heroku_var[variable] = zinfo
     elif input_str == "5":
         variable = "DEFAULT_PIC"
-        zinfo = "SHRU/helpers/styles/Photography Signature.ttf"
+        zinfo = "batt/helpers/styles/Photography Signature.ttf"
         await asyncio.sleep(1.5)
         if variable in heroku_var:
             await jep.edit("**⌔∮ تم بنجاح تغيير زخرفة الصورة الوقتية\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**".format(input_str))
@@ -541,7 +541,7 @@ async def variable(event):
         heroku_var[variable] = zinfo
     elif input_str == "6":
         variable = "DEFAULT_PIC"
-        zinfo = "SHRU/helpers/styles/Austein.ttf"
+        zinfo = "batt/helpers/styles/Austein.ttf"
         await asyncio.sleep(1.5)
         if variable in heroku_var:
             await jep.edit("**⌔∮ تم بنجاح تغيير زخرفة الصورة الوقتية\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**".format(input_str))
@@ -550,7 +550,7 @@ async def variable(event):
         heroku_var[variable] = zinfo
     elif input_str == "7":
         variable = "DEFAULT_PIC"
-        zinfo = "SHRU/helpers/styles/Dream MMA.ttf"
+        zinfo = "batt/helpers/styles/Dream MMA.ttf"
         await asyncio.sleep(1.5)
         if variable in heroku_var:
             await jep.edit("**⌔∮ تم بنجاح تغيير زخرفة الصورة الوقتية\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**".format(input_str))
@@ -559,7 +559,7 @@ async def variable(event):
         heroku_var[variable] = zinfo
     elif input_str == "8":
         variable = "DEFAULT_PIC"
-        zinfo = "SHRU/helpers/styles/EASPORTS15.ttf"
+        zinfo = "batt/helpers/styles/EASPORTS15.ttf"
         await asyncio.sleep(1.5)
         if variable in heroku_var:
             await jep.edit("**⌔∮ تم بنجاح تغيير زخرفة الصورة الوقتية\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**".format(input_str))
@@ -568,7 +568,7 @@ async def variable(event):
         heroku_var[variable] = zinfo
     elif input_str == "9":
         variable = "DEFAULT_PIC"
-        zinfo = "SHRU/helpers/styles/KGMissKindergarten.ttf"
+        zinfo = "batt/helpers/styles/KGMissKindergarten.ttf"
         await asyncio.sleep(1.5)
         if variable in heroku_var:
             await jep.edit("**⌔∮ تم بنجاح تغيير زخرفة الصورة الوقتية\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**".format(input_str))
@@ -577,7 +577,7 @@ async def variable(event):
         heroku_var[variable] = zinfo
     elif input_str == "10":
         variable = "DEFAULT_PIC"
-        zinfo = "SHRU/helpers/styles/212 Orion Sans PERSONAL USE.ttf"
+        zinfo = "batt/helpers/styles/212 Orion Sans PERSONAL USE.ttf"
         await asyncio.sleep(1.5)
         if variable in heroku_var:
             await jep.edit("**⌔∮ تم بنجاح تغيير زخرفة الصورة الوقتية\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**".format(input_str))
@@ -586,7 +586,7 @@ async def variable(event):
         heroku_var[variable] = zinfo
     elif input_str == "11":
         variable = "DEFAULT_PIC"
-        zinfo = "SHRU/helpers/styles/PEPSI_pl.ttf"
+        zinfo = "batt/helpers/styles/PEPSI_pl.ttf"
         await asyncio.sleep(1.5)
         if variable in heroku_var:
             await jep.edit("**⌔∮ تم بنجاح تغيير زخرفة الصورة الوقتية\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**".format(input_str))
@@ -595,7 +595,7 @@ async def variable(event):
         heroku_var[variable] = zinfo
     elif input_str == "12":
         variable = "DEFAULT_PIC"
-        zinfo = "SHRU/helpers/styles/Paskowy.ttf"
+        zinfo = "batt/helpers/styles/Paskowy.ttf"
         await asyncio.sleep(1.5)
         if variable in heroku_var:
             await jep.edit("**⌔∮ تم بنجاح تغيير زخرفة الصورة الوقتية\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**".format(input_str))
@@ -604,7 +604,7 @@ async def variable(event):
         heroku_var[variable] = zinfo
     elif input_str == "13":
         variable = "DEFAULT_PIC"
-        zinfo = "SHRU/helpers/styles/Cream Cake.otf"
+        zinfo = "batt/helpers/styles/Cream Cake.otf"
         await asyncio.sleep(1.5)
         if variable in heroku_var:
             await jep.edit("**⌔∮ تم بنجاح تغيير زخرفة الصورة الوقتية\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**".format(input_str))
@@ -613,7 +613,7 @@ async def variable(event):
         heroku_var[variable] = zinfo
     elif input_str == "14":
         variable = "DEFAULT_PIC"
-        zinfo = "SHRU/helpers/styles/Hello Valentina.ttf"
+        zinfo = "batt/helpers/styles/Hello Valentina.ttf"
         await asyncio.sleep(1.5)
         if variable in heroku_var:
             await jep.edit("**⌔∮ تم بنجاح تغيير زخرفة الصورة الوقتية\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**".format(input_str))
@@ -622,7 +622,7 @@ async def variable(event):
         heroku_var[variable] = zinfo
     elif input_str == "15":
         variable = "DEFAULT_PIC"
-        zinfo = "SHRU/helpers/styles/Alien-Encounters-Regular.ttf"
+        zinfo = "batt/helpers/styles/Alien-Encounters-Regular.ttf"
         await asyncio.sleep(1.5)
         if variable in heroku_var:
             await jep.edit("**⌔∮ تم بنجاح تغيير زخرفة الصورة الوقتية\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**".format(input_str))
@@ -631,7 +631,7 @@ async def variable(event):
         heroku_var[variable] = zinfo
     elif input_str == "16":
         variable = "DEFAULT_PIC"
-        zinfo = "SHRU/helpers/styles/Linebeam.ttf"
+        zinfo = "batt/helpers/styles/Linebeam.ttf"
         await asyncio.sleep(1.5)
         if variable in heroku_var:
             await jep.edit("**⌔∮ تم بنجاح تغيير زخرفة الصورة الوقتية\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**".format(input_str))
@@ -640,7 +640,7 @@ async def variable(event):
         heroku_var[variable] = zinfo
     elif input_str == "17":
         variable = "DEFAULT_PIC"
-        zinfo = "SHRU/helpers/styles/EASPORTS15.ttf"
+        zinfo = "batt/helpers/styles/EASPORTS15.ttf"
         await asyncio.sleep(1.5)
         if variable in heroku_var:
             await jep.edit("**⌔∮ تم بنجاح تغيير زخرفة الصورة الوقتية\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**".format(input_str))
@@ -648,7 +648,7 @@ async def variable(event):
             await jep.edit("**⌔∮ تم بنجاح تغيير زخرفة الصورة الوقتية\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**".format(input_str))
         heroku_var[variable] = zinfo
 
-@Qrh9.ar_cmd(pattern="ميوزك(?:\s|$)([\s\S]*)")
+@lucmd9.ar_cmd(pattern="ميوزك(?:\s|$)([\s\S]*)")
 async def variable(event):
     if Config.HEROKU_API_KEY is None:
         return await edit_delete(
@@ -685,7 +685,7 @@ async def variable(event):
         heroku_var[variable] = zinfo
 
 
-@Qrh9.ar_cmd(pattern="استخدامي$")
+@lucmd9.ar_cmd(pattern="استخدامي$")
 async def dyno_usage(dyno):
     if (HEROKU_APP_NAME is None) or (HEROKU_API_KEY is None):
         return await edit_delete(
@@ -743,7 +743,7 @@ async def dyno_usage(dyno):
     )
 
 
-@Qrh9.ar_cmd(pattern="لوك$")
+@lucmd9.ar_cmd(pattern="لوك$")
 async def _(dyno):
     if (HEROKU_APP_NAME is None) or (HEROKU_API_KEY is None):
         return await edit_delete(

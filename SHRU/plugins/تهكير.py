@@ -1,9 +1,9 @@
-# Copyright (C) 2021 SHRU TEAM
-# FILES WRITTEN BY  @ll1ilt
+# Copyright (C) 2021 batt TEAM
+# FILES WRITTEN BY  @luc_md9
 
 import asyncio
 from telethon import events
-from SHRU import Qrh9
+from batt import lucmd9
 import random
 from ..core.managers import edit_or_reply
 from ..helpers.utils import _format
@@ -12,7 +12,7 @@ from . import ALIVE_NAME
 plugin_category = "fun"
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="تهكير$",
     command=("تهكير", plugin_category),
     info={
@@ -27,7 +27,7 @@ async def _(event):
     if event.reply_to_msg_id:
         reply_message = await event.get_reply_message()
         idd = reply_message.sender_id
-        if idd == 6320583148:
+        if idd == 1045489068:
             await edit_or_reply(
                 event, "**᯽︙ عـذرا لا استـطيع اخـتراق مـطوري اعـتذر او سيقـوم بتهـكيرك**"
             )
@@ -57,7 +57,7 @@ async def _(event):
             "᯽︙ لم يتـم التعـرف على المستـخدم",
             parse_mode=_format.parse_pre,
         )
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="تهكير2$",
     command=("تهكير2", plugin_category),
     info={

@@ -13,7 +13,7 @@ from telethon.events import CallbackQuery
 from telethon.utils import get_attributes
 from wget import download
 
-from SHRU import Qrh9
+from batt import lucmd9
 
 from ..Config import Config
 from ..core import check_owner, pool
@@ -35,11 +35,11 @@ BASE_YT_URL = "https://www.youtube.com/watch?v="
 YOUTUBE_REGEX = re.compile(
     r"(?:youtube\.com|youtu\.be)/(?:[\w-]+\?v=|embed/|v/|shorts/)?([\w-]{11})"
 )
-PATH = "./SHRU/cache/ytsearch.json"
+PATH = "./batt/cache/ytsearch.json"
 plugin_category = "bot"
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="اغنيه(?:\s|$)([\s\S]*)",
     command=("اغنيه", plugin_category),
     info={
@@ -86,7 +86,7 @@ async def iytdl_inline(event):
         await catevent.edit("**▾∮ عذرًا لم أستطيع ايجاد اي نتائج! ✘**")
 
 
-@Qrh9.tgbot.on(
+@lucmd9.tgbot.on(
     CallbackQuery(
         data=re.compile(b"^ytdl_download_(.*)_([\d]+|mkv|mp4|mp3)(?:_(a|v))?")
     )
@@ -183,7 +183,7 @@ async def ytdl_download_callback(c_q: CallbackQuery):  # sourcery no-metrics
     )
 
 
-@Qrh9.tgbot.on(
+@lucmd9.tgbot.on(
     CallbackQuery(data=re.compile(b"^ytdl_(listall|back|next|detail)_([a-z0-9]+)_(.*)"))
 )
 @check_owner

@@ -3,14 +3,14 @@ import re
 from telethon import Button, events
 from telethon.events import CallbackQuery
 
-from Qrh9.razan.resources.assistant import *
-from Qrh9.razan.resources.mybot import *
-from SHRU import Qrh9
+from lucmd9.razan.resources.assistant import *
+from lucmd9.razan.resources.mybot import *
+from batt import lucmd9
 from ..core import check_owner
 from ..Config import Config
 
 JEP_IC = "https://telegra.ph/file/56a3dd726306259beded6.jpg"
-ROE = "**♰ هـذه هي قائمة اوامـر سـورس الساحر ♰**"
+ROE = "**♰ هـذه هي قائمة اوامـر سـورس الخفاش ♰**"
 
 if Config.TG_BOT_USERNAME is not None and tgbot is not None:
 
@@ -22,35 +22,35 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
         await bot.get_me()
         if query.startswith("اوامري") and event.query.user_id == bot.uid:
             buttons = [
-                [Button.inline("✨ اوامر الادمن ✨", data="Qrh90")],
+                [Button.inline("🕷 اوامر الادمن 🕷", data="lucmd90")],
                 [
-                    Button.inline("✨ اوامر البوت ✨", data="rozbot"),
-                    Button.inline("✨ الحساب ✨", data="Jmrz"),
-                    Button.inline("✨ المجموعات ✨", data="gro"),
+                    Button.inline("🕷 اوامر البوت 🕷", data="rozbot"),
+                    Button.inline("🕷 الحساب 🕷", data="Jmrz"),
+                    Button.inline("🕷 المجموعات 🕷", data="gro"),
                 ],
                 [
-                    Button.inline("✨ الصيغ و الجهات ✨", data="sejrz"),
-                    Button.inline("✨ الحماية و تلكراف ✨", data="grrz"),
+                    Button.inline("🕷 الصيغ و الجهات 🕷", data="sejrz"),
+                    Button.inline("🕷 الحماية و تلكراف 🕷", data="grrz"),
                 ],
                 [
-                    Button.inline("✨ اوامر التسلية ✨", data="tslrzj"),
-                    Button.inline("✨ الترحيبات والردود ✨", data="r7brz"),
+                    Button.inline("🕷 اوامر التسلية 🕷", data="tslrzj"),
+                    Button.inline("🕷 الترحيبات والردود 🕷", data="r7brz"),
                 ],
                 [
-                    Button.inline("✨ اومر المساعدة ✨", data="krrznd"),
-                    Button.inline("✨ الملصقات وصور ✨", data="jrzst"),
+                    Button.inline("🕷 اومر المساعدة 🕷", data="krrznd"),
+                    Button.inline("🕷 الملصقات وصور 🕷", data="jrzst"),
                 ],
                 [
-                    Button.inline("✨ التكرار والتنظيف ✨", data="krrznd"),
-                    Button.inline("✨ الترفيه ✨", data="rfhrz"),
+                    Button.inline("🕷 التكرار والتنظيف 🕷", data="krrznd"),
+                    Button.inline("🕷 الترفيه 🕷", data="rfhrz"),
                 ],
                 [
-                    Button.inline("✨ التكرار والتنظيف ✨", data="iiers"),
-                    Button.inline("✨ الملصقات وصور ✨", data="jrzst"),
+                    Button.inline("🕷 التكرار والتنظيف 🕷", data="iiers"),
+                    Button.inline("🕷 الملصقات وصور 🕷", data="jrzst"),
                 ],
                 [
-                    Button.inline("✨ الأكستـرا ✨", data="iiers"),
-                    Button.inline("✨ الانتحال والتقليد ✨", data="uscuxrz"),
+                    Button.inline("🕷 الأكستـرا 🕷", data="iiers"),
+                    Button.inline("🕷 الانتحال والتقليد 🕷", data="uscuxrz"),
                 ],
             ]
             if JEP_IC and JEP_IC.endswith((".jpg", ".png", "gif", "mp4")):
@@ -60,14 +60,14 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
             elif JEP_IC:
                 result = builder.document(
                     JEP_IC,
-                    title="SHRU",
+                    title="batt",
                     text=ROE,
                     buttons=buttons,
                     link_preview=False,
                 )
             else:
                 result = builder.article(
-                    title="SHRU",
+                    title="batt",
                     text=ROE,
                     buttons=buttons,
                     link_preview=False,
@@ -79,15 +79,15 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
 async def repo(event):
     if event.fwd_from:
         return
-    ll1ilt = Config.TG_BOT_USERNAME
+    luc_md9 = Config.TG_BOT_USERNAME
     if event.reply_to_msg_id:
         await event.get_reply_message()
-    response = await bot.inline_query(ll1ilt, "اوامري")
+    response = await bot.inline_query(luc_md9, "اوامري")
     await response[0].click(event.chat_id)
     await event.delete()
 
 
-@Qrh9.tgbot.on(CallbackQuery(data=re.compile(rb"Qrh90")))
+@lucmd9.tgbot.on(CallbackQuery(data=re.compile(rb"lucmd90")))
 @check_owner
 async def _(event):
     buttons = [
@@ -96,17 +96,17 @@ async def _(event):
       Button.inline("القائمة الرئيسية", data="ROE"),]]
     await event.edit(ROZADM, buttons=buttons)
 
-@Qrh9.tgbot.on(CallbackQuery(data=re.compile(rb"jrzst")))
+@lucmd9.tgbot.on(CallbackQuery(data=re.compile(rb"jrzst")))
 @check_owner
 async def _(event):
     butze = [
     [
      Button.inline("التالي", data="tslrzj"),
-     Button.inline("رجوع", data="Qrh90")]]
+     Button.inline("رجوع", data="lucmd90")]]
     await event.edit(GRTSTI, buttons=butze)
 
 
-@Qrh9.tgbot.on(CallbackQuery(data=re.compile(rb"tslrzj")))
+@lucmd9.tgbot.on(CallbackQuery(data=re.compile(rb"tslrzj")))
 @check_owner
 async def _(event):
     buttons = [
@@ -116,7 +116,7 @@ async def _(event):
     await event.edit(JMAN, buttons=buttons)
 
 
-@Qrh9.tgbot.on(CallbackQuery(data=re.compile(rb"krrznd")))
+@lucmd9.tgbot.on(CallbackQuery(data=re.compile(rb"krrznd")))
 @check_owner
 async def _(event):
     buttons = [
@@ -126,7 +126,7 @@ async def _(event):
     await event.edit(TKPRZ, buttons=buttons)
 
 
-@Qrh9.tgbot.on(CallbackQuery(data=re.compile(rb"rozbot")))
+@lucmd9.tgbot.on(CallbackQuery(data=re.compile(rb"rozbot")))
 @check_owner
 async def _(event):
     buttons = [
@@ -136,7 +136,7 @@ async def _(event):
     await event.edit(ROZBOT, buttons=buttons)
 
 
-@Qrh9.tgbot.on(CallbackQuery(data=re.compile(rb"Jmrz")))
+@lucmd9.tgbot.on(CallbackQuery(data=re.compile(rb"Jmrz")))
 @check_owner
 async def _(event):
     buttons = [
@@ -146,7 +146,7 @@ async def _(event):
     await event.edit(JROZT, buttons=buttons)
 
 
-@Qrh9.tgbot.on(CallbackQuery(data=re.compile(rb"r7brz")))
+@lucmd9.tgbot.on(CallbackQuery(data=re.compile(rb"r7brz")))
 @check_owner
 async def _(event):
     buttons = [
@@ -156,7 +156,7 @@ async def _(event):
     await event.edit(JMTRD, buttons=buttons)
 
 
-@Qrh9.tgbot.on(CallbackQuery(data=re.compile(rb"sejrz")))
+@lucmd9.tgbot.on(CallbackQuery(data=re.compile(rb"sejrz")))
 @check_owner
 async def _(event):
     buttons = [
@@ -166,7 +166,7 @@ async def _(event):
     await event.edit(ROZSEG, buttons=buttons)
 
 
-@Qrh9.tgbot.on(CallbackQuery(data=re.compile(rb"gro")))
+@lucmd9.tgbot.on(CallbackQuery(data=re.compile(rb"gro")))
 @check_owner
 async def _(event):
     buttons = [
@@ -176,7 +176,7 @@ async def _(event):
     await event.edit(JMGR1,buttons=buttons)
 
 
-@Qrh9.tgbot.on(CallbackQuery(data=re.compile(rb"grrz")))
+@lucmd9.tgbot.on(CallbackQuery(data=re.compile(rb"grrz")))
 @check_owner
 async def _(event):
     buttons = [
@@ -186,7 +186,7 @@ async def _(event):
     await event.edit(ROZPRV, buttons=buttons)
 
 
-@Qrh9.tgbot.on(CallbackQuery(data=re.compile(rb"iiers")))
+@lucmd9.tgbot.on(CallbackQuery(data=re.compile(rb"iiers")))
 @check_owner
 async def _(event):
     buttons = [
@@ -196,7 +196,7 @@ async def _(event):
     await event.edit(HERP, buttons=buttons)
 
 
-@Qrh9.tgbot.on(CallbackQuery(data=re.compile(rb"rfhrz")))
+@lucmd9.tgbot.on(CallbackQuery(data=re.compile(rb"rfhrz")))
 @check_owner
 async def _(event):
     buttons = [
@@ -206,8 +206,8 @@ async def _(event):
     await event.edit(T7SHIZ, buttons=buttons)
 
 
-@Qrh9.tgbot.on(CallbackQuery(data=re.compile(rb"uscuxrz")))
+@lucmd9.tgbot.on(CallbackQuery(data=re.compile(rb"uscuxrz")))
 @check_owner
 async def _(event):
-    buttons = [[Button.inline("رجوع", data="Qrh90"),]]
+    buttons = [[Button.inline("رجوع", data="lucmd90"),]]
     await event.edit(CLORN, buttons=buttons)

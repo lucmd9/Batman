@@ -29,7 +29,7 @@ from telethon.tl.types import (
     MessageMediaPhoto,
 )
 
-from SHRU import Qrh9
+from batt import lucmd9
 
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.functions import animator, crop_and_divide
@@ -264,7 +264,7 @@ async def add_to_pack(
     return pack, packname
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="ملصق(?:\s|$)([\s\S]*)",
     command=("ملصق", plugin_category),
     info={
@@ -355,7 +355,7 @@ async def kang(args):  # sourcery no-metrics
         return
     if photo:
         splat = ("".join(args.text.split(maxsplit=1)[1:])).split()
-        emoji = emoji if emojibypass else "✨"
+        emoji = emoji if emojibypass else "🕷"
         pack = 1
         if len(splat) == 2:
             if char_is_emoji(splat[0][0]):
@@ -453,7 +453,7 @@ async def kang(args):  # sourcery no-metrics
                 )
 
 
-@Qrh9.on(admin_cmd(pattern="حزمة"))
+@lucmd9.on(admin_cmd(pattern="حزمة"))
 async def Qruepkg(_):
     Jep = await _.get_reply_message()
     if not Jep:
@@ -492,7 +492,7 @@ async def Qruepkg(_):
     await edit_or_reply(
         _, f"**- تم اخذ الحزمة بنجاح ✓ \nالحزمة  → [اضغط هنا](https://t.me/addstickers/{stivck_Jep.set.short_name})**")
 
-@Qrh9.on(admin_cmd(pattern="حزمه"))
+@lucmd9.on(admin_cmd(pattern="حزمه"))
 async def Qruepkg(_):
     Jep = await _.get_reply_message()
     if not Jep:
@@ -552,7 +552,7 @@ async def Qruepkg(_):
         _,
         f"**- تم اخذ الحزمة بنجاح ✓ \nالحزمة  → [اضغط هنا](https://t.me/addstickers/{stivck_Jep.set.short_name})**",
     )
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="معلومات_الملصق$",
     command=("معلومات_الملصق", plugin_category),
     info={
@@ -608,7 +608,7 @@ hash=0
     await catevent.edit(OUTPUT)
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="الملصقات ?([\s\S]*)",
     command=("الملصقات", plugin_category),
     info={

@@ -12,9 +12,9 @@ from telethon.tl.types import (ChannelParticipantsAdmins,
                                    ChatBannedRights,
                                      MessageEntityMentionName,
                                        MessageMediaPhoto)
-from SHRU.utils import admin_cmd
+from batt.utils import admin_cmd
 from ..Config import Config
-from SHRU import CMD_HELP, Qrh9
+from batt import CMD_HELP, lucmd9
 up_admin = Config.UP_ET or "ارفع"
 down_admin = Config.DOWN_ET or "تزل"
 async def get_full_user(event):  
@@ -43,7 +43,7 @@ async def get_full_user(event):
         try:
             user_obj = await event.client.get_entity(user)
         except Exception as err:
-            return await event.edit("▾∮ هنالك خطأ يرجى تبليغنا @SXYO3", str(err))           
+            return await event.edit("▾∮ هنالك خطأ يرجى تبليغنا @angthon", str(err))           
     return user_obj, extra
 
 global hawk,moth
@@ -58,27 +58,27 @@ async def get_user_from_id(user, event):
         await event.edit(str(err))
         return None
     return user_obj
-@Qrh9.on(admin_cmd(pattern="{up_admin} ?(.*)"))
-async def gben(SHRU):
-    dc = razan = SHRU
+@lucmd9.on(admin_cmd(pattern="{up_admin} ?(.*)"))
+async def gben(batt):
+    dc = razan = batt
     i = 0
     sender = await dc.get_sender()
-    me = await SHRU.client.get_me()
+    me = await batt.client.get_me()
     await razan.edit("▾∮ يتم رفع المستخدم في جميع المجموعات")
     my_mention = "[{}](tg://user?id={})".format(me.first_name, me.id)
     f"@{me.username}" if me.username else my_mention
-    await SHRU.get_chat()
-    if SHRU.is_private:
-        user = SHRU.chat
-        rank = SHRU.pattern_match.group(1)
+    await batt.get_chat()
+    if batt.is_private:
+        user = batt.chat
+        rank = batt.pattern_match.group(1)
     else:
-        SHRU.chat.title
+        batt.chat.title
     try:
-        user, rank = await get_full_user(SHRU)
+        user, rank = await get_full_user(batt)
     except:
         pass
     if me == user:
-       Qrh9 = await razan.edit("▾∮ لا استطيع رفع نفسي ،")
+       lucmd9 = await razan.edit("▾∮ لا استطيع رفع نفسي ،")
        return
     try:
         if not rank:
@@ -87,7 +87,7 @@ async def gben(SHRU):
         return await razan.edit(f"**▾∮ هنالك شي خطأ**")
     if user:
         telchanel = [d.entity.id
-                     for d in await SHRU.client.get_dialogs()
+                     for d in await batt.client.get_dialogs()
                      if (d.is_group or d.is_channel)
                      ]
         rgt = ChatAdminRights(add_admins=True,
@@ -98,7 +98,7 @@ async def gben(SHRU):
                                    pin_messages=True)
         for x in telchanel:
           try:
-             await SHRU.client(EditAdminRequest(x, user, rgt, rank))
+             await batt.client(EditAdminRequest(x, user, rgt, rank))
              i += 1
              await razan.edit(f"**▾∮ يتم الرفع في **: `{i}` من المجموعات")
           except:
@@ -109,27 +109,27 @@ async def gben(SHRU):
         f"**▾∮المستخدم [{user.first_name}](tg://user?id={user.id})\n▾∮ تم رفعه في : {i} من المجموعات**"
     )
 
-@Qrh9.on(admin_cmd(pattern="{down_admin} ?(.*)"))
-async def gben(SHRU):
-    dc = razan = SHRU
+@lucmd9.on(admin_cmd(pattern="{down_admin} ?(.*)"))
+async def gben(batt):
+    dc = razan = batt
     i = 0
     sender = await dc.get_sender()
-    me = await SHRU.client.get_me()
+    me = await batt.client.get_me()
     await razan.edit("**▾∮ يتم تنزيل الشخص من رتبة الاشراف في جميع الكروبات**")
     my_mention = "[{}](tg://user?id={})".format(me.first_name, me.id)
     f"@{me.username}" if me.username else my_mention
-    await SHRU.get_chat()
-    if SHRU.is_private:
-        user = SHRU.chat
-        rank = SHRU.pattern_match.group(1)
+    await batt.get_chat()
+    if batt.is_private:
+        user = batt.chat
+        rank = batt.pattern_match.group(1)
     else:
-        SHRU.chat.title
+        batt.chat.title
     try:
-        user, rank = await get_full_user(SHRU)
+        user, rank = await get_full_user(batt)
     except:
         pass
     if me == user:
-       Qrh9 = await razan.edit("▾∮ لا استطيع تنزيل نفسي 🧸🤍")
+       lucmd9 = await razan.edit("▾∮ لا استطيع تنزيل نفسي 🧸🤍")
        return
     try:
         if not rank:
@@ -138,7 +138,7 @@ async def gben(SHRU):
         return await razan.edit(f"**▾∮ هنالك شي خطأ**")
     if user:
         telchanel = [d.entity.id
-                     for d in await SHRU.client.get_dialogs()
+                     for d in await batt.client.get_dialogs()
                      if (d.is_group or d.is_channel)
                      ]
         rgt = ChatAdminRights(add_admins=None,
@@ -149,7 +149,7 @@ async def gben(SHRU):
                                    pin_messages=None)
         for x in telchanel:
           try:
-             await SHRU.client(EditAdminRequest(x, user, rgt, rank))
+             await batt.client(EditAdminRequest(x, user, rgt, rank))
              i += 1
              await razan.edit(f"**▾∮ يتم تنزيله في **: `{i}` من المجموعات")
           except:

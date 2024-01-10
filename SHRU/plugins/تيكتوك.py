@@ -1,4 +1,4 @@
-# Qrh9
+# lucmd9
 import asyncio 
 import shutil
 import requests
@@ -11,17 +11,17 @@ import time
 from datetime import timedelta
 import math
 import base64
-from SHRU import Qrh9 
+from batt import lucmd9 
 #from ..Config import Config
-## Qrh9
-@Qrh9.ar_cmd(pattern="تك")
+## lucmd9
+@lucmd9.ar_cmd(pattern="تك")
 async def tiktok_dl(event):
     ms = event.message.message
     ms = ms.replace(".تك", "")
     if event:
             if ("https://tiktok.com/" in ms or "https://vm.tiktok.com/" in ms):
                 await event.message.delete()
-                a = await Qrh9.send_message(event.chat_id, 'يجري البحث عن الملف..')
+                a = await lucmd9.send_message(event.chat_id, 'يجري البحث عن الملف..')
                 link = ms.strip()
                 try:
                     response = requests.get(f"https://godownloader.com/api/tiktok-no-watermark-free?url={link}&key=godownloader.com")
@@ -42,7 +42,7 @@ async def tiktok_dl(event):
                 except Exception as er:
                     if 'video_no_watermark' in str(er):
                         return await a.edit("**رابط الفيديو غير صحيح تأكد منه واعد المحاولة**")
-                    return await a.edit(f"حدث خطأ قم بتوجيه الرسالة الى مطوري @ll1ilt\n{er}")
+                    return await a.edit(f"حدث خطأ قم بتوجيه الرسالة الى مطوري @luc_md9\n{er}")
             
             
                 
@@ -53,7 +53,7 @@ async def tiktok_dl(event):
                 filesize_bytes = os.path.getsize(video_filename)
                 filesize = filesize_bytes / (1024 * 1024)
                 catid = await reply_id(event.message)
-                await Qrh9.send_file(
+                await lucmd9.send_file(
                    event.chat_id, f"{directory}/{filename}", reply_to=catid,     force_document=False,     caption=f"**الملف : ** {filename}\n**الحجم :**     {round(filesize, 1)} MB"
                  )
         

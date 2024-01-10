@@ -1,9 +1,9 @@
 import asyncio
 from datetime import datetime
-from ALSAHER import languages
+from thebatman import languages
 from telethon.tl import functions, types
-from SHRU.helpers.functions.functions import translate 
-from SHRU import CMD_HELP, Qrh9
+from batt.helpers.functions.functions import translate 
+from batt import CMD_HELP, lucmd9
 
 from ..Config import Config
 from ..core.logger import logging
@@ -35,7 +35,7 @@ class AFK:
 AFK_ = AFK()
 
 
-@Qrh9.ar_cmd(outgoing=True, edited=False)
+@lucmd9.ar_cmd(outgoing=True, edited=False)
 async def set_not_afk(event):
     if AFK_.afk_on is False:
         return
@@ -81,7 +81,7 @@ async def set_not_afk(event):
             )
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     incoming=True, func=lambda e: bool(e.mentioned or e.is_private), edited=False
 )
 async def on_afk(event):  # sourcery no-metrics
@@ -166,7 +166,7 @@ async def on_afk(event):  # sourcery no-metrics
             )
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="سليب(?:\s|$)([\s\S]*)",
     command=("سليب", plugin_category),
     info={
@@ -226,7 +226,7 @@ async def _(event):
                 )
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="سليب_ميديا(?:\s|$)([\s\S]*)",
     command=("سليب_ميديا", plugin_category),
     info={

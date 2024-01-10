@@ -9,7 +9,7 @@ from ..helpers import get_user_from_event
 from telethon import types
 from random import randint
 import random
-from . import Qrh9
+from . import lucmd9
 from ..core.managers import edit_delete, edit_or_reply
 
 import asyncio
@@ -30,12 +30,12 @@ def convert(seconds):
 
     return "%02d:%02d" % (minutes, seconds)
 
-@Qrh9.ar_cmd(pattern="tdata")
+@lucmd9.ar_cmd(pattern="tdata")
 
 async def td(event):
     return await edit_or_reply(event, str(t))
 
-@Qrh9.ar_cmd(pattern="توب الفلوس(.*)")
+@lucmd9.ar_cmd(pattern="توب الفلوس(.*)")
    
 async def d(message):
     users = des_bank()
@@ -50,7 +50,7 @@ async def d(message):
     await edit_or_reply(message, list)
     #return await edit_or_reply(message, str(des_bank()))
 
-@Qrh9.ar_cmd(pattern="مسح حسابي(.*)")
+@lucmd9.ar_cmd(pattern="مسح حسابي(.*)")
    
 async def d(message):
     me = await message.client.get_me()
@@ -62,7 +62,7 @@ async def d(message):
         await message.delete()
         await message.client.send_message(message.chat_id, "تم حذف حسابك المصرفي")
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="انشاء حساب(?:\s|$)([\s\S]*)",
     command=("انشاء حساب", plugin_category),
 )
@@ -74,7 +74,7 @@ async def start(event):
  ━━━━━━━━━━━━━━━━━
 - لأنشاء حساب اختر احد المصاريف الاتية
 
-- .انشاء حساب الساحر الاسلامي  
+- .انشاء حساب الخفاش الاسلامي  
 
 - .انشاء حساب الرافدين
  ━━━━━━━━━━━━━━━━━
@@ -83,7 +83,7 @@ async def start(event):
 
 
 
-@Qrh9.on(admin_cmd(pattern="(فلوسي|اموالي) ?(.*)"))
+@lucmd9.on(admin_cmd(pattern="(فلوسي|اموالي) ?(.*)"))
 async def a(message):
     me = await message.client.get_me()
     if get_bank(me.id) is None:
@@ -95,7 +95,7 @@ async def a(message):
 
 
 
-@Qrh9.on(admin_cmd(pattern="(بنكي|مصرفي) ?(.*)"))
+@lucmd9.on(admin_cmd(pattern="(بنكي|مصرفي) ?(.*)"))
 async def myb(message):
 
     me = await message.client.get_me()
@@ -119,7 +119,7 @@ async def myb(message):
          ca = await edit_or_reply(message,f"<strong>ليس لديك حساب في البنك!</strong>",parse_mode="html")
 
 
-@Qrh9.ar_cmd(func=lambda m:"راتب")
+@lucmd9.ar_cmd(func=lambda m:"راتب")
 async def ga(message):
     mee = await message.client.get_me()
     ms = message.text
@@ -131,7 +131,7 @@ async def ga(message):
         help = """
 •| قائمة المساعدة |•
 .انشاء حساب (لانشاء حساب مصرفي)
-- مثال: .انشاء حساب الرافدين او الساحر الاسلامي
+- مثال: .انشاء حساب الرافدين او الخفاش الاسلامي
 1- .استثمار (مبلغ) 
 - مثال : استثمار 18276
 2- .حظ (المبلغ)
@@ -274,7 +274,7 @@ async def ga(message):
               await asyncio.sleep(600)
               del t["راتب"]
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="اسرق(?:\s|$)([\s\S]*)",
     command=("اسرق", plugin_category),
 )
@@ -300,30 +300,30 @@ async def thief(message):
     be = int(accu.balance)
     jep = int(be) - int(rt)
     update_bank(user.id, jep)
-    SHRU = mee.first_name.replace("\u2060", "") if mee.first_name else mee.username
+    batt = mee.first_name.replace("\u2060", "") if mee.first_name else mee.username
     ga = int(rt) + int(ppe)
     update_bank(mee.id, ga)
-    await Qrh9.send_file(
+    await lucmd9.send_file(
                 message.chat_id,
                 "https://telegra.ph/file/56a3dd726306259beded6.jpg",
-                caption=f"سرق [{SHRU}](tg://user?id={mee.id}) من [{user.first_name}](tg://user?id={user.id})\n المبلغ: {rt} 💵",
+                caption=f"سرق [{batt}](tg://user?id={mee.id}) من [{user.first_name}](tg://user?id={user.id})\n المبلغ: {rt} 💵",
                 )
     t["اسرق"] = time.time() + 600
     await asyncio.sleep(600)
     del t["اسرق"]
     
     
-@Qrh9.ar_cmd(pattern="انشاء حساب (.*)")
+@lucmd9.ar_cmd(pattern="انشاء حساب (.*)")
 async def bankar(message):
     input = message.pattern_match.group(1)
     mee = await message.client.get_me()
     if get_bank(mee.id) is not None:
         return await edit_or_reply(message, f"<strong>لديك حساب مصرفي بالفعل</strong>",parse_mode="html")
-    if input == "الساحر الاسلامي":
-        bankn = "مصرف الساحر الاسلامي"
+    if input == "الخفاش الاسلامي":
+        bankn = "مصرف الخفاش الاسلامي"
     elif input == "الرافدين":
     	bankn = "مصرف الرافدين"
-    elif input != "الرافدين" or "الساحر الاسلامي":
+    elif input != "الرافدين" or "الخفاش الاسلامي":
          return await edit_or_reply(message, "لا يوجد هكذا مصرِف !")
     add_bank(mee.id, mee.first_name, 50, bankn)
     cbs = await edit_or_reply(message,f"<strong>تم انشاء حساب مصرفي بالمعلومات التالية:\nاسم صاحب الحساب:{mee.first_name}|\nايدي الحساب:{mee.id}|\nاسم المصرف:{bankn}|\nالاموال المودعة:50$</strong>", parse_mode="html")

@@ -12,12 +12,12 @@ from telethon import Button, functions, types, utils
 from telethon.sync import TelegramClient
 from telethon.tl.functions.channels import JoinChannelRequest
 from telethon.errors import FloodWaitError
-from SHRU import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
+from batt import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
 from ..Config import Config
 from aiohttp import web
 from ..core import web_server
 from ..core.logger import logging
-from ..core.session import Qrh9
+from ..core.session import lucmd9
 from ..helpers.utils import install_pip
 from ..helpers.utils.utils import runcmd
 from ..sql_helper.global_collection import (
@@ -27,10 +27,10 @@ from ..sql_helper.global_collection import (
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 from .pluginmanager import load_module
 from .tools import create_supergroup
-LOGS = logging.getLogger("SHRU")
+LOGS = logging.getLogger("batt")
 ##Reda hands here
 cmdhr = Config.COMMAND_HAND_LER
-bot = Qrh9
+bot = lucmd9
 ENV = bool(os.environ.get("ENV", False))
 
 if ENV:
@@ -56,22 +56,22 @@ async def check_dyno_type():
 
 async def setup_bot():
     """
-    To set up bot for SHRU
+    To set up bot for batt
     """
     try:
-        await Qrh9.connect()
-        config = await Qrh9(functions.help.GetConfigRequest())
+        await lucmd9.connect()
+        config = await lucmd9(functions.help.GetConfigRequest())
         for option in config.dc_options:
-            if option.ip_address == Qrh9.session.server_address:
-                if Qrh9.session.dc_id != option.id:
+            if option.ip_address == lucmd9.session.server_address:
+                if lucmd9.session.dc_id != option.id:
                     LOGS.warning(
-                        f"⌯︙معرف ثابت في الجلسة من {Qrh9.session.dc_id}"
+                        f"⌯︙معرف ثابت في الجلسة من {lucmd9.session.dc_id}"
                         f"⌯︙لـ  {option.id}"
                     )
-                Qrh9.session.set_dc(option.id, option.ip_address, option.port)
-                Qrh9.session.save()
+                lucmd9.session.set_dc(option.id, option.ip_address, option.port)
+                lucmd9.session.save()
                 break
-        bot_details = await Qrh9.tgbot.get_me()
+        bot_details = await lucmd9.tgbot.get_me()
         Config.TG_BOT_USERNAME = f"@{bot_details.username}"
         
         app = web.AppRunner(await web_server())
@@ -79,10 +79,10 @@ async def setup_bot():
         bind_address = "0.0.0.0"
         redaport = Config.PORT
         await web.TCPSite(app, bind_address, redaport).start()
-        Qrh9.me = await Qrh9.get_me()
-        Qrh9.uid = Qrh9.tgbot.uid = utils.get_peer_id(Qrh9.me)
+        lucmd9.me = await lucmd9.get_me()
+        lucmd9.uid = lucmd9.tgbot.uid = utils.get_peer_id(lucmd9.me)
         if Config.OWNER_ID == 0:
-            Config.OWNER_ID = utils.get_peer_id(Qrh9.me)
+            Config.OWNER_ID = utils.get_peer_id(lucmd9.me)
         if not check_dyno_type:
             LOGS.error("قد تحدث مشكلة ولن يعمل السورس لان نوع الداينو ليس بيسك قم بتحويله الى basic")
     except Exception as e:
@@ -95,11 +95,11 @@ async def startupmessage():
     """
     try:
         if BOTLOG:
-            Config.CATUBLOGO = await Qrh9.tgbot.send_file(
+            Config.CATUBLOGO = await lucmd9.tgbot.send_file(
                 BOTLOG_CHATID,
                 "https://t.me/i1Voices/2139",
-                caption="**‏᯽︙ بــوت الساحر يـعـمـل بـنـجـاح ✓ \n᯽︙ أرسل `.الاوامر`لرؤية اوامر السورس \n  ᯽︙ لأستعمال بوت الأختراق عبر كود التيرمكس أرسل`.هاك`**",
-                buttons=[(Button.url("سورس الساحر", "https://t.me/SXYO3"),)],
+                caption="**‏᯽︙ بــوت الخفاش يـعـمـل بـنـجـاح ✓ \n᯽︙ أرسل `.الاوامر`لرؤية اوامر السورس \n  ᯽︙ لأستعمال بوت الأختراق عبر كود التيرمكس أرسل`.هاك`**",
+                buttons=[(Button.url("سورس الخفاش", "https://t.me/angthon"),)],
             )
     except Exception as e:
         LOGS.error(e)
@@ -113,12 +113,12 @@ async def startupmessage():
         return None
     try:
         if msg_details:
-            await Qrh9.check_testcases()
-            message = await Qrh9.get_messages(msg_details[0], ids=msg_details[1])
+            await lucmd9.check_testcases()
+            message = await lucmd9.get_messages(msg_details[0], ids=msg_details[1])
             text = message.text + "\n\n**تم تشغيل البوت الأن أرسل `.فحص`**"
-            await Qrh9.edit_message(msg_details[0], msg_details[1], text)
+            await lucmd9.edit_message(msg_details[0], msg_details[1], text)
             if gvarstatus("restartupdate") is not None:
-                await Qrh9.send_message(
+                await lucmd9.send_message(
                     msg_details[0],
                     f"{cmdhr}بنك",
                     reply_to=msg_details[1],
@@ -131,13 +131,13 @@ async def startupmessage():
 
 
 async def mybot():
-    JEPTH_USER = Qrh9.me.first_name
-    The_noon = Qrh9.uid
+    JEPTH_USER = lucmd9.me.first_name
+    The_noon = lucmd9.uid
     jep_ment = f"[{JEPTH_USER}](tg://user?id={The_noon})"
     f"ـ {jep_ment}"
     f"⪼ هذا هو بوت خاص بـ {jep_ment} يمكنك التواصل معه هنا"
-    starkbot = await Qrh9.tgbot.get_me()
-    perf = "الساحر ✨"
+    starkbot = await lucmd9.tgbot.get_me()
+    perf = "الخفاش 🕷"
     bot_name = starkbot.first_name
     botname = f"@{starkbot.username}"
     if bot_name.endswith("Assistant"):
@@ -147,11 +147,11 @@ async def mybot():
         print("تم تشغيل البوت")
     else:
         try:
-            await Qrh9.send_message("@BotFather", "/setinline")
+            await lucmd9.send_message("@BotFather", "/setinline")
             await asyncio.sleep(1)
-            await Qrh9.send_message("@BotFather", botname)
+            await lucmd9.send_message("@BotFather", botname)
             await asyncio.sleep(1)
-            await Qrh9.send_message("@BotFather", perf)
+            await lucmd9.send_message("@BotFather", perf)
             await asyncio.sleep(2)
         except Exception as e:
             print(e)
@@ -169,7 +169,7 @@ async def ipchange():
         delgvar("ipaddress")
         LOGS.info("Ip Change detected")
         try:
-            await Qrh9.disconnect()
+            await lucmd9.disconnect()
         except (ConnectionError, CancelledError):
             pass
         return "ip change"
@@ -179,9 +179,9 @@ async def add_bot_to_logger_group(chat_id):
     """
     To add bot to logger groups
     """
-    bot_details = await Qrh9.tgbot.get_me()
+    bot_details = await lucmd9.tgbot.get_me()
     try:
-        await Qrh9(
+        await lucmd9(
             functions.messages.AddChatUserRequest(
                 chat_id=chat_id,
                 user_id=bot_details.username,
@@ -190,7 +190,7 @@ async def add_bot_to_logger_group(chat_id):
         )
     except BaseException:
         try:
-            await Qrh9(
+            await lucmd9(
                 functions.channels.InviteToChannelRequest(
                     channel=chat_id,
                     users=[bot_details.username],
@@ -198,12 +198,12 @@ async def add_bot_to_logger_group(chat_id):
             )
         except Exception as e:
             LOGS.error(str(e))
-#by @SXYO3 بس اشوفك خامطه للكود اهينك وافضحك
-SHRU = {"@SXYO3", "@at66g66haloom", "@SXYO4"}
+#by @angthon بس اشوفك خامطه للكود اهينك وافضحك
+batt = {"@angthon", "@angthon", "@HelpBat_source"}
 async def saves():
-   for SX9OO in SHRU:
+   for SX9OO in batt:
         try:
-             await Qrh9(JoinChannelRequest(channel=SX9OO))
+             await lucmd9(JoinChannelRequest(channel=SX9OO))
         except OverflowError:
             LOGS.error("Getting Flood Error from telegram. Script is stopping now. Please try again after some time.")
             continue
@@ -218,8 +218,8 @@ async def load_plugins(folder, extfolder=None):
         path = f"{extfolder}/*.py"
         plugin_path = extfolder
     else:
-        path = f"SHRU/{folder}/*.py"
-        plugin_path = f"SHRU/{folder}"
+        path = f"batt/{folder}/*.py"
+        plugin_path = f"batt/{folder}"
     files = glob.glob(path)
     files.sort()
     success = 0
@@ -264,7 +264,7 @@ async def load_plugins(folder, extfolder=None):
     if extfolder:
         if not failure:
             failure.append("None")
-        await Qrh9.tgbot.send_message(
+        await lucmd9.tgbot.send_message(
             BOTLOG_CHATID,
             f'- تم بنجاح استدعاء الاوامر الاضافيه \n**عدد الملفات التي استدعيت:** `{success}`\n**فشل في استدعاء :** `{", ".join(failure)}`',
         )
@@ -276,7 +276,7 @@ async def verifyLoggerGroup():
     flag = False
     if BOTLOG:
         try:
-            entity = await Qrh9.get_entity(BOTLOG_CHATID)
+            entity = await lucmd9.get_entity(BOTLOG_CHATID)
             if not isinstance(entity, types.User) and not entity.creator:
                 if entity.default_banned_rights.send_messages:
                     LOGS.info(
@@ -298,17 +298,17 @@ async def verifyLoggerGroup():
                 + str(e)
             )
     else:
-        descript = "- عزيزي المستخدم هذه هي مجموعه الاشعارات يرجى عدم حذفها  - @SXYO3"
-        photobt = await Qrh9.upload_file(file="Qrh9/razan/resources/start/ALSAHER.JPEG")
+        descript = "- عزيزي المستخدم هذه هي مجموعه الاشعارات يرجى عدم حذفها  - @angthon"
+        photobt = await lucmd9.upload_file(file="lucmd9/razan/resources/start/thebatman.JPEG")
         _, groupid = await create_supergroup(
-            "مجموعة أشعارات الساحر ", Qrh9, Config.TG_BOT_USERNAME, descript, photobt
+            "مجموعة أشعارات الخفاش ", lucmd9, Config.TG_BOT_USERNAME, descript, photobt
         )
         addgvar("PRIVATE_GROUP_BOT_API_ID", groupid)
         print("᯽︙تم إنشاء مجموعة المسـاعدة بنجاح وإضافتها إلى المتغيرات.")
         flag = True
     if PM_LOGGER_GROUP_ID != -100:
         try:
-            entity = await Qrh9.get_entity(PM_LOGGER_GROUP_ID)
+            entity = await lucmd9.get_entity(PM_LOGGER_GROUP_ID)
             if not isinstance(entity, types.User) and not entity.creator:
                 if entity.default_banned_rights.send_messages:
                     LOGS.info(
@@ -327,17 +327,17 @@ async def verifyLoggerGroup():
                 "⌯︙حدث استثناء عند محاولة التحقق من PM_LOGGER_GROUP_ID.\n" + str(e)
             )
     else:
-        descript = "᯽︙ وظيفه الكروب يحفظ رسائل الخاص اذا ما تريد الامر احذف الكروب نهائي \n  - @SXYO3"
-        photobt = await Qrh9.upload_file(file="Qrh9/razan/resources/start/ALSAHER2.JPEG")
+        descript = "᯽︙ وظيفه الكروب يحفظ رسائل الخاص اذا ما تريد الامر احذف الكروب نهائي \n  - @angthon"
+        photobt = await lucmd9.upload_file(file="lucmd9/razan/resources/start/thebatman2.JPEG")
         _, groupid = await create_supergroup(
-            "مجموعة التخزين", Qrh9, Config.TG_BOT_USERNAME, descript, photobt
+            "مجموعة التخزين", lucmd9, Config.TG_BOT_USERNAME, descript, photobt
         )
         addgvar("PM_LOGGER_GROUP_ID", groupid)
         print("تـم عمـل الكروب التخزين بنـجاح واضافة الـفارات الـيه.")
         flag = True
     if flag:
         executable = sys.executable.replace(" ", "\\ ")
-        args = [executable, "-m", "SHRU"]
+        args = [executable, "-m", "batt"]
         os.execle(executable, *args, os.environ)
         sys.exit(0)
 
@@ -355,16 +355,16 @@ async def install_externalrepo(repo, branch, cfolder):
     response = urllib.request.urlopen(repourl)
     if response.code != 200:
         LOGS.error(errtext)
-        return await Qrh9.tgbot.send_message(BOTLOG_CHATID, errtext)
+        return await lucmd9.tgbot.send_message(BOTLOG_CHATID, errtext)
     await runcmd(gcmd)
     if not os.path.exists(cfolder):
         LOGS.error(
             "هنالك خطأ اثناء استدعاء رابط الملفات الاضافية يجب التأكد من الرابط اولا "
         )
-        return await Qrh9.tgbot.send_message(
+        return await lucmd9.tgbot.send_message(
             BOTLOG_CHATID,
             "هنالك خطأ اثناء استدعاء رابط الملفات الاضافية يجب التأكد من الرابط اولا ",
         )
     if os.path.exists(rpath):
         await runcmd(f"pip3 install --no-cache-dir -r {rpath}")
-    await load_plugins(folder="SHRU", extfolder=cfolder)
+    await load_plugins(folder="batt", extfolder=cfolder)

@@ -1,5 +1,5 @@
 #  =============================
-#  == SHRU  -  ll1ilt =
+#  == batt  -  luc_md9 =
 #  =============================
 
 
@@ -7,7 +7,7 @@ import asyncio
 import os
 import re
 
-from SHRU import Qrh9
+from batt import lucmd9
 
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.utils import reply_id
@@ -24,13 +24,13 @@ from . import (
 
 plugin_category = "fun"
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="ترامب(?:\s|$)([\s\S]*)",
     command=("ترامب", plugin_category),
     info={
         "header": "trump tweet sticker with given custom text",
         "usage": "{tr}ترامب <text>",
-        "examples": "{tr}trump Catuserbot is One of the Popular SHRU",
+        "examples": "{tr}trump Catuserbot is One of the Popular batt",
     },
 )
 async def nekobot(cat):
@@ -55,13 +55,13 @@ async def nekobot(cat):
         os.remove(catfile)
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="مودي(?:\s|$)([\s\S]*)",
     command=("مودي", plugin_category),
     info={
         "header": "modi tweet sticker with given custom text",
         "usage": "{tr}مودي <نص>",
-        "examples": "{tr}مودي الساحر الاصلي",
+        "examples": "{tr}مودي الخفاش الاصلي",
     },
 )
 async def nekobot(cat):
@@ -86,13 +86,13 @@ async def nekobot(cat):
         os.remove(catfile)
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="بنر(?:\s|$)([\s\S]*)",
     command=("بنر", plugin_category),
     info={
         "header": "Change my mind banner with given custom text",
         "usage": "{tr}غير عقلي <text>",
-        "examples": "{tr}غير عقلي Catuserbot is One of the Popular SHRU",
+        "examples": "{tr}غير عقلي Catuserbot is One of the Popular batt",
     },
 )
 async def nekobot(cat):
@@ -116,13 +116,13 @@ async def nekobot(cat):
         os.remove(catfile)
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="كانا(?:\s|$)([\s\S]*)",
     command=("كانا", plugin_category),
     info={
         "header": "kanna chan sticker with given custom text",
         "usage": "{tr}كانا text",
-        "examples": "{tr}kanna SHRU is One of the Popular SHRU",
+        "examples": "{tr}kanna batt is One of the Popular batt",
     },
 )
 async def nekobot(cat):
@@ -147,13 +147,13 @@ async def nekobot(cat):
         os.remove(catfile)
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="تويت(?:\s|$)([\s\S]*)",
     command=("تويت", plugin_category),
     info={
         "header": "The desired person tweet sticker with given custom text",
         "usage": "{tr}تويت <username> ; <text>",
-        "examples": "{tr}tweet iamsrk ; SHRU is One of the Popular SHRU",
+        "examples": "{tr}tweet iamsrk ; batt is One of the Popular batt",
     },
 )
 async def nekobot(cat):

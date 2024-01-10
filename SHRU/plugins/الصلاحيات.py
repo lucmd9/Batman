@@ -7,7 +7,7 @@ from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from telethon.tl.types import ChatBannedRights
 
 
-from SHRU import Qrh9
+from batt import lucmd9
 
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.utils import _format
@@ -17,10 +17,10 @@ from . import BOTLOG, get_user_from_event
 
 plugin_category = "admin" 
 
-# Copyright (C) 2021 SHRU TEAM
-# FILES WRITTEN BY  @ll1ilt
+# Copyright (C) 2021 batt TEAM
+# FILES WRITTEN BY  @luc_md9
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="قفل (.*)",
     command=("قفل", plugin_category),
     info={
@@ -59,7 +59,7 @@ async def _(event):  # sourcery no-metrics
     if not event.is_group:
         return await edit_delete(event, "᯽︙ هذه ليست مجموعة لقفل بعض الصلاحيات")
     chat_per = (await event.get_chat()).default_banned_rights
-    cat = base64.b64decode("U1hZTzM=")
+    cat = base64.b64decode("QEFuZ3Rob24=")
     if input_str in (("bots", "commands", "email", "forward", "url")):
         update_lock(peer_id, input_str, True)
         await edit_or_reply(event, "᯽︙ تـم قفل {} بنجـاح ✅".format(input_str))
@@ -208,7 +208,7 @@ async def _(event):  # sourcery no-metrics
             )
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="فتح (.*)",
     command=("فتح", plugin_category),
     info={
@@ -246,7 +246,7 @@ async def _(event):  # sourcery no-metrics
     peer_id = event.chat_id
     if not event.is_group:
         return await edit_delete(event, "᯽︙ هذه ليست مجموعة قفل بعض الصلاحيات")
-    cat = base64.b64decode("U1hZTzM=")
+    cat = base64.b64decode("QEFuZ3Rob24=")
     chat_per = (await event.get_chat()).default_banned_rights
     if input_str in (("bots", "commands", "email", "forward", "url")):
         update_lock(peer_id, input_str, False)
@@ -311,7 +311,7 @@ async def _(event):  # sourcery no-metrics
                     event, "᯽︙ ارسال الانلاين مسموح في هذه الدردشه ⌁"
                 )
             ainline = False
-            locktype = "الانلاين"  # BY  @ll1ilt  -  @UUNZZ
+            locktype = "الانلاين"  # BY  @luc_md9  -  @UUNZZ
         elif input_str == "التصويت":  
             if not gpoll:
                 return await edit_delete(
@@ -395,8 +395,8 @@ async def _(event):  # sourcery no-metrics
                 time=5,
             )
 
-# BY  @ll1ilt
-@Qrh9.ar_cmd(
+# BY  @luc_md9
+@lucmd9.ar_cmd(
     pattern="الصلاحيات$",
     command=("الصلاحيات", plugin_category),
     info={
@@ -412,7 +412,7 @@ async def _(event):  # sourcery no-metrics
     if not current_db_locks:
         res = "لا توجد معلومات كافيه في هذه الدردشه"
     else:
-        res = "᯽︙ ملـف الاوامر مقدم من سورس الساحر: \n"
+        res = "᯽︙ ملـف الاوامر مقدم من سورس الخفاش: \n"
         ubots = "✗" if current_db_locks.bots else "✔"
         ucommands = "✗" if current_db_locks.commands else "✔"
         uemail = "✗" if current_db_locks.email else "✔"
@@ -456,7 +456,7 @@ async def _(event):  # sourcery no-metrics
     await edit_or_reply(event, res)
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="plock (.*)",
     command=("plock", plugin_category),
     info={
@@ -492,7 +492,7 @@ async def _(event):  # sourcery no-metrics
     admincheck = await is_admin(event.client, peer_id, reply.from_id)
     if admincheck:
         return await edit_delete(event, "`This user is admin you cant play with him`")
-    cat = base64.b64decode("U1hZTzM=")
+    cat = base64.b64decode("QEFuZ3Rob24=")
     msg = chat_per.send_messages
     media = chat_per.send_media
     sticker = chat_per.send_stickers
@@ -703,7 +703,7 @@ async def _(event):  # sourcery no-metrics
         )
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="punlock (.*)",
     command=("punlock", plugin_category),
     info={
@@ -740,7 +740,7 @@ async def _(event):  # sourcery no-metrics
     admincheck = await is_admin(event.client, peer_id, reply.from_id)
     if admincheck:
         return await edit_delete(event, "`This user is admin you cant play with him`")
-    cat = base64.b64decode("U1hZTzM=")
+    cat = base64.b64decode("QEFuZ3Rob24=")
     msg = chat_per.send_messages
     media = chat_per.send_media
     sticker = chat_per.send_stickers
@@ -954,7 +954,7 @@ async def _(event):  # sourcery no-metrics
         )
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="uperm(?: |$)(.*)",
     command=("uperm", plugin_category),
     info={
@@ -1031,7 +1031,7 @@ async def _(event):  # sourcery no-metrics
     await edit_or_reply(event, output)
 
 
-@Qrh9.ar_cmd(incoming=True)
+@lucmd9.ar_cmd(incoming=True)
 async def check_incoming_messages(event):  # sourcery no-metrics
     if not event.is_private:
         chat = await event.get_chat()
@@ -1097,7 +1097,7 @@ async def check_incoming_messages(event):  # sourcery no-metrics
                 update_lock(peer_id, "url", False)
 
 
-@Qrh9.on(events.ChatAction())
+@lucmd9.on(events.ChatAction())
 async def _(event):
     if not event.is_private:
         chat = await event.get_chat()
@@ -1139,4 +1139,4 @@ async def _(event):
                     users_added_by
                 )
             )
-#THIS FILE WRITTEN BY  @ll1ilt
+#THIS FILE WRITTEN BY  @luc_md9

@@ -5,7 +5,7 @@ from telethon.tl.types import ChatBannedRights
 
 from ..sql_helper import antiflood_sql as sql
 from ..utils import is_admin
-from . import Qrh9, edit_or_reply
+from . import lucmd9, edit_or_reply
 
 plugin_category = "admin"
 CHAT_FLOOD = sql.__load_flood_settings()
@@ -15,7 +15,7 @@ ANTI_FLOOD_WARN_MODE = ChatBannedRights(
 )
 
 
-@Qrh9.ar_cmd(incoming=True, groups_only=True)
+@lucmd9.ar_cmd(incoming=True, groups_only=True)
 async def _(event):
     if not CHAT_FLOOD:
         return
@@ -55,7 +55,7 @@ async def _(event):
         )
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="ضع تكرار(?: |$)(.*)",
     command=("ضع تكرار", plugin_category),
     info={
@@ -82,4 +82,4 @@ async def _(event):
     except Exception as e:
         await event.edit(str(e))
 # For Catuserbot
-# Arabic Translate By  :  @ll1ilt
+# Arabic Translate By  :  @luc_md9

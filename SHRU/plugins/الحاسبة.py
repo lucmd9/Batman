@@ -3,9 +3,9 @@ import re
 from telethon import Button
 from telethon.events import CallbackQuery, InlineQuery
 
-from SHRU import CMD_HELP, Qrh9
+from batt import CMD_HELP, lucmd9
 
-# 𝗧𝗲𝗹𝗲𝗚𝗿𝗮𝗠 : @SXYO3  ~ @ll1ilt
+# 𝗧𝗲𝗹𝗲𝗚𝗿𝗮𝗠 : @angthon  ~ @luc_md9
 from ..core.decorators import check_owner
 
 CALC = {}
@@ -38,18 +38,18 @@ lst = list(zip(tultd[::4], tultd[1::4], tultd[2::4], tultd[3::4]))
 lst.append([Button.inline("=", data="calc=")])
 
 
-@Qrh9.on(admin_cmd(pattern="حاسبة(?:\s|$)([\s\S]*)"))
+@lucmd9.on(admin_cmd(pattern="حاسبة(?:\s|$)([\s\S]*)"))
 async def icalc(e):
     if e.client._bot:
         return await e.reply(
-            "**الحـاسبة العـلمية لسـورس الساحر\n @SXYO3**", buttons=lst
+            "**الحـاسبة العـلمية لسـورس الخفاش\n @angthon**", buttons=lst
         )
     results = await e.client.inline_query(Config.TG_BOT_USERNAME, "calc")
     await results[0].click(e.chat_id, silent=True, hide_via=True)
     await e.delete()
 
 
-@Qrh9.tgbot.on(InlineQuery)
+@lucmd9.tgbot.on(InlineQuery)
 async def inlinecalc(event):
     query_user_id = event.query.user_id
     query = event.text
@@ -59,13 +59,13 @@ async def inlinecalc(event):
     ) and string == "calc":
         event.builder
         calc = event.builder.article(
-            "Calc", text="**الحـاسبة العـلمية لسـورس الساحر\n @SXYO3**", buttons=lst
+            "Calc", text="**الحـاسبة العـلمية لسـورس الخفاش\n @angthon**", buttons=lst
         )
         await event.answer([calc])
 
 
-# 𝗧𝗲𝗹𝗲𝗚𝗿𝗮𝗠 : @SXYO3  ~ @ll1ilt
-@Qrh9.tgbot.on(CallbackQuery(data=re.compile(b"calc(.*)")))
+# 𝗧𝗲𝗹𝗲𝗚𝗿𝗮𝗠 : @angthon  ~ @luc_md9
+@lucmd9.tgbot.on(CallbackQuery(data=re.compile(b"calc(.*)")))
 @check_owner
 async def _(e):  # sourcery no-metrics
     x = (e.data_match.group(1)).decode()
@@ -75,7 +75,7 @@ async def _(e):  # sourcery no-metrics
         if CALC.get(user):
             CALC.pop(user)
         await e.edit(
-            "**الحـاسبة العـلمية لسـورس الساحر\n @SXYO3**",
+            "**الحـاسبة العـلمية لسـورس الخفاش\n @angthon**",
             buttons=[Button.inline("افتح مره اخرى", data="recalc")],
         )
     elif x == "C":
@@ -130,8 +130,8 @@ async def _(e):  # sourcery no-metrics
         await e.answer(str(x))
 
 
-# 𝗧𝗲𝗹𝗲𝗚𝗿𝗮𝗠 : @SXYO3  ~ @ll1ilt
-@Qrh9.tgbot.on(CallbackQuery(data=re.compile(b"recalc")))
+# 𝗧𝗲𝗹𝗲𝗚𝗿𝗮𝗠 : @angthon  ~ @luc_md9
+@lucmd9.tgbot.on(CallbackQuery(data=re.compile(b"recalc")))
 @check_owner
 async def _(e):
     m = [
@@ -159,7 +159,7 @@ async def _(e):
     tultd = [Button.inline(f"{x}", data=f"calc{x}") for x in m]
     lst = list(zip(tultd[::4], tultd[1::4], tultd[2::4], tultd[3::4]))
     lst.append([Button.inline("=", data="calc=")])
-    await e.edit("**الحـاسبة العـلمية لسـورس الساحر\n @SXYO3**", buttons=lst)
+    await e.edit("**الحـاسبة العـلمية لسـورس الخفاش\n @angthon**", buttons=lst)
 
 CMD_HELP.update(
     {"الحسابة": ".حاسبة" "\n فقط اكتب الامر لعرض حاسبة علميه تحتاج الى تفعيل وضع الانلاين اولا\n\n"}

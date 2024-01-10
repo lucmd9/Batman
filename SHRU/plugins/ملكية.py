@@ -1,16 +1,16 @@
-# Copyright (C) 2021 SHRU TEAM
+# Copyright (C) 2021 batt TEAM
 
 import telethon.password as pwd_mod
 from telethon.tl import functions
 
-from SHRU import Qrh9
+from batt import lucmd9
 
 from ..Config import Config
 
 plugin_category = "utils"
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="ملكية (.*)",
     command=("ملكية", plugin_category),
     info={
@@ -19,7 +19,7 @@ plugin_category = "utils"
         "usage": "{tr}otransfer <username to whom you want to transfer>",
     },
 )
-# For SHRU
+# For batt
 
 async def _(event):
     "To transfer channel ownership"

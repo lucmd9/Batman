@@ -5,14 +5,14 @@ import os
 from telethon import events
 from telethon.tl.functions.channels import EditAdminRequest
 from telethon.tl.types import ChatAdminRights
-from SHRU import Qrh9
+from batt import lucmd9
 
 from ..core.managers import edit_or_reply
 
 from . import *
 plugin_category = "utils"
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="وجه ?(.*)$",
     command=("وجه", plugin_category),
 )
@@ -38,7 +38,7 @@ async def gcast(event):
     await event.edit(f"تـم بنـجـاح فـي {done} من الـدردشـات , خطـأ فـي {er} من الـدردشـات")
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="حول ?(.*)$",
     command=("حول", plugin_category),
 )

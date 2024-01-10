@@ -14,7 +14,7 @@ from telethon.errors.rpcerrorlist import (
 )
 from telethon.events import CallbackQuery
 
-from SHRU import StartTime, Qrh9, JEPVERSION
+from batt import StartTime, lucmd9, JEPVERSION
 from ..Config import Config
 from ..core.managers import edit_or_reply
 from ..helpers.functions import catalive, check_data_base_heal_th, get_readable_time
@@ -24,7 +24,7 @@ from . import mention
  
 plugin_category = "utils"
 
-#كتـابة وعـديل:  @ll1iltت
+#كتـابة وعـديل:  @luc_md9ت
 file_path = "installation_date.txt"
 if os.path.exists(file_path) and os.path.getsize(file_path) > 0:
     with open(file_path, "r") as file:
@@ -34,7 +34,7 @@ else:
     with open(file_path, "w") as file:
         file.write(installation_time)
 
-@Qrh9.ar_cmd(pattern="فحص(?:\s|$)([\s\S]*)")
+@lucmd9.ar_cmd(pattern="فحص(?:\s|$)([\s\S]*)")
 
 async def amireallyalive(event):
     reply_to_id = await reply_id(event)
@@ -45,10 +45,10 @@ async def amireallyalive(event):
     ms = (end - start).microseconds / 1000
     _, check_sgnirts = check_data_base_heal_th()
     EMOJI = gvarstatus("ALIVE_EMOJI") or "⿻┊‌‎"
-    ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "**父[ 𝘼𝙇𝙨𝙖𝙝𝙚𝙧 𝙸𝚂 𝚆𝙾𝚁𝙺𝙸𝙽𝙶 ✓ ](t.me/SXYO3)父**"
+    ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "**父[ 𝘼𝙇𝙨𝙖𝙝𝙚𝙧 𝙸𝚂 𝚆𝙾𝚁𝙺𝙸𝙽𝙶 ✓ ](t.me/angthon)父**"
     Qrue_IMG = gvarstatus("ALIVE_PIC") or Config.A_PIC or "https://telegra.ph/file/4d3a48331f232ad0246f3.mp4"
-    Qrh9_caption = gvarstatus("ALIVE_TEMPLATE") or temp
-    caption = Qrh9_caption.format(
+    lucmd9_caption = gvarstatus("ALIVE_TEMPLATE") or temp
+    caption = lucmd9_caption.format(
         ALIVE_TEXT=ALIVE_TEXT,
         EMOJI=EMOJI,
         mention=mention,
@@ -61,8 +61,8 @@ async def amireallyalive(event):
         Tare5=installation_time,
     )
     if Qrue_IMG:
-        SHRU = [x for x in Qrue_IMG.split()]
-        PIC = random.choice(SHRU)
+        batt = [x for x in Qrue_IMG.split()]
+        PIC = random.choice(batt)
         try:
             await event.client.send_file(
                 event.chat_id, PIC, caption=caption, reply_to=reply_to_id
@@ -83,8 +83,8 @@ async def amireallyalive(event):
 temp = """{ALIVE_TEXT}
 **‎{EMOJI}‌‎𝙽𝙰𝙼𝙴 𖠄 {mention}** ٫
 **‌‎{EMOJI}‌‎𝙿𝚈𝚃𝙷𝙾𝙽 𖠄 `{pyver}`** ٫
-**‌‎{EMOJI}‌‎ALSAHER 𖠄 `{telever}`** ٫
+**‌‎{EMOJI}‌‎thebatman 𖠄 `{telever}`** ٫
 **‌‎{EMOJI}‌‎𝚄𝙿𝚃𝙸𝙼𝙴 𖠄 `{uptime}`** ٫
 ‌‎**{EMOJI}‌‎‌‎𝙿𝙸𝙽𝙶 𖠄 `{ping}`** ٫
 ‌‎**{EMOJI}‌‎‌‎𝚂𝙴𝚃𝚄𝙿 𝙳𝙰𝚃𝙴 𖠄 `{Tare5}`** ٫
-**𖠄 ALSAHER 𝘂𝘀𝗲𝗿𝗯𝗼𝘁 𖠄**"""
+**𖠄 thebatman 𝘂𝘀𝗲𝗿𝗯𝗼𝘁 𖠄**"""

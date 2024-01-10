@@ -14,14 +14,14 @@ from .. import *
 from ..Config import Config
 from ..core.logger import logging
 from ..core.managers import edit_delete, edit_or_reply
-from ..core.session import Qrh9
+from ..core.session import lucmd9
 from ..helpers import *
 from ..helpers.utils import _cattools, _catutils, _format, install_pip, reply_id
-from Qrh9.razan.resources.Gif import *
+from lucmd9.razan.resources.Gif import *
 # =================== CONSTANT ===================
-bot = Qrh9
+bot = lucmd9
 LOGS = logging.getLogger(__name__)
-USERID = Qrh9.uid if Config.OWNER_ID == 0 else Config.OWNER_ID
+USERID = lucmd9.uid if Config.OWNER_ID == 0 else Config.OWNER_ID
 ALIVE_NAME = Config.ALIVE_NAME
 AUTONAME = Config.AUTONAME
 DEFAULT_BIO = Config.DEFAULT_BIO
@@ -35,7 +35,7 @@ HEROKU_API_KEY = Config.HEROKU_API_KEY
 
 thumb_image_path = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, "thumb_image.jpg")
 
-USERID = Qrh9.uid if Config.OWNER_ID == 0 else Config.OWNER_ID
+USERID = lucmd9.uid if Config.OWNER_ID == 0 else Config.OWNER_ID
 
 # mention user
 mention = f"[{Config.ALIVE_NAME}](tg://user?id={USERID})"

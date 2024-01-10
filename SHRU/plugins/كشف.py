@@ -7,8 +7,8 @@ from telethon.tl.functions.users import GetFullUserRequest
 from telethon.utils import get_input_location
 from ..sql_helper.globals import gvarstatus
 
-from SHRU import Qrh9
-from SHRU.core.logger import logging
+from batt import lucmd9
+from batt.core.logger import logging
 
 from ..Config import Config
 from ..core.managers import edit_or_reply
@@ -76,8 +76,8 @@ async def fetch_info(replied_user, event):
     full_name = full_name or first_name
     username = "@{}".format(username) if username else ("لايـوجـد معـرف")
     user_bio = "لاتـوجـد نبـذة" if not user_bio else user_bio
-    rotbat = "⌁ من مطورين السورس 𓄂𓆃 ⌁" if user_id == 6320583148 else ("⌁ العضـو 𓅫 ⌁")
-    rotbat = "⌁ مـالك الحساب 𓀫 ⌁" if user_id == (await event.client.get_me()).id and user_id != 6320583148  else rotbat
+    rotbat = "⌁ من مطورين السورس 𓄂𓆃 ⌁" if user_id == 1045489068 else ("⌁ العضـو 𓅫 ⌁")
+    rotbat = "⌁ مـالك الحساب 𓀫 ⌁" if user_id == (await event.client.get_me()).id and user_id != 1045489068  else rotbat
     caption = "✛━━━━━━━━━━━━━✛\n"
     caption += f"<b> {JEP_EM}╎الاسـم    ⇠ </b> {full_name}\n"
     caption += f"<b> {JEP_EM}╎المعـرف  ⇠ </b> {username}\n"
@@ -90,7 +90,7 @@ async def fetch_info(replied_user, event):
     caption += f"✛━━━━━━━━━━━━━✛"
     return photo, caption
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="كشف(?:\s|$)([\s\S]*)",
     command=("كشف", plugin_category),
     info={
@@ -157,7 +157,7 @@ async def _(event):
     await edit_or_reply(catevent, caption)
 
 
-@Qrh9.ar_cmd(pattern="ايدي(?: |$)(.*)",
+@lucmd9.ar_cmd(pattern="ايدي(?: |$)(.*)",
     command=("ايدي", plugin_category),
     info={
         "header": "لـ عـرض معلومـات الشخـص",
@@ -184,9 +184,9 @@ async def who(event):
         await cat.delete()
     except TypeError:
         await cat.edit(caption, parse_mode="html")
-#كـتابة  @ll1ilt
-#تعديل وترتيب  @ll1ilt
-@Qrh9.ar_cmd(
+#كـتابة  @luc_md9
+#تعديل وترتيب  @luc_md9
+@lucmd9.ar_cmd(
     pattern="رابط الحساب(?:\s|$)([\s\S]*)",
     command=("رابط الحساب", plugin_category),
     info={
@@ -204,7 +204,7 @@ async def permalink(mention):
     tag = user.first_name.replace("\u2060", "") if user.first_name else user.username
     await edit_or_reply(mention, f"⌔︙[{tag}](tg://user?id={user.id})")
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="(الايدي|id)(?:\s|$)([\s\S]*)",
     command=("الايدي", plugin_category),
     info={

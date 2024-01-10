@@ -1,11 +1,11 @@
-from SHRU import Qrh9
+from batt import lucmd9
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 import os
 import datetime
 from telethon import events
-from SHRU import *
-#ها يالفاشل شعدك داخل هنا 🫣 اعتمد ع نفسك لتخلي سورس الساحر مصدر طشت سورسك
-ALSAHER_Asbo3 = {
+from batt import *
+#ها يالفاشل شعدك داخل هنا 🫣 اعتمد ع نفسك لتخلي سورس الخفاش مصدر طشت سورسك
+thebatman_Asbo3 = {
     'Monday': 'الاثنين',
     'Tuesday': 'الثلاثاء',
     'Wednesday': 'الأربعاء',
@@ -15,25 +15,25 @@ ALSAHER_Asbo3 = {
     'Sunday': 'الأحد'
 }
 
-@Qrh9.on(admin_cmd(pattern="(جلب الصورة|جلب الصوره|ذاتيه|ذاتية|حفظ)"))
+@lucmd9.on(admin_cmd(pattern="(جلب الصورة|جلب الصوره|ذاتيه|ذاتية|حفظ)"))
 async def dato(event):
     if not event.is_reply:
         return await event.edit("..")
-    ll1ilt = await event.get_reply_message()
-    pic = await ll1ilt.download_media()
+    luc_md9 = await event.get_reply_message()
+    pic = await luc_md9.download_media()
     await bot.send_file(
         "me",
         pic,
         caption=f"""
 - تـم حفظ الصـورة بنجـاح ✓ 
 - غير مبري الذمه اذا استخدمت الامر للابتزاز
-- CH: @SXYO3
-- Dev: @ll1ilt
+- CH: @angthon
+- Dev: @luc_md9
   """,
     )
     await event.delete()
-#By @SXYO3 For You 🌹
-@Qrh9.on(admin_cmd(pattern="(الذاتية تشغيل|ذاتية تشغيل)"))
+#By @angthon For You 🌹
+@lucmd9.on(admin_cmd(pattern="(الذاتية تشغيل|ذاتية تشغيل)"))
 async def reda(event):
     if gvarstatus ("savepicforme"):
         return await edit_delete(event, "**᯽︙حفظ الذاتيات مفعل وليس بحاجة للتفعيل مجدداً **")
@@ -41,7 +41,7 @@ async def reda(event):
         addgvar("savepicforme", "reda")
         await edit_delete(event, "**᯽︙تم تفعيل ميزة حفظ الذاتيات بنجاح ✓**")
  
-@Qrh9.on(admin_cmd(pattern="(الذاتية تعطيل|ذاتية تعطيل)"))
+@lucmd9.on(admin_cmd(pattern="(الذاتية تعطيل|ذاتية تعطيل)"))
 async def Reda_Is_Here(event):
     if gvarstatus ("savepicforme"):
         delgvar("savepicforme")
@@ -57,7 +57,7 @@ async def Hussein(event, caption):
     sender = await event.get_sender()
     sender_id = event.sender_id
     lMl10l_date = event.date.strftime("%Y-%m-%d")
-    lMl10l_day = ALSAHER_Asbo3[event.date.strftime("%A")]
+    lMl10l_day = thebatman_Asbo3[event.date.strftime("%A")]
     await bot.send_file(
         "me",
         media,
@@ -66,16 +66,16 @@ async def Hussein(event, caption):
     )
     os.remove(media)
 
-@Qrh9.on(events.NewMessage(func=lambda e: e.is_private and joker_unread_media(e) and e.sender_id != bot.uid))
+@lucmd9.on(events.NewMessage(func=lambda e: e.is_private and joker_unread_media(e) and e.sender_id != bot.uid))
 async def Reda(event):
     if gvarstatus("savepicforme"):
         caption = """**
-           ✨  غير مبري الذمة اذا استعملته للأبتزاز  ✨
-✨ تم حفظ الذاتية بنجاح ✓
-✨ تم الصنع : @SXYO3
-✨ أسم المرسل : [{0}](tg://user?id={1})
-✨  تاريخ الذاتية : `{2}`
-✨  أرسلت في يوم `{3}`
-       ✨    alsaher    ✨
+           🕷  غير مبري الذمة اذا استعملته للأبتزاز  🕷
+🕷 تم حفظ الذاتية بنجاح ✓
+🕷 تم الصنع : @angthon
+🕷 أسم المرسل : [{0}](tg://user?id={1})
+🕷  تاريخ الذاتية : `{2}`
+🕷  أرسلت في يوم `{3}`
+       🕷    thebatman    🕷
         **"""
         await Hussein(event, caption)

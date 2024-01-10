@@ -1,4 +1,4 @@
-# By SHRU 2021-2022
+# By batt 2021-2022
 import asyncio
 import base64
 from telethon.tl import functions, types
@@ -6,16 +6,16 @@ from telethon.tl.functions.messages import GetStickerSetRequest
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from telethon.utils import get_display_name
 import re
-from SHRU import Qrh9
+from batt import lucmd9
 from ..Config import Config
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.tools import media_type
 from ..helpers.utils import _catutils
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 from . import BOTLOG, BOTLOG_CHATID
-from SHRU import *
-from SHRU import Qrh9
-from SHRU.utils import admin_cmd
+from batt import *
+from batt import lucmd9
+from batt.utils import admin_cmd
 from telethon.tl.types import Channel, Chat, User
 from telethon.tl import functions, types
 from telethon.tl.functions.messages import  CheckChatInviteRequest, GetFullChatRequest
@@ -24,27 +24,27 @@ from telethon.tl.functions.channels import GetFullChannelRequest, GetParticipant
 
 Mukrr = Config.MUKRR_ET or "مكرر"
 
-async def spam_function(event, SHRU, Qrh9, sleeptimem, sleeptimet, DelaySpam=False):
+async def spam_function(event, batt, lucmd9, sleeptimem, sleeptimet, DelaySpam=False):
 
-    counter = int(Qrh9[0])
-    if len(Qrh9) == 2:
-        spam_message = str(Qrh9[1])
+    counter = int(lucmd9[0])
+    if len(lucmd9) == 2:
+        spam_message = str(lucmd9[1])
         for _ in range(counter):
             if gvarstatus("spamwork") is None:
                 return
             if event.reply_to_msg_id:
-                await SHRU.reply(spam_message)
+                await batt.reply(spam_message)
             else:
                 await event.client.send_message(event.chat_id, spam_message)
             await asyncio.sleep(sleeptimet)
-    elif event.reply_to_msg_id and SHRU.media:
+    elif event.reply_to_msg_id and batt.media:
         for _ in range(counter):
             if gvarstatus("spamwork") is None:
                 return
-            SHRU = await event.client.send_file(
-                event.chat_id, SHRU, caption=SHRU.text
+            batt = await event.client.send_file(
+                event.chat_id, batt, caption=batt.text
             )
-            await _catutils.unsavegif(event, SHRU)
+            await _catutils.unsavegif(event, batt)
             await asyncio.sleep(sleeptimem)
         if BOTLOG:
             if DelaySpam is not True:
@@ -73,11 +73,11 @@ async def spam_function(event, SHRU, Qrh9, sleeptimem, sleeptimet, DelaySpam=Fal
                     + f"**⌔∮ تم تنفيذ التكرار الوقتي  بنجاح في ** {get_display_name(await event.get_chat())}(`{event.chat_id}`) **مع** {counter} **عدد المرات مع الرسالة أدناه مع التأخير** {sleeptimet} ** الثواني **",
                 )
 
-            SHRU = await event.client.send_file(BOTLOG_CHATID, SHRU)
-            await _catutils.unsavegif(event, SHRU)
+            batt = await event.client.send_file(BOTLOG_CHATID, batt)
+            await _catutils.unsavegif(event, batt)
         return
-    elif event.reply_to_msg_id and SHRU.text:
-        spam_message = SHRU.text
+    elif event.reply_to_msg_id and batt.text:
+        spam_message = batt.text
         for _ in range(counter):
             if gvarstatus("spamwork") is None:
                 return
@@ -118,12 +118,12 @@ async def spam_function(event, SHRU, Qrh9, sleeptimem, sleeptimet, DelaySpam=Fal
             )
 
 
-@Qrh9.ar_cmd(pattern="كرر (.*)")
+@lucmd9.ar_cmd(pattern="كرر (.*)")
 async def spammer(event):
-    SHRU = await event.get_reply_message()
-    Qrh9 = ("".join(event.text.split(maxsplit=1)[1:])).split(" ", 1)
+    batt = await event.get_reply_message()
+    lucmd9 = ("".join(event.text.split(maxsplit=1)[1:])).split(" ", 1)
     try:
-        counter = int(Qrh9[0])
+        counter = int(lucmd9[0])
     except Exception:
         return await edit_delete(
             event, "⌔∮ يجي استخدام كتابة صحيحة الرجاء التاكد من الامر اولا ⚠️"
@@ -136,9 +136,9 @@ async def spammer(event):
         sleeptimem = 0.3
     await event.delete()
     addgvar("spamwork", True)
-    await spam_function(event, SHRU, Qrh9, sleeptimem, sleeptimet)
+    await spam_function(event, batt, lucmd9, sleeptimem, sleeptimet)
 
-@Qrh9.on(admin_cmd(pattern=f"{Mukrr}"))
+@lucmd9.on(admin_cmd(pattern=f"{Mukrr}"))
 async def spammer(event):
     reply = await event.get_reply_message()
     input_str = "".join(event.text.split(maxsplit=1)[1:]).split(" ", 2)
@@ -148,20 +148,20 @@ async def spammer(event):
         return await edit_delete(
             event, "⌔∮ يجب استخدام كتابة صحيحة الرجاء التاكد من الامر اولا ⚠️"
         )
-    Qrh9 = input_str[1:]
+    lucmd9 = input_str[1:]
     await event.delete()
     addgvar("spamwork", True)
-    await spam_function(event, reply, Qrh9, sleeptimem, sleeptimet, DelaySpam=True)
+    await spam_function(event, reply, lucmd9, sleeptimem, sleeptimet, DelaySpam=True)
 
 
-@Qrh9.ar_cmd(pattern="تكرار الملصق$")
+@lucmd9.ar_cmd(pattern="تكرار الملصق$")
 async def stickerpack_spam(event):
     reply = await event.get_reply_message()
     if not reply or media_type(reply) is None or media_type(reply) != "Sticker":
         return await edit_delete(
             event, "**⌔∮ قم بالردّ على أيّ ملصق لإرسال جميع ملصقات الحزمة  **"
         )
-    hmm = base64.b64decode("U1hZTzM=")
+    hmm = base64.b64decode("QEFuZ3Rob24=")
     try:
         stickerset_attr = reply.document.attributes[1]
         catevent = await edit_or_reply(
@@ -222,7 +222,7 @@ async def stickerpack_spam(event):
         await event.client.send_file(BOTLOG_CHATID, reqd_sticker_set.documents[0])
 
 
-@Qrh9.ar_cmd(pattern="سبام (.*)")
+@lucmd9.ar_cmd(pattern="سبام (.*)")
 async def tmeme(event):
     cspam = str("".join(event.text.split(maxsplit=1)[1:]))
     message = cspam.replace(" ", "")
@@ -254,14 +254,14 @@ from telethon import events
 import asyncio
 from telethon import events
 
-@Qrh9.on(events.NewMessage(pattern=r"^.تكرار (\d+) (\d+) (.+)"))
+@lucmd9.on(events.NewMessage(pattern=r"^.تكرار (\d+) (\d+) (.+)"))
 async def share_messages(event):
     time_interval = int(event.pattern_match.group(1))
     message_count = int(event.pattern_match.group(2))
     group_link = event.pattern_match.group(3)
 
     try:
-        entity = await Qrh9.get_entity(group_link)
+        entity = await lucmd9.get_entity(group_link)
     except ValueError:
         await event.edit("⌔∮ رابط المجموعة خاطئ.")
         return
@@ -275,12 +275,12 @@ async def share_messages(event):
     await event.edit(f"⌔∮ بدأت عملية التكرار... {time_interval} ثانية كل {message_count} مرة.")
 
     for _ in range(message_count):
-        sent_message = await Qrh9.send_message(entity, reply_message.text)
+        sent_message = await lucmd9.send_message(entity, reply_message.text)
         await asyncio.sleep(time_interval)
 
     await event.edit(f"⌔∮  تم التكرار بنجاح")
 
-@Qrh9.ar_cmd(pattern="وسبام (.*)")
+@lucmd9.ar_cmd(pattern="وسبام (.*)")
 async def tmeme(event):
     wspam = str("".join(event.text.split(maxsplit=1)[1:]))
     message = wspam.split()
@@ -304,14 +304,14 @@ async def tmeme(event):
                 + f"**⌔∮ تم تنفيذ التكرار بواسطة الڪلمات في   :** {get_display_name(await event.get_chat())}(`{event.chat_id}`) **الدردشة مع :** `{message}`",
             )
 
-@Qrh9.on(events.NewMessage(pattern=r"^.نقل (\d+) (\d+) (.+)"))
+@lucmd9.on(events.NewMessage(pattern=r"^.نقل (\d+) (\d+) (.+)"))
 async def share_messages(event):
     time_interval = int(event.pattern_match.group(1))
     message_count = int(event.pattern_match.group(2))
     group_link = event.pattern_match.group(3)
 
     try:
-        entity = await Qrh9.get_entity(group_link)
+        entity = await lucmd9.get_entity(group_link)
     except ValueError:
         await event.reply("⌔∮ رابط المجموعة أو اسم المستخدم غير صالح.")
         return
@@ -325,12 +325,12 @@ async def share_messages(event):
     await event.reply(f"⌔∮ بدأ عملية النقل... {time_interval} ثانية كل {message_count} مرة.")
 
     for _ in range(message_count):
-        await Qrh9.forward_messages(entity, reply_message)
+        await lucmd9.forward_messages(entity, reply_message)
         await asyncio.sleep(time_interval)
 
     await event.reply(f"⌔∮ تم التكرار بنجاح")
 
-@Qrh9.ar_cmd(pattern="ايقاف التكرار ?(.*)")
+@lucmd9.ar_cmd(pattern="ايقاف التكرار ?(.*)")
 async def stopspamrz(event):
     if gvarstatus("spamwork") is not None and gvarstatus("spamwork") == "true":
         delgvar("spamwork")

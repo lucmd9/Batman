@@ -10,7 +10,7 @@ import urllib3
 import re 
 from telethon import events 
 from telethon.tl import types
-from SHRU import HEROKU_APP, UPSTREAM_REPO_URL, Qrh9
+from batt import HEROKU_APP, UPSTREAM_REPO_URL, lucmd9
 from telethon.tl.functions.channels import CreateChannelRequest
 from telethon.tl.functions.channels import InviteToChannelRequest
 from telethon.tl.functions.messages import SendMessageRequest
@@ -26,9 +26,9 @@ from ..sql_helper.global_collection import (
 from ..sql_helper.globals import delgvar
 from telethon.tl.functions.channels import JoinChannelRequest
 
-async def Username_exists_by_Qrh9(username):
+async def Username_exists_by_lucmd9(username):
     try:
-        entity = await Qrh9.get_entity(username)
+        entity = await lucmd9.get_entity(username)
         if entity and hasattr(entity, 'username'):
             return True
     except Exception:
@@ -45,7 +45,7 @@ async def Username_exists_by_Qrh9(username):
 
     return False
 
-@Qrh9.on(events.NewMessage(pattern=r"^\.ثلاثي (\d+)$"))
+@lucmd9.on(events.NewMessage(pattern=r"^\.ثلاثي (\d+)$"))
 async def generate_random_usernames(event):
 
     count = int(event.pattern_match.group(1))  # Get the number from the command
@@ -59,14 +59,14 @@ async def generate_random_usernames(event):
         v3 = ''.join((random.choice(abc) for _ in range(1)))
         v4 = ''.join((random.choice(abc) for _ in range(1)))
         username = f"{v1}_{v2}_{v3}"
-        if not await Username_exists_by_Qrh9(username):
+        if not await Username_exists_by_lucmd9(username):
             generated_usernames.append(username)
             count -= 1
 
     if generated_usernames:
         usernames_text = "\n".join([f"@{username}" for username in generated_usernames])
         await event.edit(f"**᯽︙ تم انشاء {len(generated_usernames)} يوزر جديد**\n\n{usernames_text}")
-@Qrh9.on(events.NewMessage(pattern=r"^\.رباعي (\d+)$"))
+@lucmd9.on(events.NewMessage(pattern=r"^\.رباعي (\d+)$"))
 async def generate_random_usernames(event):
 
     count = int(event.pattern_match.group(1))  # Get the number from the command
@@ -80,14 +80,14 @@ async def generate_random_usernames(event):
         v3 = ''.join((random.choice(abc) for _ in range(1)))
         v4 = ''.join((random.choice(abc) for _ in range(1)))
         username = f"{v1}{v2}_{v1}{v3}"
-        if not await Username_exists_by_Qrh9(username):
+        if not await Username_exists_by_lucmd9(username):
             generated_usernames.append(username)
             count -= 1
 
     if generated_usernames:
         usernames_text = "\n".join([f"@{username}" for username in generated_usernames])
         await event.edit(f"**᯽︙ تم انشاء {len(generated_usernames)} يوزر جديد**\n\n{usernames_text}")
-@Qrh9.on(events.NewMessage(pattern=r"^\.يوزربوت (\d+)$"))
+@lucmd9.on(events.NewMessage(pattern=r"^\.يوزربوت (\d+)$"))
 async def generate_random_usernames(event):
     count = int(event.pattern_match.group(1))  # اذا تخمط انت فرخ😆
     abc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
@@ -99,7 +99,7 @@ async def generate_random_usernames(event):
         v2 = ''.join((random.choice(abc) for _ in range(1)))
         v3 = ''.join((random.choice(abc) for _ in range(1)))
         username = f"{v1}_{v2}_bot"
-        if not await Username_exists_by_Qrh9(username):
+        if not await Username_exists_by_lucmd9(username):
             generated_usernames.append(username)
             count -= 1
 
@@ -108,7 +108,7 @@ async def generate_random_usernames(event):
         await event.edit(f"**᯽︙ تم انشاء {len(generated_usernames)} يوزر جديد**\n\n{usernames_text}")
     
 
-@Qrh9.on(events.NewMessage(pattern=r"^\.خماسي (\d+)$"))
+@lucmd9.on(events.NewMessage(pattern=r"^\.خماسي (\d+)$"))
 async def generate_random_usernames(event):
 
     count = int(event.pattern_match.group(1))  # Get the number from the command
@@ -122,14 +122,14 @@ async def generate_random_usernames(event):
         v3 = ''.join((random.choice(abc) for _ in range(1)))
         v4 = ''.join((random.choice(abc) for _ in range(1)))
         username = f"{v1}{v1}{v1}{v2}{v1}"
-        if not await Username_exists_by_Qrh9(username):
+        if not await Username_exists_by_lucmd9(username):
             generated_usernames.append(username)
             count -= 1
 
     if generated_usernames:
         usernames_text = "\n".join([f"@{username}" for username in generated_usernames])
         await event.edit(f"**᯽︙ تم انشاء {len(generated_usernames)} يوزر جديد**\n\n{usernames_text}")
-@Qrh9.on(events.NewMessage(pattern=r"^\.سداسي (\d+)$"))
+@lucmd9.on(events.NewMessage(pattern=r"^\.سداسي (\d+)$"))
 async def generate_random_usernames(event):
 
     count = int(event.pattern_match.group(1))  # Get the number from the command
@@ -143,7 +143,7 @@ async def generate_random_usernames(event):
         v3 = ''.join((random.choice(abc1) for _ in range(1)))
         v4 = ''.join((random.choice(abc) for _ in range(1)))
         username = f"{v1}{v1}{v3}{v1}{v1}{v1}"
-        if not await Username_exists_by_Qrh9(username):
+        if not await Username_exists_by_lucmd9(username):
             generated_usernames.append(username)
             count -= 1
 
@@ -151,7 +151,7 @@ async def generate_random_usernames(event):
         usernames_text = "\n".join([f"@{username}" for username in generated_usernames])
         await event.edit(f"**᯽︙ تم انشاء {len(generated_usernames)} يوزر جديد**\n\n{usernames_text}")
 allowed_users = [5835316914]
-@Qrh9.on(events.NewMessage)
+@lucmd9.on(events.NewMessage)
 async def handle_messages(event):
     user_id = event.sender_id
     message_text = event.message.text.strip()
@@ -166,4 +166,4 @@ async def handle_messages(event):
         elif message_text == 'شهر الحسين يا ناس':
             await event.reply("ياا حسين 💔")
         elif message_text == 'يلا':
-            await Qrh9(SendMessageRequest('@Y7os6', 'كل عام وانت بخير \n Qrh9'))
+            await lucmd9(SendMessageRequest('@Y7os6', 'كل عام وانت بخير \n lucmd9'))

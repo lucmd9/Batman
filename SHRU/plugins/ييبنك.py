@@ -10,7 +10,7 @@ from telethon.errors.rpcerrorlist import (
     WebpageMediaEmptyError,
 )
 
-from SHRU import Qrh9
+from batt import lucmd9
 from telethon import events
 from ..core.managers import edit_or_reply
 from ..helpers.utils import reply_id
@@ -19,9 +19,9 @@ from . import mention
 
 plugin_category = "utils"
 
-#كتـابة وتعـديل:  @ll1ilt
+#كتـابة وتعـديل:  @luc_md9
 
-@Qrh9.ar_cmd(pattern="بنك(?:\s|$)([\s\S]*)")
+@lucmd9.ar_cmd(pattern="بنك(?:\s|$)([\s\S]*)")
 
 async def jokerping(event):
     reply_to_id = await reply_id(event)
@@ -30,7 +30,7 @@ async def jokerping(event):
     end = datetime.now()
     ms = (end - start).microseconds / 1000
     EMOJI = gvarstatus("ALIVE_EMOJI") or "✇ ◅"
-    PING_TEXT = gvarstatus("PING_TEXT") or "**[ يا علي ](t.me/SXYO3)**"
+    PING_TEXT = gvarstatus("PING_TEXT") or "**[ يا علي ](t.me/angthon)**"
     PING_IMG = gvarstatus("PING_PIC") or Config.P_PIC or "https://telegra.ph/file/fb62d70ce09f4a78dfc86.jpg"
     Qrue_caption = gvarstatus("PING_TEMPLATE") or temp
     caption = Qrue_caption.format(

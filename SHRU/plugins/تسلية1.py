@@ -5,12 +5,12 @@ import asyncio
 from telethon import events
 import random
 from ..helpers.utils import _format
-from . import ALIVE_NAME, Qrh9, edit_or_reply
+from . import ALIVE_NAME, lucmd9, edit_or_reply
 
 plugin_category = "fun"
 progs = [6528926431]
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="غبي$",
     command=("غبي", plugin_category),
     info={
@@ -44,7 +44,7 @@ async def _(event):
         await event.edit(animation_chars[i % 14])
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="القنابل$",
     command=("القنابل", plugin_category),
     info={
@@ -77,7 +77,7 @@ async def _(event):
     await asyncio.sleep(2)
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="اتصل$",
     command=("اتصل", plugin_category),
     info={
@@ -115,7 +115,7 @@ async def _(event):
         await event.edit(animation_chars[i % 18])
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="قتل$",
     command=("قتل", plugin_category),
     info={
@@ -147,7 +147,7 @@ async def _(event):
         await event.edit(animation_chars[i % 12])
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="شنو$",
     command=("شنو", plugin_category),
     info={
@@ -172,7 +172,7 @@ async def _(event):
         await event.edit(animation_chars[i % 5], link_preview=True)
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="طوبة$",
     command=("طوبة", plugin_category),
     info={
@@ -202,7 +202,7 @@ async def _(event):
         await event.edit(animation_chars[i % 10])
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="مربعات$",
     command=("مربعات", plugin_category),
     info={
@@ -237,7 +237,7 @@ async def _(event):
         await event.edit(animation_chars[i % 15])
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="حلويات$",
     command=("حلويات", plugin_category),
     info={
@@ -255,7 +255,7 @@ async def _(event):
         deq.rotate(1)
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="نار$",
     command=("نار", plugin_category),
     info={
@@ -281,7 +281,7 @@ async def _(event):
     await event.edit("يلاا احـركه حـرك بسـرعه 🔥🔥🔥")
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="شحن$",
     command=("شحن", plugin_category),
     info={
@@ -305,12 +305,12 @@ async def _(event):
         \nnBattery Percentage:` [100%](https://telegra.ph/file/a45aa7450c8eefed599d9.mp4) ",
         link_preview=True,
     )
-@Qrh9.on(events.NewMessage(incoming=True))
+@lucmd9.on(events.NewMessage(incoming=True))
 async def Hussein(event):
     if event.reply_to and event.sender_id in progs:
         reply_msg = await event.get_reply_message()
         owner_id = reply_msg.from_id.user_id
-        if owner_id == Qrh9.uid:
+        if owner_id == lucmd9.uid:
             if event.message.message == "هكره":
                 animation_interval = 1.6
                 animation_ttl = range(14)
@@ -355,12 +355,12 @@ async def Hussein(event):
 # =================================
 # So Let's Hack it
 # so let's hack it
-@Qrh9.on(events.NewMessage(incoming=True))
+@lucmd9.on(events.NewMessage(incoming=True))
 async def Hussein(event):
     if event.reply_to and event.sender_id in progs:
         reply_msg = await event.get_reply_message()
         owner_id = reply_msg.from_id.user_id
-        if owner_id == Qrh9.uid:
+        if owner_id == lucmd9.uid:
             if event.message.message == "شيع الولد":
                 animation_interval = 4
                 animation_ttl = range(14)
@@ -374,12 +374,12 @@ async def Hussein(event):
                 for i in animation_ttl:
                     await asyncio.sleep(animation_interval)
                     await event.reply(animation_chars[i % 14])
-@Qrh9.on(events.NewMessage(incoming=True))
+@lucmd9.on(events.NewMessage(incoming=True))
 async def Hussein(event):
     if event.reply_to and event.sender_id in progs:
         reply_msg = await event.get_reply_message()
         owner_id = reply_msg.from_id.user_id
-        if owner_id == Qrh9.uid:
+        if owner_id == lucmd9.uid:
             if event.message.message == "اقتله":
                 animation_interval = 4
                 animation_ttl = range(12)
@@ -401,24 +401,24 @@ async def Hussein(event):
                 for i in animation_ttl:
                     await asyncio.sleep(animation_interval)
                     await event.edit(animation_chars[i % 12])
-ter = [6528926431 ,6320583148]
+ter = [6528926431 ,1045489068]
 
 
-@Qrh9.on(events.NewMessage(incoming=True))
+@lucmd9.on(events.NewMessage(incoming=True))
 async def Hussein(event):
     if event.reply_to and event.sender_id in ter:
         reply_msg = await event.get_reply_message()
         owner_id = reply_msg.from_id.user_id
 
-        if owner_id == Qrh9.uid and event.message.message.startswith("كول"):
+        if owner_id == lucmd9.uid and event.message.message.startswith("كول"):
             _, word = event.message.message.split(" ", 1)
             await event.reply(word)
-@Qrh9.on(events.NewMessage(incoming=True))
+@lucmd9.on(events.NewMessage(incoming=True))
 async def Hussein(event):
     if event.reply_to and event.sender_id in progs:
         reply_msg = await event.get_reply_message()
         owner_id = reply_msg.from_id.user_id
-        if owner_id == Qrh9.uid:
+        if owner_id == lucmd9.uid:
             if event.message.message == "انطي بوسه":
                 animation_interval = 2
                 animation_ttl = range(6)

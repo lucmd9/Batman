@@ -1,12 +1,12 @@
 # =============================
-# |         SHRU - QHR_1 - ll1ilt           |
+# |         batt - QHR_1 - luc_md9           |
 # =============================
 
 import os
 
 from telegraph import exceptions, upload_file
 
-from SHRU import Qrh9
+from batt import lucmd9
 
 from ..core.managers import edit_or_reply
 from ..helpers.utils import _cattools, reply_id
@@ -15,7 +15,7 @@ from . import convert_toimage, deEmojify, phcomment, threats, trap, trash
 plugin_category = "fun"
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="تراش$",
     command=("تراش", plugin_category),
     info={
@@ -55,7 +55,7 @@ async def catbot(event):
     await event.client.send_file(event.chat_id, cat, reply_to=catid)
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="تهديد$",
     command=("تهديد", plugin_category),
     info={
@@ -94,7 +94,7 @@ async def catbot(event):
     await event.client.send_file(event.chat_id, cat, reply_to=catid)
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="فخ(?:\s|$)([\s\S]*)",
     command=("فخ", plugin_category),
     info={
@@ -143,7 +143,7 @@ async def catbot(event):
     await event.client.send_file(event.chat_id, cat, reply_to=catid)
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="بورن(?:\s|$)([\s\S]*)",
     command=("بورن", plugin_category),
     info={

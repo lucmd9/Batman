@@ -1,6 +1,6 @@
-from SHRU import *
-from SHRU import Qrh9
-from SHRU.utils import admin_cmd
+from batt import *
+from batt import lucmd9
+from batt.utils import admin_cmd
 from telethon.tl.types import Channel, Chat, User
 from telethon.tl import functions, types
 from telethon.tl.functions.messages import  CheckChatInviteRequest, GetFullChatRequest
@@ -64,24 +64,24 @@ def user_full_name(user):
  
 
 
-# كتابة فريق الساحر المتغيرات تثبت ودي
+# كتابة فريق الخفاش المتغيرات تثبت ودي
 # تخمط اذكر حقوق غيرها انت فرخ و دي 😂
 
 
-@Qrh9.on(admin_cmd(pattern=r"ضيف ?(.*)"))
+@lucmd9.on(admin_cmd(pattern=r"ضيف ?(.*)"))
 async def get_users(event):   
     sender = await event.get_sender() ; me = await event.client.get_me()
     if not sender.id == me.id:
         roz = await event.reply("**▾∮ تتـم العـملية انتظـࢪ قليلا 🧸♥ ...**")
     else:
         roz = await event.edit("**▾∮ تتـم العـملية انتظـࢪ قليلا 🧸♥ ...**.")
-    SHRU = await get_chatinfo(event) ; chat = await event.get_chat()
+    batt = await get_chatinfo(event) ; chat = await event.get_chat()
     if event.is_private:
               return await roz.edit("**▾∮ لا يمكننـي اضافـة المـستخدمين هـنا**")    
     s = 0 ; f = 0 ; error = 'None'   
   
     await roz.edit("**▾∮ حـالة الأضافة:**\n\n**▾∮ تتـم جـمع معـلومات الـمستخدمين 🔄 ...⏣**")
-    async for user in event.client.iter_participants(SHRU.full_chat.id):
+    async for user in event.client.iter_participants(batt.full_chat.id):
                 try:
                     if error.startswith("Too"):
                         return await roz.edit(f"**حـالة الأضـافة انتـهت مـع الأخـطاء**\n- (**ربـما هـنالك ضغـط عـلى الأمࢪ حاول مججـدا لاحقـا 🧸**) \n**الـخطأ** : \n`{error}`\n\n• اضافة `{s}` \n• خـطأ بأضافـة `{f}`"),

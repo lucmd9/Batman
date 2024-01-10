@@ -5,12 +5,12 @@ from telethon.errors.rpcerrorlist import UserNotParticipantError
 from telethon.tl.functions.messages import ExportChatInviteRequest
 from telethon.tl.functions.users import GetFullUserRequest
 
-from SHRU import Qrh9
+from batt import lucmd9
 
 from ..Config import Config
 from ..core.managers import edit_delete, edit_or_reply
 from ..sql_helper.autopost_sql import add_post, get_all_post, is_post, remove_post
-from SHRU.core.logger import logging
+from batt.core.logger import logging
 from ..sql_helper.globals import gvarstatus
 from . import BOTLOG, BOTLOG_CHATID
 from . import *
@@ -42,7 +42,7 @@ async def get_user_from_event(event):
             return None
     return user_object
 
-@Qrh9.on(admin_cmd(pattern="(نشر_تلقائي|النشر_التلقائي)"))
+@lucmd9.on(admin_cmd(pattern="(نشر_تلقائي|النشر_التلقائي)"))
 async def _(event):
     if (event.is_private or event.is_group):
         return await edit_or_reply(event, "**᯽︙ عـذراً .. النشر التلقائي خـاص بالقنـوات فقـط**")
@@ -50,28 +50,28 @@ async def _(event):
     if not jok:
         return await edit_or_reply(event, "**᯽︙ عـذراً .. قـم بـ إضـافة معـرف/ايـدي القنـاة الى الامـر اولاً**")
     if jok.startswith("@"):
-        SHRU = jok
+        batt = jok
     elif jok.startswith("https://t.me/"):
-        SHRU = jok.replace("https://t.me/", "@")
+        batt = jok.replace("https://t.me/", "@")
     elif str(jok).startswith("-100"):
-        SHRU = str(jok).replace("-100", "")
+        batt = str(jok).replace("-100", "")
     else:
         try:
-            SHRU = int(jok)
+            batt = int(jok)
         except BaseException:
             return await edit_or_reply(event, "**᯽︙ عـذراً .. معـرف/ايـدي القنـاة غيـر صـالح**\n**✾╎الرجـاء التـأكـد مـن المعـرف/الايـدي**")
     try:
-        SHRU = (await event.client.get_entity(SHRU)).id
+        batt = (await event.client.get_entity(batt)).id
     except BaseException:
         return await event.reply("**᯽︙ عـذراً .. معـرف/ايـدي القنـاة غيـر صـالح**\n**✾╎الرجـاء التـأكـد مـن المعـرف/الايـدي**")
-    if is_post(str(SHRU) , event.chat_id):
+    if is_post(str(batt) , event.chat_id):
         return await edit_or_reply(event, "**᯽︙ النشـر التلقـائي من القنـاة ** `{jok}` **مفعـل مسبقـاً ✓**")
-    add_post(str(SHRU), event.chat_id)
+    add_post(str(batt), event.chat_id)
     await edit_or_reply(event, f"**᯽︙ تم تفعيـل النشـر التلقـائي من القنـاة ** `{jok}` **بنجـاح ✓**")
 
 
 
-@Qrh9.on(admin_cmd(pattern="(ايقاف_نشر|ايقاف_النشر)"))
+@lucmd9.on(admin_cmd(pattern="(ايقاف_نشر|ايقاف_النشر)"))
 async def _(event):
     if (event.is_private or event.is_group):
         return await edit_or_reply(event, "**᯽︙ عـذراً .. النشر التلقائي خـاص بالقنـوات فقـط**")
@@ -79,27 +79,27 @@ async def _(event):
     if not jok:
         return await edit_or_reply(event, "**᯽︙ عـذراً .. قـم بـ إضـافة معـرف/ايـدي القنـاة الى الامـر اولاً**")
     if jok.startswith("@"):
-        SHRU = jok
+        batt = jok
     elif jok.startswith("https://t.me/"):
-        SHRU = jok.replace("https://t.me/", "@")
+        batt = jok.replace("https://t.me/", "@")
     elif str(jok).startswith("-100"):
-        SHRU = str(jok).replace("-100", "")
+        batt = str(jok).replace("-100", "")
     else:
         try:
-            SHRU = int(jok)
+            batt = int(jok)
         except BaseException:
             return await edit_or_reply(event, "**᯽︙ عـذراً .. معـرف/ايـدي القنـاة غيـر صـالح**\n**✾╎الرجـاء التـأكـد مـن المعـرف/الايـدي**")
     try:
-        SHRU = (await event.client.get_entity(SHRU)).id
+        batt = (await event.client.get_entity(batt)).id
     except BaseException:
         return await event.reply("**᯽︙ عـذراً .. معـرف/ايـدي القنـاة غيـر صـالح**\n**✾╎الرجـاء التـأكـد مـن المعـرف/الايـدي**")
-    if not is_post(str(SHRU), event.chat_id):
+    if not is_post(str(batt), event.chat_id):
         return await edit_or_reply(event, "**᯽︙ تم تعطيـل النشر التلقـائي لهـذه القنـاة هنـا .. بنجـاح ✓**")
-    remove_post(str(SHRU), event.chat_id)
+    remove_post(str(batt), event.chat_id)
     await edit_or_reply(event, f"**᯽︙ تم ايقـاف النشـر التلقـائي من** `{jok}`")
 
 
-@Qrh9.ar_cmd(incoming=True, forword=None)
+@lucmd9.ar_cmd(incoming=True, forword=None)
 async def _(event):
     if event.is_private:
         return
@@ -111,4 +111,4 @@ async def _(event):
         if event.media:
             await event.client.send_file(int(chat), event.media, caption=event.text)
         elif not event.media:
-            await Qrh9.send_message(int(chat), event.message)
+            await lucmd9.send_message(int(chat), event.message)

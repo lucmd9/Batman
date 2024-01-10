@@ -1,6 +1,6 @@
-#@ll1ilt   - @SXYO3
-# Copyright (C) 2021 SHRU TEAM
-# FILES WRITTEN BY  @ll1ilt
+#@luc_md9   - @angthon
+# Copyright (C) 2021 batt TEAM
+# FILES WRITTEN BY  @luc_md9
 import asyncio
 import io
 import os
@@ -9,14 +9,14 @@ import re
 import time
 from datetime import datetime
 
-from SHRU.utils import sudo_cmd
+from batt.utils import sudo_cmd
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl import types
 from telethon.utils import get_attributes
 from youtube_dl import YoutubeDL
 from urlextract import URLExtract
 from wget import download
-from SHRU import Qrh9
+from batt import lucmd9
 from youtube_dl.utils import (
     ContentTooShortError,
     DownloadError,
@@ -160,7 +160,7 @@ async def _get_file_name(path: pathlib.Path, full: bool = True) -> str:
     return str(path.absolute()) if full else path.stem + path.suffix
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="تحميل ص(?: |$)(.*)",
     command=("تحميل ص", plugin_category),
     info={
@@ -228,7 +228,7 @@ async def download_audio(event):
     await catevent.delete()
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="تحميل ف(?: |$)(.*)",
     command=("تحميل ف", plugin_category),
     info={
@@ -293,7 +293,7 @@ async def download_video(event):
     await event.delete()
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="يوت(?: |$)(\d*)? ?([\s\S]*)",
     command=("يوت", plugin_category),
     info={
@@ -331,7 +331,7 @@ async def yt_search(event):
     await edit_or_reply(video_q, reply_text)
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="انستا (.*)",
     command=("انستا", plugin_category),
     info={
@@ -372,7 +372,7 @@ async def kakashi(event):
         end = datetime.now()
         ms = (end - start).seconds
         await cat.edit(
-            f"꙳ ¦ تم تنزيل بواسطة  : @SXYO3 ",
+            f"꙳ ¦ تم تنزيل بواسطة  : @angthon ",
             parse_mode="html",
         )
     await event.client.delete_messages(
@@ -380,10 +380,10 @@ async def kakashi(event):
     )
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from SHRU import Qrh9
+from batt import lucmd9
 
 
-@Qrh9.on(admin_cmd(pattern="تيك توك(?: |$)(.*)"))
+@lucmd9.on(admin_cmd(pattern="تيك توك(?: |$)(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -400,7 +400,7 @@ async def _(event):
             msg = await conv.send_message(r_link)
             details = await conv.get_response()
             video = await conv.get_response()
-            """ قناة الساحر  @SXYO3 """
+            """ قناة الخفاش  @angthon """
             await bot.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
             await event.edit("▾∮ الغـي حـظر هـذا البـوت و حـاول مجـددا @ttsavebot")

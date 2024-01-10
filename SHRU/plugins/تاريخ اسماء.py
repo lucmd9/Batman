@@ -1,10 +1,10 @@
-# Copyright (C) 2021 SHRU TEAM
-# FILES WRITTEN BY  @ll1ilt
+# Copyright (C) 2021 batt TEAM
+# FILES WRITTEN BY  @luc_md9
 import asyncio
 
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from SHRU import Qrh9
+from batt import lucmd9
 
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers import get_user_from_event, sanga_seperator
@@ -13,7 +13,7 @@ from ..helpers.utils import _format
 plugin_category = "utils"
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="تاريخ(معرفات)?(?: |$)(.*)",
     command=("تاريخ", plugin_category),
     info={
@@ -28,12 +28,12 @@ plugin_category = "utils"
         "examples": "{tr}sg @missrose_bot",
     },
 )
-async def _(event):  #   : @ll1ilt
+async def _(event):  #   : @luc_md9
     "To get name/username history."
     input_str = "".join(event.text.split(maxsplit=1)[1:])
     reply_message = await event.get_reply_message()
     if not input_str and not reply_message:
-        await edit_delete( #ترجمه فريق الساحر على التيلكرام
+        await edit_delete( #ترجمه فريق الخفاش على التيلكرام
             event,
             "᯽︙  يـجب الـرد على الشخـص او كتـابة معـرفه مع الأمـر لأظـهار تواريـخ اسمـه",
         )
@@ -67,6 +67,6 @@ async def _(event):  #   : @ll1ilt
     for i in check:
         if jasem:
             await event.reply(i, parse_mode=_format.parse_pre)
-        else:#ترجمه فريق الساحر على التيلكرام
+        else:#ترجمه فريق الخفاش على التيلكرام
             jasem = True
             await catevent.edit(i, parse_mode=_format.parse_pre)

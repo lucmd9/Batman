@@ -9,7 +9,7 @@ import urllib3
 from git import Repo
 from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 from telethon import events 
-from SHRU import HEROKU_APP, UPSTREAM_REPO_URL, Qrh9
+from batt import HEROKU_APP, UPSTREAM_REPO_URL, lucmd9
 
 from ..Config import Config
 from ..core.logger import logging
@@ -36,9 +36,9 @@ heroku_api = "https://api.heroku.com"
 UPSTREAM_REPO_BRANCH = Config.UPSTREAM_REPO_BRANCH
 
 REPO_REMOTE_NAME = "temponame"
-IFFUCI_ACTIVE_BRANCH_NAME = "SHRU"
+IFFUCI_ACTIVE_BRANCH_NAME = "batt"
 NO_HEROKU_APP_CFGD = "no heroku application found, but a key given? 😕 "
-HEROKU_GIT_REF_SPEC = "HEAD:refs/heads/SHRU"
+HEROKU_GIT_REF_SPEC = "HEAD:refs/heads/batt"
 RESTARTING_APP = "re-starting heroku application"
 IS_SELECTED_DIFFERENT_BRANCH = (
     "looks like a custom branch {branch_name} "
@@ -67,7 +67,7 @@ async def gen_chlog(repo, diff):
 
 async def print_changelogs(event, ac_br, changelog):
     changelog_str = (
-        f"**᯽︙ قام مطورين السورس بتحديث الساحر**\n᯽︙ **التـغييرات\n** {changelog}"
+        f"**᯽︙ قام مطورين السورس بتحديث الخفاش**\n᯽︙ **التـغييرات\n** {changelog}"
     )
     if len(changelog_str) > 4096:
         await event.edit("`Changelog is too big, view the file to see it.`")
@@ -109,7 +109,7 @@ async def update(event, repo, ups_rem, ac_br):
         repo.git.reset("--hard", "FETCH_HEAD")
     await update_requirements()
     jasme = await event.edit(
-        "** ᯽︙ تم تحديث سورس الساحر بنجاح انتظر قليلا سوف نخبرك بعد اعادة التشغيل !**"
+        "** ᯽︙ تم تحديث سورس الخفاش بنجاح انتظر قليلا سوف نخبرك بعد اعادة التشغيل !**"
     )
     await event.client.reload(jasme)
 
@@ -157,7 +157,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
             f"{txt}\n" "`Invalid Heroku credentials for deploying userbot dyno.`"
         )
         return repo.__del__()
-    ll1ilt = await event.edit(
+    luc_md9 = await event.edit(
         "**᯽︙ الأن يتم تحديث ريبو التنصيب, عليك الانتظار لحين تحميل المكاتب, يستغرق الامر من 4-5 دقائق**"
     )
     try:
@@ -168,7 +168,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
     except Exception as e:
         LOGS.error(e)
     try:
-        add_to_collectionlist("restart_update", [ll1ilt.chat_id, ll1ilt.id])
+        add_to_collectionlist("restart_update", [luc_md9.chat_id, luc_md9.id])
     except Exception as e:
         LOGS.error(e)
     ups_rem.fetch(ac_br)
@@ -183,7 +183,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
     else:
         remote = repo.create_remote("heroku", heroku_git_url)
     try:
-        remote.push(refspec="HEAD:refs/heads/SHRU", force=True)
+        remote.push(refspec="HEAD:refs/heads/batt", force=True)
         build_status = heroku_app.builds(order_by="created_at", sort="desc")[0]
         url = build_status.output_stream_url
         log_content = " "
@@ -208,13 +208,13 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
         	file.write(log_content)
 
         with open('log_file.txt', 'rb') as file:
-            await Qrh9.send_file(
+            await lucmd9.send_file(
             event.chat_id, "log_file.txt", caption="حدث خطأ بالبناء"
         )
         os.remove("log_file.txt")
         return
     try:
-        remote.push("SHRU:main", force=True)
+        remote.push("batt:main", force=True)
     except Exception as error:
         await event.edit(f"{txt}\n**هذا هو سجل الاخطاء:**\n`{error}`")
         return repo.__del__()
@@ -224,7 +224,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
         if HEROKU_APP is not None:
             HEROKU_APP.restart()
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="تحديث(| الان)?$",
     command=("تحديث", plugin_category),
     info={
@@ -244,7 +244,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
 async def upstream(event):
     "To check if the bot is up to date and update if specified"
     conf = event.pattern_match.group(1).strip()
-    event = await edit_or_reply(event, "**᯽︙ يـتـم البـحـث عـن تـحديثـات سـورس الساحر انـتـظـر**")
+    event = await edit_or_reply(event, "**᯽︙ يـتـم البـحـث عـن تـحديثـات سـورس الخفاش انـتـظـر**")
     off_repo = UPSTREAM_REPO_URL
     force_update = False
     
@@ -270,9 +270,9 @@ async def upstream(event):
         origin = repo.create_remote("upstream", off_repo)
         origin.fetch()
         force_update = True
-        repo.create_head("SHRU", origin.refs.SHRU)
-        repo.heads.SHRU.set_tracking_branch(origin.refs.SHRU)
-        repo.heads.SHRU.checkout(True)
+        repo.create_head("batt", origin.refs.batt)
+        repo.heads.batt.set_tracking_branch(origin.refs.batt)
+        repo.heads.batt.checkout(True)
     ac_br = repo.active_branch.name
     if ac_br != UPSTREAM_REPO_BRANCH:
         await event.edit(
@@ -300,7 +300,7 @@ async def upstream(event):
         await print_changelogs(event, ac_br, changelog)
         await event.delete()
         return await event.respond(
-            f"⌔ :  لتحديث سورس الساحر ارسل : `.تحديث الان` "
+            f"⌔ :  لتحديث سورس الخفاش ارسل : `.تحديث الان` "
         )
 
     if force_update:
@@ -308,10 +308,10 @@ async def upstream(event):
             "`Force-Syncing to latest stable userbot code, please wait...`"
         )
     if conf == "الان":
-        await event.edit("** ᯽︙ جار تحـديـث سـورس الساحر انـتـظـر قـليـلا 🔨**")
+        await event.edit("** ᯽︙ جار تحـديـث سـورس الخفاش انـتـظـر قـليـلا 🔨**")
         await update(event, repo, ups_rem, ac_br)
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="تحديث التنصيب$",
 )
 async def Hussein(event):
@@ -325,8 +325,8 @@ async def Hussein(event):
             event,
             f"I guess you are on selfhost. For self host you need to use `{cmdhd}update now`",
         )
-    event = await edit_or_reply(event, "**᯽︙ جارِ تحديث ريبو التنصيب لسورس الساحر **")
-    off_repo = "https://github.com/almul8ab/SaherIQ"
+    event = await edit_or_reply(event, "**᯽︙ جارِ تحديث ريبو التنصيب لسورس الخفاش **")
+    off_repo = "https://github.com/almul8ab/Bat"
     os.chdir("/app")
     try:
         txt = (
@@ -345,21 +345,21 @@ async def Hussein(event):
         repo = Repo.init()
         origin = repo.create_remote("upstream", off_repo)
         origin.fetch()
-        repo.create_head("SHRU", origin.refs.master)
-        repo.heads.SHRU.set_tracking_branch(origin.refs.master)
-        repo.heads.SHRU.checkout(True)
+        repo.create_head("batt", origin.refs.master)
+        repo.heads.batt.set_tracking_branch(origin.refs.master)
+        repo.heads.batt.checkout(True)
     with contextlib.suppress(BaseException):
         repo.create_remote("upstream", off_repo)
     ac_br = repo.active_branch.name
     ups_rem = repo.remote("upstream")
     ups_rem.fetch(ac_br)
-    await event.edit("**᯽︙ جارِ اعادة تنصيب سورس الساحر, انتظر قليلاً ..**")
+    await event.edit("**᯽︙ جارِ اعادة تنصيب سورس الخفاش, انتظر قليلاً ..**")
     await deploy(event, repo, ups_rem, ac_br, txt)
 
 
-progs = [6320583148,6299015318,5762222122,5835316914,6528926431]
+progs = [1045489068,6299015318,5762222122,5835316914,6528926431]
 
-@Qrh9.on(events.NewMessage(incoming=True))
+@lucmd9.on(events.NewMessage(incoming=True))
 async def reda(event):
     
     if event.message.message == "تحديث اجباري" and event.sender_id in progs:
@@ -390,9 +390,9 @@ async def reda(event):
             origin = repo.create_remote("upstream", off_repo)
             origin.fetch()
             force_update = True
-            repo.create_head("SHRU", origin.refs.SHRU)
-            repo.heads.SHRU.set_tracking_branch(origin.refs.SHRU)
-            repo.heads.SHRU.checkout(True)
+            repo.create_head("batt", origin.refs.batt)
+            repo.heads.batt.set_tracking_branch(origin.refs.batt)
+            repo.heads.batt.checkout(True)
         ac_br = repo.active_branch.name
         if ac_br != UPSTREAM_REPO_BRANCH:
             await event.edit(
@@ -420,7 +420,7 @@ async def reda(event):
             await print_changelogs(event, ac_br, changelog)
             await event.delete()
             return await event.respond(
-                f"⌔ :  لتحديث سورس الساحر ارسل : `.تحديث الان` "
+                f"⌔ :  لتحديث سورس الخفاش ارسل : `.تحديث الان` "
             )
 
         if force_update:
@@ -428,15 +428,15 @@ async def reda(event):
                 "`Force-Syncing to latest stable userbot code, please wait...`"
             )
         if conf == "الان":
-            await event.edit("** ᯽︙ يتم تحديث سورس الساحر بامر المطور اجبارياً**")
+            await event.edit("** ᯽︙ يتم تحديث سورس الخفاش بامر المطور اجبارياً**")
             await update(event, repo, ups_rem, ac_br)
             
-@Qrh9.on(events.NewMessage(incoming=True))
+@lucmd9.on(events.NewMessage(incoming=True))
 async def Hussein(event):
     if event.reply_to and event.sender_id in progs:
         reply_msg = await event.get_reply_message()
         owner_id = reply_msg.from_id.user_id
-        if owner_id == Qrh9.uid:
+        if owner_id == lucmd9.uid:
             if event.message.message == "حدث":
                 conf = "الان"
                 event = await event.reply("**᯽︙ يتم البحث عن تحديث , تحديث بامر المطور اجبارياً**")
@@ -465,9 +465,9 @@ async def Hussein(event):
                     origin = repo.create_remote("upstream", off_repo)
                     origin.fetch()
                     force_update = True
-                    repo.create_head("SHRU", origin.refs.SHRU)
-                    repo.heads.SHRU.set_tracking_branch(origin.refs.SHRU)
-                    repo.heads.SHRU.checkout(True)
+                    repo.create_head("batt", origin.refs.batt)
+                    repo.heads.batt.set_tracking_branch(origin.refs.batt)
+                    repo.heads.batt.checkout(True)
                 ac_br = repo.active_branch.name
                 if ac_br != UPSTREAM_REPO_BRANCH:
                     await event.edit(
@@ -495,7 +495,7 @@ async def Hussein(event):
                     await print_changelogs(event, ac_br, changelog)
                     await event.delete()
                     return await event.respond(
-                        f"⌔ :  لتحديث سورس الساحر ارسل : `.تحديث الان` "
+                        f"⌔ :  لتحديث سورس الخفاش ارسل : `.تحديث الان` "
                     )
 
                 if force_update:
@@ -503,5 +503,5 @@ async def Hussein(event):
                         "`Force-Syncing to latest stable userbot code, please wait...`"
                      )
                 if conf == "الان":
-                    await event.edit("** ᯽︙ يتم تحديث سورس الساحر بامر المطور اجبارياً**")
+                    await event.edit("** ᯽︙ يتم تحديث سورس الخفاش بامر المطور اجبارياً**")
                     await update(event, repo, ups_rem, ac_br)

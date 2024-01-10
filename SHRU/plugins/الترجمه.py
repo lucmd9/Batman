@@ -1,8 +1,8 @@
 from asyncio import sleep
 import requests
 import json
-from SHRU.helpers.functions.functions import translate
-from SHRU import Qrh9
+from batt.helpers.functions.functions import translate
+from batt import lucmd9
 from telethon import events, types
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 from ..core.managers import edit_delete, edit_or_reply
@@ -46,7 +46,7 @@ async def gtrans(text, lan):
         return f"حدث خطأ \n{er}"
     return response
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="ترجمة ([\s\S]*)",
     command=("ترجمة", "tools"),
     info={
@@ -87,7 +87,7 @@ async def _(event):
         await edit_delete(event, f"**خطا:**\n`{exc}`", time=5)
 
 
-@Qrh9.ar_cmd(pattern="(الترجمة الفورية|الترجمه الفوريه|ايقاف الترجمة|ايقاف الترجمه)")
+@lucmd9.ar_cmd(pattern="(الترجمة الفورية|الترجمه الفوريه|ايقاف الترجمة|ايقاف الترجمه)")
 async def reda(event):
     if gvarstatus("transnow"):
         delgvar("transnow")
@@ -96,7 +96,7 @@ async def reda(event):
         addgvar("transnow", "Reda") 
         await edit_delete(event, "**᯽︙ تم تفعيل الترجمه الفورية**")
 
-@Qrh9.ar_cmd(pattern="لغة الترجمة")
+@lucmd9.ar_cmd(pattern="لغة الترجمة")
 async def Reda_is_Here(event):
     t = event.text.replace(".لغة الترجمة", "")
     t = t.replace(" ", "")
@@ -108,11 +108,11 @@ async def Reda_is_Here(event):
     await edit_delete(event, f"**᯽︙ تم تغير لغة الترجمة الى {lang} بنجاح ✓ **")
 
 # Reda
-@Qrh9.on(events.NewMessage(outgoing=True))
+@lucmd9.on(events.NewMessage(outgoing=True))
 async def reda(event):
     if gvarstatus("transnow"):
         if event.media or isinstance(event.media, types.MessageMediaDocument) or isinstance(event.media, types.MessageMediaInvoice):
-            print ("SHRU")
+            print ("batt")
         else:
             original_message = event.message.message
             translated_message = await gtrans(soft_deEmojify(original_message.strip()), gvarstatus("translang") or "en")

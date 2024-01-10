@@ -10,7 +10,7 @@ from ..Config import Config
 from ..core.data import _sudousers_list, blacklist_chats_list
 from ..core.events import MessageEdited, NewMessage
 from ..core.logger import logging
-from ..core.session import Qrh9
+from ..core.session import lucmd9
 from ..helpers.utils.format import paste_message
 from ..helpers.utils.utils import runcmd
 from ..sql_helper.globals import gvarstatus
@@ -143,7 +143,7 @@ def errors_handler(func):
                                   \nwe logged only fact of error and date,\nwe respect your privacy,\
                                   \nyou may not report this error if you've\
                                   \nany confidential data here, no one will see your data\
-                                  \n\n--------BEGIN SHRU TRACEBACK LOG--------\
+                                  \n\n--------BEGIN batt TRACEBACK LOG--------\
                                   \nDate: {date}\nGroup ID: {str(check.chat_id)}\
                                   \nSender ID: {str(check.sender_id)}\
                                   \n\nEvent Trigger:\n{str(check.text)}\
@@ -162,7 +162,7 @@ def errors_handler(func):
             ftext += result
             pastelink = await paste_message(ftext)
             text = "**تقرير خطا جـيبثون**\n\n"
-            link = "[هنا](https://t.me/ll1ilt)"
+            link = "[هنا](https://t.me/luc_md9)"
             text += "إذا كنت تريد يمكنك الإبلاغ عن ذلك"
             text += f"- فقط قم بإعادة توجيه هذه الرسالة {link}.\n"
             text +="لا يتم تسجيل اي خطا فقط التاريخ والوقت\n\n"
@@ -225,8 +225,8 @@ def register(**args):
 
     def decorator(func):
         if not disable_edited:
-            Qrh9.add_event_handler(func, MessageEdited(**args))
-        Qrh9.add_event_handler(func, NewMessage(**args))
+            lucmd9.add_event_handler(func, MessageEdited(**args))
+        lucmd9.add_event_handler(func, NewMessage(**args))
         try:
             LOAD_PLUG[file_test].append(func)
         except Exception:
@@ -282,7 +282,7 @@ def command(**args):
 
     def decorator(func):
         if allow_edited_updates:
-            Qrh9.add_event_handler(func, MessageEdited(**args))
+            lucmd9.add_event_handler(func, MessageEdited(**args))
         
         try:
             LOAD_PLUG[file_test].append(func)

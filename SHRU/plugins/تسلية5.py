@@ -1,11 +1,11 @@
 import asyncio
 
-from . import Qrh9, edit_or_reply
+from . import lucmd9, edit_or_reply
 
 plugin_category = "fun"
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="تحميل$",
     command=("تحميل", plugin_category),
     info={
@@ -24,7 +24,7 @@ async def _(event):
         await event.edit(animation_chars[i % 4])
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="مربع$",
     command=("مربع", plugin_category),
     info={
@@ -43,7 +43,7 @@ async def _(event):
         await event.edit(animation_chars[i % 4])
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="up$",
     command=("up", plugin_category),
     info={
@@ -62,7 +62,7 @@ async def _(event):
         await event.edit(animation_chars[i % 4])
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="دائره$",
     command=("دائره", plugin_category),
     info={
@@ -81,7 +81,7 @@ async def _(event):
         await event.edit(animation_chars[i % 4])
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="قلب$",
     command=("قلب", plugin_category),
     info={
@@ -100,7 +100,7 @@ async def _(event):
         await event.edit(animation_chars[i % 4])
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="انيم$",
     command=("انيم", plugin_category),
     info={
@@ -118,19 +118,19 @@ async def _(event):
         "😧",
         "😡",
         "😢",
-        "‎**تنصيب الساحر**",
+        "‎**تنصيب الخفاش**",
         "😁",
         "😧",
         "😡",
         "😢",
-        "__**[المطور....]**__(t.me/SXYO3)",
+        "__**[المطور....]**__(t.me/angthon)",
     ]
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 10])
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="بشره$",
     command=("بشره", plugin_category),
     info={
@@ -149,7 +149,7 @@ async def _(event):
         await event.edit(animation_chars[i % 6])
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="قرد$",
     command=("قرد", plugin_category),
     info={
@@ -168,7 +168,7 @@ async def _(event):
         await event.edit(animation_chars[i % 6])
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="herber$",
     command=("herber", plugin_category),
     info={
@@ -198,7 +198,7 @@ async def _(event):
         await event.edit(animation_chars[i % 10])
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="يد$",
     command=("يد", plugin_category),
     info={
@@ -231,7 +231,7 @@ async def _(event):
         await event.edit(animation_chars[i % 13])
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="العد التنازلي$",
     command=("العد التنازلي", plugin_category),
     info={
@@ -263,7 +263,7 @@ async def _(event):
         await event.edit(animation_chars[i % 12])
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="قلوب$",
     command=("قلوب", plugin_category),
     info={

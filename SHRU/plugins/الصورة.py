@@ -1,5 +1,5 @@
-#ترجمه فريق الساحر على التيلكرام
-from SHRU import CMD_HELP, Qrh9
+#ترجمه فريق الخفاش على التيلكرام
+from batt import CMD_HELP, lucmd9
 
 from ..core.managers import edit_delete, edit_or_reply
 
@@ -8,7 +8,7 @@ plugin_category = "extra"
 name = "Profile Photos"
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="صورة(?: |$)(.*)",
     command=("صورة", plugin_category),
     info={
@@ -48,7 +48,7 @@ async def potocmd(event):
             await event.client.send_file(event.chat_id, photos)
         else:
             try:
-                if u:  #ترجمه فريق الساحر على التيلكرام
+                if u:  #ترجمه فريق الخفاش على التيلكرام
                     photo = await event.client.download_profile_photo(user.sender)
                 else:
                     photo = await event.client.download_profile_photo(event.input_chat)

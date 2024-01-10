@@ -2,12 +2,12 @@ import sys
 import os
 from typing import Any, Dict, List, Union
 from glob import glob
-from SHRU import *
-from SHRU.helpers.functions.functions import translate
+from batt import *
+from batt.helpers.functions.functions import translate
 try:
     from yaml import safe_load
 except ModuleNotFoundError:
-    from SHRU.helpers.functions.functions import safe_load
+    from batt.helpers.functions.functions import safe_load
 
 os.getenv("LANGUAGE", "ar")
 
@@ -15,7 +15,7 @@ languages = {}
 
 
 
-for file in glob("ALSAHER/strings/*yml"):
+for file in glob("thebatman/strings/*yml"):
     if file.endswith(".yml"):
         code = file.split("/")[-1].split("\\")[-1][:-4]
         try:

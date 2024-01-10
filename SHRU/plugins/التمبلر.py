@@ -2,33 +2,33 @@ import random
 from telethon import events
 import random, re
 
-from SHRU.utils import admin_cmd
+from batt.utils import admin_cmd
 
 import asyncio
-from SHRU import Qrh9
+from batt import lucmd9
 
 from ..core.managers import edit_or_reply
-from Qrh9.razan.resources.strings import *
+from lucmd9.razan.resources.strings import *
 
 plugin_category = "extra" 
 
-#by ~ @ll1ilt
-@Qrh9.ar_cmd(
+#by ~ @luc_md9
+@lucmd9.ar_cmd(
     pattern="م17$",
     command=("م17", plugin_category),)
 async def _(event):
      if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
             await event.edit(
-                "قائمة اوامر التمبـلر :\n➖➖➖➖➖➖➖➖➖➖➖➖➖\n ᯽︙ اختر احدى هذه القوائم\n\n- ( `.الزغرفة` ) \n- ( `.اسماء تمبلر` )   \n- (`.اسماء عربية`)\n- ( `.اشهر مزغرفة`) \n- ( `.الاختصارات` ) \n- ( `.البايو` )\n- (`.المتحركات`)\n\n➖➖➖➖➖➖➖➖➖➖➖➖➖\n⌔︙CH : @SXYO3"
+                "قائمة اوامر التمبـلر :\n➖➖➖➖➖➖➖➖➖➖➖➖➖\n ᯽︙ اختر احدى هذه القوائم\n\n- ( `.الزغرفة` ) \n- ( `.اسماء تمبلر` )   \n- (`.اسماء عربية`)\n- ( `.اشهر مزغرفة`) \n- ( `.الاختصارات` ) \n- ( `.البايو` )\n- (`.المتحركات`)\n\n➖➖➖➖➖➖➖➖➖➖➖➖➖\n⌔︙CH : @angthon"
             )
-#by ~ @ll1ilt
-@Qrh9.ar_cmd(
+#by ~ @luc_md9
+@lucmd9.ar_cmd(
     pattern="الزغرفة$",
     command=("الزغرفة", plugin_category),)
 async def _(event):
      if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
             await event.edit(
-                "˛ SHRU ، ٰFٓoٍَِNٌtSَ\n"
+                "˛ batt ، ٰFٓoٍَِNٌtSَ\n"
                 "•━═━═━═━═━━═━═━═━═━•\n"
                 "**قائـمة اوامر الزغرفة :**\n"
                 " `.زغرفة0`\n"
@@ -43,37 +43,37 @@ async def _(event):
                 " `.زغرفة9`\n"
                 " **اكتب الاسم مع الامر للـزغرفة فقط انكليزي**\n"
                 "•━═━═━═━═━━═━═━═━═━•‌‌\n"
-                "˛ SHRU ، ٰUٍsٓEِrBُoََt - [CَِٓHُ](t.me/SXYO3)"
+                "˛ batt ، ٰUٍsٓEِrBُoََt - [CَِٓHُ](t.me/angthon)"
             )
-#by ~ @ll1ilt
-@Qrh9.ar_cmd(
+#by ~ @luc_md9
+@lucmd9.ar_cmd(
     pattern="اسماء تمبلر$",
     command=("اسماء تمبلر", plugin_category),)
 async def _(event):
      if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
             await event.edit(
-                "قائمة اوامـر اسمـاء تمبـلر :\n➖➖➖➖➖➖➖➖➖➖➖➖➖\n ᯽︙ اخـتر احـد هـذه القـوائـم:\n\n- (`.شباب1`) \n- (`.شباب2`) \n- (`.بنات1`) \n- (`.بنات2`) \n- (`.قنوات`) \n\n➖➖➖➖➖➖➖➖➖➖➖➖➖\n⌔︙CH : @SXYO3"
+                "قائمة اوامـر اسمـاء تمبـلر :\n➖➖➖➖➖➖➖➖➖➖➖➖➖\n ᯽︙ اخـتر احـد هـذه القـوائـم:\n\n- (`.شباب1`) \n- (`.شباب2`) \n- (`.بنات1`) \n- (`.بنات2`) \n- (`.قنوات`) \n\n➖➖➖➖➖➖➖➖➖➖➖➖➖\n⌔︙CH : @angthon"
             )
 #by ~ @RR 9R7
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="البايو$",
     command=("البايو", plugin_category),)
 async def _(event):
      if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
             await event.edit(
-                "قائمة اوامـر البـايو او الـنبذة :\n➖➖➖➖➖➖➖➖➖➖➖➖➖\n ᯽︙ اخـتر احـد هـذه القـوائـم:\n\n \n- (`.بايو عربي`) \n- (`.بايو اجنبي`) \n ➖➖➖➖➖➖➖➖➖➖➖➖➖\n⌔︙CH : @SXYO3"
+                "قائمة اوامـر البـايو او الـنبذة :\n➖➖➖➖➖➖➖➖➖➖➖➖➖\n ᯽︙ اخـتر احـد هـذه القـوائـم:\n\n \n- (`.بايو عربي`) \n- (`.بايو اجنبي`) \n ➖➖➖➖➖➖➖➖➖➖➖➖➖\n⌔︙CH : @angthon"
             )
             
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="الاختصارات$",
     command=("الاختصارات", plugin_category),)
 async def _(event):
      if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
             await event.edit(
-                "قائمة اوامـر الاخـتصارات :\n➖➖➖➖➖➖➖➖➖➖➖➖➖\n ᯽︙ اخـتر احـد هـذه القـوائـم:\n\n \n- (`.اختصارات1`) \n- (`.اختصارات2`) \n- (`.اختصارات3`) \n- (`.اختصارات4`) \n- (`.اختصارات5`) \n➖➖➖➖➖➖➖➖➖➖➖➖➖\n⌔︙CH : @SXYO3"
+                "قائمة اوامـر الاخـتصارات :\n➖➖➖➖➖➖➖➖➖➖➖➖➖\n ᯽︙ اخـتر احـد هـذه القـوائـم:\n\n \n- (`.اختصارات1`) \n- (`.اختصارات2`) \n- (`.اختصارات3`) \n- (`.اختصارات4`) \n- (`.اختصارات5`) \n➖➖➖➖➖➖➖➖➖➖➖➖➖\n⌔︙CH : @angthon"
             )
             
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="بايو اجنبي$",
     command=("بايو اجنبي", plugin_category),)
 async def _(event):
@@ -83,7 +83,7 @@ async def _(event):
     return await event.edit(f"{arj}")
     
     
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="بايو عربي$",
     command=("بايو عربي", plugin_category),)
 async def _(event):
@@ -93,31 +93,31 @@ async def _(event):
     return await event.edit(f"{arj}")
     
     
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="المتحركات$",
     command=("المتحركات", plugin_category),)
 async def _(event):
-    await event.edit("قائمة اوامر المتـحركات :\n➖➖➖➖➖➖➖➖➖➖➖➖➖\n ᯽︙ اختر احدى هذه القوائم\n\n- ( `.متحركات كيوت` ) \n- ( `.متحركات ساد` )\n➖➖➖➖➖➖➖➖➖➖➖➖➖\n⌔︙CH : @SXYO3"
+    await event.edit("قائمة اوامر المتـحركات :\n➖➖➖➖➖➖➖➖➖➖➖➖➖\n ᯽︙ اختر احدى هذه القوائم\n\n- ( `.متحركات كيوت` ) \n- ( `.متحركات ساد` )\n➖➖➖➖➖➖➖➖➖➖➖➖➖\n⌔︙CH : @angthon"
             )
             
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="متحركات ساد$",
     command=("متحركات ساد", plugin_category),)
 async def _(event):
-    await event.edit("قائمة اوامر متحـرات سـاد :\n➖➖➖➖➖➖➖➖➖➖➖➖➖\n ᯽︙ اختر احدى هذه القوائم\n\n- ( `.س1` ) \n- ( `.س2` )   \n- (`.س3`)\n- ( `.س4`) \n- ( `.س5` ) \n- ( `.س6` )\n- ( `.س7` )\n- ( `.س8` )\n- ( `.س9` )\n➖➖➖➖➖➖➖➖➖➖➖➖➖\n⌔︙CH : @SXYO3"
+    await event.edit("قائمة اوامر متحـرات سـاد :\n➖➖➖➖➖➖➖➖➖➖➖➖➖\n ᯽︙ اختر احدى هذه القوائم\n\n- ( `.س1` ) \n- ( `.س2` )   \n- (`.س3`)\n- ( `.س4`) \n- ( `.س5` ) \n- ( `.س6` )\n- ( `.س7` )\n- ( `.س8` )\n- ( `.س9` )\n➖➖➖➖➖➖➖➖➖➖➖➖➖\n⌔︙CH : @angthon"
             )
             
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="متحركات كيوت$",
     command=("متحركات كيوت", plugin_category),)
 async def _(event):
-    await event.edit("قائمة اوامر متحـرات كيـوت :\n➖➖➖➖➖➖➖➖➖➖➖➖➖\n ᯽︙ اختر احدى هذه القوائم\n\n- ( `.ك1` ) \n- ( `.ك2` )   \n- (`.ك3`)\n- ( `.ك4`) \n- ( `.ك5` ) \n- ( `.ك6` )\n- ( `.ك7` )\n➖➖➖➖➖➖➖➖➖➖➖➖➖\n⌔︙CH : @SXYO3"
+    await event.edit("قائمة اوامر متحـرات كيـوت :\n➖➖➖➖➖➖➖➖➖➖➖➖➖\n ᯽︙ اختر احدى هذه القوائم\n\n- ( `.ك1` ) \n- ( `.ك2` )   \n- (`.ك3`)\n- ( `.ك4`) \n- ( `.ك5` ) \n- ( `.ك6` )\n- ( `.ك7` )\n➖➖➖➖➖➖➖➖➖➖➖➖➖\n⌔︙CH : @angthon"
             )           
 
         
-#by ~ @ll1ilt
-@Qrh9.ar_cmd(
+#by ~ @luc_md9
+@lucmd9.ar_cmd(
     pattern="اشهر مزغرفة$",
     command=("اشهر مزغرفة", plugin_category),)
 async def _(event):
@@ -163,9 +163,9 @@ async def _(event):
                 "-𝐅𝐑𝐈𝐃𝐀𝐘.♡\n"
                 "-𝐒𝐀𝐓𝐔𝐑𝐃𝐀𝐘.♡"
             )
-# ˛ SHRU ، ٰUٍsٓEِrBُoََt  # 
+# ˛ batt ، ٰUٍsٓEِrBُoََt  # 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="اسماء عربية$",
     command=("اسماء عربية", plugin_category),)
 async def _(event):
@@ -200,9 +200,9 @@ async def _(event):
                 "- سَݛﯠشہ𓆤.\n"
                 "- فَطـﯡشہ𓆤."
             )
-# ˛ SHRU ، ٰUٍsٓEِrBُoََt  # 
-#by ~ @ll1ilt
-@Qrh9.ar_cmd(
+# ˛ batt ، ٰUٍsٓEِrBُoََt  # 
+#by ~ @luc_md9
+@lucmd9.ar_cmd(
     pattern="شباب1$",
     command=("شباب1", plugin_category),)
 async def _(event):
@@ -244,9 +244,9 @@ async def _(event):
                 "「𝘋𝘮𝘢𝘳 𐃣.\n"
                 "「𝘑𝘮𝘳𝘢 𐃣."
             )
-# ˛ SHRU ، ٰUٍsٓEِrBُoََt  # 
-#by ~ @ll1ilt
-@Qrh9.ar_cmd(
+# ˛ batt ، ٰUٍsٓEِrBُoََt  # 
+#by ~ @luc_md9
+@lucmd9.ar_cmd(
     pattern="شباب2$",
     command=("شباب2", plugin_category),
 )
@@ -296,9 +296,9 @@ async def _(event):
                 "𓂐 𝙃𝙈𝙊 𖠛 .\n"
                 "𓂐 𝙅𝙊𝙅 𖠛 ."
             )
-# ˛ SHRU ، ٰUٍsٓEِrBُoََt  # 
-#by ~ @ll1ilt
-@Qrh9.ar_cmd(
+# ˛ batt ، ٰUٍsٓEِrBُoََt  # 
+#by ~ @luc_md9
+@lucmd9.ar_cmd(
     pattern="بنات1$",
     command=("بنات1", plugin_category),)
 async def _(event):
@@ -355,8 +355,8 @@ async def _(event):
                 "𓂐 𝘼𝙈𝙔  𖠛 ."
             )
 # ˛ 𝖩𝗆𝗍𝖧ٰ𝗈𝗇 ، ٰUٍsٓEِrBُoََt  # 
-#by ~ @ll1ilt
-@Qrh9.ar_cmd(
+#by ~ @luc_md9
+@lucmd9.ar_cmd(
     pattern="بنات2$",
     command=("بنات2", plugin_category),
 )
@@ -398,9 +398,9 @@ async def _(event):
                 "𝄇 𝗞𝗢𝗞𝗔𝆹𝅥𝅮 𝄆💘"
             )
         
-# ˛ SHRU ، ٰUٍsٓEِrBُoََt  # 
-#by ~ @ll1ilt
-@Qrh9.ar_cmd(
+# ˛ batt ، ٰUٍsٓEِrBُoََt  # 
+#by ~ @luc_md9
+@lucmd9.ar_cmd(
     pattern="قنوات$",
     command=("قنوات", plugin_category),
 )
@@ -451,9 +451,9 @@ async def _(event):
                 ":   ˹𝙍𝙄𝙏𝘼˼ 𓆪 .\n"
                 ": ..................."
             )
-# ˛ SHRU ، ٰUٍsٓEِrBُoََt  # 
-#by ~ @ll1ilt
-@Qrh9.ar_cmd(
+# ˛ batt ، ٰUٍsٓEِrBُoََt  # 
+#by ~ @luc_md9
+@lucmd9.ar_cmd(
     pattern="اختصارات1$",
     command=("اختصارات1", plugin_category),
 )
@@ -547,9 +547,9 @@ async def _(event):
                 "يـ؏\n"
                 "أﯠﯠ؏\n"
             )
-# ˛ SHRU ، ٰUٍsٓEِrBُoََt  # 
-#by ~ @ll1ilt
-@Qrh9.ar_cmd(
+# ˛ batt ، ٰUٍsٓEِrBُoََt  # 
+#by ~ @luc_md9
+@lucmd9.ar_cmd(
     pattern="اختصارات2$",
     command=("اختصارات2", plugin_category),
 )
@@ -587,9 +587,9 @@ async def _(event):
                 "بـاردۿ`"
             )
         
-# ˛ SHRU ، ٰUٍsٓEِrBُoََt  # 
-#by ~ @ll1ilt
-@Qrh9.ar_cmd(
+# ˛ batt ، ٰUٍsٓEِrBُoََt  # 
+#by ~ @luc_md9
+@lucmd9.ar_cmd(
     pattern="اختصارات3$",
     command=("اختصارات3", plugin_category),
 )
@@ -638,9 +638,9 @@ async def _(event):
                 "• ؏ــيني"
             )
         
-# ˛ SHRU ، ٰUٍsٓEِrBُoََt  # 
-#by ~ @ll1ilt
-@Qrh9.ar_cmd(
+# ˛ batt ، ٰUٍsٓEِrBُoََt  # 
+#by ~ @luc_md9
+@lucmd9.ar_cmd(
     pattern="اختصارات4$",
     command=("اختصارات4", plugin_category),)
 async def _(event):
@@ -686,9 +686,9 @@ async def _(event):
                 "ٵჂ̤"
             )
         
-# ˛ SHRU ، ٰUٍsٓEِrBُoََt  # 
-#by ~ @ll1ilt
-@Qrh9.ar_cmd(
+# ˛ batt ، ٰUٍsٓEِrBُoََt  # 
+#by ~ @luc_md9
+@lucmd9.ar_cmd(
     pattern="اختصارات5$",
     command=("اختصارات5", plugin_category),)
 async def _(event):
@@ -762,5 +762,5 @@ async def _(event):
                 "- حِݪۅ 💕.\n"
                 "- مٖتݪزِكٰ 💕."
             )
-#by ~ @ll1ilt
+#by ~ @luc_md9
 

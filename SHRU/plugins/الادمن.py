@@ -1,5 +1,5 @@
 # edit ~ @SX9OO
-# for ~ @SXYO3#
+# for ~ @angthon#
 
 from asyncio import sleep
 
@@ -23,7 +23,7 @@ from telethon.tl.types import (
     MessageMediaPhoto,
 )
 
-from SHRU import Qrh9
+from batt import lucmd9
 
 from ..core.logger import logging
 from ..core.managers import edit_delete, edit_or_reply
@@ -51,7 +51,7 @@ BANNED_RIGHTS = ChatBannedRights(
     send_inline=True,
     embed_links=True,
 )
-#admin plugin for  Qrh9
+#admin plugin for  lucmd9
 UNBAN_RIGHTS = ChatBannedRights(
     until_date=None,
     send_messages=None,
@@ -71,7 +71,7 @@ plugin_category = "aadmin"
 # ================================================
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="الصورة( -وضع| -حذف)$",
     command=("الصورة", plugin_category),
     info={
@@ -133,7 +133,7 @@ async def set_group_photo(event):  # sourcery no-metrics
         )
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="رفع مشرف(?:\s|$)([\s\S]*)",
     command=("رفع مشرف", plugin_category),
     info={
@@ -147,7 +147,7 @@ async def set_group_photo(event):  # sourcery no-metrics
     },
     groups_only=True,
     require_admin=True,
-)#admin plugin for  Qrh9
+)#admin plugin for  lucmd9
 async def promote(event):
     "᯽︙ لـرفع مستـخدم مشـرف في الـكروب"
     new_rights = ChatAdminRights(
@@ -178,7 +178,7 @@ async def promote(event):
         )
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="تنزيل الكل(?:\s|$)([\s\S]*)",
     command=("تنزيل الكل", plugin_category),
     info={
@@ -220,7 +220,7 @@ async def demote(event):
             \nالمعرف: [{user.first_name}](tg://user?id={user.id})\
             \nالدردشه: {event.chat.title}(`{event.chat_id}`)",
         )
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="طرد(?:\s|$)([\s\S]*)",
     command=("طرد", plugin_category),
     info={
@@ -243,7 +243,7 @@ async def endmute(event):
     if user.id == 5762222122:
         return await edit_or_reply(event, "**- لا يمڪنني حظر مطـوري دي لك**")
         
-    if user.id == 6320583148:
+    if user.id == 1045489068:
         return await edit_or_reply(event, "**- لا يمڪنني حظر مطـوري دي لك**")
     
     catevent = await edit_or_reply(event, "᯽︙ يـتم طـرد الـمستخدم أنتـظر")
@@ -257,7 +257,7 @@ async def endmute(event):
         )
     else:
         await catevent.edit(f"᯽︙ الـمستخدم [{user.first_name}](tg://user?id={user.id})\n ᯽︙ تـم طرده بنجاح ✅ ")
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="حظر(?:\s|$)([\s\S]*)",
     command=("حظر", plugin_category),
     info={
@@ -278,7 +278,7 @@ async def jokerban(event):
     if not user:
         return
 
-    if user.id in [6320583148]:
+    if user.id in [1045489068]:
         return await edit_or_reply(event, "**- لا يمكنني حظر مطـوري دي لك**")
 
     try:
@@ -317,7 +317,7 @@ async def jokerban(event):
 
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="الغاء حظر(?:\s|$)([\s\S]*)",
     command=("الغاء حظر", plugin_category),
     info={
@@ -356,7 +356,7 @@ async def nothanos(event):
         await catevent.edit(f"**خـطأ :**\n`{e}`")
 
 
-@Qrh9.ar_cmd(incoming=True)
+@lucmd9.ar_cmd(incoming=True)
 async def watcher(event):
     if is_muted(event.sender_id, event.chat_id):
         try:

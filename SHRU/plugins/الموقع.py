@@ -1,7 +1,7 @@
 from geopy.geocoders import Nominatim
 from telethon.tl import types
 
-from SHRU import Qrh9
+from batt import lucmd9
 
 from ..core.managers import edit_or_reply
 from ..helpers import reply_id
@@ -9,7 +9,7 @@ from ..helpers import reply_id
 plugin_category = "extra"
 
 
-@Qrh9.ar_cmd(
+@lucmd9.ar_cmd(
     pattern="موقع ([\s\S]*)",
     command=("موقع", plugin_category),
     info={

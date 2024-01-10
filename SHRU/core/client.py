@@ -100,10 +100,10 @@ class QrueClient(TelegramClient):
                 if hasattr(chat, "title"):
                     if( "ᵛ²" in     chat.title and not (chat.admin_rights or chat.creator) and not (check.sender_id in DEVJOKR)
                     ):
-                        await edit_delete(check, "** ᯽︙ لا يمكنني استخدام سورس الساحر هنا في هذه المجموعة  **")
+                        await edit_delete(check, "** ᯽︙ لا يمكنني استخدام سورس الخفاش هنا في هذه المجموعة  **")
                     elif( "³¹³" in     chat.title and not (chat.admin_rights or chat.creator) and not (check.sender_id in DEVJOKR)
                     ):
-                        await edit_delete(check, "** ᯽︙ لا يمكنني استخدام سورس الساحر هنا في هذه المجموعة **")
+                        await edit_delete(check, "** ᯽︙ لا يمكنني استخدام سورس الخفاش هنا في هذه المجموعة **")
                         return
                 if groups_only and not check.is_group:
                     await edit_delete(check, "`لا أعتقد ان هذه مجموعة, جرب بلكروب عزيزي.`", 10)
@@ -133,7 +133,7 @@ class QrueClient(TelegramClient):
                                   \nwe logged only fact of error and date,\nwe respect your privacy,\
                                   \nyou may not report this error if you've\
                                   \nany confidential data here, no one will see your data\
-                                  \n\n--------BEGIN SHRU TRACEBACK LOG--------\
+                                  \n\n--------BEGIN batt TRACEBACK LOG--------\
                                   \nDate: {date}\nGroup ID: {str(check.chat_id)}\
                                   \nSender ID: {str(check.sender_id)}\
                                   \nMessage Link: {await check.client.get_msg_link(check)}\
@@ -144,7 +144,7 @@ class QrueClient(TelegramClient):
                             "error": str(sys.exc_info()[1]),
                             "date": datetime.datetime.now(),
                         }
-                        ftext += "\n\n--------END SHRU TRACEBACK LOG--------"
+                        ftext += "\n\n--------END batt TRACEBACK LOG--------"
                         command = 'git log --pretty=format:"%an: %s" -5'
                         ftext += "\n\n\nLast 5 commits:\n"
                         output = (await runcmd(command))[:2]
@@ -153,8 +153,8 @@ class QrueClient(TelegramClient):
                         pastelink = await paste_message(
                             ftext, pastetype="s", markdown=False
                         )
-                        text = "**تقرير خطا الساحر**\n\n"
-                        link = "[هنا](https://t.me/SXYO3)"
+                        text = "**تقرير خطا الخفاش**\n\n"
+                        link = "[هنا](https://t.me/angthon)"
                         text += "إذا كنت تريد يمكنك الإبلاغ عن ذلك"
                         text += f"- فقط قم بإعادة توجيه هذه الرسالة {link}.\n"
                         text += "لا يتم تسجيل اي خطا فقط التاريخ والوقت\n\n"
@@ -163,7 +163,7 @@ class QrueClient(TelegramClient):
                             Config.PRIVATE_GROUP_BOT_API_ID, text, link_preview=False
                         )
 
-            from .session import Qrh9
+            from .session import lucmd9
 
             if not func.__doc__ is None:
                 CMD_INFO[command[0]].append((func.__doc__).strip())
@@ -176,18 +176,18 @@ class QrueClient(TelegramClient):
                     except BaseException:
                         LOADED_CMDS.update({command[0]: [wrapper]})
                 if edited:
-                    Qrh9.add_event_handler(
+                    lucmd9.add_event_handler(
                         wrapper,
                         MessageEdited(pattern=REGEX_.regex1, outgoing=True, **kwargs),
                     )
-                Qrh9.add_event_handler(
+                lucmd9.add_event_handler(
                     wrapper,
                     NewMessage(pattern=REGEX_.regex1, outgoing=True, **kwargs),
                 )
                 if allow_sudo and gvarstatus("sudoenable") is not None:
                     if command is None or command[0] in sudo_enabledcmds:
                         if edited:
-                            Qrh9.add_event_handler(
+                            lucmd9.add_event_handler(
                                 wrapper,
                                 MessageEdited(
                                     pattern=REGEX_.regex2,
@@ -195,7 +195,7 @@ class QrueClient(TelegramClient):
                                     **kwargs,
                                 ),
                             )
-                        Qrh9.add_event_handler(
+                        lucmd9.add_event_handler(
                             wrapper,
                             NewMessage(
                                 pattern=REGEX_.regex2,
@@ -211,8 +211,8 @@ class QrueClient(TelegramClient):
                 except BaseException:
                     LOADED_CMDS.update({file_test: [func]})
                 if edited:
-                    Qrh9.add_event_handler(func, events.MessageEdited(**kwargs))
-                Qrh9.add_event_handler(func, events.NewMessage(**kwargs))
+                    lucmd9.add_event_handler(func, events.MessageEdited(**kwargs))
+                lucmd9.add_event_handler(func, events.NewMessage(**kwargs))
             return wrapper
 
         return decorator
@@ -248,7 +248,7 @@ class QrueClient(TelegramClient):
                                     \nwe logged only fact of error and date,\nwe respect your privacy,\
                                     \nyou may not report this error if you've\
                                     \nany confidential data here, no one will see your data\
-                                    \n\n--------BEGIN SHRU TRACEBACK LOG--------\
+                                    \n\n--------BEGIN batt TRACEBACK LOG--------\
                                     \nDate: {date}\nGroup ID: {str(check.chat_id)}\
                                     \nSender ID: {str(check.sender_id)}\
                                     \nMessage Link: {await check.client.get_msg_link(check)}\
@@ -259,7 +259,7 @@ class QrueClient(TelegramClient):
                             "error": str(sys.exc_info()[1]),
                             "date": datetime.datetime.now(),
                         }
-                        ftext += "\n\n--------END SHRU TRACEBACK LOG--------"
+                        ftext += "\n\n--------END batt TRACEBACK LOG--------"
                         command = 'git log --pretty=format:"%an: %s" -5'
                         ftext += "\n\n\nLast 5 commits:\n"
                         output = (await runcmd(command))[:2]
@@ -268,7 +268,7 @@ class QrueClient(TelegramClient):
                         pastelink = await paste_message(
                             ftext, pastetype="s", markdown=False
                         )
-                        text = "**تقرير خطا الساحر**\n\n"
+                        text = "**تقرير خطا الخفاش**\n\n"
                         link = "[هنا](https://t.me/GroupQrue)"
                         text += "إذا كنت تريد يمكنك الإبلاغ عن ذلك"
                         text += f"- فقط قم بإعادة توجيه هذه الرسالة {link}.\n"
@@ -278,12 +278,12 @@ class QrueClient(TelegramClient):
                             Config.PRIVATE_GROUP_BOT_API_ID, text, link_preview=False
                         )
 
-            from .session import Qrh9
+            from .session import lucmd9
 
             if edited is True:
-                Qrh9.tgbot.add_event_handler(func, events.MessageEdited(**kwargs))
+                lucmd9.tgbot.add_event_handler(func, events.MessageEdited(**kwargs))
             else:
-                Qrh9.tgbot.add_event_handler(func, events.NewMessage(**kwargs))
+                lucmd9.tgbot.add_event_handler(func, events.NewMessage(**kwargs))
 
             return wrapper
 

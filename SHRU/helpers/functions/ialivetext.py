@@ -10,7 +10,7 @@ from .utils import get_readable_time
 Heroku = heroku3.from_key(Config.HEROKU_API_KEY)
 heroku_api = "https://api.heroku.com"
 
-# UniBorg Telegram SHRU
+# UniBorg Telegram batt
 # Copyright (C) 2020 @UniBorg
 # This code is licensed under
 # the "you can't use this for anything - public or private,
@@ -83,7 +83,7 @@ async def catalive(StartTime):
         dyno = f"{AppHours}h {AppMinutes}m/{hours}h {minutes}m"
     except Exception as e:
         dyno = e
-    return f"🖤༄ SHRU Stats ༄🖤\
+    return f"🖤༄ batt Stats ༄🖤\
                  \n\nღ Database : {check_sgnirts}\
                   \nღ Sudo : {sudo}\
                   \nღ Uptime : {uptime}\

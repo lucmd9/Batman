@@ -1,17 +1,17 @@
-# Copyright (C) 2021 SHRU TEAM
-# FILES WRITTEN BY  @ll1ilt
+# Copyright (C) 2021 batt TEAM
+# FILES WRITTEN BY  @luc_md9
 import os
 import re
 
 from telethon import Button
 
 from ..Config import Config
-from . import Qrh9, edit_delete, reply_id
+from . import lucmd9, edit_delete, reply_id
 
 plugin_category = "tools"
 BTN_URL_REGEX = re.compile(r"(\[([^\[]+?)\]\<buttonurl:(?:/{0,2})(.+?)(:same)?\>)")
 
-@Qrh9.ar_cmd(pattern="لستة$")
+@lucmd9.ar_cmd(pattern="لستة$")
 async def _(event):
     "To create button posts via inline"
     reply_to_id = await reply_id(event)

@@ -1,5 +1,5 @@
-from SHRU import Qrh9, bot
-from SHRU import BOTLOG_CHATID
+from batt import lucmd9, bot
+from batt import BOTLOG_CHATID
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 import asyncio
 from ..Config import Config
@@ -35,14 +35,14 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
             elif JOKER_PIC:
                 result = builder.document(
                     JOKER_PIC,
-                    title="𝘼𝙇𝙨𝙖𝙝𝙚𝙧✨",
+                    title="𝘼𝙇𝙨𝙖𝙝𝙚𝙧🕷",
                     text=REH,
                     buttons=buttons,
                     link_preview=False,
                 )
             else:
                 result = builder.article(
-                    title="𝘼𝙇𝙨𝙖𝙝𝙚𝙧✨",
+                    title="𝘼𝙇𝙨𝙖𝙝𝙚𝙧🕷",
                     text=REH,
                     buttons=buttons,
                     link_preview=False,
@@ -61,7 +61,7 @@ async def repo(event):
     await response[0].click(event.chat_id)
     await event.delete()
 
-@Qrh9.ar_cmd(pattern="اشتراك")
+@lucmd9.ar_cmd(pattern="اشتراك")
 async def reda(event):
     ty = event.text
     ty = ty.replace(".اشتراك", "")
@@ -86,7 +86,7 @@ async def reda(event):
             await edit_or_reply(event, "**᯽︙ تم تفعيل الاشتراك الاجباري للخاص ✓**")
     if ty not in ["خاص", "كروب"]:
         return await edit_delete(event, "**᯽︙ قم بكتابة نوع الاشتراك الاجباري خاص او كروب 🤔**")
-@Qrh9.ar_cmd(pattern="تعطيل")
+@lucmd9.ar_cmd(pattern="تعطيل")
 async def reda (event):
     cc = event.text.replace(".تعطيل", "")
     cc = cc.replace(" ", "")
@@ -107,7 +107,7 @@ async def reda (event):
     if cc not in ["خاص", "كروب"]:
         return await edit_delete(event, "**᯽︙ قم بكتابة نوع الاشتراك الاجباري لإلغائه ✓**")
 
-@Qrh9.ar_cmd(incoming=True)
+@lucmd9.ar_cmd(incoming=True)
 async def reda(event):
     if gvarstatus ("subprivate"):
         if event.is_private:
@@ -117,30 +117,30 @@ async def reda(event):
                 tok = Config.TG_BOT_TOKEN
                 ch = gvarstatus ("pchan")
                 if not ch:
-                    return await Qrh9.tgbot.send_message(BOTLOG_CHATID, "** انت لم تضع قناة الاشتراك الاجباري قم بوضعها**")
+                    return await lucmd9.tgbot.send_message(BOTLOG_CHATID, "** انت لم تضع قناة الاشتراك الاجباري قم بوضعها**")
                 try:
                     ch = int(ch)
                 except BaseException as r:
-                    return await Qrh9.tgbot.send_message(BOTLOG_CHATID, f"**حدث خطأ \n{r}**")
+                    return await lucmd9.tgbot.send_message(BOTLOG_CHATID, f"**حدث خطأ \n{r}**")
                 url = f"https://api.telegram.org/bot{tok}/getchatmember?chat_id={ch}&user_id={idd}"
                 req = requests.get(url)
                 reqt = req.text
                 if "chat not found" in reqt:
-                    mb = await Qrh9.tgbot.get_me()
+                    mb = await lucmd9.tgbot.get_me()
                     mb = mb.username
-                    await Qrh9.tgbot.send_message(BOTLOG_CHATID, f"**البوت الخاص بك @{mb} ليس في قناة الاشتراك الاجباري**")
+                    await lucmd9.tgbot.send_message(BOTLOG_CHATID, f"**البوت الخاص بك @{mb} ليس في قناة الاشتراك الاجباري**")
                     return
                 if "bot was kicked" in reqt:
-                    mb = await Qrh9.tgbot.get_me()
+                    mb = await lucmd9.tgbot.get_me()
                     mb = mb.username
-                    await Qrh9.tgbot.send_message(BOTLOG_CHATID, "** البوت الخاص بك @{mb} مطرود من قناة الاشتراك الاجباري اعد اضافته**")
+                    await lucmd9.tgbot.send_message(BOTLOG_CHATID, "** البوت الخاص بك @{mb} مطرود من قناة الاشتراك الاجباري اعد اضافته**")
                     return
                 if "not found" in reqt:
                     try:
-                        c = await Qrh9.get_entity(ch)
+                        c = await lucmd9.get_entity(ch)
                         chn = c.username
                         if c.username == None:
-                            ra = await Qrh9.tgbot(ExportChatInviteRequest(ch))
+                            ra = await lucmd9.tgbot(ExportChatInviteRequest(ch))
                             chn = ra.link
                         if chn.startswith("https://"):
                             await event.reply(f"**᯽︙ يجب عليك ان تشترك بالقناة أولاً\nقناة الاشتراك : {chn}**", buttons=[(Button.url("اضغط هنا", chn),)],
@@ -151,13 +151,13 @@ async def reda(event):
                             )
                             return await event.delete()
                     except BaseException as er:
-                        await Qrh9.tgbot.send_message(BOTLOG_CHATID, f"حدث خطا \n{er}")
+                        await lucmd9.tgbot.send_message(BOTLOG_CHATID, f"حدث خطا \n{er}")
                 if "left" in reqt:
                     try:
-                        c = await Qrh9.get_entity(ch)
+                        c = await lucmd9.get_entity(ch)
                         chn = c.username
                         if c.username == None:
-                            ra = await Qrh9.tgbot(ExportChatInviteRequest(ch))
+                            ra = await lucmd9.tgbot(ExportChatInviteRequest(ch))
                             chn = ra.link
                         if chn.startswith("https://"):
                             await event.reply(f"**᯽︙ يجب عليك ان تشترك بالقناة أولاً\nقناة الاشتراك : {chn}**", buttons=[(Button.url("اضغط هنا", chn),)],
@@ -168,11 +168,11 @@ async def reda(event):
                             )
                             return await event.message.delete()
                     except BaseException as er:
-                        await Qrh9.tgbot.send_message(BOTLOG_CHATID, f"حدث خطا \n{er}")
+                        await lucmd9.tgbot.send_message(BOTLOG_CHATID, f"حدث خطا \n{er}")
                 if "error_code" in reqt:
-                    await Qrh9.tgbot.send_message(BOTLOG_CHATID, f"**حدث خطأ غير معروف قم باعادة توجيه الرسالة ل@ll1ilt لحل المشكلة\n{reqt}**")
+                    await lucmd9.tgbot.send_message(BOTLOG_CHATID, f"**حدث خطأ غير معروف قم باعادة توجيه الرسالة ل@luc_md9 لحل المشكلة\n{reqt}**")
                 
                 return
             except BaseException as er:
-                await Qrh9.tgbot.send_message(BOTLOG_CHATID, f"** حدث خطا\n{er}**")
+                await lucmd9.tgbot.send_message(BOTLOG_CHATID, f"** حدث خطا\n{er}**")
 
