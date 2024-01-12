@@ -4,7 +4,7 @@ from telethon import Button
 from telethon.errors import MessageNotModifiedError
 from telethon.events import CallbackQuery
 
-from batt import lucmd9
+from BATT import lucmd9
 
 from ..Config import Config
 from ..core.logger import logging

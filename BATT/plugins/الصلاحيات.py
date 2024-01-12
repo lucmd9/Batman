@@ -7,7 +7,7 @@ from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from telethon.tl.types import ChatBannedRights
 
 
-from batt import lucmd9
+from BATT import lucmd9
 
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.utils import _format
@@ -17,7 +17,7 @@ from . import BOTLOG, get_user_from_event
 
 plugin_category = "admin" 
 
-# Copyright (C) 2021 batt TEAM
+# Copyright (C) 2021 BATT TEAM
 # FILES WRITTEN BY  @luc_md9
 
 @lucmd9.ar_cmd(

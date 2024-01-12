@@ -1,7 +1,7 @@
 import os
 from telethon import functions 
 import subprocess
-from batt.helpers.functions.functions import translate
+from BATT.helpers.functions.functions import translate
 from datetime import datetime
 from thebatman import get_string
 
@@ -10,7 +10,7 @@ from thebatman import get_string
 from gtts import gTTS
 
 
-from batt import lucmd9
+from BATT import lucmd9
 
 
 from ..core.managers import edit_delete, edit_or_reply

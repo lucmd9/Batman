@@ -1,6 +1,6 @@
 import html
 
-from batt import lucmd9
+from BATT import lucmd9
 from ..core.managers import edit_or_reply
 from ..sql_helper import warns_sql as sql
 

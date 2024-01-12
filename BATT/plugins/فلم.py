@@ -1,4 +1,4 @@
-#batt ©
+#BATT ©
 #By Reda telegram: @rd0r0
 
 from telethon.tl.custom import Button
@@ -6,7 +6,7 @@ from cryptography.fernet import Fernet
 import requests
 from html_telegraph_poster.upload_images import upload_image
 import random
-from batt import lucmd9
+from BATT import lucmd9
 import asyncio
 from ..core.managers import edit_delete, edit_or_reply
 

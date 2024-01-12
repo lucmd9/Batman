@@ -7,7 +7,7 @@ from telethon.tl.functions.photos import GetUserPhotosRequest
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.utils import get_input_location
 
-from batt import lucmd9
+from BATT import lucmd9
 
 from ..Config import Config
 from lucmd9.razan.resources.strings import *

@@ -6,8 +6,8 @@ from telethon.errors import ChatAdminRequiredError as no_admin
 from telethon.tl.functions.messages import ExportChatInviteRequest
 
 from lucmd9.razan.resources.strings import *
-from batt import lucmd9
-from batt.utils import admin_cmd
+from BATT import lucmd9
+from BATT.utils import admin_cmd
 
 from ..core.managers import edit_or_reply
 from ..core.managers import edit_or_reply as eod
@@ -100,15 +100,15 @@ async def _(e):
 
 
 @lucmd9.on(admin_cmd(pattern="للكل تاك$"))
-async def listall(batt):
-    if batt.fwd_from:
+async def listall(BATT):
+    if BATT.fwd_from:
         return
     mentions = "- هذه هي قائمة جميع الاعضاء هنا: "
     chat = await bot.get_input_chat()
     async for x in borg.iter_participants(chat, 2000):
         mentions += f" \n[{x.first_name}](tg://user?id={x.id})"
-    await batt.reply(mentions)
-    await batt.delete()
+    await BATT.reply(mentions)
+    await BATT.delete()
 
 R = (
     "┈┈╱▔▔▔▔▔▔▔▔▔▔▔▏\n"

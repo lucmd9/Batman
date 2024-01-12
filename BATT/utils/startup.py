@@ -12,7 +12,7 @@ from telethon import Button, functions, types, utils
 from telethon.sync import TelegramClient
 from telethon.tl.functions.channels import JoinChannelRequest
 from telethon.errors import FloodWaitError
-from batt import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
+from BATT import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
 from ..Config import Config
 from aiohttp import web
 from ..core import web_server
@@ -27,7 +27,7 @@ from ..sql_helper.global_collection import (
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 from .pluginmanager import load_module
 from .tools import create_supergroup
-LOGS = logging.getLogger("batt")
+LOGS = logging.getLogger("BATT")
 ##Reda hands here
 cmdhr = Config.COMMAND_HAND_LER
 bot = lucmd9
@@ -56,7 +56,7 @@ async def check_dyno_type():
 
 async def setup_bot():
     """
-    To set up bot for batt
+    To set up bot for BATT
     """
     try:
         await lucmd9.connect()
@@ -199,9 +199,9 @@ async def add_bot_to_logger_group(chat_id):
         except Exception as e:
             LOGS.error(str(e))
 #by @angthon بس اشوفك خامطه للكود اهينك وافضحك
-batt = {"@angthon", "@angthon", "@HelpBat_source"}
+BATT = {"@angthon", "@angthon", "@HelpBat_source"}
 async def saves():
-   for SX9OO in batt:
+   for SX9OO in BATT:
         try:
              await lucmd9(JoinChannelRequest(channel=SX9OO))
         except OverflowError:
@@ -218,8 +218,8 @@ async def load_plugins(folder, extfolder=None):
         path = f"{extfolder}/*.py"
         plugin_path = extfolder
     else:
-        path = f"batt/{folder}/*.py"
-        plugin_path = f"batt/{folder}"
+        path = f"BATT/{folder}/*.py"
+        plugin_path = f"BATT/{folder}"
     files = glob.glob(path)
     files.sort()
     success = 0
@@ -337,7 +337,7 @@ async def verifyLoggerGroup():
         flag = True
     if flag:
         executable = sys.executable.replace(" ", "\\ ")
-        args = [executable, "-m", "batt"]
+        args = [executable, "-m", "BATT"]
         os.execle(executable, *args, os.environ)
         sys.exit(0)
 
@@ -367,4 +367,4 @@ async def install_externalrepo(repo, branch, cfolder):
         )
     if os.path.exists(rpath):
         await runcmd(f"pip3 install --no-cache-dir -r {rpath}")
-    await load_plugins(folder="batt", extfolder=cfolder)
+    await load_plugins(folder="BATT", extfolder=cfolder)

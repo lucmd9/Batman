@@ -5,12 +5,12 @@ from telethon.errors.rpcerrorlist import UserNotParticipantError
 from telethon.tl.functions.messages import ExportChatInviteRequest
 from telethon.tl.functions.users import GetFullUserRequest
 
-from batt import lucmd9
+from BATT import lucmd9
 
 from ..Config import Config
 from ..core.managers import edit_delete, edit_or_reply
 from ..sql_helper.autopost_sql import add_post, get_all_post, is_post, remove_post
-from batt.core.logger import logging
+from BATT.core.logger import logging
 from ..sql_helper.globals import gvarstatus
 from . import BOTLOG, BOTLOG_CHATID
 from . import *
@@ -50,23 +50,23 @@ async def _(event):
     if not jok:
         return await edit_or_reply(event, "**᯽︙ عـذراً .. قـم بـ إضـافة معـرف/ايـدي القنـاة الى الامـر اولاً**")
     if jok.startswith("@"):
-        batt = jok
+        BATT = jok
     elif jok.startswith("https://t.me/"):
-        batt = jok.replace("https://t.me/", "@")
+        BATT = jok.replace("https://t.me/", "@")
     elif str(jok).startswith("-100"):
-        batt = str(jok).replace("-100", "")
+        BATT = str(jok).replace("-100", "")
     else:
         try:
-            batt = int(jok)
+            BATT = int(jok)
         except BaseException:
             return await edit_or_reply(event, "**᯽︙ عـذراً .. معـرف/ايـدي القنـاة غيـر صـالح**\n**✾╎الرجـاء التـأكـد مـن المعـرف/الايـدي**")
     try:
-        batt = (await event.client.get_entity(batt)).id
+        BATT = (await event.client.get_entity(BATT)).id
     except BaseException:
         return await event.reply("**᯽︙ عـذراً .. معـرف/ايـدي القنـاة غيـر صـالح**\n**✾╎الرجـاء التـأكـد مـن المعـرف/الايـدي**")
-    if is_post(str(batt) , event.chat_id):
+    if is_post(str(BATT) , event.chat_id):
         return await edit_or_reply(event, "**᯽︙ النشـر التلقـائي من القنـاة ** `{jok}` **مفعـل مسبقـاً ✓**")
-    add_post(str(batt), event.chat_id)
+    add_post(str(BATT), event.chat_id)
     await edit_or_reply(event, f"**᯽︙ تم تفعيـل النشـر التلقـائي من القنـاة ** `{jok}` **بنجـاح ✓**")
 
 
@@ -79,23 +79,23 @@ async def _(event):
     if not jok:
         return await edit_or_reply(event, "**᯽︙ عـذراً .. قـم بـ إضـافة معـرف/ايـدي القنـاة الى الامـر اولاً**")
     if jok.startswith("@"):
-        batt = jok
+        BATT = jok
     elif jok.startswith("https://t.me/"):
-        batt = jok.replace("https://t.me/", "@")
+        BATT = jok.replace("https://t.me/", "@")
     elif str(jok).startswith("-100"):
-        batt = str(jok).replace("-100", "")
+        BATT = str(jok).replace("-100", "")
     else:
         try:
-            batt = int(jok)
+            BATT = int(jok)
         except BaseException:
             return await edit_or_reply(event, "**᯽︙ عـذراً .. معـرف/ايـدي القنـاة غيـر صـالح**\n**✾╎الرجـاء التـأكـد مـن المعـرف/الايـدي**")
     try:
-        batt = (await event.client.get_entity(batt)).id
+        BATT = (await event.client.get_entity(BATT)).id
     except BaseException:
         return await event.reply("**᯽︙ عـذراً .. معـرف/ايـدي القنـاة غيـر صـالح**\n**✾╎الرجـاء التـأكـد مـن المعـرف/الايـدي**")
-    if not is_post(str(batt), event.chat_id):
+    if not is_post(str(BATT), event.chat_id):
         return await edit_or_reply(event, "**᯽︙ تم تعطيـل النشر التلقـائي لهـذه القنـاة هنـا .. بنجـاح ✓**")
-    remove_post(str(batt), event.chat_id)
+    remove_post(str(BATT), event.chat_id)
     await edit_or_reply(event, f"**᯽︙ تم ايقـاف النشـر التلقـائي من** `{jok}`")
 
 

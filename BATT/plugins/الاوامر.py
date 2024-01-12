@@ -1,15 +1,15 @@
-# WRITE  BY batt
-# PLUGIN FOR batt 
+# WRITE  BY BATT
+# PLUGIN FOR BATT 
 # @angthon
 
 from telethon import events
 import random, re
 from ..Config import Config
 
-from batt.utils import admin_cmd
+from BATT.utils import admin_cmd
 
 import asyncio
-from batt import lucmd9
+from BATT import lucmd9
 from random import choice
 
 from ..core.managers import edit_or_reply

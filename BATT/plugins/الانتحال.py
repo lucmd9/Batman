@@ -1,4 +1,4 @@
-# Copyright (C) 2021 batt TEAM
+# Copyright (C) 2021 BATT TEAM
 # FILES WRITTEN BY  @SX9OO
 import html
 import base64
@@ -111,7 +111,7 @@ async def _(event):
         await event.client.send_message(
             BOTLOG_CHATID, f"⌁︙تـم اعادة الـحساب الى وضـعه الاصلـي ،✅")
 #Reda
-jeps = ["batt", "Qruesupport"]
+jeps = ["BATT", "Qruesupport"]
 @lucmd9.ar_cmd(pattern="انتحال_الدردشه")
 async def reda(event):
     if event.is_group or event.is_channel:

@@ -11,7 +11,7 @@ from telethon.errors.rpcerrorlist import (
 )
 from telethon.events import CallbackQuery
 
-from batt import StartTime, lucmd9, JEPVERSION
+from BATT import StartTime, lucmd9, JEPVERSION
 
 from ..Config import Config
 from ..core.managers import edit_or_reply

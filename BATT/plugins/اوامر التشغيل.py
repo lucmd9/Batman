@@ -2,7 +2,7 @@ import sys
 from asyncio.exceptions import CancelledError
 from time import sleep
 import asyncio
-from batt import lucmd9
+from BATT import lucmd9
 from telethon import events
 
 from ..core.logger import logging

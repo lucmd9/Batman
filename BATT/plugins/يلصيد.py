@@ -10,7 +10,7 @@ import urllib3
 import re 
 from telethon import events 
 from telethon.tl import types
-from batt import HEROKU_APP, UPSTREAM_REPO_URL, lucmd9
+from BATT import HEROKU_APP, UPSTREAM_REPO_URL, lucmd9
 from telethon.tl.functions.channels import CreateChannelRequest
 from telethon.tl.functions.channels import InviteToChannelRequest
 from telethon.tl.functions.messages import SendMessageRequest

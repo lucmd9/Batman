@@ -8,7 +8,7 @@ from telethon.tl.functions.channels import GetFullChannelRequest
 from telethon.tl.types import InputPeerChannel
 from telethon.errors import ChannelPrivateError
 from telethon.utils import get_peer_id
-from batt import lucmd9
+from BATT import lucmd9
 from telethon import types
 from ..Config import Config
 from ..core.managers import edit_delete, edit_or_reply

@@ -2,11 +2,11 @@ import os
 
 from PIL import Image
 
-from batt.core.logger import logging
-from batt.core.managers import edit_or_reply
-from batt.helpers.functions.vidtools import take_screen_shot
-from batt.helpers.tools import fileinfo, media_type, meme_type
-from batt.helpers.utils.utils import runcmd
+from BATT.core.logger import logging
+from BATT.core.managers import edit_or_reply
+from BATT.helpers.functions.vidtools import take_screen_shot
+from BATT.helpers.tools import fileinfo, media_type, meme_type
+from BATT.helpers.utils.utils import runcmd
 
 LOGS = logging.getLogger(__name__)
 

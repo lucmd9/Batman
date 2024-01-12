@@ -3,7 +3,7 @@ from datetime import datetime
 
 from telethon.errors import BadRequestError, FloodWaitError, ForbiddenError
 
-from batt import lucmd9
+from BATT import lucmd9
 
 from ..Config import Config
 from ..core.logger import logging

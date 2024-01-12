@@ -20,7 +20,7 @@ def media_type(message):
 
 async def post_to_telegraph(page_title, html_format_content):
     post_client = TelegraphPoster(use_api=True)
-    auth_name = "batt"
+    auth_name = "BATT"
     post_client.create_api_token(auth_name)
     post_page = post_client.post(
         title=page_title,

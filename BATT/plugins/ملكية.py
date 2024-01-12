@@ -1,9 +1,9 @@
-# Copyright (C) 2021 batt TEAM
+# Copyright (C) 2021 BATT TEAM
 
 import telethon.password as pwd_mod
 from telethon.tl import functions
 
-from batt import lucmd9
+from BATT import lucmd9
 
 from ..Config import Config
 
@@ -19,7 +19,7 @@ plugin_category = "utils"
         "usage": "{tr}otransfer <username to whom you want to transfer>",
     },
 )
-# For batt
+# For BATT
 
 async def _(event):
     "To transfer channel ownership"

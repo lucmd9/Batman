@@ -5,7 +5,7 @@ from telethon.events import CallbackQuery
 
 from lucmd9.razan.resources.assistant import *
 from lucmd9.razan.resources.mybot import *
-from batt import lucmd9
+from BATT import lucmd9
 from ..core import check_owner
 from ..Config import Config
 
@@ -60,14 +60,14 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
             elif JEP_IC:
                 result = builder.document(
                     JEP_IC,
-                    title="batt",
+                    title="BATT",
                     text=ROE,
                     buttons=buttons,
                     link_preview=False,
                 )
             else:
                 result = builder.article(
-                    title="batt",
+                    title="BATT",
                     text=ROE,
                     buttons=buttons,
                     link_preview=False,

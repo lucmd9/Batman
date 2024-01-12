@@ -1,5 +1,5 @@
 
-from batt import lucmd9
+from BATT import lucmd9
 from telethon.tl.functions.messages import GetHistoryRequest
 from telethon.tl.functions.channels import JoinChannelRequest
 from telethon.tl.functions.messages import ImportChatInviteRequest
@@ -19,11 +19,11 @@ bot_username5 = '@xnsex21bot'#العرب
 bot_username6 = '@YY8bot'#السلطان
 bot_username7= '@cn2bot'#اسيا|الزعامه
 ConsoleJoker = Config.T7KM
-batt = ['yes']
+BATT = ['yes']
 its_Reham = False
 @lucmd9.on(admin_cmd(pattern="(تجميع مليار|تجميع المليار)"))
 async def _(event):
-    if batt[0] == "yes":
+    if BATT[0] == "yes":
         await event.edit("**᯽︙سيتم تجميع نقاط بوت المليار، قبل كل شيء تأكد من أنك قمت بالانضمام إلى القنوات الاشتراك الاجباري للبوت لتجنب حدوث أخطاء.**")
         channel_entity = await lucmd9.get_entity(bot_username)
         await lucmd9.send_message('@EEObot', '/start')
@@ -36,7 +36,7 @@ async def _(event):
 
         chs = 1
         for i in range(100):
-            if batt[0] == 'no':
+            if BATT[0] == 'no':
                 break
             await asyncio.sleep(1)
 
@@ -67,7 +67,7 @@ async def _(event):
 
 @lucmd9.on(admin_cmd(pattern="(تجميع الجوكر|تجميع جوكر)"))
 async def _(event):
-    if batt[0] == "yes":
+    if BATT[0] == "yes":
         await event.edit("**᯽︙سيتم تجميع النقاط من بوت الخفاش , قبل كل شي تأكد من انك قمت بلانظمام الى القنوات الاشتراك الاجباري للبوت لعدم حدوث اخطاء**")
         channel_entity = await lucmd9.get_entity(bot_username2)
         await lucmd9.send_message('@A_MAN9300BOT', '/start')
@@ -80,7 +80,7 @@ async def _(event):
 
         chs = 1
         for i in range(100):
-            if batt[0] == 'no':
+            if BATT[0] == 'no':
                 break
             await asyncio.sleep(2)
 
@@ -109,7 +109,7 @@ async def _(event):
         await event.edit("يجب الدفع لاستعمال هذا الامر !")
 @lucmd9.on(admin_cmd(pattern="(تجميع العقاب|تجميع عقاب)"))
 async def _(event):
-    if batt[0] == "yes":
+    if BATT[0] == "yes":
         await event.edit("**᯽︙سيتم تجميع النقاط من بوت العقاب , قبل كل شي تأكد من انك قمت بلانظمام الى القنوات الاشتراك الاجباري للبوت لعدم حدوث اخطاء**")
         channel_entity = await lucmd9.get_entity(bot_username3)
         await lucmd9.send_message('@MARKTEBOT', '/start')
@@ -122,7 +122,7 @@ async def _(event):
 
         chs = 1
         for i in range(100):
-            if batt[0] == 'no':
+            if BATT[0] == 'no':
                 break
             await asyncio.sleep(3)
 
@@ -151,7 +151,7 @@ async def _(event):
         await event.edit("يجب الدفع لاستعمال هذا الامر !")
 @lucmd9.on(admin_cmd(pattern="(تجميع المليون|تجميع مليون)"))
 async def _(event):
-    if batt[0] == "yes":
+    if BATT[0] == "yes":
         await event.edit("**᯽︙سيتم تجميع النقاط من بوت المليون , قبل كل شي تأكد من انك قمت بلانظمام الى القنوات الاشتراك الاجباري للبوت لعدم حدوث اخطاء**")
         channel_entity = await lucmd9.get_entity(bot_username4)
         await lucmd9.send_message('@qweqwe1919bot', '/start')
@@ -164,7 +164,7 @@ async def _(event):
 
         chs = 1
         for i in range(100):
-            if batt[0] == 'no':
+            if BATT[0] == 'no':
                 break
             await asyncio.sleep(2)
 
@@ -194,7 +194,7 @@ async def _(event):
 ################################
 @lucmd9.on(admin_cmd(pattern="(تجميع عرب|تجميع العرب)"))
 async def _(event):
-    if batt[0] == "yes":
+    if BATT[0] == "yes":
         await event.edit("**᯽︙سيتم تجميع نقاط بوت العرب, قبل كل شيء تأكد من أنك قمت بالانضمام إلى القنوات الاشتراك الاجباري للبوت لتجنب حدوث أخطاء.**")
         channel_entity = await lucmd9.get_entity(bot_username5)
         await lucmd9.send_message('@xnsex21bot', '/start')
@@ -207,7 +207,7 @@ async def _(event):
 
         chs = 1
         for i in range(100):
-            if batt[0] == 'no':
+            if BATT[0] == 'no':
                 break
             await asyncio.sleep(5)
 
@@ -407,7 +407,7 @@ async def handle_new_message(event):
 
 @lucmd9.on(admin_cmd(pattern="(تجميع السلطان|تجميع سلطان)"))
 async def _(event):
-    if batt[0] == "yes":
+    if BATT[0] == "yes":
         await event.edit("**᯽︙سيتم تجميع نقاط بوت السلطان، قبل كل شيء تأكد من أنك قمت بالانضمام إلى القنوات الاشتراك الاجباري للبوت لتجنب حدوث أخطاء.**")
         channel_entity = await lucmd9.get_entity(bot_username6)
         await lucmd9.send_message('@YY8bot', '/start')
@@ -420,7 +420,7 @@ async def _(event):
 
         chs = 1
         for i in range(100):
-            if batt[0] == 'no':
+            if BATT[0] == 'no':
                 break
             await asyncio.sleep(1)
 
@@ -448,7 +448,7 @@ async def _(event):
         await event.edit("يجب الدفع لاستخدام هذا الأمر!")
 @lucmd9.on(admin_cmd(pattern="(تجميع اسياسيل|تجميع اسيا)"))
 async def _(event):
-    if batt[0] == "yes":
+    if BATT[0] == "yes":
         await event.edit("**᯽︙سيتم تجميع نقاط بوت اسياسيل، قبل كل شيء تأكد من أنك قمت بالانضمام إلى القنوات الاشتراك الاجباري للبوت لتجنب حدوث أخطاء.**")
         channel_entity = await lucmd9.get_entity(bot_username7)
         await lucmd9.send_message('@cn2bot', '/start')
@@ -461,7 +461,7 @@ async def _(event):
 
         chs = 1
         for i in range(100):
-            if batt[0] == 'no':
+            if BATT[0] == 'no':
                 break
             await asyncio.sleep(1)
 

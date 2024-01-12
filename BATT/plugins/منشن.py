@@ -1,7 +1,7 @@
-# By RIO for batt
+# By RIO for BATT
 # Tel: @luc_md9
 # شعندك داخل للملف تريد تخمطة ههههههههه اخمط ونسبة لنفسك ماوصيك :*
-from batt import lucmd9
+from BATT import lucmd9
 import asyncio
 import time
 from ..core.managers import edit_or_reply

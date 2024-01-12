@@ -22,7 +22,7 @@ BASE_YT_URL = "https://www.youtube.com/watch?v="
 YOUTUBE_REGEX = re.compile(
     r"(?:youtube\.com|youtu\.be)/(?:[\w-]+\?v=|embed/|v/|shorts/)?([\w-]{11})"
 )
-PATH = "./batt/cache/ytsearch.json"
+PATH = "./BATT/cache/ytsearch.json"
 
 song_dl = "yt-dlp --force-ipv4 --write-thumbnail --add-metadata --embed-thumbnail -o './temp/%(title)s.%(ext)s' --extract-audio --audio-format mp3 --audio-quality {QUALITY} {video_link}"
 
@@ -33,11 +33,11 @@ name_dl = (
 )
 
 
-async def yt_search(batt):
+async def yt_search(BATT):
     try:
-        batt = urllib.parse.quote(batt)
+        BATT = urllib.parse.quote(BATT)
         html = urllib.request.urlopen(
-            f"https://www.youtube.com/results?search_query={batt}"
+            f"https://www.youtube.com/results?search_query={BATT}"
         )
 
         user_data = re.findall(r"watch\?v=(\S{11})", html.read().decode())
@@ -92,8 +92,8 @@ class YT_Search_X:
 ytsearch_data = YT_Search_X()
 
 """
-async def yt_data(batt):
-    params = {"format": "json", "url": batt}
+async def yt_data(BATT):
+    params = {"format": "json", "url": BATT}
     url = "https://www.youtube.com/oembed"  # https://stackoverflow.com/questions/29069444/returning-the-urls-as-a-list-from-a-youtube-search-query
     query_string = urllib.parse.urlencode(params)
     url = f"{url}?{query_string}"

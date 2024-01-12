@@ -1,9 +1,9 @@
-# Copyright (C) 2021 batt TEAM
+# Copyright (C) 2021 BATT TEAM
 # FILES WRITTEN BY  @luc_md9
 
 import asyncio
 from telethon import events
-from batt import lucmd9
+from BATT import lucmd9
 import random
 from ..core.managers import edit_or_reply
 from ..helpers.utils import _format

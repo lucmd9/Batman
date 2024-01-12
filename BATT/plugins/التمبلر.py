@@ -2,10 +2,10 @@ import random
 from telethon import events
 import random, re
 
-from batt.utils import admin_cmd
+from BATT.utils import admin_cmd
 
 import asyncio
-from batt import lucmd9
+from BATT import lucmd9
 
 from ..core.managers import edit_or_reply
 from lucmd9.razan.resources.strings import *
@@ -28,7 +28,7 @@ async def _(event):
 async def _(event):
      if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
             await event.edit(
-                "˛ batt ، ٰFٓoٍَِNٌtSَ\n"
+                "˛ BATT ، ٰFٓoٍَِNٌtSَ\n"
                 "•━═━═━═━═━━═━═━═━═━•\n"
                 "**قائـمة اوامر الزغرفة :**\n"
                 " `.زغرفة0`\n"
@@ -43,7 +43,7 @@ async def _(event):
                 " `.زغرفة9`\n"
                 " **اكتب الاسم مع الامر للـزغرفة فقط انكليزي**\n"
                 "•━═━═━═━═━━═━═━═━═━•‌‌\n"
-                "˛ batt ، ٰUٍsٓEِrBُoََt - [CَِٓHُ](t.me/angthon)"
+                "˛ BATT ، ٰUٍsٓEِrBُoََt - [CَِٓHُ](t.me/angthon)"
             )
 #by ~ @luc_md9
 @lucmd9.ar_cmd(
@@ -163,7 +163,7 @@ async def _(event):
                 "-𝐅𝐑𝐈𝐃𝐀𝐘.♡\n"
                 "-𝐒𝐀𝐓𝐔𝐑𝐃𝐀𝐘.♡"
             )
-# ˛ batt ، ٰUٍsٓEِrBُoََt  # 
+# ˛ BATT ، ٰUٍsٓEِrBُoََt  # 
 
 @lucmd9.ar_cmd(
     pattern="اسماء عربية$",
@@ -200,7 +200,7 @@ async def _(event):
                 "- سَݛﯠشہ𓆤.\n"
                 "- فَطـﯡشہ𓆤."
             )
-# ˛ batt ، ٰUٍsٓEِrBُoََt  # 
+# ˛ BATT ، ٰUٍsٓEِrBُoََt  # 
 #by ~ @luc_md9
 @lucmd9.ar_cmd(
     pattern="شباب1$",
@@ -244,7 +244,7 @@ async def _(event):
                 "「𝘋𝘮𝘢𝘳 𐃣.\n"
                 "「𝘑𝘮𝘳𝘢 𐃣."
             )
-# ˛ batt ، ٰUٍsٓEِrBُoََt  # 
+# ˛ BATT ، ٰUٍsٓEِrBُoََt  # 
 #by ~ @luc_md9
 @lucmd9.ar_cmd(
     pattern="شباب2$",
@@ -296,7 +296,7 @@ async def _(event):
                 "𓂐 𝙃𝙈𝙊 𖠛 .\n"
                 "𓂐 𝙅𝙊𝙅 𖠛 ."
             )
-# ˛ batt ، ٰUٍsٓEِrBُoََt  # 
+# ˛ BATT ، ٰUٍsٓEِrBُoََt  # 
 #by ~ @luc_md9
 @lucmd9.ar_cmd(
     pattern="بنات1$",
@@ -398,7 +398,7 @@ async def _(event):
                 "𝄇 𝗞𝗢𝗞𝗔𝆹𝅥𝅮 𝄆💘"
             )
         
-# ˛ batt ، ٰUٍsٓEِrBُoََt  # 
+# ˛ BATT ، ٰUٍsٓEِrBُoََt  # 
 #by ~ @luc_md9
 @lucmd9.ar_cmd(
     pattern="قنوات$",
@@ -451,7 +451,7 @@ async def _(event):
                 ":   ˹𝙍𝙄𝙏𝘼˼ 𓆪 .\n"
                 ": ..................."
             )
-# ˛ batt ، ٰUٍsٓEِrBُoََt  # 
+# ˛ BATT ، ٰUٍsٓEِrBُoََt  # 
 #by ~ @luc_md9
 @lucmd9.ar_cmd(
     pattern="اختصارات1$",
@@ -547,7 +547,7 @@ async def _(event):
                 "يـ؏\n"
                 "أﯠﯠ؏\n"
             )
-# ˛ batt ، ٰUٍsٓEِrBُoََt  # 
+# ˛ BATT ، ٰUٍsٓEِrBُoََt  # 
 #by ~ @luc_md9
 @lucmd9.ar_cmd(
     pattern="اختصارات2$",
@@ -587,7 +587,7 @@ async def _(event):
                 "بـاردۿ`"
             )
         
-# ˛ batt ، ٰUٍsٓEِrBُoََt  # 
+# ˛ BATT ، ٰUٍsٓEِrBُoََt  # 
 #by ~ @luc_md9
 @lucmd9.ar_cmd(
     pattern="اختصارات3$",
@@ -638,7 +638,7 @@ async def _(event):
                 "• ؏ــيني"
             )
         
-# ˛ batt ، ٰUٍsٓEِrBُoََt  # 
+# ˛ BATT ، ٰUٍsٓEِrBُoََt  # 
 #by ~ @luc_md9
 @lucmd9.ar_cmd(
     pattern="اختصارات4$",
@@ -686,7 +686,7 @@ async def _(event):
                 "ٵჂ̤"
             )
         
-# ˛ batt ، ٰUٍsٓEِrBُoََt  # 
+# ˛ BATT ، ٰUٍsٓEِrBُoََt  # 
 #by ~ @luc_md9
 @lucmd9.ar_cmd(
     pattern="اختصارات5$",

@@ -4,14 +4,14 @@ import re
 
 from telethon.events import CallbackQuery
 
-from batt import lucmd9
+from BATT import lucmd9
 
 
 @lucmd9.tgbot.on(CallbackQuery(data=re.compile(b"rzan_(.*)")))
 async def on_plug_in_callback_query_handler(event):
     timestamp = int(event.pattern_match.group(1).decode("UTF-8"))
-    if os.path.exists("./batt/secrets.txt"):
-        jsondata = json.load(open("./batt/secrets.txt"))
+    if os.path.exists("./BATT/secrets.txt"):
+        jsondata = json.load(open("./BATT/secrets.txt"))
         try:
             message = jsondata[f"{timestamp}"]
             userid = message["userid"]

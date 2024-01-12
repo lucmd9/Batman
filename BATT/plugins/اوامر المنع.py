@@ -2,7 +2,7 @@ import re
 
 from telethon.utils import get_display_name
 
-from batt import lucmd9
+from BATT import lucmd9
 
 from ..core.managers import edit_or_reply
 from ..sql_helper import blacklist_sql as sql
@@ -10,7 +10,7 @@ from ..utils import is_admin
 
 plugin_category = "admin"
 
-#copyright for batt © 2021
+#copyright for BATT © 2021
 @lucmd9.ar_cmd(incoming=True, groups_only=True)
 async def on_new_message(event):
     name = event.raw_text

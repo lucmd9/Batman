@@ -1,5 +1,5 @@
-from batt import lucmd9, bot
-from batt import BOTLOG_CHATID
+from BATT import lucmd9, bot
+from BATT import BOTLOG_CHATID
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 import asyncio
 from ..Config import Config

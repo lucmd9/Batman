@@ -9,7 +9,7 @@ import urllib3
 from git import Repo
 from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 from telethon import events 
-from batt import HEROKU_APP, UPSTREAM_REPO_URL, lucmd9
+from BATT import HEROKU_APP, UPSTREAM_REPO_URL, lucmd9
 
 from ..Config import Config
 from ..core.logger import logging
@@ -36,9 +36,9 @@ heroku_api = "https://api.heroku.com"
 UPSTREAM_REPO_BRANCH = Config.UPSTREAM_REPO_BRANCH
 
 REPO_REMOTE_NAME = "temponame"
-IFFUCI_ACTIVE_BRANCH_NAME = "batt"
+IFFUCI_ACTIVE_BRANCH_NAME = "BATT"
 NO_HEROKU_APP_CFGD = "no heroku application found, but a key given? 😕 "
-HEROKU_GIT_REF_SPEC = "HEAD:refs/heads/batt"
+HEROKU_GIT_REF_SPEC = "HEAD:refs/heads/BATT"
 RESTARTING_APP = "re-starting heroku application"
 IS_SELECTED_DIFFERENT_BRANCH = (
     "looks like a custom branch {branch_name} "
@@ -183,7 +183,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
     else:
         remote = repo.create_remote("heroku", heroku_git_url)
     try:
-        remote.push(refspec="HEAD:refs/heads/batt", force=True)
+        remote.push(refspec="HEAD:refs/heads/BATT", force=True)
         build_status = heroku_app.builds(order_by="created_at", sort="desc")[0]
         url = build_status.output_stream_url
         log_content = " "
@@ -214,7 +214,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
         os.remove("log_file.txt")
         return
     try:
-        remote.push("batt:main", force=True)
+        remote.push("BATT:main", force=True)
     except Exception as error:
         await event.edit(f"{txt}\n**هذا هو سجل الاخطاء:**\n`{error}`")
         return repo.__del__()
@@ -270,9 +270,9 @@ async def upstream(event):
         origin = repo.create_remote("upstream", off_repo)
         origin.fetch()
         force_update = True
-        repo.create_head("batt", origin.refs.batt)
-        repo.heads.batt.set_tracking_branch(origin.refs.batt)
-        repo.heads.batt.checkout(True)
+        repo.create_head("BATT", origin.refs.BATT)
+        repo.heads.BATT.set_tracking_branch(origin.refs.BATT)
+        repo.heads.BATT.checkout(True)
     ac_br = repo.active_branch.name
     if ac_br != UPSTREAM_REPO_BRANCH:
         await event.edit(
@@ -345,9 +345,9 @@ async def Hussein(event):
         repo = Repo.init()
         origin = repo.create_remote("upstream", off_repo)
         origin.fetch()
-        repo.create_head("batt", origin.refs.master)
-        repo.heads.batt.set_tracking_branch(origin.refs.master)
-        repo.heads.batt.checkout(True)
+        repo.create_head("BATT", origin.refs.master)
+        repo.heads.BATT.set_tracking_branch(origin.refs.master)
+        repo.heads.BATT.checkout(True)
     with contextlib.suppress(BaseException):
         repo.create_remote("upstream", off_repo)
     ac_br = repo.active_branch.name
@@ -390,9 +390,9 @@ async def reda(event):
             origin = repo.create_remote("upstream", off_repo)
             origin.fetch()
             force_update = True
-            repo.create_head("batt", origin.refs.batt)
-            repo.heads.batt.set_tracking_branch(origin.refs.batt)
-            repo.heads.batt.checkout(True)
+            repo.create_head("BATT", origin.refs.BATT)
+            repo.heads.BATT.set_tracking_branch(origin.refs.BATT)
+            repo.heads.BATT.checkout(True)
         ac_br = repo.active_branch.name
         if ac_br != UPSTREAM_REPO_BRANCH:
             await event.edit(
@@ -465,9 +465,9 @@ async def Hussein(event):
                     origin = repo.create_remote("upstream", off_repo)
                     origin.fetch()
                     force_update = True
-                    repo.create_head("batt", origin.refs.batt)
-                    repo.heads.batt.set_tracking_branch(origin.refs.batt)
-                    repo.heads.batt.checkout(True)
+                    repo.create_head("BATT", origin.refs.BATT)
+                    repo.heads.BATT.set_tracking_branch(origin.refs.BATT)
+                    repo.heads.BATT.checkout(True)
                 ac_br = repo.active_branch.name
                 if ac_br != UPSTREAM_REPO_BRANCH:
                     await event.edit(

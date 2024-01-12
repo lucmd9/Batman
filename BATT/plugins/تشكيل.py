@@ -1,8 +1,8 @@
 import pyfiglet
-from batt import lucmd9
-from batt.helpers.utils import _format
-from batt.core.managers import edit_delete, edit_or_reply
-from batt.plugins import _format, lucmd9, deEmojify
+from BATT import lucmd9
+from BATT.helpers.utils import _format
+from BATT.core.managers import edit_delete, edit_or_reply
+from BATT.plugins import _format, lucmd9, deEmojify
 
 plugin_category = "utils"
 

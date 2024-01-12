@@ -1,9 +1,9 @@
-from batt import lucmd9
+from BATT import lucmd9
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 import os
 import datetime
 from telethon import events
-from batt import *
+from BATT import *
 #ها يالفاشل شعدك داخل هنا 🫣 اعتمد ع نفسك لتخلي سورس الخفاش مصدر طشت سورسك
 thebatman_Asbo3 = {
     'Monday': 'الاثنين',

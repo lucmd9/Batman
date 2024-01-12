@@ -1,4 +1,4 @@
-from batt import lucmd9
+from BATT import lucmd9
 import pkg_resources
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.utils import _catutils, parse_pre, yaml_format
@@ -26,13 +26,13 @@ async def reda(event):
     pattern="الملفات$",
     command=("الملفات", plugin_category),
     info={
-        "header": "To list all plugins in batt.",
+        "header": "To list all plugins in BATT.",
         "usage": "{tr}plugins",
     },
 )
 async def _(event):
-    "To list all plugins in batt"
-    cmd = "ls batt/plugins"
+    "To list all plugins in BATT"
+    cmd = "ls BATT/plugins"
     o = (await _catutils.runcmd(cmd))[0]
     OUTPUT = f"**[الخفاش](tg://need_update_for_some_feature/) الـمـلفـات:**\n{o}"
     await edit_or_reply(event, OUTPUT)
@@ -42,13 +42,13 @@ wjis = [1045489068]
     pattern="فاراتي$",
     command=("فاراتي", plugin_category),
     info={
-        "header": "To list all environment values in batt.",
-        "description": "to show all heroku vars/Config values in your batt",
+        "header": "To list all environment values in BATT.",
+        "description": "to show all heroku vars/Config values in your BATT",
         "usage": "{tr}env",
     },
 ) 
 async def _(event):
-    "To show all config values in batt"
+    "To show all config values in BATT"
     cmd = "env"
     o = (await _catutils.runcmd(cmd))[0]
     OUTPUT = (

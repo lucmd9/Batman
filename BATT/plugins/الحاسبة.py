@@ -3,7 +3,7 @@ import re
 from telethon import Button
 from telethon.events import CallbackQuery, InlineQuery
 
-from batt import CMD_HELP, lucmd9
+from BATT import CMD_HELP, lucmd9
 
 # 𝗧𝗲𝗹𝗲𝗚𝗿𝗮𝗠 : @angthon  ~ @luc_md9
 from ..core.decorators import check_owner

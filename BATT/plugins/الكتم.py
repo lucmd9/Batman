@@ -9,7 +9,7 @@ from telethon.tl.types import ChatBannedRights
 from telethon.utils import get_display_name
 from telethon.tl.types import ChannelParticipantsAdmins
 
-from batt import lucmd9
+from BATT import lucmd9
 
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.utils import _format

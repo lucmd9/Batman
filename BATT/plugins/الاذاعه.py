@@ -5,7 +5,7 @@ import os
 from telethon import events
 from telethon.tl.functions.channels import EditAdminRequest
 from telethon.tl.types import ChatAdminRights
-from batt import lucmd9
+from BATT import lucmd9
 
 from ..core.managers import edit_or_reply
 

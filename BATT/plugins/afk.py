@@ -2,8 +2,8 @@ import asyncio
 from datetime import datetime
 from thebatman import languages
 from telethon.tl import functions, types
-from batt.helpers.functions.functions import translate 
-from batt import CMD_HELP, lucmd9
+from BATT.helpers.functions.functions import translate 
+from BATT import CMD_HELP, lucmd9
 
 from ..Config import Config
 from ..core.logger import logging

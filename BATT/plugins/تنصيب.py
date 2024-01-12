@@ -17,9 +17,9 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
             if ROZ_PIC and ROZ_PIC.endswith((".jpg", ".png", "gif", "mp4")):
                 result = builder.photo(ROZ_PIC, text=ROZ, buttons=buttons, link_preview=False)
             elif ROZ_PIC:
-                result = builder.document(ROZ_PIC,title="batt",text=ROZ,buttons=buttons,link_preview=False)
+                result = builder.document(ROZ_PIC,title="BATT",text=ROZ,buttons=buttons,link_preview=False)
             else:
-                result = builder.article(title="batt",text=ROZ,buttons=buttons,link_preview=False)
+                result = builder.article(title="BATT",text=ROZ,buttons=buttons,link_preview=False)
             await event.answer([result] if result else None)
 @bot.on(admin_cmd(outgoing=True, pattern="السورس"))
 async def repo(event):

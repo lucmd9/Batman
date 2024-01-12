@@ -1,10 +1,10 @@
 from telethon import events
 import random, re
-from batt.utils import admin_cmd
+from BATT.utils import admin_cmd
 import asyncio 
 
 # Wespr File by  @luc_md9
-# Copyright (C) 2021 batt TEAM
+# Copyright (C) 2021 BATT TEAM
 @borg.on(
     admin_cmd(pattern="همسة ?(.*)")
 )

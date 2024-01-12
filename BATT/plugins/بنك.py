@@ -300,13 +300,13 @@ async def thief(message):
     be = int(accu.balance)
     jep = int(be) - int(rt)
     update_bank(user.id, jep)
-    batt = mee.first_name.replace("\u2060", "") if mee.first_name else mee.username
+    BATT = mee.first_name.replace("\u2060", "") if mee.first_name else mee.username
     ga = int(rt) + int(ppe)
     update_bank(mee.id, ga)
     await lucmd9.send_file(
                 message.chat_id,
                 "https://telegra.ph/file/56a3dd726306259beded6.jpg",
-                caption=f"سرق [{batt}](tg://user?id={mee.id}) من [{user.first_name}](tg://user?id={user.id})\n المبلغ: {rt} 💵",
+                caption=f"سرق [{BATT}](tg://user?id={mee.id}) من [{user.first_name}](tg://user?id={user.id})\n المبلغ: {rt} 💵",
                 )
     t["اسرق"] = time.time() + 600
     await asyncio.sleep(600)

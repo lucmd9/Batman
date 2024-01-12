@@ -9,7 +9,7 @@ from PIL import Image, ImageDraw, ImageFont
 from requests import get
 from telethon.utils import get_display_name
 
-from batt import lucmd9
+from BATT import lucmd9
 
 from ..Config import Config
 from ..core.managers import edit_or_reply
@@ -19,13 +19,13 @@ from . import ALIVE_NAME
 plugin_category = "extra"
 
 #كـتابة وتعـديل  @luc_md9
-# batt ™
+# BATT ™
 async def amongus_gen(text: str, clr: int) -> str:
-    url = "https://github.com/batt-AR/lucmd9-Resources/raw/master/Resources/Amongus/"
+    url = "https://github.com/BATT-AR/lucmd9-Resources/raw/master/Resources/Amongus/"
     font = ImageFont.truetype(
         BytesIO(
             get(
-                "https://github.com/batt-AR/lucmd9-Resources/raw/master/Resources/fonts/bold.ttf"
+                "https://github.com/BATT-AR/lucmd9-Resources/raw/master/Resources/fonts/bold.ttf"
             ).content
         ),
         60,
@@ -54,10 +54,10 @@ async def amongus_gen(text: str, clr: int) -> str:
 
 async def get_imposter_img(text: str) -> str:
     background = get(
-        f"https://github.com/batt-AR/lucmd9-Resources/raw/master/Resources/imposter/impostor{randint(1,22)}.png"
+        f"https://github.com/BATT-AR/lucmd9-Resources/raw/master/Resources/imposter/impostor{randint(1,22)}.png"
     ).content
     font = get(
-        "https://github.com/batt-AR/lucmd9-Resources/raw/master/Resources/fonts/roboto_regular.ttf"
+        "https://github.com/BATT-AR/lucmd9-Resources/raw/master/Resources/fonts/roboto_regular.ttf"
     ).content
     font = BytesIO(font)
     font = ImageFont.truetype(font, 30)

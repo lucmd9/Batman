@@ -1,11 +1,11 @@
-# Copyright (C) 2021 batt TEAM
+# Copyright (C) 2021 BATT TEAM
 # FILES WRITTEN BY  @SX9OO
 
 from telethon import events
 from telethon.utils import get_display_name
 
-from batt import lucmd9
-from batt.core.logger import logging
+from BATT import lucmd9
+from BATT.core.logger import logging
 
 from ..core.managers import edit_delete, edit_or_reply
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus

@@ -293,7 +293,7 @@ async def _(event):
     "animation command"
     event = await edit_or_reply(event, "charging")
     txt = "`Tesla Wireless Charging (beta) Started...\
-            \nDevice Detected: Nokia 1100\nBattery Percentage:` "
+            \nDevice Detected: Nokia 1100\nBATTery Percentage:` "
     k = 10
     for _ in range(10):
         await event.edit(txt + str(k))
@@ -302,7 +302,7 @@ async def _(event):
     await event.edit(
         "`Tesla Wireless Charging (beta) Completed...\
         \nDevice Detected: Nokia 1100 (Space Grey Varient)\
-        \nnBattery Percentage:` [100%](https://telegra.ph/file/a45aa7450c8eefed599d9.mp4) ",
+        \nnBATTery Percentage:` [100%](https://telegra.ph/file/a45aa7450c8eefed599d9.mp4) ",
         link_preview=True,
     )
 @lucmd9.on(events.NewMessage(incoming=True))

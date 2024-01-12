@@ -4,7 +4,7 @@ import shutil
 
 from telethon.errors.rpcerrorlist import MediaEmptyError
 
-from batt import lucmd9
+from BATT import lucmd9
 
 from ..core.managers import edit_or_reply
 from ..helpers.google_image_download import googleimagesdownload

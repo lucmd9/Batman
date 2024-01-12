@@ -5,7 +5,7 @@ from telethon.tl.functions.phone import CreateGroupCallRequest as startvc
 from telethon.tl.functions.phone import DiscardGroupCallRequest as stopvc
 from telethon.tl.functions.phone import GetGroupCallRequest as getvc
 from telethon.tl.functions.phone import InviteToGroupCallRequest as invitetovc
-from batt import lucmd9
+from BATT import lucmd9
 from ..core.managers import edit_delete, edit_or_reply
 import os
 import tempfile

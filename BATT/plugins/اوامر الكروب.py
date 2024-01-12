@@ -31,7 +31,7 @@ from telethon.tl.types import (
     UserStatusOnline,
     UserStatusRecently,
 )
-from batt import lucmd9
+from BATT import lucmd9
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 from telethon.tl.functions.channels import GetParticipantRequest
 from telethon.errors import UserNotParticipantError

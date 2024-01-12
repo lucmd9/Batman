@@ -1,10 +1,10 @@
-# Copyright (C) 2021 batt TEAM
+# Copyright (C) 2021 BATT TEAM
 # FILES WRITTEN BY  @SX9OO
 
 import requests
 from validators.url import url
 
-from batt import lucmd9
+from BATT import lucmd9
 
 from ..core.managers import edit_delete, edit_or_reply
 

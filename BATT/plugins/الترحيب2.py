@@ -1,12 +1,12 @@
 #========================#
-#       batt  - SX9OO  #  
+#       BATT  - SX9OO  #  
 # =======================#
 
 from asyncio import sleep
 from telethon.utils import get_display_name
 from telethon import events
 
-from batt import lucmd9
+from BATT import lucmd9
 from ..Config import Config
 
 

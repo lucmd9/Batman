@@ -2,12 +2,12 @@ import sys
 import os
 from typing import Any, Dict, List, Union
 from glob import glob
-from batt import *
-from batt.helpers.functions.functions import translate
+from BATT import *
+from BATT.helpers.functions.functions import translate
 try:
     from yaml import safe_load
 except ModuleNotFoundError:
-    from batt.helpers.functions.functions import safe_load
+    from BATT.helpers.functions.functions import safe_load
 
 os.getenv("LANGUAGE", "ar")
 

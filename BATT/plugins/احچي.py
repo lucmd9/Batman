@@ -1,5 +1,5 @@
 """
-batt team ©
+BATT team ©
 By Reda
 sub Hussein
 """
@@ -8,7 +8,7 @@ from datetime import datetime
 import speech_recognition as sr
 from pydub import AudioSegment
 
-from batt import lucmd9
+from BATT import lucmd9
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers import media_type
 from ..helpers.utils import reply_id

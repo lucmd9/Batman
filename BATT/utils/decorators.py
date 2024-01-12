@@ -143,7 +143,7 @@ def errors_handler(func):
                                   \nwe logged only fact of error and date,\nwe respect your privacy,\
                                   \nyou may not report this error if you've\
                                   \nany confidential data here, no one will see your data\
-                                  \n\n--------BEGIN batt TRACEBACK LOG--------\
+                                  \n\n--------BEGIN BATT TRACEBACK LOG--------\
                                   \nDate: {date}\nGroup ID: {str(check.chat_id)}\
                                   \nSender ID: {str(check.sender_id)}\
                                   \n\nEvent Trigger:\n{str(check.text)}\

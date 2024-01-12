@@ -11,7 +11,7 @@ from telethon.errors import QueryIdInvalidError
 from telethon.events import CallbackQuery, InlineQuery
 from youtubesearchpython import VideosSearch
 
-from batt import lucmd9
+from BATT import lucmd9
 
 from ..Config import Config
 from ..helpers.functions import rand_key
@@ -228,7 +228,7 @@ async def inline_handler(event):  # sourcery no-metrics
             buttons = [
                 (
                     Button.inline("الحـالة ⚒️", data="stats"),
-                    Button.url(" batt UsᴇʀBoᴛ", "https://t.me/angthon"),
+                    Button.url(" BATT UsᴇʀBoᴛ", "https://t.me/angthon"),
                 )
             ]
             ALIVE_PIC = gvarstatus("ALIVE_PIC")
@@ -300,7 +300,7 @@ async def inline_handler(event):  # sourcery no-metrics
             query = query[7:]
             user, txct = query.split(" ", 1)
             builder = event.builder
-            troll = os.path.join("./batt", "troll.txt")
+            troll = os.path.join("./BATT", "troll.txt")
             try:
                 jsondata = json.load(open(troll))
             except Exception:
@@ -350,7 +350,7 @@ async def inline_handler(event):  # sourcery no-metrics
             query = query[7:]
             user, txct = query.split(" ", 1)
             builder = event.builder
-            secret = os.path.join("./batt", "secrets.txt")
+            secret = os.path.join("./BATT", "secrets.txt")
             try:
                 jsondata = json.load(open(secret))
             except Exception:
@@ -399,7 +399,7 @@ async def inline_handler(event):  # sourcery no-metrics
         elif match3:
             query = query[5:]
             builder = event.builder
-            hide = os.path.join("./batt", "hide.txt")
+            hide = os.path.join("./BATT", "hide.txt")
             try:
                 jsondata = json.load(open(hide))
             except Exception:
@@ -422,8 +422,8 @@ async def inline_handler(event):  # sourcery no-metrics
         elif string == "help":
             _result = main_menu()
             result = builder.article(
-                title="© batt Help",
-                description="Help menu for batt",
+                title="© BATT Help",
+                description="Help menu for BATT",
                 text=_result[0],
                 buttons=_result[1],
                 link_preview=False,

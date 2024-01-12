@@ -1,4 +1,4 @@
-#batt - @luc_md9 - @313
+#BATT - @luc_md9 - @313
 # L E O - M U H A M M E D
 
 
@@ -7,7 +7,7 @@ from datetime import datetime
 
 from telethon.tl import functions, types
 
-from batt import lucmd9
+from BATT import lucmd9
 
 from ..Config import Config
 from ..core.logger import logging
@@ -19,7 +19,7 @@ from . import BOTLOG, BOTLOG_CHATID
 plugin_category = "utils"
 
 LOGS = logging.getLogger(__name__)
-#batt - luc_md9 - 313
+#BATT - luc_md9 - 313
 # L E O - M U H A M M E D
 
 class AFK:
@@ -82,7 +82,7 @@ async def set_not_afk(event):
                 + endtime
                 + "`",
             )
-#batt - luc_md9 - 313
+#BATT - luc_md9 - 313
 # L E O - M U H A M M E D
 
 @lucmd9.ar_cmd(
@@ -168,7 +168,7 @@ async def on_afk(event):  # sourcery no-metrics
                 parse_mode="html",
                 link_preview=False,
             )
-#batt - luc_md9 - 313
+#BATT - luc_md9 - 313
 # L E O - M U H A M M E D
 
 @lucmd9.ar_cmd(
@@ -233,5 +233,5 @@ async def _(event):
                 BOTLOG_CHATID,
                 f"**᯽︙ امـر النوم 💤 :** \n **تم تشغيل الامر ❕**",
             )
-#batt - luc_md9 - 313
+#BATT - luc_md9 - 313
 

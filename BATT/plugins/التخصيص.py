@@ -1,6 +1,6 @@
 from urlextract import URLExtract
-from batt import lucmd9
-from batt.core.logger import logging
+from BATT import lucmd9
+from BATT.core.logger import logging
 from ..Config import Config
 from ..core.managers import edit_delete, edit_or_reply
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus

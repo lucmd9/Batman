@@ -12,9 +12,9 @@ from telethon.tl.types import (ChannelParticipantsAdmins,
                                    ChatBannedRights,
                                      MessageEntityMentionName,
                                        MessageMediaPhoto)
-from batt.utils import admin_cmd
+from BATT.utils import admin_cmd
 from ..Config import Config
-from batt import CMD_HELP, lucmd9
+from BATT import CMD_HELP, lucmd9
 up_admin = Config.UP_ET or "ارفع"
 down_admin = Config.DOWN_ET or "تزل"
 async def get_full_user(event):  
@@ -59,22 +59,22 @@ async def get_user_from_id(user, event):
         return None
     return user_obj
 @lucmd9.on(admin_cmd(pattern="{up_admin} ?(.*)"))
-async def gben(batt):
-    dc = razan = batt
+async def gben(BATT):
+    dc = razan = BATT
     i = 0
     sender = await dc.get_sender()
-    me = await batt.client.get_me()
+    me = await BATT.client.get_me()
     await razan.edit("▾∮ يتم رفع المستخدم في جميع المجموعات")
     my_mention = "[{}](tg://user?id={})".format(me.first_name, me.id)
     f"@{me.username}" if me.username else my_mention
-    await batt.get_chat()
-    if batt.is_private:
-        user = batt.chat
-        rank = batt.pattern_match.group(1)
+    await BATT.get_chat()
+    if BATT.is_private:
+        user = BATT.chat
+        rank = BATT.pattern_match.group(1)
     else:
-        batt.chat.title
+        BATT.chat.title
     try:
-        user, rank = await get_full_user(batt)
+        user, rank = await get_full_user(BATT)
     except:
         pass
     if me == user:
@@ -87,7 +87,7 @@ async def gben(batt):
         return await razan.edit(f"**▾∮ هنالك شي خطأ**")
     if user:
         telchanel = [d.entity.id
-                     for d in await batt.client.get_dialogs()
+                     for d in await BATT.client.get_dialogs()
                      if (d.is_group or d.is_channel)
                      ]
         rgt = ChatAdminRights(add_admins=True,
@@ -98,7 +98,7 @@ async def gben(batt):
                                    pin_messages=True)
         for x in telchanel:
           try:
-             await batt.client(EditAdminRequest(x, user, rgt, rank))
+             await BATT.client(EditAdminRequest(x, user, rgt, rank))
              i += 1
              await razan.edit(f"**▾∮ يتم الرفع في **: `{i}` من المجموعات")
           except:
@@ -110,22 +110,22 @@ async def gben(batt):
     )
 
 @lucmd9.on(admin_cmd(pattern="{down_admin} ?(.*)"))
-async def gben(batt):
-    dc = razan = batt
+async def gben(BATT):
+    dc = razan = BATT
     i = 0
     sender = await dc.get_sender()
-    me = await batt.client.get_me()
+    me = await BATT.client.get_me()
     await razan.edit("**▾∮ يتم تنزيل الشخص من رتبة الاشراف في جميع الكروبات**")
     my_mention = "[{}](tg://user?id={})".format(me.first_name, me.id)
     f"@{me.username}" if me.username else my_mention
-    await batt.get_chat()
-    if batt.is_private:
-        user = batt.chat
-        rank = batt.pattern_match.group(1)
+    await BATT.get_chat()
+    if BATT.is_private:
+        user = BATT.chat
+        rank = BATT.pattern_match.group(1)
     else:
-        batt.chat.title
+        BATT.chat.title
     try:
-        user, rank = await get_full_user(batt)
+        user, rank = await get_full_user(BATT)
     except:
         pass
     if me == user:
@@ -138,7 +138,7 @@ async def gben(batt):
         return await razan.edit(f"**▾∮ هنالك شي خطأ**")
     if user:
         telchanel = [d.entity.id
-                     for d in await batt.client.get_dialogs()
+                     for d in await BATT.client.get_dialogs()
                      if (d.is_group or d.is_channel)
                      ]
         rgt = ChatAdminRights(add_admins=None,
@@ -149,7 +149,7 @@ async def gben(batt):
                                    pin_messages=None)
         for x in telchanel:
           try:
-             await batt.client(EditAdminRequest(x, user, rgt, rank))
+             await BATT.client(EditAdminRequest(x, user, rgt, rank))
              i += 1
              await razan.edit(f"**▾∮ يتم تنزيله في **: `{i}` من المجموعات")
           except:

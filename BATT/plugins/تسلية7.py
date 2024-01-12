@@ -1,12 +1,12 @@
 # =============================
-# |         batt - QHR_1 - luc_md9           |
+# |         BATT - QHR_1 - luc_md9           |
 # =============================
 
 import os
 
 from telegraph import exceptions, upload_file
 
-from batt import lucmd9
+from BATT import lucmd9
 
 from ..core.managers import edit_or_reply
 from ..helpers.utils import _cattools, reply_id

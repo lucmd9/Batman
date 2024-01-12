@@ -1,8 +1,8 @@
 #edit  ~ @luc_md9 for lucmd9 
 
 from telethon import events
-from batt.utils import admin_cmd
-from batt import lucmd9
+from BATT.utils import admin_cmd
+from BATT import lucmd9
 from . import *
  
 #جميع الحقوق محفوظة لسـورس الخفاش تخـمط تبيـن فشلـك

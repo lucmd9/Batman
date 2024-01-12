@@ -82,10 +82,10 @@ async def _(event):
         "**State changed from up to starting**",
         "**Stopping all processes with SIGTERM**",
         "**Process exited with** `status 143`",
-        "**Starting process with command** `python3 -m batt`",
+        "**Starting process with command** `python3 -m BATT`",
         "**State changed from starting to up**",
-        "__INFO:batt:Logged in as 557667062__",
-        "__INFO:batt:Successfully loaded all plugins__",
+        "__INFO:BATT:Logged in as 557667062__",
+        "__INFO:BATT:Successfully loaded all plugins__",
         "**Build Succeeded**",
     ]
     for i in animation_ttl:

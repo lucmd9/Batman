@@ -20,11 +20,11 @@ if Config.PLUGIN_CHANNEL:
         for module in range(total):
             plugin_to_install = documentss[module].id
             plugin_name = documentss[module].file.name
-            if os.path.exists(f"batt/plugins/{plugin_name}"):
+            if os.path.exists(f"BATT/plugins/{plugin_name}"):
                 return
             downloaded_file_name = await lucmd9.download_media(
                 await lucmd9.get_messages(Config.PLUGIN_CHANNEL, ids=plugin_to_install),
-                "batt/plugins/",
+                "BATT/plugins/",
             )
             path1 = Path(downloaded_file_name)
             shortname = path1.stem

@@ -8,7 +8,7 @@ import requests
 import heroku3
 import urllib3
 from telethon import events 
-from batt import HEROKU_APP, UPSTREAM_REPO_URL, lucmd9
+from BATT import HEROKU_APP, UPSTREAM_REPO_URL, lucmd9
 from ..Config import Config
 from ..core.logger import logging
 from ..core.managers import edit_delete, edit_or_reply

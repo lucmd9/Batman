@@ -6,7 +6,7 @@ from time import time
 
 import speedtest
 
-from batt import lucmd9
+from BATT import lucmd9
 
 from ..core.managers import edit_or_reply
 from ..helpers.utils import reply_id

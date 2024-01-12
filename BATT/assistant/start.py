@@ -6,14 +6,14 @@ import io
 import re
 from telethon import Button, custom, events
 from telethon.tl.functions.users import GetFullUserRequest
-from batt import bot
-from batt.sql_helper.blacklist_assistant import (
+from BATT import bot
+from BATT.sql_helper.blacklist_assistant import (
     add_nibba_in_db,
     is_he_added,
     removenibba,
 )
-from batt.sql_helper.botusers_sql import add_me_in_db, his_userid
-from batt.sql_helper.idadder_sql import (
+from BATT.sql_helper.botusers_sql import add_me_in_db, his_userid
+from BATT.sql_helper.idadder_sql import (
     add_usersid_in_db,
     already_added,
     get_all_users,
@@ -75,7 +75,7 @@ async def users(event):
         for starked in total_users:
             users_list += ("==> {} \n").format(int(starked.chat_id))
         with io.BytesIO(str.encode(users_list)) as tedt_file:
-            tedt_file.name = "batt.txt"
+            tedt_file.name = "BATT.txt"
             await tgbot.send_file(
                 event.chat_id,
                 tedt_file,

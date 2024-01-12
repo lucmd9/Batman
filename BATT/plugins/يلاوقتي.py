@@ -19,7 +19,7 @@ from pySmartDL import SmartDL
 from telethon.errors import FloodWaitError, ChannelInvalidError
 from telethon.tl import functions
 from telethon import types
-from batt import BOTLOG_CHATID
+from BATT import BOTLOG_CHATID
 from ..Config import Config
 from ..helpers.utils import _format
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
@@ -35,16 +35,16 @@ LOGS = logging.getLogger(__name__)
 
 FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
 
-autopic_path = os.path.join(os.getcwd(), "batt", "original_pic.png")
-digitalpic_path = os.path.join(os.getcwd(), "batt", "digital_pic.png")
-digital_group_pic_path = os.path.join(os.getcwd(), "batt", "digital_group_pic.png")
-autophoto_path = os.path.join(os.getcwd(), "batt", "photo_pfp.png")
-auto_group_photo_path = os.path.join(os.getcwd(), "batt", "photo_pfp.png")
+autopic_path = os.path.join(os.getcwd(), "BATT", "original_pic.png")
+digitalpic_path = os.path.join(os.getcwd(), "BATT", "digital_pic.png")
+digital_group_pic_path = os.path.join(os.getcwd(), "BATT", "digital_group_pic.png")
+autophoto_path = os.path.join(os.getcwd(), "BATT", "photo_pfp.png")
+auto_group_photo_path = os.path.join(os.getcwd(), "BATT", "photo_pfp.png")
 
 digitalpfp = Config.DIGITAL_PIC or "https://telegra.ph/file/63a826d5e5f0003e006a0.jpg"
 digitalgrouppfp = Config.DIGITAL_GROUP_PIC or "https://telegra.ph/file/63a826d5e5f0003e006a0.jpg"
 SX9OO = Config.TIME_JEP or ""
-jep = Config.DEFAULT_PIC or "batt/helpers/styles/PaybAck.ttf"
+jep = Config.DEFAULT_PIC or "BATT/helpers/styles/PaybAck.ttf"
 normzltext = "1234567890"
 namerzfont = Config.JP_FN or "𝟭𝟮𝟯𝟰𝟱𝟲𝟳𝟴𝟵𝟬"
 namew8t = Config.NAME_ET or "اسم وقتي"

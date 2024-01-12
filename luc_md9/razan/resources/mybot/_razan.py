@@ -1,5 +1,5 @@
-from batt.Config import Config
-from batt.plugins import mention
+from BATT.Config import Config
+from BATT.plugins import mention
 
 RAZAN = Config.TG_BOT_USERNAME
 # for alive

@@ -11,7 +11,7 @@ import time
 from datetime import timedelta
 import math
 import base64
-from batt import lucmd9 
+from BATT import lucmd9 
 #from ..Config import Config
 ## lucmd9
 @lucmd9.ar_cmd(pattern="تك")

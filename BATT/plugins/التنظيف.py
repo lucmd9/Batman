@@ -1,4 +1,4 @@
-# batt module for purging unneeded messages(usually spam or ot).
+# BATT module for purging unneeded messages(usually spam or ot).
 import re
 from asyncio import sleep
 
@@ -16,7 +16,7 @@ from telethon.tl.types import (
     InputMessagesFilterVoice,
 )
 
-from batt import lucmd9
+from BATT import lucmd9
 
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.utils import reply_id

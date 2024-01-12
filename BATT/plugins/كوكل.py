@@ -1,5 +1,5 @@
 #========================#
-#       batt  - luc_md9   #  
+#       BATT  - luc_md9   #  
 # =======================#
 
 import io
@@ -14,7 +14,7 @@ from PIL import Image
 from search_engine_parser import BingSearch, GoogleSearch, YahooSearch
 from search_engine_parser.core.exceptions import NoResultsOrTrafficError
 
-from batt import lucmd9
+from BATT import lucmd9
 
 from ..Config import Config
 from ..core.managers import edit_delete, edit_or_reply

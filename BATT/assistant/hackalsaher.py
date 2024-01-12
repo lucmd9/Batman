@@ -1,8 +1,8 @@
-from batt import bot, lucmd9
+from BATT import bot, lucmd9
 #By Source Bat @angthon
 from telethon import events, functions, types, Button
 from datetime import timedelta
-from batt.utils import admin_cmd
+from BATT.utils import admin_cmd
 import asyncio
 from ..Config import Config
 import os, asyncio, re

@@ -46,5 +46,5 @@ async def get_adzan(adzan):
     "
     await edit_or_reply(adzan, lucmd9result, "html")
 
-# Copyright (C) 2021 batt TEAM
+# Copyright (C) 2021 BATT TEAM
 # FILES WRITTEN BY  @luc_md9

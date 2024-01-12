@@ -1,7 +1,7 @@
 from asyncio import sleep
 
-from batt import lucmd9
-from batt.core.logger import logging
+from BATT import lucmd9
+from BATT.core.logger import logging
 
 plugin_category = "tools"
 LOGS = logging.getLogger(__name__)

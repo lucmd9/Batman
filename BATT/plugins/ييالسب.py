@@ -1,4 +1,4 @@
-from batt import lucmd9
+from BATT import lucmd9
 from telethon.tl.types import ChannelParticipantsAdmins
 from telethon import events
 

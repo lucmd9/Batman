@@ -7,8 +7,8 @@ from telethon.tl.functions.users import GetFullUserRequest
 from telethon.utils import get_input_location
 from ..sql_helper.globals import gvarstatus
 
-from batt import lucmd9
-from batt.core.logger import logging
+from BATT import lucmd9
+from BATT.core.logger import logging
 
 from ..Config import Config
 from ..core.managers import edit_or_reply

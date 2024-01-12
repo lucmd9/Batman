@@ -6,8 +6,8 @@ from telethon import Button, functions
 from telethon.events import CallbackQuery
 from telethon.utils import get_display_name
 
-from batt import lucmd9
-from batt.core.logger import logging
+from BATT import lucmd9
+from BATT.core.logger import logging
 
 from ..Config import Config
 from ..core.managers import edit_delete, edit_or_reply

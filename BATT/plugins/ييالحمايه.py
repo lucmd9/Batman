@@ -5,7 +5,7 @@ from telethon.tl.functions.channels import GetFullChannelRequest, EditBannedRequ
 from ..Config import Config
 from ..sql_helper.globals import gvarstatus, addgvar, delgvar
 from telethon.errors import UserNotParticipantError
-from batt import lucmd9
+from BATT import lucmd9
 from telethon.tl.types import (ChannelParticipantsAdmins,
                                  ChatAdminRights,
                                    ChatBannedRights,

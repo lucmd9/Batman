@@ -5,7 +5,7 @@ import asyncio
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
-from batt.utils import admin_cmd
+from BATT.utils import admin_cmd
 
 @borg.on(admin_cmd(pattern="تحويل نص ?(.*)"))
 async def _(event):
@@ -38,5 +38,5 @@ async def _(event):
              await event.delete()
              await event.client.send_message(event.chat_id, response.message)
              
-# Copyright (C) 2021 batt TEAM
+# Copyright (C) 2021 BATT TEAM
 # FILES WRITTEN BY  @luc_md9

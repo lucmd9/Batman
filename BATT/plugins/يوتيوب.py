@@ -1,5 +1,5 @@
 #@luc_md9   - @angthon
-# Copyright (C) 2021 batt TEAM
+# Copyright (C) 2021 BATT TEAM
 # FILES WRITTEN BY  @luc_md9
 import asyncio
 import io
@@ -9,14 +9,14 @@ import re
 import time
 from datetime import datetime
 
-from batt.utils import sudo_cmd
+from BATT.utils import sudo_cmd
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl import types
 from telethon.utils import get_attributes
 from youtube_dl import YoutubeDL
 from urlextract import URLExtract
 from wget import download
-from batt import lucmd9
+from BATT import lucmd9
 from youtube_dl.utils import (
     ContentTooShortError,
     DownloadError,
@@ -380,7 +380,7 @@ async def kakashi(event):
     )
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from batt import lucmd9
+from BATT import lucmd9
 
 
 @lucmd9.on(admin_cmd(pattern="تيك توك(?: |$)(.*)"))

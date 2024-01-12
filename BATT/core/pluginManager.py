@@ -1,5 +1,5 @@
 # @angthon - < https://t.me/angthon >
-# Copyright (C) 2021 - batt-AR
+# Copyright (C) 2021 - BATT-AR
 # All rights reserved.
 #
 # Please read the GNU Affero General Public License in;
@@ -82,7 +82,7 @@ async def restart_script(client: TelegramClient, jasme):
     except Exception as e:
         LOGS.error(e)
     executable = sys.executable.replace(" ", "\\ ")
-    args = [executable, "-m", "batt"]
+    args = [executable, "-m", "BATT"]
     os.execle(executable, *args, os.environ)
     sys.exit(0)
 

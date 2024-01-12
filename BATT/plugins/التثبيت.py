@@ -20,7 +20,7 @@ from telethon.tl.types import (
     MessageMediaPhoto,
 )
 
-from batt import lucmd9
+from BATT import lucmd9
 
 from ..core.logger import logging
 from ..core.managers import edit_delete, edit_or_reply

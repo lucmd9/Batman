@@ -1,5 +1,5 @@
 #  =============================
-#  == batt  -  luc_md9 =
+#  == BATT  -  luc_md9 =
 #  =============================
 
 
@@ -7,7 +7,7 @@ import asyncio
 import os
 import re
 
-from batt import lucmd9
+from BATT import lucmd9
 
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.utils import reply_id
@@ -30,7 +30,7 @@ plugin_category = "fun"
     info={
         "header": "trump tweet sticker with given custom text",
         "usage": "{tr}ترامب <text>",
-        "examples": "{tr}trump Catuserbot is One of the Popular batt",
+        "examples": "{tr}trump Catuserbot is One of the Popular BATT",
     },
 )
 async def nekobot(cat):
@@ -92,7 +92,7 @@ async def nekobot(cat):
     info={
         "header": "Change my mind banner with given custom text",
         "usage": "{tr}غير عقلي <text>",
-        "examples": "{tr}غير عقلي Catuserbot is One of the Popular batt",
+        "examples": "{tr}غير عقلي Catuserbot is One of the Popular BATT",
     },
 )
 async def nekobot(cat):
@@ -122,7 +122,7 @@ async def nekobot(cat):
     info={
         "header": "kanna chan sticker with given custom text",
         "usage": "{tr}كانا text",
-        "examples": "{tr}kanna batt is One of the Popular batt",
+        "examples": "{tr}kanna BATT is One of the Popular BATT",
     },
 )
 async def nekobot(cat):
@@ -153,7 +153,7 @@ async def nekobot(cat):
     info={
         "header": "The desired person tweet sticker with given custom text",
         "usage": "{tr}تويت <username> ; <text>",
-        "examples": "{tr}tweet iamsrk ; batt is One of the Popular batt",
+        "examples": "{tr}tweet iamsrk ; BATT is One of the Popular BATT",
     },
 )
 async def nekobot(cat):

@@ -1,6 +1,6 @@
 import sys
-import batt
-from batt import BOTLOG_CHATID, HEROKU_APP, PM_LOGGER_GROUP_ID
+import BATT
+from BATT import BOTLOG_CHATID, HEROKU_APP, PM_LOGGER_GROUP_ID
 from .Config import Config
 from .core.logger import logging
 from .core.session import lucmd9
@@ -16,10 +16,10 @@ from .utils import (
     saves,
 )
 
-LOGS = logging.getLogger("batt")
+LOGS = logging.getLogger("BATT")
 
-print(batt.__copyright__)
-print("Licensed under the terms of the " + batt.__license__)
+print(BATT.__copyright__)
+print("Licensed under the terms of the " + BATT.__license__)
 
 cmdhr = Config.COMMAND_HAND_LER
 

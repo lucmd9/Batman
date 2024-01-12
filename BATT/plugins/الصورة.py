@@ -1,5 +1,5 @@
 #ترجمه فريق الخفاش على التيلكرام
-from batt import CMD_HELP, lucmd9
+from BATT import CMD_HELP, lucmd9
 
 from ..core.managers import edit_delete, edit_or_reply
 

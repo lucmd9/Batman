@@ -10,7 +10,7 @@ from telethon.errors.rpcerrorlist import (
     WebpageMediaEmptyError,
 )
 
-from batt import lucmd9
+from BATT import lucmd9
 from telethon import events
 from ..core.managers import edit_or_reply
 from ..helpers.utils import reply_id

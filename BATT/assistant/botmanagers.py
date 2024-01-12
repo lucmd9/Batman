@@ -3,7 +3,7 @@ from math import floor
 
 from telethon.utils import get_display_name
 
-from batt import lucmd9
+from BATT import lucmd9
 
 from ..Config import Config
 from ..core.logger import logging

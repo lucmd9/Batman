@@ -42,7 +42,7 @@ async def install(event):
         try:
             downloaded_file_name = await event.client.download_media(
                 await event.get_reply_message(),
-                "batt/plugins/",
+                "BATT/plugins/",
             )
             if "(" not in downloaded_file_name:
                 path1 = Path(downloaded_file_name)
@@ -77,7 +77,7 @@ async def install(event):
 async def unload(event):
     "To uninstall a plugin."
     shortname = event.pattern_match.group(1)
-    path = Path(f"batt/plugins/{shortname}.py")
+    path = Path(f"BATT/plugins/{shortname}.py")
     if not os.path.exists(path):
         return await edit_delete(
             event, f"᯽︙ لا يوجد هكذا ملف مع المسار {path} لحذفه"

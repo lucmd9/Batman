@@ -8,7 +8,7 @@ from telethon.errors import UserIsBlockedError
 from telethon.events import CallbackQuery, StopPropagation
 from telethon.utils import get_display_name
 
-from batt import Config, lucmd9
+from BATT import Config, lucmd9
 
 from ..core import check_owner, pool
 from ..core.logger import logging

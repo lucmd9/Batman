@@ -1,6 +1,6 @@
 import asyncio
 
-from batt import lucmd9
+from BATT import lucmd9
 
 from ..core.managers import edit_or_reply
 

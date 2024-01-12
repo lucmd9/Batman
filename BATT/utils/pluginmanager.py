@@ -2,7 +2,7 @@ import importlib
 import sys
 from pathlib import Path
 
-from batt import CMD_HELP, LOAD_PLUG
+from BATT import CMD_HELP, LOAD_PLUG
 
 from ..Config import Config
 from ..core import LOADED_CMDS, PLG_INFO
@@ -13,24 +13,24 @@ from ..helpers.tools import media_type
 from ..helpers.utils import _cattools, _catutils, _format, install_pip, reply_id
 from .decorators import admin_cmd, sudo_cmd
 
-LOGS = logging.getLogger("batt")
+LOGS = logging.getLogger("BATT")
 
 
 def load_module(shortname, plugin_path=None):
     if shortname.startswith("__"):
         pass
     elif shortname.endswith("_"):
-        path = Path(f"batt/plugins/{shortname}.py")
+        path = Path(f"BATT/plugins/{shortname}.py")
         checkplugins(path)
-        name = "batt.plugins.{}".format(shortname)
+        name = "BATT.plugins.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)
         LOGS.info("᯽︙تم بنجاح تحميل ملف " + shortname)
     else:
         if plugin_path is None:
-            path = Path(f"batt/plugins/{shortname}.py")
-            name = f"batt.plugins.{shortname}"
+            path = Path(f"BATT/plugins/{shortname}.py")
+            name = f"BATT.plugins.{shortname}"
         else:
             path = Path((f"{plugin_path}/{shortname}.py"))
             name = f"{plugin_path}/{shortname}".replace("/", ".")
@@ -57,7 +57,7 @@ def load_module(shortname, plugin_path=None):
         mod.borg = lucmd9
         spec.loader.exec_module(mod)
         # for imports
-        sys.modules["batt.plugins." + shortname] = mod
+        sys.modules["BATT.plugins." + shortname] = mod
         LOGS.info("᯽︙تم بنجاح تحميل ملف ✓" + shortname)
 
 
@@ -83,7 +83,7 @@ def remove_plugin(shortname):
     except BaseException:
         pass
     try:
-        name = f"batt.plugins.{shortname}"
+        name = f"BATT.plugins.{shortname}"
         for i in reversed(range(len(lucmd9._event_builders))):
             ev, cb = lucmd9._event_builders[i]
             if cb.__module__ == name:
@@ -111,8 +111,8 @@ def start_assistant(shortname):
         import sys
         from pathlib import Path
 
-        path = Path(f"batt/plugins/assistant/{shortname}.py")
-        name = "batt.plugins.assistant.{}".format(shortname)
+        path = Path(f"BATT/plugins/assistant/{shortname}.py")
+        name = "BATT.plugins.assistant.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)
@@ -123,11 +123,11 @@ def start_assistant(shortname):
         import sys
         from pathlib import Path
 
-        path = Path(f"batt/plugins/assistant/{shortname}.py")
-        name = "batt.plugins.assistant.{}".format(shortname)
+        path = Path(f"BATT/plugins/assistant/{shortname}.py")
+        name = "BATT.plugins.assistant.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
         mod.tgbot = bot.tgbot
         spec.loader.exec_module(mod)
-        sys.modules["batt.plugins.assistant" + shortname] = mod
+        sys.modules["BATT.plugins.assistant" + shortname] = mod
         print("بنجاح يتم تحميل " + shortname)

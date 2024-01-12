@@ -1,4 +1,4 @@
-# By batt 2021-2022
+# By BATT 2021-2022
 import asyncio
 import base64
 from telethon.tl import functions, types
@@ -6,16 +6,16 @@ from telethon.tl.functions.messages import GetStickerSetRequest
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from telethon.utils import get_display_name
 import re
-from batt import lucmd9
+from BATT import lucmd9
 from ..Config import Config
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.tools import media_type
 from ..helpers.utils import _catutils
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 from . import BOTLOG, BOTLOG_CHATID
-from batt import *
-from batt import lucmd9
-from batt.utils import admin_cmd
+from BATT import *
+from BATT import lucmd9
+from BATT.utils import admin_cmd
 from telethon.tl.types import Channel, Chat, User
 from telethon.tl import functions, types
 from telethon.tl.functions.messages import  CheckChatInviteRequest, GetFullChatRequest
@@ -24,7 +24,7 @@ from telethon.tl.functions.channels import GetFullChannelRequest, GetParticipant
 
 Mukrr = Config.MUKRR_ET or "مكرر"
 
-async def spam_function(event, batt, lucmd9, sleeptimem, sleeptimet, DelaySpam=False):
+async def spam_function(event, BATT, lucmd9, sleeptimem, sleeptimet, DelaySpam=False):
 
     counter = int(lucmd9[0])
     if len(lucmd9) == 2:
@@ -33,18 +33,18 @@ async def spam_function(event, batt, lucmd9, sleeptimem, sleeptimet, DelaySpam=F
             if gvarstatus("spamwork") is None:
                 return
             if event.reply_to_msg_id:
-                await batt.reply(spam_message)
+                await BATT.reply(spam_message)
             else:
                 await event.client.send_message(event.chat_id, spam_message)
             await asyncio.sleep(sleeptimet)
-    elif event.reply_to_msg_id and batt.media:
+    elif event.reply_to_msg_id and BATT.media:
         for _ in range(counter):
             if gvarstatus("spamwork") is None:
                 return
-            batt = await event.client.send_file(
-                event.chat_id, batt, caption=batt.text
+            BATT = await event.client.send_file(
+                event.chat_id, BATT, caption=BATT.text
             )
-            await _catutils.unsavegif(event, batt)
+            await _catutils.unsavegif(event, BATT)
             await asyncio.sleep(sleeptimem)
         if BOTLOG:
             if DelaySpam is not True:
@@ -73,11 +73,11 @@ async def spam_function(event, batt, lucmd9, sleeptimem, sleeptimet, DelaySpam=F
                     + f"**⌔∮ تم تنفيذ التكرار الوقتي  بنجاح في ** {get_display_name(await event.get_chat())}(`{event.chat_id}`) **مع** {counter} **عدد المرات مع الرسالة أدناه مع التأخير** {sleeptimet} ** الثواني **",
                 )
 
-            batt = await event.client.send_file(BOTLOG_CHATID, batt)
-            await _catutils.unsavegif(event, batt)
+            BATT = await event.client.send_file(BOTLOG_CHATID, BATT)
+            await _catutils.unsavegif(event, BATT)
         return
-    elif event.reply_to_msg_id and batt.text:
-        spam_message = batt.text
+    elif event.reply_to_msg_id and BATT.text:
+        spam_message = BATT.text
         for _ in range(counter):
             if gvarstatus("spamwork") is None:
                 return
@@ -120,7 +120,7 @@ async def spam_function(event, batt, lucmd9, sleeptimem, sleeptimet, DelaySpam=F
 
 @lucmd9.ar_cmd(pattern="كرر (.*)")
 async def spammer(event):
-    batt = await event.get_reply_message()
+    BATT = await event.get_reply_message()
     lucmd9 = ("".join(event.text.split(maxsplit=1)[1:])).split(" ", 1)
     try:
         counter = int(lucmd9[0])
@@ -136,7 +136,7 @@ async def spammer(event):
         sleeptimem = 0.3
     await event.delete()
     addgvar("spamwork", True)
-    await spam_function(event, batt, lucmd9, sleeptimem, sleeptimet)
+    await spam_function(event, BATT, lucmd9, sleeptimem, sleeptimet)
 
 @lucmd9.on(admin_cmd(pattern=f"{Mukrr}"))
 async def spammer(event):
