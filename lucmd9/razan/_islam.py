@@ -1,7 +1,7 @@
 #from here loaded islamic 
 
 from BATT.Config import roza_config 
-
+#
 razan = [
 """
 #اذكار_الصباح
