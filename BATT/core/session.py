@@ -1,5 +1,5 @@
 import sys
-from batt.core.logger import logging
+from BATT.core.logger import logging
 from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
 from telethon.sessions import StringSession
 from telethon.errors import AccessTokenExpiredError, AccessTokenInvalidError
