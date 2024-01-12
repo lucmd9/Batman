@@ -299,7 +299,7 @@ async def verifyLoggerGroup():
             )
     else:
         descript = "- عزيزي المستخدم هذه هي مجموعه الاشعارات يرجى عدم حذفها  - @angthon"
-        photobt = await lucmd9.upload_file(file="lucmd9/razan/resources/start/thebatman.JPEG")
+        photobt = await lucmd9.upload_file(file="lucmd9/razan/resources/start/thebatman.jpeg")
         _, groupid = await create_supergroup(
             "مجموعة أشعارات الخفاش ", lucmd9, Config.TG_BOT_USERNAME, descript, photobt
         )
@@ -328,7 +328,7 @@ async def verifyLoggerGroup():
             )
     else:
         descript = "᯽︙ وظيفه الكروب يحفظ رسائل الخاص اذا ما تريد الامر احذف الكروب نهائي \n  - @angthon"
-        photobt = await lucmd9.upload_file(file="lucmd9/razan/resources/start/thebatman2.JPEG")
+        photobt = await lucmd9.upload_file(file="lucmd9/razan/resources/start/thebatman.jpeg")
         _, groupid = await create_supergroup(
             "مجموعة التخزين", lucmd9, Config.TG_BOT_USERNAME, descript, photobt
         )
