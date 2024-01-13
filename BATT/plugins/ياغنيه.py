@@ -56,7 +56,7 @@ async def _(event):
         query = reply.message
     else:
         return await edit_or_reply(event, "⌔∮ يرجى الرد على ما تريد البحث عنه")
-    cat = base64.b64decode("QEFun=")
+    cat = base64.b64decode("QEFuZ3Rob24=")
     catevent = await edit_or_reply(event, "⌔∮ جاري البحث عن المطلوب انتظر")
     video_link = await yt_search(str(query))
     if not url(video_link):
