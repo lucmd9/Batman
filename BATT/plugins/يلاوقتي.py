@@ -12,7 +12,7 @@ import shutil
 import time
 from datetime import datetime
 from telethon import events
-from thebatman import get_string
+from batman import get_string
 from telethon.errors import ChatAdminRequiredError
 from PIL import Image, ImageDraw, ImageFont
 from pySmartDL import SmartDL
