@@ -1,6 +1,6 @@
 import asyncio
 from datetime import datetime
-from thebatman import languages
+from batman import languages
 from telethon.tl import functions, types
 from BATT.helpers.functions.functions import translate 
 from BATT import CMD_HELP, lucmd9
