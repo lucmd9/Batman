@@ -9,7 +9,7 @@ from BATT import lucmd9
 from ..core import check_owner
 from ..Config import Config
 
-JEP_IC = "https://telegra.ph/file/56a3dd726306259beded6.jpg"
+JEP_IC = "https://telegra.ph/file/c6765fbaeeafdbe24bce3.jpg"
 ROE = "**♰ هـذه هي قائمة اوامـر سـورس الخفاش ♰**"
 
 if Config.TG_BOT_USERNAME is not None and tgbot is not None:
