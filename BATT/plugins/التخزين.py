@@ -259,22 +259,8 @@ async def set_grplog(event):
         await event.edit("**- تـم تفعيـل تخـزين تاكـات الكـروبات .. بنجـاح✓**")
     else:
         await event.edit("**- تخزين الكـروبات بالفعـل معطـل ✓**")
-followed_users = {}  #  ميو
+followed_users = {}
 
-@lucmd9.ar_cmd(incoming=True)
-async def forward_followed_user_messages(event):
-    """
-    This function forwards messages from the followed user to the PM_LOGGER_GROUP_ID.
-    It should be placed in the same file or module as the follow_user command.
-    """
-
-    if event.sender_id in followed_users.values():
-        # Check if the sender of the message is a followed user
-        for chat_id, user_id in followed_users.items():
-            if user_id == event.sender_id:
-                # Forward the message to PM_LOGGER_GROUP_ID
-                await event.forward_to(Config.PM_LOGGER_GROUP_ID)
-                break
 
 @lucmd9.ar_cmd(
     pattern="متابعه$",
@@ -295,14 +281,12 @@ async def follow_user(event):
             10,
         )
     if event.reply_to_msg_id:
-        # If the command is a reply, get the sender ID of the replied message
         replied_msg = await event.get_reply_message()
         sender_id = replied_msg.sender_id
-        # Save the sender_id in the followed_users dictionary
-        followed_users[event.chat_id] = sender_id
+        followed_users[event.chat_id] = sender_id  # Save the sender_id for later use
         await edit_delete(
             event,
-            f"**- تم بدء المتابعه.**",
+            f"**- تم بدء المتابعه للمستخدم {sender_id}.**",
             10,
         )
     else:
@@ -311,3 +295,15 @@ async def follow_user(event):
             "**- عذراً .. هـذا الامـر يتطلـب الرد على رسالة لتشغيـله.**",
             10,
         )
+
+# Event handler to forward messages from the followed user to the PM_LOGGER_GROUP_ID
+@lucmd9.ar_cmd(incoming=True)
+async def forward_followed_user_messages(event):
+    """
+    This function forwards messages from the followed user to the PM_LOGGER_GROUP_ID.
+    It should be placed in the same file or module as the follow_user command.
+    """
+    if event.chat_id in followed_users:
+        sender_id = followed_users[event.chat_id]
+        if event.sender_id == sender_id:
+            await event.forward_to(Config.PM_LOGGER_GROUP_ID)
