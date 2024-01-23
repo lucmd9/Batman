@@ -260,8 +260,7 @@ async def set_grplog(event):
     else:
         await event.edit("**- تخزين الكـروبات بالفعـل معطـل ✓**")
 
-
-followed_user_messages = {}
+followed_users = {}
 
 # Command to start following a specific user
 @lucmd9.ar_cmd(
@@ -285,7 +284,7 @@ async def follow_user(event):
     if event.reply_to_msg_id:
         replied_msg = await event.get_reply_message()
         sender_id = replied_msg.sender_id
-        followed_user_messages[sender_id] = event.chat_id  # Store the user ID and chat ID for later use
+        followed_users[event.chat_id] = sender_id  # Store the sender_id for the chat
         await edit_delete(
             event,
             f"**- تم بدء المتابعه للمستخدم {sender_id}.**",
@@ -306,7 +305,6 @@ async def forward_followed_user_messages(event):
     It should be placed in the same file or module as the follow_user command.
     """
     sender_id = event.sender_id
-    if sender_id in followed_user_messages:
-        chat_id = followed_user_messages[sender_id]
-        if event.chat_id == chat_id:
-            await event.forward_to(Config.PM_LOGGER_GROUP_ID)
+    chat_id = event.chat_id
+    if chat_id in followed_users and sender_id == followed_users[chat_id]:
+        await event.forward_to(Config.PM_LOGGER_GROUP_ID)
