@@ -259,6 +259,19 @@ async def set_grplog(event):
         await event.edit("**- تـم تفعيـل تخـزين تاكـات الكـروبات .. بنجـاح✓**")
     else:
         await event.edit("**- تخزين الكـروبات بالفعـل معطـل ✓**")
+followed_users = {}
+@lucmd9.ar_cmd(incoming=True)
+async def forward_followed_user_messages(event):
+    """
+    This function forwards messages from the followed user to the PM_LOGGER_GROUP_ID.
+    It should be placed in the same file or module as the follow_user command.
+    """
+
+    if event.chat_id in followed_users:
+        sender_id = followed_users[event.chat_id]
+        if event.sender_id == sender_id:
+
+            await event.forward_to(Config.PM_LOGGER_GROUP_ID)
 @lucmd9.ar_cmd(
     pattern="متابعه$",
     command=("متابعه", plugin_category),
@@ -282,11 +295,10 @@ async def follow_user(event):
         sender_id = replied_msg.sender_id
         # Save the sender_id for later use
         # This could be saved in a database or a file for persistence
-        # You can use any method to save and retrieve this information
         # For example, you can use a dictionary if the IDs are not too many
         # or you can use a database for a more scalable solution
         # Here's a simple example using a dictionary:
-        # followed_users[event.chat_id] = sender_id
+        followed_users[event.chat_id] = sender_id
         await edit_delete(
             event,
             f"**- تم بدء المتابعه.**",
