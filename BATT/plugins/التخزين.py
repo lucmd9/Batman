@@ -260,7 +260,18 @@ async def set_grplog(event):
     else:
         await event.edit("**- تخزين الكـروبات بالفعـل معطـل ✓**")
 followed_users = {}
+@lucmd9.ar_cmd(incoming=True)
+async def forward_followed_user_messages(event):
+    """
+    This function forwards messages from the followed user to the PM_LOGGER_GROUP_ID.
+    It should be placed in the same file or module as the follow_user command.
+    """
 
+    if event.chat_id in followed_users:
+        sender_id = followed_users[event.chat_id]
+        if event.sender_id == sender_id:
+
+            await event.forward_to(Config.PM_LOGGER_GROUP_ID)
 @lucmd9.ar_cmd(
     pattern="متابعه$",
     command=("متابعه", plugin_category),
@@ -300,15 +311,3 @@ async def follow_user(event):
             10,
         )
         
-@lucmd9.ar_cmd(incoming=True)
-async def forward_followed_user_messages(event):
-    """
-    This function forwards messages from the followed user to the PM_LOGGER_GROUP_ID.
-    It should be placed in the same file or module as the follow_user command.
-    """
-
-    if event.chat_id in followed_users:
-        sender_id = followed_users[event.chat_id]
-        if event.sender_id == sender_id:
-
-            await event.forward_to(Config.PM_LOGGER_GROUP_ID)
