@@ -1,6 +1,5 @@
 """
 created by @luc_md9
-Idea by @kreem
 """
 
 

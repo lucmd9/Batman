@@ -1,5 +1,5 @@
 # Copyright (C) 2021 BATT TEAM
-# FILES WRITTEN BY  @SX9OO
+# FILES WRITTEN BY  @rio\luc_md9
 import html
 import base64
 from telethon.tl.functions.channels import GetFullChannelRequest

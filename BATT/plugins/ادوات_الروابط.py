@@ -1,5 +1,5 @@
 # Copyright (C) 2021 BATT TEAM
-# FILES WRITTEN BY  @SX9OO
+# FILES WRITTEN BY  @luc_md9
 
 import requests
 from validators.url import url

@@ -1,4 +1,4 @@
-#Fixed by Reda
+#Fixed by Rio\luc_md9
 
 import os
 
@@ -62,3 +62,4 @@ async def gucast(event):
             except BaseException:
                 er += 1
     await event.edit(f"تـم بنـجـاح فـي {done} من الـدردشـات , خطـأ فـي {er} من الـدردشـات")
+#دي منا لك

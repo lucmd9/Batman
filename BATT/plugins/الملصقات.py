@@ -1,5 +1,5 @@
-#Fixes by Reda 
-#Made by hussein
+# WRITTEN LUC_MD9
+#IDEA HUSSEN
 #-------------
 import asyncio
 import base64

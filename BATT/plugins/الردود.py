@@ -208,3 +208,4 @@ async def on_all_snip_delete(event):
         await edit_or_reply(event, f"**᯽︙ تم حذف الردود في الدردشة الحالية بنجاح ✓**")
     else:
         await edit_or_reply(event, f"᯽︙لا توجد ردود في هذه المجموعة  ")
+#شعندك هنا دي يلا

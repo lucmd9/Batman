@@ -38,7 +38,7 @@ async def tiktok_dl(event):
                         file.write(video_data)
                 
                 except JSONDecodeError:
-                    return await a.edit("الرابط غير صحيح تأكد منه!")
+                    return await a.edit("استمر رابط صحيح جدن")
                 except Exception as er:
                     if 'video_no_watermark' in str(er):
                         return await a.edit("**رابط الفيديو غير صحيح تأكد منه واعد المحاولة**")

@@ -1,7 +1,7 @@
 """
 BATT team ©
-By Reda
-sub Hussein
+By luc_md9
+x1
 """
 import os
 from datetime import datetime
@@ -132,3 +132,4 @@ async def _(event):
              return await edit_delete(event, "**᯽︙ !لا يوجد هكذا لغة**")
      await edit_or_reply(event, "**᯽︙ يجري استخراج النص...**")
      await edit_or_reply(event, to_text(pic_file, api))
+#يجيك يكلك اكوادي
