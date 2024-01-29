@@ -120,7 +120,7 @@ async def permalink(mention):
 
 
 
-@lucmd9.on(admin_cmd(pattern="رفع بتيتة (?:\s|$)([\s\S]*)"))
+@lucmd9.on(admin_cmd(pattern="رفع بتيتة(?:\s|$)([\s\S]*)"))
 async def permalink(mention):
     """Generates a link to the user's PM with a custom text."""
     user, custom = await get_user_from_event(mention)
@@ -133,7 +133,7 @@ async def permalink(mention):
     await edit_or_reply(mention, f"**᯽︙ المستخدم** [{BATT}](tg://user?id={user.id}) \n**᯽︙ تم رفعه بتيتة بواسطة:** {my_mention} \n**᯽︙  ابشر تم رفعة بتية دريبالك يسووك فنكر🥔**")
 
 
-@lucmd9.on(admin_cmd(pattern=" رفع الى قلبي (?:\s|$)([\s\S]*)"))
+@lucmd9.on(admin_cmd(pattern="رفع الى قلبي(?:\s|$)([\s\S]*)"))
 async def permalink(mention):
     """Generates a link to the user's PM with a custom text."""
     user, custom = await get_user_from_event(mention)
