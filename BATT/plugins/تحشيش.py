@@ -56,13 +56,13 @@ async def permalink(mention):
     user, custom = await get_user_from_event(mention)
     if not user:
         return
-    if user.id == 5762222122:
+    if user.id == 1045489068:
         return await edit_or_reply(mention, f"**- لكك دي هذا المطور**")
     BATT = user.first_name.replace("\u2060", "") if user.first_name else user.username
     me = await mention.client.get_me()
     my_first = me.first_name
     my_mention = f"[{me.first_name}](tg://user?id={me.id})"
-    await edit_or_reply(mention, f"**᯽︙ المستخدم** [{BATT}](tg://user?id={user.id}) \n**᯽︙  تـم رفعـه جلب 🐶 بواسطة :** {my_mention} \n**᯽︙  خليه خله ينبح 😂**")
+    await edit_or_reply(mention, f"**᯽︙ المستخدم** [{BATT}](tg://user?id={user.id}) \n**᯽︙  تـم رفعـه جلب 🐶 بواسطة :** {my_mention} \n**᯽︙  شمروله عظم خطيه 😂**")
 
 @lucmd9.on(admin_cmd(pattern="رفع تاج(?:\s|$)([\s\S]*)"))
 async def permalink(mention):
@@ -102,7 +102,7 @@ async def permalink(mention):
     me = await mention.client.get_me()
     my_first = me.first_name
     my_mention = f"[{me.first_name}](tg://user?id={me.id})"
-    await edit_or_reply(mention, f"**᯽︙ المستخدم** [{BATT}](tg://user?id={user.id}) \n**᯽︙  تـم رفعـه بكلـبك 🤍 بواسطة :** {my_mention} \n**᯽︙  انت حبي الابدي 😍**")
+    await edit_or_reply(mention, f"**᯽︙ المستخدم** [{BATT}](tg://user?id={user.id}) \n**᯽︙  تـم رفعـه بكلـبك 🤍 بواسطة :** {my_mention} \n**᯽︙  انت العشق الابدي 😍**")
     
 
 
@@ -116,8 +116,35 @@ async def permalink(mention):
     me = await mention.client.get_me()
     my_first = me.first_name
     my_mention = f"[{me.first_name}](tg://user?id={me.id})"
-    await edit_or_reply(mention, f"**᯽︙ المستخدم** [{BATT}](tg://user?id={user.id}) \n**᯽︙ تم رفعه بلاع عير :** {my_mention} \n**᯽︙  ها بلاع العير تبقى تمص وتبلع اله تغرك بالجبات🥒**")
-    
+    await edit_or_reply(mention, f"**᯽︙ المستخدم** [{BATT}](tg://user?id={user.id}) \n**᯽︙ تم رفعه بلاع عير بواسطه:** {my_mention} \n**᯽︙  ها بلاع العير تبقى تمص وتبلع اله تغرك بالجبات🥒**")
+
+
+
+@lucmd9.on(admin_cmd(pattern="رفع بتيتة (?:\s|$)([\s\S]*)"))
+async def permalink(mention):
+    """Generates a link to the user's PM with a custom text."""
+    user, custom = await get_user_from_event(mention)
+    if not user:
+        return
+    BATT = user.first_name.replace("\u2060", "") if user.first_name else user.username
+    me = await mention.client.get_me()
+    my_first = me.first_name
+    my_mention = f"[{me.first_name}](tg://user?id={me.id})"
+    await edit_or_reply(mention, f"**᯽︙ المستخدم** [{BATT}](tg://user?id={user.id}) \n**᯽︙ تم رفعه بتيتة بواسطة:** {my_mention} \n**᯽︙  ابشر تم رفعة بتية دريبالك يسووك فنكر🥔**")
+
+
+@lucmd9.on(admin_cmd(pattern=" رفع الى قلبي (?:\s|$)([\s\S]*)"))
+async def permalink(mention):
+    """Generates a link to the user's PM with a custom text."""
+    user, custom = await get_user_from_event(mention)
+    if not user:
+        return
+    BATT = user.first_name.replace("\u2060", "") if user.first_name else user.username
+    me = await mention.client.get_me()
+    my_first = me.first_name
+    my_mention = f"[{me.first_name}](tg://user?id={me.id})"
+    await edit_or_reply(mention, f"**᯽︙ المستخدم** [{BATT}](tg://user?id={user.id}) \n**᯽︙   تم رفعها الى قلبك بواسطه:** {my_mention} \n**᯽︙ يابه مو تنسى المطور تعزمه للعرس @LUC_MD9**")
+
 
 
 @lucmd9.on(admin_cmd(pattern="رفع مطي(?:\s|$)([\s\S]*)"))
@@ -126,7 +153,7 @@ async def permalink(mention):
     user, custom = await get_user_from_event(mention)
     if not user:
         return
-    if user.id == 5762222122:
+    if user.id == 1045489068:
         return await edit_or_reply(mention, f"**- لكك دي هذا المطور**")
     BATT = user.first_name.replace("\u2060", "") if user.first_name else user.username
     me = await mention.client.get_me()
@@ -394,7 +421,7 @@ async def permalink(mention):
     me = await mention.client.get_me()
     my_first = me.first_name
     my_mention = f"[{me.first_name}](tg://user?id={me.id})"
-    await edit_or_reply(mention, f" ** ᯽︙  المستخدم => • ** [{BATT}](tg://user?id={user.id}) \n ☑️ **᯽︙  تم رفعه مجنب بواسطه  :**{my_mention} .\n**᯽︙  كوم يلمجنب اسبح مو عيب تضرب** ")
+    await edit_or_reply(mention, f" ** ᯽︙  المستخدم => • ** [{BATT}](tg://user?id={user.id}) \n ☑️ **᯽︙  تم رفعه مجنب بواسطه  :**{my_mention} .\n**᯽︙  كوم اسبح يالوصخ كافي تضرب عوفه شويه** ")
 
 @lucmd9.on(admin_cmd(pattern="رفع وصخ(?:\s|$)([\s\S]*)"))
 async def permalink(mention):
@@ -405,7 +432,7 @@ async def permalink(mention):
     me = await mention.client.get_me()
     my_first = me.first_name
     my_mention = f"[{me.first_name}](tg://user?id={me.id})"
-    await edit_or_reply(mention, f"** ᯽︙  المستخدم => • ** [{BATT}](tg://user?id={user.id}) \n ☑️ **᯽︙  تم رفعه وصخ الكروب 🤢 بواسطه  :**{my_mention} .\n**᯽︙  لك دكوم يلوصخ اسبح مو ريحتك كتلتنا 🤮 ** ")
+    await edit_or_reply(mention, f"** ᯽︙  المستخدم => • ** [{BATT}](tg://user?id={user.id}) \n ☑️ **᯽︙  تم رفعه وصخ الكروب 🤢 بواسطه  :**{my_mention} .\n**᯽︙  لك دكوم يلوصخ اسبح مو جيفتنا بريحتك 🤮 ** ")
 
 @lucmd9.on(admin_cmd(pattern="زواج(?:\s|$)([\s\S]*)"))
 async def permalink(mention):
@@ -416,7 +443,7 @@ async def permalink(mention):
     me = await mention.client.get_me()
     my_first = me.first_name
     my_mention = f"[{me.first_name}](tg://user?id={me.id})"
-    await edit_or_reply(mention, f"᯽︙ ** لقد تم زواجك/ج من : **[{BATT}](tg://user?id={user.id}) 💍\n**᯽︙  الف الف مبروك الان يمكنك اخذ راحتك ** ")
+    await edit_or_reply(mention, f"᯽︙ ** لقد تم زواجك/ج من : **[{BATT}](tg://user?id={user.id}) 💍\n**᯽︙  الف الف مبروك بس علكيفك بليل ** ")
 
 @lucmd9.on(admin_cmd(pattern="طلاك(?:\s|$)([\s\S]*)"))
 async def permalink(mention):
