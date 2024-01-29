@@ -14,7 +14,7 @@ from . import BOTLOG, BOTLOG_CHATID
 LOGS = logging.getLogger(__name__)
 
 plugin_category = "البوت"
-
+#luc_md9
 
 class LOG_CHATS:
     def __init__(self):
