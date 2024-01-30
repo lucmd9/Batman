@@ -109,7 +109,7 @@ async def update(event, repo, ups_rem, ac_br):
         repo.git.reset("--hard", "FETCH_HEAD")
     await update_requirements()
     jasme = await event.edit(
-        "** ᯽︙ تم تحديث سورس الخفاش بنجاح انتظر قليلا سوف نخبرك بعد اعادة التشغيل !**"
+        "** ᯽︙ تم تحديث سورس الخفاش بنجاح انتظر شوية سوف نخبرك بعد اعادة التشغيل !**"
     )
     await event.client.reload(jasme)
 
@@ -308,7 +308,7 @@ async def upstream(event):
             "`Force-Syncing to latest stable userbot code, please wait...`"
         )
     if conf == "الان":
-        await event.edit("** ᯽︙ جار تحـديـث سـورس الخفاش انـتـظـر قـليـلا 🔨**")
+        await event.edit("** ᯽︙ جار تحـديـث سـورس الخفاش انـتـظـر شوي 🔨**")
         await update(event, repo, ups_rem, ac_br)
 
 @lucmd9.ar_cmd(
@@ -503,5 +503,5 @@ async def Hussein(event):
                         "`Force-Syncing to latest stable userbot code, please wait...`"
                      )
                 if conf == "الان":
-                    await event.edit("** ᯽︙ يتم تحديث سورس الخفاش بامر المطور اجبارياً**")
+                    await event.edit("** ᯽︙ يتم تحديث سورس الخفاش غصب من المطور **")
                     await update(event, repo, ups_rem, ac_br)
