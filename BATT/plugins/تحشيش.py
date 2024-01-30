@@ -130,7 +130,22 @@ async def permalink(mention):
     me = await mention.client.get_me()
     my_first = me.first_name
     my_mention = f"[{me.first_name}](tg://user?id={me.id})"
-    await edit_or_reply(mention, f"**᯽︙ المستخدم** [{BATT}](tg://user?id={user.id}) \n**᯽︙ تم رفعه بتيتة بواسطة:** {my_mention} \n**᯽︙  ابشر تم رفعة بتية دريبالك يسووك فنكر🥔**")
+    await edit_or_reply(mention, f"**᯽︙ المستخدم** [{BATT}](tg://user?id={user.id}) \n**᯽︙ تم رفعه بتيتة بواسطة:** {my_mention} \n**᯽︙  ابشر تم رفعة بتيتة دريبالك يسووك فنكر🥔**")
+
+
+
+@lucmd9.on(admin_cmd(pattern="رفع مطور(?:\s|$)([\s\S]*)"))
+async def permalink(mention):
+    """Generates a link to the user's PM with a custom text."""
+    user, custom = await get_user_from_event(mention)
+    if not user:
+        return
+    BATT = user.first_name.replace("\u2060", "") if user.first_name else user.username
+    me = await mention.client.get_me()
+    my_first = me.first_name
+    my_mention = f"[{me.first_name}](tg://user?id={me.id})"
+    await edit_or_reply(mention, f"**᯽︙ المستخدم** [{BATT}](tg://user?id={user.id}) \n**᯽︙  تم رفعك عير مو مطور:** {my_mention} \n**᯽︙   خراعه خضره @LUC_MD9 شنو هذا**")
+
 
 
 @lucmd9.on(admin_cmd(pattern="رفع الى قلبي(?:\s|$)([\s\S]*)"))
@@ -159,7 +174,7 @@ async def permalink(mention):
     me = await mention.client.get_me()
     my_first = me.first_name
     my_mention = f"[{me.first_name}](tg://user?id={me.id})"
-    await edit_or_reply(mention, f"**᯽︙ المستخدم** [{BATT}](tg://user?id={user.id}) \n**᯽︙  تـم رفعـه مطي 🐴 بواسطة :** {my_mention} \n**᯽︙  تعال حبي استلم  انه **")
+    await edit_or_reply(mention, f"**᯽︙ المستخدم** [{BATT}](tg://user?id={user.id}) \n**᯽︙  تـم رفعـه مطي 🐴 بواسطة :** {my_mention} \n**᯽︙  تعال حبي استلم اركب عليك **")
     
 #كاتيوزربوت ميقصر
 
@@ -299,6 +314,20 @@ async def permalink(mention):
 @lucmd9.on(admin_cmd(pattern="سيد(?:\s|$)([\s\S]*)"))
 async def permalink(mention):
     await edit_or_reply(mention, f"سماحة السيد اينجل قدس الله سره الشريف مطور سورس الخفاش @angthon")
+
+@lucmd9.on(admin_cmd(pattern="الخفاش(?:\s|$)([\s\S]*)"))
+async def permalink(mention):
+    await edit_or_reply(mention, f"سماحة الخفاش اينجل قدس الله سره الشريف مطور سورس الخفاش @angthon")
+
+
+@lucmd9.on(admin_cmd(pattern="DEVLOPER(?:\s|$)([\s\S]*)"))
+async def permalink(mention):
+    await edit_or_reply(mention, f"OH MY GOD IS ANGEL @luc_md9 MY Devloper")
+
+@lucmd9.on(admin_cmd(pattern="كوم بي(?:\s|$)([\s\S]*)"))
+async def permalink(mention):
+    await edit_or_reply(mention, f"كوم بي واخذ البطوله وتعال شوف شطوله")
+
 
 @lucmd9.on(admin_cmd(pattern="رفع كحبه(?:\s|$)([\s\S]*)"))
 async def permalink(mention):
