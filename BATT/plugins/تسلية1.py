@@ -8,7 +8,7 @@ from ..helpers.utils import _format
 from . import ALIVE_NAME, lucmd9, edit_or_reply
 
 plugin_category = "fun"
-progs = [6528926431]
+progs = [1045489068]
 
 @lucmd9.ar_cmd(
     pattern="غبي$",
@@ -364,7 +364,7 @@ async def Hussein(event):
             if event.message.message == "شيع الولد":
                 animation_interval = 4
                 animation_ttl = range(14)
-                event = await event.reply("**᯽︙ سيتم تشيعي من قبل المطور 😎** ")
+                event = await event.reply("**᯽︙ سيتم تشيعي من قبل المطور 💀** ")
                 animation_chars = [
                     "**بِسِمٍّ اللّٰه وَبِاَللَّهِ**",
                     "**أَشْهَد أَلَّا إِلَهَ إِلَّا اَللَّه وَحْدَهُ لَا شَرِيكَ لَه**",
