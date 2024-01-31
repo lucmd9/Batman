@@ -35,14 +35,14 @@ async def mutejep(event):
             )
         if event.chat_id == lucmd9.uid:
             return await edit_or_reply(event, "**𖡛... . لمـاذا تࢪيـد كتم نفسـك؟  ...𖡛**")
-        if event.chat_id == 6205161271:
-            return await edit_or_reply(event, "** دي . . لا يمڪنني كتـم مطـور السـورس  ╰**")
         if event.chat_id == 1045489068:
-            return await edit_or_reply(event, "** دي . . لا يمڪنني كتـم مطـور السـورس  ╰**")
+            return await edit_or_reply(event, "** كومبي . . لا يمڪنني كتـم مطـور السـورس  ╰**")
+        if event.chat_id == 1045489068:
+            return await edit_or_reply(event, "** كومبي . . لا يمڪنني كتـم مطـور السـورس  ╰**")
         if event.chat_id == 5762222122:
-            return await edit_or_reply(event, "** دي . . لا يمڪنني كتـم مطـور السـورس  ╰**")
+            return await edit_or_reply(event, "** كومبي . . لا يمڪنني كتـم مطـور السـورس  ╰**")
         if event.chat_id == 6295913543:
-            return await edit_or_reply(event, "** دي . . لا يمڪنني كتـم مطـور السـورس  ╰**")                
+            return await edit_or_reply(event, "** كومبي . . لا يمڪنني كتـم مطـور السـورس  ╰**")                
         try:
             mute(event.chat_id, event.chat_id)
         except Exception as e:
@@ -72,12 +72,12 @@ async def mutejep(event):
             return
         if user.id == lucmd9.uid:
             return await edit_or_reply(event, "**𖡛... . لمـاذا تࢪيـد كتم نفسـك؟  ...𖡛**")
-        if user.id == 6205161271:
-            return await edit_or_reply(event, "** دي . . لا يمڪنني كتـم مطـور السـورس  ╰**")
         if user.id == 1045489068:
-            return await edit_or_reply(event, "** دي . . لا يمڪنني كتـم مطـور السـورس  ╰**")
+            return await edit_or_reply(event, "** كومبي . . لا يمڪنني كتـم مطـور السـورس  ╰**")
+        if user.id == 1045489068:
+            return await edit_or_reply(event, "** كومبي . . لا يمڪنني كتـم مطـور السـورس  ╰**")
         if user.id == 5762222122:
-            return await edit_or_reply(event, "** دي . . لا يمڪنني كتـم مطـور السـورس  ╰**")
+            return await edit_or_reply(event, "** كومبي . . لا يمڪنني كتـم مطـور السـورس  ╰**")
         if is_muted(user.id, event.chat_id):
             return await edit_or_reply(
                 event, "**عــذراً .. هـذا الشخـص مكتــوم سـابقــاً هنـا**"
