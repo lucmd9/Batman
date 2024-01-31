@@ -46,7 +46,7 @@ digitalgrouppfp = Config.DIGITAL_GROUP_PIC or "https://telegra.ph/file/63a826d5e
 SX9OO = Config.TIME_JEP or ""
 jep = Config.DEFAULT_PIC or "BATT/helpers/styles/PaybAck.ttf"
 normzltext = "1234567890"
-namerzfont = Config.JP_FN or "𝟭𝟮𝟯𝟰𝟱𝟲𝟳𝟴𝟵𝟬"
+namerzfont = Config.JP_FN or "𝟙𝟚𝟛𝟜𝟝𝟞𝟟𝟠𝟡𝟘"
 namew8t = Config.NAME_ET or "اسم وقتي"
 biow8t = Config.BIO_ET or "بايو وقتي"
 phow8t = Config.PHOTO_ET or "الصورة الوقتية"
@@ -98,8 +98,8 @@ async def digitalpicloop():
             return
         DIGITALPICSTART = gvarstatus("digitalpic") == "true"
 
-#Reda
-#اننننسخخخخخ هههههههههههههههههههههههههههههههههههههههههههههههههههههههههههههههههههههههه
+#M
+#cathahahahahahahahahahahahahahahahahah 
 async def digitalgrouppicloop():
     "2KjZiNin2LPYt9ipINiz2YjYsdizINis2YrYqNir2YjZhiAo2KfYsNinINin2LPYqtio2K/ZhNiq2Ycg2LHYp9itINiq2KvYqNiqINmB2LTZhNmDKSDZhdi5INiq2K3Zitin2KrZiiDYp9iu2YjZg9mFINix2LbYpyBAcmQwcjA="
 

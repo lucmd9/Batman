@@ -126,7 +126,7 @@ async def spammer(event):
         counter = int(lucmd9[0])
     except Exception:
         return await edit_delete(
-            event, "⌔∮ يجي استخدام كتابة صحيحة الرجاء التاكد من الامر اولا ⚠️"
+            event, "⌔∮ يجب استخدام كتابة صحيحة عليك التاكد من الامر حب ⚠️"
         )
     if counter > 50:
         sleeptimet = 0.5
