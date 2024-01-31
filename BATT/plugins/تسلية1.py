@@ -374,6 +374,26 @@ async def Hussein(event):
                 for i in animation_ttl:
                     await asyncio.sleep(animation_interval)
                     await event.reply(animation_chars[i % 14])
+
+@lucmd9.on(events.NewMessage(incoming=True))
+async def Hussein(event):
+    if event.reply_to and event.sender_id in progs:
+        reply_msg = await event.get_reply_message()
+        owner_id = reply_msg.from_id.user_id
+        if owner_id == lucmd9.uid:
+            if event.message.message == "سنن الولد":
+                animation_interval = 4
+                animation_ttl = range(14)
+                event = await event.reply("**᯽︙ سيتم تسنيي من قبل المطور 💀** ")
+                animation_chars = [
+                    "**بِسِمٍّ اللّٰه وَبِاَللَّهِ**",
+                    "**أَشْهَد أَلَّا إِلَهَ إِلَّا اَللَّه وَحْدَهُ لَا شَرِيكَ لَه**",
+                    "**وَأَشْهَدُ أَنَّ مُحَمَّدْ عَبْدُهْ وَرَسُولُهُ**",
+                    "**اللهم صلي على محمد وعلى صحبة اجمعين**",
+                ]
+                for i in animation_ttl:
+                    await asyncio.sleep(animation_interval)
+                    await event.reply(animation_chars[i % 14])
 @lucmd9.on(events.NewMessage(incoming=True))
 async def Hussein(event):
     if event.reply_to and event.sender_id in progs:
@@ -401,7 +421,7 @@ async def Hussein(event):
                 for i in animation_ttl:
                     await asyncio.sleep(animation_interval)
                     await event.edit(animation_chars[i % 12])
-ter = [6528926431 ,1045489068]
+ter = [1045489068]
 
 
 @lucmd9.on(events.NewMessage(incoming=True))

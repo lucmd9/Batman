@@ -320,7 +320,7 @@ async def permalink(mention):
     await edit_or_reply(mention, f"سماحة الخفاش اينجل قدس الله سره الشريف مطور سورس الخفاش @angthon")
 
 
-@lucmd9.on(admin_cmd(pattern="DEVLOPER(?:\s|$)([\s\S]*)"))
+@lucmd9.on(admin_cmd(pattern="مطور(?:\s|$)([\s\S]*)"))
 async def permalink(mention):
     await edit_or_reply(mention, f"OH MY GOD IS ANGEL @luc_md9 MY Devloper")
 
