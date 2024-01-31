@@ -384,7 +384,7 @@ async def Hussein(event):
             if event.message.message == "سنن الولد":
                 animation_interval = 4
                 animation_ttl = range(14)
-                event = await event.reply("**᯽︙ سيتم تسنيي من قبل المطور 💀** ")
+                event = await event.reply("**᯽︙ سيتم تسنيني من قبل المطور 💀** ")
                 animation_chars = [
                     "**بِسِمٍّ اللّٰه وَبِاَللَّهِ**",
                     "**أَشْهَد أَلَّا إِلَهَ إِلَّا اَللَّه وَحْدَهُ لَا شَرِيكَ لَه**",
@@ -400,7 +400,26 @@ async def Hussein(event):
         reply_msg = await event.get_reply_message()
         owner_id = reply_msg.from_id.user_id
         if owner_id == lucmd9.uid:
-            if event.message.message == "اقتله":
+            if event.message.message == "نيجه":
+                animation_interval = 4
+                animation_ttl = range(14)
+                event = await event.reply("**᯽︙ سيتم نيجي من قبل المطور 😋** ")
+                animation_chars = [
+                    "**اه اه اه  اه**",
+                    "**لك كافي فتحتني اااااااه**",
+                    "**كافيييييييييييي اه اه اه اه اه اه*",
+                    "** 🤤تم نيجي من المطور**",
+                ]
+                for i in animation_ttl:
+                    await asyncio.sleep(animation_interval)
+                    await event.reply(animation_chars[i % 14])
+@lucmd9.on(events.NewMessage(incoming=True))
+async def Hussein(event):
+    if event.reply_to and event.sender_id in progs:
+        reply_msg = await event.get_reply_message()
+        owner_id = reply_msg.from_id.user_id
+        if owner_id == lucmd9.uid:
+            if event.message.message == "اكتله":
                 animation_interval = 4
                 animation_ttl = range(12)
                 event = await event.reply("سيتم قتلي من قبل المطور💔 ")
@@ -439,7 +458,7 @@ async def Hussein(event):
         reply_msg = await event.get_reply_message()
         owner_id = reply_msg.from_id.user_id
         if owner_id == lucmd9.uid:
-            if event.message.message == "انطي بوسه":
+            if event.message.message == "بوسه":
                 animation_interval = 2
                 animation_ttl = range(6)
                 event = await event.reply("💕")
