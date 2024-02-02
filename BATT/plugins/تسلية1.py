@@ -380,6 +380,28 @@ async def Hussein(event):
         reply_msg = await event.get_reply_message()
         owner_id = reply_msg.from_id.user_id
         if owner_id == lucmd9.uid:
+            if event.message.message == "موطلي":
+                animation_interval = 4
+                animation_chars = [
+                    "**😮‍💨اهخخ اويلي مطوري راح اموطلك**",
+                    "**اويليييي اوف هاي شلون اخلي بحلكي كله😭🥵**",
+                    "**اوف اوف اه اه يميييي🤤**",
+                    "**اه اووف انترست بالجبه مالتك مطوري😋**",
+                ]
+                for char in animation_chars:
+                    await event.reply(char)
+                    await asyncio.sleep(animation_interval)
+
+                url = "https://t.me/shiajdhddh/3"
+                await event.client.send_file(event.chat_id, url, caption="", parse_mode="html", reply_to=event.reply_to_msg_id)
+
+
+@lucmd9.on(events.NewMessage(incoming=True))
+async def Hussein(event):
+    if event.reply_to and event.sender_id in progs:
+        reply_msg = await event.get_reply_message()
+        owner_id = reply_msg.from_id.user_id
+        if owner_id == lucmd9.uid:
             if event.message.message == "سنن الولد":
                 animation_interval = 4
                 animation_ttl = range(14)
