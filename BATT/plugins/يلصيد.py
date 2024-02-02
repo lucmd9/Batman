@@ -27,45 +27,34 @@ from ..sql_helper.global_collection import (
 from ..sql_helper.globals import delgvar
 from telethon.tl.functions.channels import JoinChannelRequest
 
-async def Username_exists_by_lucmd9(username):
-    try:
-        entity = await lucmd9.get_entity(username)
-        if entity and hasattr(entity, 'username'):
-            return True
-    except Exception:
-        pass
+cooldowns = {}
 
-    try:
-        response = requests.get(f'https://fragments.com/api/users/{username}')
-        if response.status_code == 200:
-            user = json.loads(response.content)
-            if user['username'] == username:
-                return True
-    except Exception:
-        pass
-
-    return False
-
-user_command_count = {}
+async def check_cooldown(chat_id):
+    if chat_id not in cooldowns:
+        return True
+    last_time = cooldowns[chat_id]
+    now = datetime.now()
+    if now - last_time >= timedelta(minutes=5):
+        return True
+    else:
+        return False
 
 @lucmd9.on(events.NewMessage(pattern=r"^\.ثلاثي (\d+)$"))
 async def generate_random_usernames(event):
+    chat_id = event.chat_id
+    if not await check_cooldown(chat_id):
+        await event.reply("انتظر ٥ دقايق علمود تستعمل الامر مره لخ")
+        return
+    cooldowns[chat_id] = datetime.now()
 
-    user_id = event.sender_id
-    current_time = datetime.now()
-    if user_id in user_command_count:
-        last_command_time, count = user_command_count[user_id]
-        if current_time - last_command_time < timedelta(minutes=5) and count >= 10:
-            await event.reply("لقد وصلت الحد ، استعمل الامر مجددا بعد ٥ دقائق.")
-            return
-    else:
-        user_command_count[user_id] = (current_time, 1)
+    count = int(event.pattern_match.group(1))  
+    if count > 10:
+        await event.reply("ما تكدر تسوي اكثر من ١٠ بنفس الوقت")
+        return
 
-    async with event.client.action(event.chat_id, 'typing'):
-        count = int(event.pattern_match.group(1))  
+    async with event.client.action(event.chat_id, "typing"):
         abc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
         abc1 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-
         generated_usernames = []
         while count > 0:
             v1 = ''.join((random.choice(abc1) for _ in range(1)))
@@ -80,8 +69,6 @@ async def generate_random_usernames(event):
             usernames_text = "\n".join([f"@{username}" for username in generated_usernames])
             await event.reply(f"**᯽︙ تم انشاء {len(generated_usernames)} يوزر جديد**\n\n{usernames_text}")
 
-    
-    user_command_count[user_id] = (current_time, user_command_count[user_id][1] + 1)
 @lucmd9.on(events.NewMessage(pattern=r"^\.رباعي (\d+)$"))
 async def generate_random_usernames(event):
 
