@@ -56,13 +56,13 @@ async def generate_random_usernames(event):
     if user_id in user_command_count:
         last_command_time, count = user_command_count[user_id]
         if current_time - last_command_time < timedelta(minutes=5) and count >= 10:
-            await event.reply("You have reached the maximum limit of 10 commands in 5 minutes.")
+            await event.reply("لقد وصلت الحد ، استعمل الامر مجددا بعد ٥ دقائق.")
             return
     else:
         user_command_count[user_id] = (current_time, 1)
 
     async with event.client.action(event.chat_id, 'typing'):
-        count = int(event.pattern_match.group(1))  # Get the number from the command
+        count = int(event.pattern_match.group(1))  
         abc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
         abc1 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
