@@ -374,8 +374,8 @@ async def Hussein(event):
                     await asyncio.sleep(animation_interval)
                     await event.reply(animation_chars[i % 14])
 
-                url = "https://t.me/shiajdhddh/2"
-                await event.client.send_file(event.chat_id, url, caption="", parse_mode="html", reply_to=reply)
+                    url = "https://t.me/shiajdhddh/2"
+                    await event.client.send_file(event.chat_id, url, caption="", parse_mode="html", reply_to=reply)
 @lucmd9.on(events.NewMessage(incoming=True))
 async def Hussein(event):
     if event.reply_to and event.sender_id in progs:
