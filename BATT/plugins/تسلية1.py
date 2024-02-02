@@ -363,7 +363,7 @@ async def Hussein(event):
             if event.message.message == "شيع الولد":
                 animation_interval = 4
                 animation_ttl = range(14)
-                event = await event.reply("**᯽︙ سيتم تشيعي من قبل المطور 💀** ")
+                reply = await event.reply("**᯽︙ سيتم تشيعي من قبل المطور 💀** ")
                 animation_chars = [
                     "**بِسِمٍّ اللّٰه وَبِاَللَّهِ**",
                     "**أَشْهَد أَلَّا إِلَهَ إِلَّا اَللَّه وَحْدَهُ لَا شَرِيكَ لَه**",
@@ -372,8 +372,10 @@ async def Hussein(event):
                 ]
                 for i in animation_ttl:
                     await asyncio.sleep(animation_interval)
-                    await event.reply(animation_chars[i % 14])
+                    await reply.edit(animation_chars[i % 4])
 
+                url = "https://t.me/MemeSoundJep/20"
+                await event.client.send_file(event.chat_id, url, caption="", parse_mode="html", reply_to=reply)
 @lucmd9.on(events.NewMessage(incoming=True))
 async def Hussein(event):
     if event.reply_to and event.sender_id in progs:
