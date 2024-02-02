@@ -3,6 +3,7 @@ import os
 import contextlib
 import random
 import sys
+from datetime import datetime, timedelta
 from asyncio.exceptions import CancelledError
 import requests
 import heroku3
@@ -45,31 +46,46 @@ async def Username_exists_by_lucmd9(username):
 
     return False
 
+user_command_count = {}
+
 @lucmd9.on(events.NewMessage(pattern=r"^\.ثلاثي (\d+)$"))
 async def generate_random_usernames(event):
 
-    count = int(event.pattern_match.group(1))  # Get the number from the command
-    abc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
-    abc1 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    user_id = event.sender_id
+    current_time = datetime.now()
+    if user_id in user_command_count:
+        last_command_time, count = user_command_count[user_id]
+        if current_time - last_command_time < timedelta(minutes=5) and count >= 10:
+            await event.reply("You have reached the maximum limit of 10 commands in 5 minutes.")
+            return
+    else:
+        user_command_count[user_id] = (current_time, 1)
 
-    generated_usernames = []
-    while count > 0:
-        v1 = ''.join((random.choice(abc1) for _ in range(1)))
-        v2 = ''.join((random.choice(abc) for _ in range(1)))
-        v3 = ''.join((random.choice(abc) for _ in range(1)))
-        v4 = ''.join((random.choice(abc) for _ in range(1)))
-        username = f"{v1}_{v2}_{v3}"
-        if not await Username_exists_by_lucmd9(username):
-            generated_usernames.append(username)
-            count -= 1
+    async with event.client.action(event.chat_id, 'typing'):
+        count = int(event.pattern_match.group(1))  # Get the number from the command
+        abc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
+        abc1 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
-    if generated_usernames:
-        usernames_text = "\n".join([f"@{username}" for username in generated_usernames])
-        await event.edit(f"**᯽︙ تم انشاء {len(generated_usernames)} يوزر جديد**\n\n{usernames_text}")
+        generated_usernames = []
+        while count > 0:
+            v1 = ''.join((random.choice(abc1) for _ in range(1)))
+            v2 = ''.join((random.choice(abc) for _ in range(1)))
+            v3 = ''.join((random.choice(abc) for _ in range(1)))
+            username = f"{v1}_{v2}_{v3}"
+            if not await Username_exists_by_lucmd9(username):
+                generated_usernames.append(username)
+                count -= 1
+
+        if generated_usernames:
+            usernames_text = "\n".join([f"@{username}" for username in generated_usernames])
+            await event.reply(f"**᯽︙ تم انشاء {len(generated_usernames)} يوزر جديد**\n\n{usernames_text}")
+
+    
+    user_command_count[user_id] = (current_time, user_command_count[user_id][1] + 1)
 @lucmd9.on(events.NewMessage(pattern=r"^\.رباعي (\d+)$"))
 async def generate_random_usernames(event):
 
-    count = int(event.pattern_match.group(1))  # Get the number from the command
+    count = int(event.pattern_match.group(1))  
     abc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
     abc1 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
