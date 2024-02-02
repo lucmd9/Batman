@@ -361,21 +361,19 @@ async def Hussein(event):
         owner_id = reply_msg.from_id.user_id
         if owner_id == lucmd9.uid:
             if event.message.message == "شيع الولد":
-                animation_interval = 5
-                animation_ttl = range(15)
-                reply = await event.reply("**᯽︙ سيتم تشيعي من قبل المطور 💀** ")
+                animation_interval = 4
                 animation_chars = [
                     "**بِسِمٍّ اللّٰه وَبِاَللَّهِ**",
                     "**أَشْهَد أَلَّا إِلَهَ إِلَّا اَللَّه وَحْدَهُ لَا شَرِيكَ لَه**",
                     "**وَأَشْهَدُ أَنَّ مُحَمَّدْ عَبْدُهْ وَرَسُولُهُ**",
                     "**وَأَشْهَد أَنَّ عَلَى وَلِيِّ اَللَّهِ وَأَوْلَادِهِ اَلْمَعْصُومِينَ بِالْحَقِّ حُجَجِ اَللَّهِ**",
                 ]
-                for i in animation_ttl:
+                for char in animation_chars:
+                    await event.reply(char)
                     await asyncio.sleep(animation_interval)
-                    await event.reply(animation_chars[i % 15])
 
                 url = "https://t.me/shiajdhddh/2"
-                await event.client.send_file(event.chat_id, url, caption="", parse_mode="html", reply_to=reply)
+                await event.client.send_file(event.chat_id, url, caption="", parse_mode="html", reply_to=event.reply_to_msg_id)
 @lucmd9.on(events.NewMessage(incoming=True))
 async def Hussein(event):
     if event.reply_to and event.sender_id in progs:
