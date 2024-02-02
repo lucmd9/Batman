@@ -41,7 +41,7 @@ async def mutejep(event):
             return await edit_or_reply(event, "** كومبي . . لا يمڪنني كتـم مطـور السـورس  ╰**")
         if event.chat_id == 5762222122:
             return await edit_or_reply(event, "** كومبي . . لا يمڪنني كتـم مطـور السـورس  ╰**")
-        if event.chat_id == 6295913543:
+        if event.chat_id == 6528926431:
             return await edit_or_reply(event, "** كومبي . . لا يمڪنني كتـم مطـور السـورس  ╰**")                
         try:
             mute(event.chat_id, event.chat_id)
