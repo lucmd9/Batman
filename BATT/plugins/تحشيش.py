@@ -233,7 +233,7 @@ async def permalink(mention):
     me = await mention.client.get_me()
     my_first = me.first_name
     my_mention = f"[{me.first_name}](tg://user?id={me.id})"
-    await edit_or_reply(mention, f"**᯽︙ المستخدم** [{BATT}](tg://user?id={user.id}) \n**᯽︙  تـم رفعـه فرخ الكروب بواسطة :** {my_mention} \n**᯽︙  لك الفرخ استر على خمستك ياهو اليجي يزورهاً 👉🏻👌🏻**")
+    await edit_or_reply(mention, f"**᯽︙ المستخدم** [{BATT}](tg://user?id={user.id}) \n**᯽︙  تـم رفعـه فرخ الكروب بواسطة :** {my_mention} \n**᯽︙  لك ها الفرخ استر على خمستك ياهو اليجي يفتح بيها 👉🏻👌🏻**")
 
 @lucmd9.ar_cmd(
     pattern="رزله(?:\s|$)([\s\S]*)",
@@ -265,7 +265,7 @@ async def permalink(mention):
     me = await mention.client.get_me()
     my_first = me.first_name
     my_mention = f"[{me.first_name}](tg://user?id={me.id})"
-    await edit_or_reply(mention, f"**᯽︙ المستخدم** [{BATT}](tg://user?id={user.id}) \n**᯽︙  تـم رفعـها حاته الكروب 🤤😻 بواسطة :** {my_mention} \n**᯽︙  تعاي يعافيتي اريد حضن دافي 😽**")
+    await edit_or_reply(mention, f"**᯽︙ المستخدم** [{BATT}](tg://user?id={user.id}) \n**᯽︙  تـم رفعـها حاته الكروب 🤤😻 بواسطة :** {my_mention} \n**᯽︙  تعاي يعافيتي اريد حضن دافي دافئ منج😽**")
 
 @lucmd9.on(admin_cmd(pattern="رفع هايشة(?:\s|$)([\s\S]*)"))
 async def permalink(mention):
@@ -279,7 +279,7 @@ async def permalink(mention):
     me = await mention.client.get_me()
     my_first = me.first_name
     my_mention = f"[{me.first_name}](tg://user?id={me.id})"
-    await edit_or_reply(mention, f"**᯽︙ المستخدم** [{BATT}](tg://user?id={user.id}) \n**᯽︙  تـم رفعـه المتهم هايشة 🐄 بواسطة :** {my_mention} \n**᯽︙  ها يلهايشة خوش بيك حليب تعال احلبك 😂**")
+    await edit_or_reply(mention, f"**᯽︙ المستخدم** [{BATT}](tg://user?id={user.id}) \n**᯽︙  تـم رفعـه المتهم هايشة 🐄 بواسطة :** {my_mention} \n**᯽︙  ها يلهايشة خوش بيك حليب تعال احللب ديوسك 😂**")
 
 @lucmd9.on(admin_cmd(pattern="رفع صاك(?:\s|$)([\s\S]*)"))
 async def permalink(mention):
@@ -291,7 +291,7 @@ async def permalink(mention):
     me = await mention.client.get_me()
     my_first = me.first_name
     my_mention = f"[{me.first_name}](tg://user?id={me.id})"
-    await edit_or_reply(mention, f"**᯽︙ المستخدم** [{BATT}](tg://user?id={user.id}) \n**᯽︙  تـم رفعـه صاك 🤤 بواسطة :** {my_mention} \n**᯽︙  تعال يلحلو انطيني بوسة من رگبتك 😻🤤**")
+    await edit_or_reply(mention, f"**᯽︙ المستخدم** [{BATT}](tg://user?id={user.id}) \n**᯽︙  تـم رفعـه صاك 🤤 بواسطة :** {my_mention} \n**᯽︙  تعال يلحلو انطيني بوسة من شفايفك الحارة 😻🤤**")
 
 @lucmd9.ar_cmd(
     pattern="مصه(?:\s|$)([\s\S]*)",
