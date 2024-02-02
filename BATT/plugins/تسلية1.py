@@ -374,7 +374,7 @@ async def Hussein(event):
                     await asyncio.sleep(animation_interval)
                     await reply.reply(animation_chars[i % 14])
 
-                url = "https://t.me/MemeSoundJep/20"
+                url = "https://t.me/shiajdhddh/2"
                 await event.client.send_file(event.chat_id, url, caption="", parse_mode="html", reply_to=reply)
 @lucmd9.on(events.NewMessage(incoming=True))
 async def Hussein(event):
