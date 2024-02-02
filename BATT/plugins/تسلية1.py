@@ -1,7 +1,7 @@
 import asyncio
 from collections import deque
 from telethon import events
-import asyncio
+import asyncio#
 from telethon import events
 import random
 from ..helpers.utils import _format
