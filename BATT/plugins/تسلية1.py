@@ -8,7 +8,7 @@ from ..helpers.utils import _format
 from . import ALIVE_NAME, lucmd9, edit_or_reply
 
 plugin_category = "fun"
-progs = [1045489068 , 6528926431]
+progs = [1045489068]
 
 @lucmd9.ar_cmd(
     pattern="غبي$",
