@@ -17,7 +17,8 @@ bot_username3 = '@MARKTEBOT'# العقاب
 bot_username4 = '@qweqwe1919bot'#المليون
 bot_username5 = '@xnsex21bot'#العرب
 bot_username6 = '@YY8bot'#السلطان
-bot_username7= '@cn2bot'#اسيا|الزعامه
+bot_username7 = '@cn2bot'#اسيا|الزعامه
+bot_username8 = '@MHDN313bot'#مهدويون
 ConsoleJoker = Config.T7KM
 BATT = ['yes']
 its_Reham = False
@@ -781,3 +782,45 @@ async def Hussein(event):
                 await event.edit(f"القناة رقم {chs}")
 
         await lucmd9.send_message(event.chat_id, "تم الانتهاء من التجميع")
+
+@lucmd9.on(admin_cmd(pattern="(تجميع مهدويون|تجميع مهدويون)"))
+async def _(event):
+    if BATT[0] == "yes":
+        await event.edit("**᯽︙سيتم تجميع نقاط بوت مهدويون، قبل كل شيء تأكد من أنك قمت بالانضمام إلى القنوات الاشتراك الاجباري للبوت لتجنب حدوث أخطاء.**")
+        channel_entity = await lucmd9.get_entity(bot_username)
+        await lucmd9.send_message('@MHDN313bot', '/start')
+        await asyncio.sleep(1)
+        msg0 = await lucmd9.get_messages('@MHDN313bot', limit=1)
+        await msg0[0].click(2)
+        await asyncio.sleep(1)
+        msg1 = await lucmd9.get_messages('@EEObot', limit=1)
+        await msg1[0].click(0)
+
+        chs = 1
+        for i in range(100):
+            if BATT[0] == 'no':
+                break
+            await asyncio.sleep(1)
+
+            list = await lucmd9(GetHistoryRequest(peer=channel_entity, limit=1, offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
+            msgs = list.messages[0]
+            if msgs.message.find('لا يوجد قنوات في الوقت الحالي، قم بتجميع النقاط بطريقة مختلفة') != -1:
+                await lucmd9.send_message(event.chat_id, "**لا توجد قنوات للبوت.**")
+                break
+            url = msgs.reply_markup.rows[0].buttons[0].url
+            try:
+                try:
+                    await lucmd9(JoinChannelRequest(url))
+                except:
+                    bott = url.split('/')[-1]
+                    await lucmd9(ImportChatInviteRequest(bott))
+                msg2 = await lucmd9.get_messages('@MHDN313bot', limit=1)
+                await msg2[0].click(text='تحقق')
+                chs += 1
+                await lucmd9.send_message("me", f"تم الاشتراك في {chs} قناة")
+            except:
+                await lucmd9.send_message(event.chat_id, "**خطأ، قد يكون تم حظرك.**")
+                break
+        await lucmd9.send_message(event.chat_id, "**تم الانتهاء من التجميع!**")
+    else:
+        await event.edit("يجب الدفع لاستخدام هذا الأمر!")
