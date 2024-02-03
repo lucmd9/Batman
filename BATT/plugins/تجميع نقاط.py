@@ -793,7 +793,7 @@ async def _(event):
         msg0 = await lucmd9.get_messages('@MHDN313bot', limit=1)
         await msg0[0].click(2)
         await asyncio.sleep(1)
-        msg1 = await lucmd9.get_messages('@EEObot', limit=1)
+        msg1 = await lucmd9.get_messages('@MHDN313bot', limit=1)
         await msg1[0].click(0)
 
         chs = 1
