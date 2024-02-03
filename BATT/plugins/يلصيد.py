@@ -66,7 +66,7 @@ async def generate_random_usernames(event):
 
     count = int(event.pattern_match.group(1))  # شكد ممضرط
     if count > 10:
-        await event.reply("ما تكدر تسوي اكثر من ١٠ يوزرات بالوقت نفسه")
+        await event.edit("ما تكدر تسوي اكثر من ١٠ يوزرات بالوقت نفسه")
         return
 
 # رسالة الانتطار 🦇
