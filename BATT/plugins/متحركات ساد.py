@@ -281,7 +281,7 @@ async def tmgif(event):
         lucmd9 += f"✛━━━━━━━━━━━━━✛\n"
         lucmd9 += f"ﮩڏة آلُـِـِِـِِِـِِـِـآوُآمـْـْْـْر فُـ,ـقٌـ,ـطُـٌـٌٌـٌ فُـ,ـي ڛـ,ـوُرڛـ,ـ آلُـِـِِـِِِـِِـِـځـٌٌـٌٌفُـ,ـآشُـُـُُـُ\n"
         lucmd9 += f"** انمي 7 **"
-        await event.client.send_file(event.chat_id, ani6, caption=lucmd9, reply_to=luc_md9)
+        await event.client.send_file(event.chat_id, ani7, caption=lucmd9, reply_to=luc_md9)
 
 #edit  ~ @luc_md9 for lucmd9 
 #جميع الحقوق محفوظة لسـورس الخفاش تخـمط تبيـن فشلـك
