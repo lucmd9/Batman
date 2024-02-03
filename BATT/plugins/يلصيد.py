@@ -43,14 +43,20 @@ async def check_cooldown(chat_id):
 async def generate_random_usernames(event):
     chat_id = event.chat_id
     if not await check_cooldown(chat_id):
-        await event.reply("انتظر ٥ دقايق علمود تستعمل الامر مره لخ")
+        await event.reply("انتظر ٥ دقايق علمود تستعمل الصيد مره لخ")
         return
     cooldowns[chat_id] = datetime.now()
 
-    count = int(event.pattern_match.group(1))  
+    count = int(event.pattern_match.group(1))  # شكد ممضرط
     if count > 10:
-        await event.reply("ما تكدر تسوي اكثر من ١٠ بنفس الوقت")
+        await event.reply("ما تكدر تسوي اكثر من ١٠ يوزرات بالوقت نفسه")
         return
+
+#رسالة الانتظار 🦇
+    message = await event.reply("جاري الانشاء.")
+    for i in range(3):
+        await asyncio.sleep(3)
+        await message.edit(f"جاري الانشاء{'.' * (i + 1)}")
 
     async with event.client.action(event.chat_id, "typing"):
         abc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
@@ -67,7 +73,7 @@ async def generate_random_usernames(event):
 
         if generated_usernames:
             usernames_text = "\n".join([f"@{username}" for username in generated_usernames])
-            await event.reply(f"**᯽︙ تم انشاء {len(generated_usernames)} يوزر جديد**\n\n{usernames_text}")
+            await event.edit(f"**᯽︙ تم انشاء {len(generated_usernames)} يوزر جديد**\n\n{usernames_text}")
 
 @lucmd9.on(events.NewMessage(pattern=r"^\.رباعي (\d+)$"))
 async def generate_random_usernames(event):
