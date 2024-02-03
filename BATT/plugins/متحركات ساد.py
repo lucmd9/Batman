@@ -267,6 +267,22 @@ async def tmgif(event):
         lucmd9 += f"ﮩڏة آلُـِـِِـِِِـِِـِـآوُآمـْـْْـْر فُـ,ـقٌـ,ـطُـٌـٌٌـٌ فُـ,ـي ڛـ,ـوُرڛـ,ـ آلُـِـِِـِِِـِِـِـځـٌٌـٌٌفُـ,ـآشُـُـُُـُ\n"
         lucmd9 += f"** انمي 6 **"
         await event.client.send_file(event.chat_id, ani6, caption=lucmd9, reply_to=luc_md9)
+
+@lucmd9.ar_cmd(
+    pattern="ن7$",
+    command=("ن7", plugin_category),
+           )
+async def tmgif(event):
+    if event.fwd_from:
+        return
+    luc_md9 = await reply_id(event)
+    if sad:
+        lucmd9 = f"**˛ BATMAN . .**\n"
+        lucmd9 += f"✛━━━━━━━━━━━━━✛\n"
+        lucmd9 += f"ﮩڏة آلُـِـِِـِِِـِِـِـآوُآمـْـْْـْر فُـ,ـقٌـ,ـطُـٌـٌٌـٌ فُـ,ـي ڛـ,ـوُرڛـ,ـ آلُـِـِِـِِِـِِـِـځـٌٌـٌٌفُـ,ـآشُـُـُُـُ\n"
+        lucmd9 += f"** انمي 7 **"
+        await event.client.send_file(event.chat_id, ani6, caption=lucmd9, reply_to=luc_md9)
+
 #edit  ~ @luc_md9 for lucmd9 
 #جميع الحقوق محفوظة لسـورس الخفاش تخـمط تبيـن فشلـك
-#فاشللللللللللللللللللللللللللللللللللللللللللللللللللللللللللللللللللل
+#يا فاشللللللللللللللللللللللللللللللللللللللللللللللللللللللللللللللللللل
