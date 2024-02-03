@@ -26,7 +26,24 @@ from ..sql_helper.global_collection import (
 )
 from ..sql_helper.globals import delgvar
 from telethon.tl.functions.channels import JoinChannelRequest
+async def Username_exists_by_lucmd9(username):
+    try:
+        entity = await lucmd9.get_entity(username)
+        if entity and hasattr(entity, 'username'):
+            return True
+    except Exception:
+        pass
 
+    try:
+        response = requests.get(f'https://fragments.com/api/users/{username}')
+        if response.status_code == 200:
+            user = json.loads(response.content)
+            if user['username'] == username:
+                return True
+    except Exception:
+        pass
+
+    return False
 cooldowns = {}
 
 async def check_cooldown(chat_id):
