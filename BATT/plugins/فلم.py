@@ -1,5 +1,4 @@
 #BATT ©
-#By Reda telegram: @rd0r0
 
 from telethon.tl.custom import Button
 from cryptography.fernet import Fernet

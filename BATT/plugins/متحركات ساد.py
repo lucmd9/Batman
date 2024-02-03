@@ -168,3 +168,99 @@ async def tmgif(event):
         )
 #edit  ~ @luc_md9 for lucmd9 
 #جميع الحقوق محفوظة لسـورس الخفاش تخـمط تبيـن فشلـك
+
+
+        plugin_category = "extra"
+@lucmd9.ar_cmd(
+    pattern="ن1$",
+    command=("ن1", plugin_category),
+           )
+async def tmgif(event):
+    if event.fwd_from:
+        return
+    luc_md9 = await reply_id(event)
+    if sad:
+        lucmd9 = f"**˛ BATMAN . .**\n"
+        lucmd9 += f"✛━━━━━━━━━━━━━✛\n"
+        lucmd9 += f"** انمي1 **"
+        await event.client.send_file(event.chat_id, ani1, caption=lucmd9, reply_to=luc_md9)
+#edit  ~ @luc_md9 for lucmd9 
+#جميع الحقوق محفوظة لسـورس الخفاش تخـمط تبيـن فشلـك
+
+@lucmd9.ar_cmd(
+    pattern="2ن$",
+    command=("ن2", plugin_category),
+           )
+async def tmgif(event):
+    if event.fwd_from:
+        return
+    luc_md9 = await reply_id(event)
+    if sad:
+        lucmd9 = f"**˛ BATMAN . .**\n"
+        lucmd9 += f"✛━━━━━━━━━━━━━✛\n"
+        lucmd9 += f"** انمي 2 **"
+        await event.client.send_file(event.chat_id, ani2, caption=lucmd9, reply_to=luc_md9)
+@lucmd9.ar_cmd(
+    pattern="ن3$",
+    command=("ن3", plugin_category),
+           )
+async def tmgif(event):
+    if event.fwd_from:
+        return
+    luc_md9 = await reply_id(event)
+    if sad:
+        lucmd9 = f"**˛ BATMAN . .**\n"
+        lucmd9 += f"✛━━━━━━━━━━━━━✛\n"
+        lucmd9 += f"** انمي 3 **"
+        await event.client.send_file(event.chat_id, ani3, caption=lucmd9, reply_to=luc_md9)
+        #edit  ~ @luc_md9 for lucmd9 
+#جميع الحقوق محفوظة لسـورس الخفاش تخـمط تبيـن فشلـك
+
+@lucmd9.ar_cmd(
+    pattern="ن4$",
+    command=("ن4", plugin_category),
+           )
+async def tmgif(event):
+    if event.fwd_from:
+        return
+    luc_md9 = await reply_id(event)
+    if sad:
+        lucmd9 = f"**˛ BATMAN . .**\n"
+        lucmd9 += f"✛━━━━━━━━━━━━━✛\n"
+        lucmd9 += f"** انمي 4 **"
+        await event.client.send_file(event.chat_id, ani4, caption=lucmd9, reply_to=luc_md9)
+        #edit  ~ @luc_md9 for lucmd9 
+#جميع الحقوق محفوظة لسـورس الخفاش تخـمط تبيـن فشلـك
+
+@lucmd9.ar_cmd(
+    pattern="ن5$",
+    command=("ن5", plugin_category),
+           )
+async def tmgif(event):
+    if event.fwd_from:
+        return
+    luc_md9 = await reply_id(event)
+    if sad:
+        lucmd9 = f"**˛ BATMAN . .**\n"
+        lucmd9 += f"✛━━━━━━━━━━━━━✛\n"
+        lucmd9 += f"** انمي 5 **"
+        await event.client.send_file(event.chat_id, ani5, caption=lucmd9, reply_to=luc_md9)
+        #edit  ~ @luc_md9 for lucmd9 
+#جميع الحقوق محفوظة لسـورس الخفاش تخـمط تبيـن فشلـك
+
+@lucmd9.ar_cmd(
+    pattern="ن6$",
+    command=("ن6", plugin_category),
+           )
+async def tmgif(event):
+    if event.fwd_from:
+        return
+    luc_md9 = await reply_id(event)
+    if sad:
+        lucmd9 = f"**˛ BATMAN . .**\n"
+        lucmd9 += f"✛━━━━━━━━━━━━━✛\n"
+        lucmd9 += f"** انمي 6 **"
+        await event.client.send_file(event.chat_id, ani6, caption=lucmd9, reply_to=luc_md9)
+#edit  ~ @luc_md9 for lucmd9 
+#جميع الحقوق محفوظة لسـورس الخفاش تخـمط تبيـن فشلـك
+#فاشللللللللللللللللللللللللللللللللللللللللللللللللللللللللللللللللللل
