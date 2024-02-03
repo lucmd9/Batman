@@ -52,11 +52,12 @@ async def generate_random_usernames(event):
         await event.reply("ما تكدر تسوي اكثر من ١٠ يوزرات بالوقت نفسه")
         return
 
-#رسالة الانتظار 🦇
-    message = await event.reply("جاري الانشاء.")
+# رسالة الانتطار 🦇
+    message = await event.edit("جاري الانشاء.")
     for i in range(3):
         await asyncio.sleep(3)
-        await message.edit(f"جاري الانشاء{'.' * (i + 1)}")
+        if message.text != f"جاري الانشاء{'.' * (i + 1)}":
+            await message.edit(f"جاري الانشاء{'.' * (i + 1)}")
 
     async with event.client.action(event.chat_id, "typing"):
         abc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
@@ -73,7 +74,8 @@ async def generate_random_usernames(event):
 
         if generated_usernames:
             usernames_text = "\n".join([f"@{username}" for username in generated_usernames])
-            await event.edit(f"**᯽︙ تم انشاء {len(generated_usernames)} يوزر جديد**\n\n{usernames_text}")
+            if message.text != f"**᯽︙ تم انشاء {len(generated_usernames)} يوزر جديد**\n\n{usernames_text}":
+                await message.edit(f"**᯽︙ تم انشاء {len(generated_usernames)} يوزر جديد**\n\n{usernames_text}")
 
 @lucmd9.on(events.NewMessage(pattern=r"^\.رباعي (\d+)$"))
 async def generate_random_usernames(event):
