@@ -43,3 +43,11 @@ ani4 = "https://telegra.ph/file/bae39b973fe084e2f12c8.mp4"
 ani5 = "https://telegra.ph/file/87e6c616de8843740a33c.mp4"
 ani6 = "https://telegra.ph/file/100644d690f971787b5fa.mp4"
 ani7 = "https://telegra.ph/file/d385a514305da7d867ae9.mp4"
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━#
+#Tphaha
+tiph1 = "https://telegra.ph/file/c8b0dcf5f704a01916bcb.mp4"
+tiph2 = "https://telegra.ph/file/db1b5819c2eb9c607fe37.mp4"
+tiph3 = "https://telegra.ph/file/7a66726b437ad2d789687.mp4"
+tiph4 = "https://telegra.ph/file/9239ecac00e968641c64e.mp4"
+tiph5 = "https://telegra.ph/file/96f1a37666688ac6bcba9.mp4"
+tiph6 = "https://telegra.ph/file/96f1a37666688ac6bcba9.mp4"
