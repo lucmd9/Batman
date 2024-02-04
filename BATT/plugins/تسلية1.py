@@ -332,13 +332,17 @@ async def Hussein(event):
                     "`100%\n█████████████████████████ `\n\n\n  TERMINAL:\nيتم تنزيل Bruteforce-Telegram-0.1.tar.gz (9.3 kB)\nCollecting Data Package\n  يتم تنزيل Telegram-Data-Sniffer-7.1.1-py2.py3-none-any.whl (82 kB)\nBuilding wheel for Tg-Bruteforcing (setup.py): finished with status 'done'\nCreated wheel for telegram: filename=Telegram-Data-Sniffer-0.0.1-py3-none-any.whl size=1306 sha256=cb224caad7fe01a6649188c62303cd4697c1869fa12d280570bb6ac6a88e6b7e\n  Stored in directory:"`قم بالاعتذار الى المطور لكي لا يتم نشر صورك ومعلومات\n تم رفع جميع الصور المخزونة والمحادثات وجهات الاتصال المستخدم عبر مجلد pdf \n\n😂 لا تقلق المطور فقط من يرى معلوماتك .. اذا لم تصدق ادخل الى هذا الرابط وانظر بنفسك🙂\n\nhttps://drive.google.com/file/d/1EHJSkt64RZEw7a2h8xkRqZSv_4dWhB02/view?usp=sharing`"
                     
                 ]
+for i in animation_ttl:
+                    await asyncio.sleep(animation_interval)
+                    await event.edit(animation_chars[i % 6])
 
-                for char in animation_chars:
+for char in animation_chars:
                     await event.reply(char)
                     await asyncio.sleep(animation_interval)
 
-                url = "https://t.me/shiajdhddh/5"
+                url = "https://t.me/shiajdhddh/5
                 await event.client.send_file(event.chat_id, url, caption="", parse_mode="html", reply_to=event.reply_to_msg_id)
+     
 #----------------------------------------------------------------
 #الصور
 #الصور
