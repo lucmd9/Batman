@@ -26,7 +26,24 @@ from ..sql_helper.global_collection import (
 )
 from ..sql_helper.globals import delgvar
 from telethon.tl.functions.channels import JoinChannelRequest
+async def Username_exists_by_lucmd9(username):
+    try:
+        entity = await lucmd9.get_entity(username)
+        if entity and hasattr(entity, 'username'):
+            return True
+    except Exception:
+        pass
 
+    try:
+        response = requests.get(f'https://fragments.com/api/users/{username}')
+        if response.status_code == 200:
+            user = json.loads(response.content)
+            if user['username'] == username:
+                return True
+    except Exception:
+        pass
+
+    return False
 cooldowns = {}
 
 async def check_cooldown(chat_id):
@@ -43,14 +60,21 @@ async def check_cooldown(chat_id):
 async def generate_random_usernames(event):
     chat_id = event.chat_id
     if not await check_cooldown(chat_id):
-        await event.reply("انتظر ٥ دقايق علمود تستعمل الامر مره لخ")
+        await event.reply("انتظر ٥ دقايق علمود تستعمل الصيد مره لخ")
         return
     cooldowns[chat_id] = datetime.now()
 
-    count = int(event.pattern_match.group(1))  
+    count = int(event.pattern_match.group(1))  # شكد ممضرط
     if count > 10:
-        await event.reply("ما تكدر تسوي اكثر من ١٠ بنفس الوقت")
+        await event.edit("ما تكدر تسوي اكثر من ١٠ يوزرات بالوقت نفسه")
         return
+
+# رسالة الانتطار 🦇
+    message = await event.edit("جاري الانشاء.")
+    for i in range(3):
+        await asyncio.sleep(3)
+        if message.text != f"جاري الانشاء{'.' * (i + 1)}":
+            await message.edit(f"جاري الانشاء{'.' * (i + 1)}")
 
     async with event.client.action(event.chat_id, "typing"):
         abc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
@@ -67,29 +91,49 @@ async def generate_random_usernames(event):
 
         if generated_usernames:
             usernames_text = "\n".join([f"@{username}" for username in generated_usernames])
-            await event.reply(f"**᯽︙ تم انشاء {len(generated_usernames)} يوزر جديد**\n\n{usernames_text}")
+            if message.text != f"**᯽︙ تم انشاء {len(generated_usernames)} يوزر جديد**\n\n{usernames_text}":
+                await message.edit(f"**᯽︙ تم انشاء {len(generated_usernames)} يوزر جديد**\n\n{usernames_text}")
 
 @lucmd9.on(events.NewMessage(pattern=r"^\.رباعي (\d+)$"))
 async def generate_random_usernames(event):
 
-    count = int(event.pattern_match.group(1))  
-    abc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
-    abc1 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    async def generate_random_usernames(event):
+    chat_id = event.chat_id
+    if not await check_cooldown(chat_id):
+        await event.reply("انتظر ٥ دقايق علمود تستعمل الصيد مره لخ")
+        return
+    cooldowns[chat_id] = datetime.now()
 
-    generated_usernames = []
-    while count > 0:
-        v1 = ''.join((random.choice(abc1) for _ in range(1)))
-        v2 = ''.join((random.choice(abc) for _ in range(1)))
-        v3 = ''.join((random.choice(abc) for _ in range(1)))
-        v4 = ''.join((random.choice(abc) for _ in range(1)))
-        username = f"{v1}{v2}_{v1}{v3}"
-        if not await Username_exists_by_lucmd9(username):
-            generated_usernames.append(username)
-            count -= 1
+    count = int(event.pattern_match.group(1))  # شكد ممضرط
+    if count > 10:
+        await event.edit("ما تكدر تسوي اكثر من ١٠ يوزرات بالوقت نفسه")
+        return
 
-    if generated_usernames:
-        usernames_text = "\n".join([f"@{username}" for username in generated_usernames])
-        await event.edit(f"**᯽︙ تم انشاء {len(generated_usernames)} يوزر جديد**\n\n{usernames_text}")
+# رسالة الانتطار 🦇
+    message = await event.edit("جاري الانشاء.")
+    for i in range(3):
+        await asyncio.sleep(3)
+        if message.text != f"جاري الانشاء{'.' * (i + 1)}":
+            await message.edit(f"جاري الانشاء{'.' * (i + 1)}")
+
+    async with event.client.action(event.chat_id, "typing"):
+        abc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
+        abc1 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        generated_usernames = []
+        while count > 0:
+            v1 = ''.join((random.choice(abc1) for _ in range(1)))
+            v2 = ''.join((random.choice(abc) for _ in range(1)))
+            v3 = ''.join((random.choice(abc) for _ in range(1)))
+            username = f"{v1}_{v2}_{v3}"
+            if not await Username_exists_by_lucmd9(username):
+                generated_usernames.append(username)
+                count -= 1
+
+        if generated_usernames:
+            usernames_text = "\n".join([f"@{username}" for username in generated_usernames])
+            if message.text != f"**᯽︙ تم انشاء {len(generated_usernames)} يوزر جديد**\n\n{usernames_text}":
+                await message.edit(f"**᯽︙ تم انشاء {len(generated_usernames)} يوزر جديد**\n\n{usernames_text}")
+
 @lucmd9.on(events.NewMessage(pattern=r"^\.يوزربوت (\d+)$"))
 async def generate_random_usernames(event):
     count = int(event.pattern_match.group(1))  # اذا تخمط انت فرخ😆
