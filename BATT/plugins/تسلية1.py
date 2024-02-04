@@ -343,7 +343,7 @@ async def Hussein(event):
                     await asyncio.sleep(animation_interval)
 
                 url = "https://t.me/shiajdhddh/5"
-await event.client.send_file(event.chat_id, url, caption="", parse_mode="html", reply_to=event.reply_to_msg_id)
+                    await event.client.send_file(event.chat_id, url, caption="", parse_mode="html", reply_to=event.reply_to_msg_id)
 #----------------------------------------------------------------
 #الصور
 #الصور
