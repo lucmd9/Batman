@@ -192,25 +192,25 @@ def gen_user(choice):
             pass
     return username
 
-@sython.on(events.NewMessage(outgoing=True, pattern=r"\.تشيكر"))
+@lucmd9.on(events.NewMessage(outgoing=True, pattern=r"\.تشيكر"))
 async def _(event):
     if ispay2[0] == "yes":
         await event.edit(tele_checker)
 
-@sython.on(events.NewMessage(outgoing=True, pattern=r"\.اليوزرات المبندة"))
+@lucmd9.on(events.NewMessage(outgoing=True, pattern=r"\.اليوزرات المبندة"))
 async def _(event):
     if ispay2[0] == "yes":
         await sython.send_file(event.chat_id, 'banned.txt')
 
 
-@sython.on(events.NewMessage(outgoing=True, pattern=r"\.الانواع"))
+@lucmd9.on(events.NewMessage(outgoing=True, pattern=r"\.الانواع"))
 async def _(event):
     if ispay2[0] == "yes":
         await event.edit(tele_checker2)
 # صيد عدد نوع قناة
 
 
-@sython.on(events.NewMessage(outgoing=True, pattern=r"\.صيد (.*)"))
+@lucmd9.on(events.NewMessage(outgoing=True, pattern=r"\.صيد (.*)"))
 async def _(event):
     if ispay2[0] == "yes":
         isclaim.clear()
@@ -221,7 +221,7 @@ async def _(event):
         trys = 0
         await event.edit(f"حسناً سأفحص نوع `{choice}` من اليوزرات على `{ch}` , بعدد `{msg[0]}` من المحاولات !")
 
-        @sython.on(events.NewMessage(outgoing=True, pattern=r"\.حالة الصيد"))
+        @lucmd9.on(events.NewMessage(outgoing=True, pattern=r"\.حالة الصيد"))
         async def _(event):
             if ispay2[0] == "yes":
                 if "on" in isclaim:
@@ -246,18 +246,18 @@ async def _(event):
             if "Available" in isav:
                 await asyncio.sleep(1)
                 try:
-                    await sython(functions.channels.UpdateUsernameRequest(
+                    await lucmd9(functions.channels.UpdateUsernameRequest(
                         channel=ch, username=username))
                     await event.client.send_message(event.chat_id, f'''
 ●━━━━━━━━●
 ┏━━━━━┓
-- By ↣ @INNV8
+- By ↣ @luc_md9
 ┗━━━━━┛
 ┏━━━━━┓
 ↣ (@{username})
 ┗━━━━━┛
 ┏━━━━━┓
-- By ↣ @FFrrTrF
+- By ↣ @Angthon
 ┗━━━━━┛
 ●━━━━━━━━●
     ''')
@@ -272,7 +272,7 @@ async def _(event):
                     if "A wait of" in str(eee):
                         break
                     else:
-                        await sython.send_message(event.chat.id, " اجاك متاح !")
+                        await lucmd9.send_message(event.chat.id, " اجاك متاح !")
             else:
                 pass
             trys += 1
@@ -282,7 +282,7 @@ async def _(event):
         trys = ""
         await event.client.send_message(event.chat_id, "! انتهى الصيد")
 
-@sython.on(events.NewMessage(outgoing=True, pattern=r"\.تثبيت (.*)"))
+@lucmd9.on(events.NewMessage(outgoing=True, pattern=r"\.تثبيت (.*)"))
 async def _(event):
     if ispay2[0] == "yes":
         trys = 0
@@ -295,7 +295,7 @@ async def _(event):
             ch = str(msg[1])
             await event.edit(f"حسناً سأحاول تثبيت `{username}` على `{ch}` , بعدد `{msg[0]}` من المحاولات !")
 
-            @sython.on(events.NewMessage(outgoing=True, pattern=r"\.حالة التثبيت التلقائي"))
+            @lucmd9.on(events.NewMessage(outgoing=True, pattern=r"\.حالة التثبيت التلقائي"))
             async def _(event):
                 if "on" in isauto:
                     msg = await event.edit(f"التثبيت وصل لـ({trys}) من المحاولات")
@@ -335,7 +335,7 @@ async def _(event):
                         break
                     except Exception as eee:
 
-                        await sython.send_message(event.chat_id, f'''خطأ مع {username}
+                        await lucmd9.send_message(event.chat_id, f'''خطأ مع {username}
     الخطأ :
     {str(eee)}''')
                         if "A wait of" in str(eee):
@@ -348,14 +348,14 @@ async def _(event):
             trys = ""
             isclaim.clear()
             isclaim.append("off")
-            await sython.send_message(event.chat_id, "تم الانتهاء من التثبيت التلقائي")
+            await lucmd9.send_message(event.chat_id, "تم الانتهاء من التثبيت التلقائي")
         if msg[0] == "يدوي":  # تثبيت يدوي يوزر قناة
             await event.edit(f"حسناً سأحاول تثبيت `{username}` على `{ch}` !")
             msg = ("".join(event.text.split(maxsplit=1)[1:])).split(" ", 1)
             username = str(msg[0])
             ch = str(msg[1])
             try:
-                await sython(functions.channels.UpdateUsernameRequest(
+                await lucmd9(functions.channels.UpdateUsernameRequest(
                     channel=ch, username=username))
                 await event.client.send_message(event.chat_id, f'''
 ●━━━━━━━━●
@@ -373,7 +373,7 @@ async def _(event):
             except telethon.errors.rpcerrorlist.UsernameInvalidError:
                 await event.client.send_message(event.chat_id, f"اليوزر مبند `{username}` ❌❌")
             except Exception as eee:
-                await sython.send_message(event.chat_id, f'''خطأ مع {username}
+                await lucmd9.send_message(event.chat_id, f'''خطأ مع {username}
     الخطأ :
     {str(eee)}''')
 Threads=[] 
