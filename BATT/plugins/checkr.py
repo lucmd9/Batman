@@ -12,7 +12,51 @@ from user_agent import *
 from help import *
 from config import *
 from threading import Thread
+from telethon.tl import types
+from BATT import HEROKU_APP, UPSTREAM_REPO_URL, lucmd9
+from telethon.tl.functions.channels import CreateChannelRequest
+from telethon.tl.functions.channels import InviteToChannelRequest
+from telethon.tl.functions.messages import SendMessageRequest
+from ..Config import Config
+import json
+from ..core.logger import logging
+from ..core.managers import edit_delete, edit_or_reply
+from ..sql_helper.global_collection import (
+    add_to_collectionlist,
+    del_keyword_collectionlist,
+    get_collectionlist_items,
+)
+from ..sql_helper.globals import delgvar
+from telethon.tl.functions.channels import JoinChannelRequest
+async def Username_exists_by_lucmd9(username):
+    try:
+        entity = await lucmd9.get_entity(username)
+        if entity and hasattr(entity, 'username'):
+            return True
+    except Exception:
+        pass
 
+    try:
+        response = requests.get(f'https://fragments.com/api/users/{username}')
+        if response.status_code == 200:
+            user = json.loads(response.content)
+            if user['username'] == username:
+                return True
+    except Exception:
+        pass
+
+    return False
+cooldowns = {}
+
+async def check_cooldown(chat_id):
+    if chat_id not in cooldowns:
+        return True
+    last_time = cooldowns[chat_id]
+    now = datetime.now()
+    if now - last_time >= timedelta(minutes=5):
+        return True
+    else:
+        return False
 a = 'qwertyuiopassdfghjklzxcvbnm'
 b = '1234567890'
 e = 'qwertyuiopassdfghjklzxcvbnm1234567890'
@@ -214,25 +258,9 @@ def gen_user(choice):
             pass
     return username
 
-@Ze.on(events.NewMessage(outgoing=True, pattern=r"\.تشيكر"))
-async def _(event):
-    if ispay2[0] == "yes":
-        await event.edit(tele_checker)
-
-@Ze.on(events.NewMessage(outgoing=True, pattern=r"\.اليوزرات المبندة"))
-async def _(event):
-    if ispay2[0] == "yes":
-        await Ze.send_file(event.chat_id, 'banned.txt')
 
 
-@Ze.on(events.NewMessage(outgoing=True, pattern=r"\.الانواع"))
-async def _(event):
-    if ispay2[0] == "yes":
-        await event.edit(tele_checker2)
-# صيد عدد نوع قناة
-
-
-@Ze.on(events.NewMessage(outgoing=True, pattern=r"\.صيد (.*)"))
+@lucmd9.on(events.NewMessage(outgoing=True, pattern=r"\.صيده (.*)"))
 async def _(event):
     if ispay2[0] == "yes":
         isclaim.clear()
@@ -268,13 +296,13 @@ async def _(event):
             if "Available" in isav:
                 await asyncio.sleep(1)
                 try:
-                    await Ze(functions.channels.UpdateUsernameRequest(
+                    await lucmd9(functions.channels.UpdateUsernameRequest(
                         channel=ch, username=username))
                     await event.client.send_message(event.chat_id, f'''
-ZE - تــشــيــكــر زد إي
+BAT - CheckR
 ꪊ𝘴ꫀ𝘳  : @{username}        
-ᥴꫝ  / @Source_Ze 
-@ELHYBA
+ᥴꫝ  / @Source_BAT
+@LUC_MD9
     ''')
                     break
                 except telethon.errors.rpcerrorlist.UsernameInvalidError:
@@ -297,7 +325,7 @@ ZE - تــشــيــكــر زد إي
         trys = ""
         await event.client.send_message(event.chat_id, "! انتهى الصيد")
 
-@Ze.on(events.NewMessage(outgoing=True, pattern=r"\.تثبيت (.*)"))
+@Ze.on(events.NewMessage(outgoing=True, pattern=r"\.تثبيته (.*)"))
 async def _(event):
     if ispay2[0] == "yes":
         trys = 0
@@ -328,7 +356,7 @@ async def _(event):
                 isav = que.get()
                 if "Available" in isav:
                     try:
-                        await Ze(functions.channels.UpdateUsernameRequest(
+                        await lucmd9(functions.channels.UpdateUsernameRequest(
                             channel=ch, username=username))
                         await event.client.send_message(event.chat_id, f'''
 ZE - تــشــيــكــر زد إي
@@ -356,7 +384,7 @@ ZE - تــشــيــكــر زد إي
             trys = ""
             isclaim.clear()
             isclaim.append("off")
-            await Ze.send_message(event.chat_id, "تم الانتهاء من التثبيت التلقائي")
+            await lucmd9.send_message(event.chat_id, "تم الانتهاء من التثبيت التلقائي")
         if msg[0] == "يدوي":  # تثبيت يدوي يوزر قناة
             await event.edit(f"حسناً سأحاول تثبيت `{username}` على `{ch}` !")
             msg = ("".join(event.text.split(maxsplit=1)[1:])).split(" ", 1)
@@ -366,15 +394,15 @@ ZE - تــشــيــكــر زد إي
                 await Ze(functions.channels.UpdateUsernameRequest(
                     channel=ch, username=username))
                 await event.client.send_message(event.chat_id, f'''
-ZE - تــشــيــكــر زد إي
+BAT - CHECKR
 ꪊ𝘴ꫀ𝘳 : @{username}        
-ᥴꫝ  / @Source_Ze
-@ELHYBA
+ᥴꫝ  / @Source_BAT
+@LUC_MD9
     ''')
             except telethon.errors.rpcerrorlist.UsernameInvalidError:
                 await event.client.send_message(event.chat_id, f"مبند `{username}` ❌❌")
             except Exception as eee:
-                await Ze.send_message(event.chat_id, f'''خطأ مع {username}
+                await lucmd9.send_message(event.chat_id, f'''خطأ مع {username}
     الخطأ :
     {str(eee)}''')
 Threads=[] 
