@@ -18,10 +18,8 @@ from . import ALIVE_NAME
 
 plugin_category = "extra"
 
-#كـتابة وتعـديل  @luc_md9
-# BATT ™
 async def amongus_gen(text: str, clr: int) -> str:
-    url = "https://github.com/BATT-AR/lucmd9-Resources/raw/master/Resources/Amongus/"
+    url = "https://github.com/BATT-AR/lucmd9-Resources/raw/master/Resources/Amongus"
     font = ImageFont.truetype(
         BytesIO(
             get(
@@ -54,10 +52,10 @@ async def amongus_gen(text: str, clr: int) -> str:
 
 async def get_imposter_img(text: str) -> str:
     background = get(
-        f"https://github.com/BATT-AR/lucmd9-Resources/raw/master/Resources/imposter/impostor{randint(1,22)}.png"
+        f"https://github.com/SHRU-AR/Qrh9-Resources/raw/master/Resources/imposter/impostor{randint(1,22)}.png"
     ).content
     font = get(
-        "https://github.com/BATT-AR/lucmd9-Resources/raw/master/Resources/fonts/roboto_regular.ttf"
+        "https://github.com/SHRU-AR/Qrh9-Resources/raw/master/Resources/fonts/roboto_regular.ttf"
     ).content
     font = BytesIO(font)
     font = ImageFont.truetype(font, 30)
@@ -98,7 +96,7 @@ async def _(event):
         event.chat_id, "CAADAQADRwADnjOcH98isYD5RJTwAg"
     )
     text2 = await event.reply(
-        f"**[{ALIVE_NAME}]({USERNAME}) :** لقـد عـملت اجـتماع هـام"
+        f"[{ALIVE_NAME}]({USERNAME}) : لقـد عـملت اجـتماع هـام"
     )
     await asyncio.sleep(3)
     await stcr1.delete()
@@ -107,30 +105,30 @@ async def _(event):
         event.chat_id, "CAADAQADRgADnjOcH9odHIXtfgmvAg"
     )
     text3 = await event.reply(
-        f"**[{ALIVE_NAME}]({USERNAME}) :** نحـن 3 يجـب ان نصوت علـى احـد او نخـسر "
+        f"[{ALIVE_NAME}]({USERNAME}) : نحـن 3 يجـب ان نصوت علـى احـد او نخـسر "
     )
-    await asyncio.sleep(3)
+await asyncio.sleep(3)
     await stcr2.delete()
     await text3.delete()
     stcr3 = await event.client.send_file(
         event.chat_id, "CAADAQADOwADnjOcH77v3Ap51R7gAg"
     )
-    text4 = await event.reply(f"**- الاخـرين :** أيــن??? ")
+    text4 = await event.reply(f"- الاخـرين : أيــن??? ")
     await asyncio.sleep(2)
-    await text4.edit(f"**- الاخـرين :** مــن ?? ")
+    await text4.edit(f"- الاخـرين : مــن ?? ")
     await asyncio.sleep(2)
     await text4.edit(
-        f"**[{ALIVE_NAME}]({USERNAME}) :** أنـه {name} , لقـد شاهـدت {name}  يستـخدم الفيـنت ,"
+        f"[{ALIVE_NAME}]({USERNAME}) : أنـه {name} , لقـد شاهـدت {name}  يستـخدم الفيـنت ,"
     )
     await asyncio.sleep(3)
-    await text4.edit(f"**- الاخـرين :**حسـنا .. صـوتوا علـى {name} ")
+    await text4.edit(f"- الاخـرين :حسـنا .. صـوتوا علـى {name} ")
     await asyncio.sleep(2)
     await stcr3.delete()
     await text4.delete()
     stcr4 = await event.client.send_file(
         event.chat_id, "CAADAQADLwADnjOcH-wxu-ehy6NRAg"
     )
-    catevent = await event.reply(f"**᯽︙  {name} تـم استـبعاده .......**")
+    catevent = await event.reply(f"᯽︙  {name} تـم استـبعاده .......")
     await asyncio.sleep(2)
     await catevent.edit("ඞㅤㅤㅤㅤ ㅤㅤㅤㅤ")
     await asyncio.sleep(0.5)
