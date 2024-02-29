@@ -8,7 +8,7 @@ from ..helpers.utils import _format
 from . import ALIVE_NAME, lucmd9, edit_or_reply
 
 plugin_category = "fun"
-progs = [1045489068 , 6528926431]
+progs = [1045489068]
 
 @lucmd9.ar_cmd(
     pattern="غبي$",
@@ -455,6 +455,26 @@ async def Hussein(event):
                     "*»😭تاج رأسي والله سامحني«*",
                     " 🥵بربك سامحني حتى لو تنيجني*",
                     "** تاج رأسي وابوس رجلك يا محمد**",
+                ]
+                for i in animation_ttl:
+                    await asyncio.sleep(animation_interval)
+                    await event.reply(animation_chars[i % 14])
+
+@lucmd9.on(events.NewMessage(incoming=True))
+async def lucmd9(event):
+    if event.reply_to and event.sender_id in progs:
+        reply_msg = await event.get_reply_message()
+        owner_id = reply_msg.from_id.user_id
+        if owner_id == lucmd9.uid:
+            if event.message.message == "نزعه":
+                animation_interval = 4
+                animation_ttl = range(14)
+                event = await event.reply("**᯽︙ جاهزة مطوري راح انزعلك🥵🫦** ")
+                animation_chars = [
+                    "**👒👗👠👄اتحضر كلش منحوته اني مطوري**",
+                    "**👒👗👠👄»»»»»👙💄🫦**",
+                    "**اه جاهزه تنجيني وتريح كسي وتفتح طيزي 🥵🥵*",
+                    "** 🤤اه اه اه چبتك حارة كلش مطوري اوففف ايييه علكيف ماتحمل اه اه كافي شبعت 5 روس**",
                 ]
                 for i in animation_ttl:
                     await asyncio.sleep(animation_interval)
