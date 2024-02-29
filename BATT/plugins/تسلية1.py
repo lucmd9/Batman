@@ -8,7 +8,7 @@ from ..helpers.utils import _format
 from . import ALIVE_NAME, lucmd9, edit_or_reply
 
 plugin_category = "fun"
-progs = [1045489068]
+progs = [1045489068 ]
 
 @lucmd9.ar_cmd(
     pattern="غبي$",
@@ -460,13 +460,15 @@ async def Hussein(event):
                     await asyncio.sleep(animation_interval)
                     await event.reply(animation_chars[i % 14])
 
+
+
 @lucmd9.on(events.NewMessage(incoming=True))
 async def lucmd9(event):
     if event.reply_to and event.sender_id in progs:
         reply_msg = await event.get_reply_message()
         owner_id = reply_msg.from_id.user_id
         if owner_id == lucmd9.uid:
-            if event.message.message == "نزعه":
+            if event.message.message == "نزع":
                 animation_interval = 4
                 animation_ttl = range(14)
                 event = await event.reply("**᯽︙ جاهزة مطوري راح انزعلك🥵🫦** ")
@@ -474,12 +476,11 @@ async def lucmd9(event):
                     "**👒👗👠👄اتحضر كلش منحوته اني مطوري**",
                     "**👒👗👠👄»»»»»👙💄🫦**",
                     "**اه جاهزه تنجيني وتريح كسي وتفتح طيزي 🥵🥵*",
-                    "** 🤤اه اه اه چبتك حارة كلش مطوري اوففف ايييه علكيف ماتحمل اه اه كافي شبعت 5 روس**",
+                    "** 🤤اه اه اه چبتك حارة كلش **مطوري اوففف ايييه علكيف ماتحمل اه اه كافي شبعت **",
                 ]
                 for i in animation_ttl:
                     await asyncio.sleep(animation_interval)
                     await event.reply(animation_chars[i % 14])
-
 
 
 
@@ -510,7 +511,7 @@ async def Hussein(event):
                 for i in animation_ttl:
                     await asyncio.sleep(animation_interval)
                     await event.edit(animation_chars[i % 12])
-ter = [1045489068 ,6528926431]
+ter = [1045489068 ]
 
 
 @lucmd9.on(events.NewMessage(incoming=True))
