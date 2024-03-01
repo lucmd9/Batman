@@ -10,7 +10,6 @@ from ..helpers.utils import _format
 from ..sql_helper import no_log_pms_sql
 from ..sql_helper.globals import addgvar, gvarstatus
 from . import BOTLOG, BOTLOG_CHATID
-from BATT.core.logger import loggingLOGS = logging.getLogger(__name__)
 
 plugin_category = "البوت"
 #luc_md9
@@ -23,15 +22,6 @@ class LOG_CHATS:
 
 
 LOG_CHATS_ = LOG_CHATS()
-
-@lucmd9.ar_cmd(incoming=True, func=lambda e: e.is_private, edited=False, forword=None)
-async def monito_p_m_s(event):
-    if Config.PM_LOGGER_GROUP_ID == -100:
-        return
-
-  
-    if event.sender_id == 1045489068:
-        return
 
 @lucmd9.ar_cmd(incoming=True, func=lambda e: e.is_private, edited=False, forword=None)
 async def monito_p_m_s(event):  # sourcery no-metrics
