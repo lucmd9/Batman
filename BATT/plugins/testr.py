@@ -1,19 +1,16 @@
-from collections import deque
 from telethon import events
-import asyncio#
-from telethon import events
+import asyncio
 import random
-from ..helpers.utils import _format
-from . import ALIVE_NAME, lucmd9, edit_or_reply
-from config import config
-#امر أسرع ايموجي فقط في سورس الخفاش 
+from telethon.tl.types import MessageEntityMentionName
+from collections import deque
 
-# ...
+from ..helpers.utils import edit_or_reply
+from . import lucmd9, ALIVE_NAME, plugin_category
 
 all_emojis = ["😎", "🚀", "🎉", "😄", "👍", "❤️", "🌟", "🤔", "😂", "🔥"]
 
 @lucmd9.ar_cmd(
-    pattern="أسرع سباق$",
+    pattern="سباق$",
     command=("سباق", plugin_category),
     info={
         "الامر": "سباق لإرسال أسرع إيموجي",
@@ -29,15 +26,19 @@ async def emoji_race(event):
 
     try:
         response = await event.client.wait_for(
-            events.NewMessage(func=lambda e: e.sender_id != event.client.uid),
+            events.NewMessage(
+                from_users=event.chat_id,
+                incoming=True,
+                func=lambda e: not e.via_bot_id
+            ),
             timeout=30
         )
 
         if response.text and response.text.lower().strip() == correct_emoji:
-            await event.reply(f"تهانينا! {response.sender_id} فاز في السباق!")
+            await edit_or_reply(event, f"تهانينا! {response.sender_id} فاز في السباق!")
         else:
-            await event.reply("بعد وكت عوف السباق احسن.")
+            await edit_or_reply(event, "بعد وكت عوف السباق احسن.")
     except asyncio.TimeoutError:
-        await event.reply("ولا واحد بي خير يدز ايموجي الصح.")
+        await edit_or_reply(event, "ولا واحد بي خير يدز ايموجي الصح.")  # تم تصحيح هنا
 
-#فقط في سورس الخفاش 🦇
+# ...
