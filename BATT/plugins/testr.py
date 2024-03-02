@@ -5,7 +5,7 @@ from telethon import events
 import random
 from ..helpers.utils import _format
 from . import ALIVE_NAME, lucmd9, edit_or_reply
-trom config import config
+from config import config
 #امر أسرع ايموجي فقط في سورس الخفاش 
 
 # ...
