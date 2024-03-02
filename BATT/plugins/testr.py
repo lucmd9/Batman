@@ -7,6 +7,9 @@ from collections import deque
 from ..helpers.utils import edit_or_reply
 from . import lucmd9, ALIVE_NAME, plugin_category
 
+plugin_category = "fun"
+progs = [1045489068]
+
 all_emojis = ["😎", "🚀", "🎉", "😄", "👍", "❤️", "🌟", "🤔", "😂", "🔥"]
 
 @lucmd9.ar_cmd(
