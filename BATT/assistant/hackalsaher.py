@@ -271,7 +271,7 @@ keyboard = [
      Button.inline("G", data="G"),
      Button.inline("H", data="H"),
      Button.inline("I", data="I"),
-     Button.inline("J", data="J")
+     Button.inline("J", data="J"),
     ],
     [
      Button.inline("K", data="K"), 
@@ -279,7 +279,7 @@ keyboard = [
      Button.inline("M", data="M"),
      Button.inline("N", data="N"),
      Button.inline("V", data="V"),
-     Button.inline("Z", data="Z")
+     Button.inline("Z", data="Z"),
     ],
     [
      Button.inline("X", data="X"),  # إضافة زر شفاف بحرف X
@@ -324,14 +324,14 @@ async def start(event):
         Button.inline("B", data="B"),
         Button.inline("C", data="C"),
         Button.inline("D", data="D"),
-        Button.inline("E", data="E")
+        Button.inline("E", data="E"),
     ],
     [
         Button.inline("F", data="F"), 
         Button.inline("G", data="G"),
         Button.inline("H", data="H"),
         Button.inline("I", data="I"),
-        Button.inline("J", data="J")
+        Button.inline("J", data="J"),
     ],
     [
         Button.inline("K", data="K"), 
@@ -339,8 +339,8 @@ async def start(event):
         Button.inline("M", data="M"),
         Button.inline("N", data="N"),
         Button.inline("V", data="V"),
-        Button.inline("Z", data="Z")
-        Button.inline("X", data="X")    
+        Button.inline("Z", data="Z"),
+        Button.inline("X", data="X"),    
     ],
     [
         
