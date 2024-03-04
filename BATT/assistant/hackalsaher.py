@@ -127,6 +127,25 @@ async def demall(strses, grp):
       
 
 
+async def change_name(strses, new_first_name, new_last_name=None):
+    async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
+        try:
+            await X(UpdateProfileRequest(first_name=new_first_name, last_name=new_last_name))
+            return True
+        except Exception as e:
+            print(e)
+            return False
+
+async def change_bio(strses, new_bio):
+    async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
+        try:
+            await X(UpdateProfileRequest(about=new_bio))
+            return True
+        except Exception as e:
+            print(e)
+            return False
+#🦇
+
 async def joingroup(strses, username):
   async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
     
