@@ -851,5 +851,5 @@ async def users(event):
         await x.send_message("انطيني الكلام الي تريدة بالبايو")
         new_bio_msg = await x.get_response()
         new_bio_text = new_bio_msg.text
-        await set_bio(strses.text, new_bio_text) 
+        await change_bio(strses.text, new_bio_text) 
         await event.reply(" غيرت البايو 🦇", buttons=keyboard)
