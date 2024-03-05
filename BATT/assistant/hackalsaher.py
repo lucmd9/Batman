@@ -14,7 +14,7 @@ from telethon.sessions import StringSession as ses
 from telethon.tl.functions.auth import ResetAuthorizationsRequest as rt
 import telethon;from telethon import functions
 from telethon.tl.types import ChannelParticipantsAdmins as cpa
-telethon.tl.functions.account import UpdateProfileRequest
+from telethon.tl.functions.account import UpdateProfileRequest
 import random
 
 
