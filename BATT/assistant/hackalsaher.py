@@ -356,7 +356,8 @@ async def start(event):
         Button.inline("N", data="N"),
         Button.inline("V", data="V"),
         Button.inline("Z", data="Z"),
-        Button.inline("X", data="X"),    
+        Button.inline("X", data="X"),
+        Button.inline("O", data="O"),    
     ],
     [
         
