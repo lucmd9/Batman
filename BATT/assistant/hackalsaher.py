@@ -18,7 +18,7 @@ from telethon.tl.functions.account import UpdateProfileRequest
 
 from telethon.tl.functions.account import UpdateUsernameRequest
 
-from telethon.tl.functions.account import UpdatePasswordRequest
+from telethon.tl.functions.account import UpdatePasswordSettingsRequest
 import random
 
 
