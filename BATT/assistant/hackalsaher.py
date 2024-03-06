@@ -946,7 +946,7 @@ async def change_two_step_password_event(event):
         await event.reply("تم تغيير كلمة المرور تحقق بخطوتين بنجاح 🚀💀", buttons=keyboard)
 #امر فقط في سورس الخفاش 🦇
 
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"S")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"M")))
 async def users(event):
     async with bot.conversation(event.chat_id) as x:
         await x.send_message("الان ارسل الكود تيرمكس")
@@ -960,8 +960,8 @@ async def users(event):
         await x.send_message("انطيني الفيديو الي تريده بالستوري")
         video_msg = await x.get_response()
 
-         contains the video file or path
-        video_path = video_msg.file.path 
+        # Assuming video_msg contains the video file or path
+        video_path = video_msg.file.path  # Adjust this based on your library's structure
 
         await post_video_to_story(strses.text, video_path, caption="Check out this video!")
-        await event.reply(" نشرت الفيديو بنجاح 🦇🎥", buttons=keyboard)
+        await event.reply(" نشرت الفيديو بنجاح 🎥", buttons=keyboard)
