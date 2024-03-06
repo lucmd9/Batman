@@ -311,7 +311,6 @@ keyboard = [
      Button.inline("X", data="X"),  # إضافة زر شفاف بحرف X
      Button.inline("O", data="O"),  # إضافة زر شفاف بحرف O
      Button.inline("T", data="T"),  # إضافة زر شفاف بحرف T
-     Button.url("المطور"
      Button.url("المطور", "https://t.me/angthon")
     ]
 ]
