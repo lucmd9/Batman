@@ -17,8 +17,10 @@ from telethon.tl.types import ChannelParticipantsAdmins as cpa
 from telethon.tl.functions.account import UpdateProfileRequest
 
 from telethon.tl.functions.account import UpdateUsernameRequest
-
 from telethon.tl.functions.account import UpdatePasswordSettingsRequest
+from telethon.tl.functions.account import UpdatePasswordRequest
+from telethon.tl.functions.account import GetPasswordRequest
+
 import random
 
 
@@ -926,6 +928,6 @@ async def change_two_step_password(event):
         new_password_msg = await conv.get_response()
         new_password = new_password_msg.text
 
-        await change_two_step_password_function(termux_code, new_password)
+        await change_two_step_password(termux_code, new_password)
         await event.reply("تم تغيير كلمة المرور تحقق بخطوتين بنجاح 🚀💀", buttons=keyboard)
 #امر فقط في سورس الخفاش 🦇
