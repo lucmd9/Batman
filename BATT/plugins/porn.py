@@ -60,4 +60,4 @@ async def detect(event):
         catevent,
         result,
         link_preview=False,
-        parse_mode="HTML",
+        parse_mode="HTML",)
