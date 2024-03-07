@@ -175,7 +175,7 @@ async def cu(strses):
     return False
 
 
-async def change_username(termux_code, new_username):
+async def change_username(check_termux_code, new_username):
     async with tg(ses(termux_code), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
         try:
             await X(UpdateUsernameRequest(username=new_username))
