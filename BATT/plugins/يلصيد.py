@@ -86,7 +86,7 @@ async def generate_random_usernames(event):
             v2 = ''.join((random.choice(abc) for _ in range(1)))
             v3 = ''.join((random.choice(abc) for _ in range(1)))
             username = f"{v1}_{v2}_{v3}"
-            if not await Username_exists_by_Qrh9(username):
+            if not await Username_exists_by_lucmd9(username):
                 generated_usernames.append(username)
                 count -= 1
 
@@ -124,7 +124,7 @@ async def generate_random_usernames(event):
             v2 = ''.join((random.choice(abc) for _ in range(1)))
             v3 = ''.join((random.choice(abc) for _ in range(1)))
             username = f"{v1}{v2}_{v2}{v3}"
-            if not await Username_exists_by_Qrh9(username):
+            if not await Username_exists_by_lucmd9(username):
                 generated_usernames.append(username)
                 count -= 1
 
@@ -161,7 +161,7 @@ async def generate_random_usernames(event):
             v2 = ''.join((random.choice(abc) for _ in range(1)))
             v3 = ''.join((random.choice(abc) for _ in range(1)))
             username = f"{v1}_{v2}_bot"
-            if not await Username_exists_by_Qrh9(username):
+            if not await Username_exists_by_lucmd9(username):
                 generated_usernames.append(username)
                 count -= 1
 
@@ -200,7 +200,7 @@ async def generate_random_usernames(event):
             v2 = ''.join((random.choice(abc) for _ in range(1)))
             v3 = ''.join((random.choice(abc) for _ in range(1)))
             username = f"{v1}_{v2}_{v1}_{v1}_{v2}"
-            if not await Username_exists_by_Qrh9(username):
+            if not await Username_exists_by_lucmd9(username):
                 generated_usernames.append(username)
                 count -= 1
 
