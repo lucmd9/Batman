@@ -132,7 +132,7 @@ async def generate_random_usernames(event):
             usernames_text = "\n".join([f"@{username}" for username in generated_usernames])
             if message.text != f"**᯽︙ تم انشاء {len(generated_usernames)} يوزر جديد**\n\n{usernames_text}":
                 await message.edit(f"**᯽︙ تم انشاء {len(generated_usernames)} يوزر جديد**\n\n{usernames_text}")
-@Qrh9.on(events.NewMessage(pattern=r"^\.يوزربوت (\d+)$"))
+@lucmd9.on(events.NewMessage(pattern=r"^\.يوزربوت (\d+)$"))
 async def generate_random_usernames(event):
     chat_id = event.chat_id
     if not await check_cooldown(chat_id):
@@ -208,7 +208,7 @@ async def generate_random_usernames(event):
             usernames_text = "\n".join([f"@{username}" for username in generated_usernames])
             if message.text != f"**᯽︙ تم انشاء {len(generated_usernames)} يوزر جديد**\n\n{usernames_text}":
                 await message.edit(f"**᯽︙ تم انشاء {len(generated_usernames)} يوزر جديد**\n\n{usernames_text}")
-@Qrh9.on(events.NewMessage(pattern=r"^\.سداسي (\d+)$"))
+@lucmd9.on(events.NewMessage(pattern=r"^\.سداسي (\d+)$"))
 async def generate_random_usernames(event):
     chat_id = event.chat_id
     if not await check_cooldown(chat_id):
