@@ -246,6 +246,8 @@ async def generate_random_usernames(event):
             if message.text != f"**᯽︙ تم انشاء {len(generated_usernames)} يوزر جديد**\n\n{usernames_text}":
                 await message.edit(f"**᯽︙ تم انشاء {len(generated_usernames)} يوزر جديد**\n\n{usernames_text}")
 
+#kom be
+allowed_users = [1045489068]
 @lucmd9.on(events.NewMessage)
 async def handle_messages(event):
     user_id = event.sender_id
