@@ -55,7 +55,7 @@ async def get_imposter_img(text: str) -> str:
         f"https://github.com/SHRU-AR/Qrh9-Resources/raw/master/Resources/imposter/impostor{randint(1,22)}.png"
     ).content
     font = get(
-        "https://github.com/SHRU-AR/Qrh9-Resources/raw/master/Resources/fonts/roboto_regular.ttf"
+        "https://github.com/BATT-AR/lucmd9-Resources/raw/master/Resources/fonts/bold.ttf"
     ).content
     font = BytesIO(font)
     font = ImageFont.truetype(font, 30)
