@@ -57,14 +57,14 @@ async def fetch_info(replied_user, event):
     caption += f"<b>🤵 Username:</b> {username}\n"
     caption += f"<b>🔖 ID:</b> <code>{user_id}</code>\n"
     caption += f"<b>🌏 Data Centre ID:</b> {dc_id}\n"
-    caption += f"<b>🖼 Number of Profile Pics:</b> {replied_user_profile_photos_count}\n"
+    caption += f"<b>🖼 عدد صور في بروفايلة Pics:</b> {replied_user_profile_photos_count}\n"
     caption += f"<b>⭐️ Is Premium:</b> {is_premium}\n"
-    caption += f"<b>🤖 Is Bot:</b> {is_bot}\n"
-    caption += f"<b>🔏 Is Restricted:</b> {restricted}\n"
-    caption += f"<b>🌐 Is Verified by Telegram:</b> {verified}\n\n"
+    caption += f"<b>🤖 هل هو بوت؟:</b> {is_bot}\n"
+    caption += f"<b>🔏 هل لدية قيود؟:</b> {restricted}\n"
+    caption += f"<b>🌐 هل موثق من التيليجرام:</b> {verified}\n\n"
     caption += f"<b>✍️ Bio:</b> \n<code>{user_bio}</code>\n\n"
-    caption += f"<b>👥 Common Chats with this user:</b> {common_chat}\n"
-    caption += "<b>🔗 Permanent Link To Profile:</b> "
+    caption += f"<b>👥 عدد المجموعات المشتركة مع هذا الشخص:</b> {common_chat}\n"
+    caption += "<b>🔗 رابط بروفايلة:</b> "
     caption += f'<a href="tg://user?id={user_id}">{first_name}</a>'
     return photo, caption
 
@@ -122,9 +122,9 @@ async def _(event):
         cas = "**Antispam(CAS) Banned :** `Couldn't Fetch`"
     caption = """**Info of [{}](tg://user?id={}):
    -🔖ID : **`{}`
-   **-**👥**Groups in Common : **`{}`
+   **-**👥**مجموعات المشتركة : **`{}`
    **-**🌏**Data Centre Number : **`{}`
-   **-**🔏**Restricted by telegram : **`{}`
+   **-**🔏**القيود من تيليجرام : **`{}`
    **-**🦅{}
    **-**👮‍♂️{}
 """.format(
