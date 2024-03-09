@@ -30,13 +30,13 @@ async def detect(event):
         return await edit_delete(
             event, "`رد على ملصق او صورة !`", 5
         )
-    catevent = await edit_or_reply(event, "`انتظر...`")
+    batevent = await edit_or_reply(event, "`انتظر...`")
     media = await event.client.download_media(reply)
     if not media.endswith(("png", "jpg", "webp")):
         return await edit_delete(
             event, "`رد على ملصق او صوره !`", 5
         )
-    catevent = await edit_or_reply(event, "`يتم الكشف...`")
+    batevent = await edit_or_reply(event, "`يتم الكشف...`")
     r = requests.post(
         "https://api.deepai.org/api/nsfw-detector",
         files={
