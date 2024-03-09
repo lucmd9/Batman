@@ -22,7 +22,7 @@ plugin_category = "tools"
 )
 async def get_media(event):
     catty = event.pattern_match.group(1)
-    limit = int(lucmd9.split(" ")[0])
+    limit = int(BATT.split(" ")[0])
     channel_username = str(lucmd9.split(" ")[1])
     tempdir = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, channel_username)
     with contextlib.suppress(BaseException):
