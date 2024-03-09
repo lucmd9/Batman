@@ -29,7 +29,7 @@ async def get_media(event):
     channel_username = str(BAT.split(" ")[1])
 
     tempdir = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, channel_username)
-    with contextlib.suppress(BaseException):
+    with contextlib.suppress(FileExistsError):
         os.makedirs(tempdir)
 
     event = await edit_or_reply(event, "`يتم التحميل من هذة القناة.....`")
@@ -38,7 +38,7 @@ async def get_media(event):
     i = 0
     for msg in msgs:
         mediatype = await media_type(msg)
-        if mediatype is not None:
+        if mediatype:
             await event.client.download_media(msg, tempdir)
             i += 1
             await event.edit(f"Downloading Media From this Channel.\n **DOWNLOADED : **`{i}`")
@@ -47,10 +47,7 @@ async def get_media(event):
     output = subprocess.check_output(("wc", "-l"), stdin=ps.stdout)
     ps.wait()
 
-    output = str(output)
-    output = output.replace("b'", " ")
-    output = output.replace("\\n'", " ")
-    
+    output = output.decode("utf-8").strip()  # للتأكد من أن النص لا يحتوي على بادئة 'b'
     await event.edit(f"Successfully downloaded {output} number of media files from {channel_username} to tempdir")
 
 
