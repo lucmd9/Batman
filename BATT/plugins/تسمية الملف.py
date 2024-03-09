@@ -2,11 +2,9 @@ import asyncio
 import os
 import time
 from datetime import datetime
+from tinytag import TinyTag
 from pydub import AudioSegment
-from tinytag import TinyTag  # استيراد مكتبة tinytag
-
 from BATT import lucmd9
-
 from ..Config import Config
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.utils import reply_id
@@ -15,7 +13,6 @@ from . import progress, reply_id
 plugin_category = "utils"
 
 thumb_image_path = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, "thumb_image.jpg")
-
 
 @lucmd9.ar_cmd(
     pattern="تسمية ?(-f)? ([\s\S]*)",
@@ -63,16 +60,13 @@ async def _(event):
 
     # قم بفحص نوع الملف إذا كان MP3
     if downloaded_file_name.lower().endswith('.mp3'):
-        # تحميل معلومات الوسوم باستخدام tinytag
+        # استخدام tinytag للحصول على معلومات الوسوم
         tag = TinyTag.get(downloaded_file_name)
-        # استخراج عنوان الأغنية من المعلومات
-        song_title = tag.title if tag.title else None
-        if song_title:
-            # قم بإضافة اسم الأغنية إلى اسم الملف
-            file_name = f"{song_title}.mp3"
-            # قم بتغيير اسم الملف الفعلي
-            os.rename(downloaded_file_name, os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, file_name))
-            downloaded_file_name = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, file_name)
+        # استخدام اسم الأغنية إذا كان متاحا، وإلا استخدم اسم الملف
+        song_title = tag.title if tag.title else os.path.splitext(file_name)[0]
+        # قم بتغيير اسم الملف الفعلي
+        os.rename(downloaded_file_name, os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, f"{song_title}.mp3"))
+        downloaded_file_name = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, f"{song_title}.mp3")
 
     try:
         thumb = await reply_message.download_media(thumb=-1)
