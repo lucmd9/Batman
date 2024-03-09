@@ -2,6 +2,8 @@ import asyncio
 import os
 import time
 from datetime import datetime
+from pydub import AudioSegment
+from pydub.silence import split_on_silence
 
 from BATT import lucmd9
 
@@ -12,7 +14,8 @@ from . import progress, reply_id
 
 plugin_category = "utils"
 
-thumb_image_path = "/path/to/your/image.jpg"  # قم بتحديد مسار الصورة الخاصة بك
+thumb_image_path = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, "thumb_image.jpg")
+
 
 @lucmd9.ar_cmd(
     pattern="تسمية ?(-f)? ([\s\S]*)",
@@ -57,6 +60,12 @@ async def _(event):
     )
     end = datetime.now()
     ms_one = (end - start).seconds
+
+    # لتحويل الملف إلى mp3
+    audio = AudioSegment.from_file(downloaded_file_name)
+    song_title = audio.tags['title'][0] if 'title' in audio.tags else None
+    audio.export(downloaded_file_name, format="mp3", tags={'title': song_title})
+
     try:
         thumb = await reply_message.download_media(thumb=-1)
     except Exception:
