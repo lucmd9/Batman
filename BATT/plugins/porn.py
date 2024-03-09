@@ -9,35 +9,36 @@ from ..core.managers import edit_delete, edit_or_reply
 
 plugin_category = "utils"
 
-@lucmd9.Bat_cmd(
-    pattern="اباحي$",
-    command=("اباحي", plugin_category),
+
+@lucmd9.ar_cmd(
+    pattern="افحص$",
+    command=("افحص", plugin_category),
     info={
-        "header": "للكشف عن العري في الصورة المرتدة.",
-        "description": "أمر الكشف عن العري في أي صورة أو ملصق غير متحرك للكشف عن العري فيها",
+        "header": "To detect the nudity in reply image.",
+        "description": "يفحص الملصقات او الصور إذا كان بيها اباحية والتعري ",
         "usage": "{tr}كشف",
     },
 )
 async def detect(event):
-    "اكو استنياج لو لا؟."
+    "لكشف الموطات والنيج."
     if Config.DEEP_AI is None:
         return await edit_delete(
-            event, "لازم تعين المتغير `DEEP_AI`تكدر تحصله منا    https://deepai.org/", 5
+            event, "ضيف ڤار `DEEP_AI` تحصلة منا https://deepai.org/", 5
         )
     reply = await event.get_reply_message()
     if not reply:
         return await edit_delete(
-            event, "`رد على أي صورة أو ملصق  !`", 5
+            event, "`رد على ملصق او صورة !`", 5
         )
-    catevent = await edit_or_reply(event, "`ثواني حبيبي  ...`")
+    catevent = await edit_or_reply(event, "`انتظر...`")
     media = await event.client.download_media(reply)
-    if not media.endswith(("png", "jpg", "webp")):#اذا شسمه وذا مو شسمه شسمه
+    if not media.endswith(("png", "jpg", "webp")):
         return await edit_delete(
             event, "`رد على ملصق او صوره !`", 5
         )
-    catevent = await edit_or_reply(event, "`الكشف عن الاباحي ...`")
+    catevent = await edit_or_reply(event, "`يتم الكشف...`")
     r = requests.post(
-        "https://api.deepai.org/api/nsfw-detector",#كسمه
+        "https://api.deepai.org/api/nsfw-detector",
         files={
             "image": open(media, "rb"),
         },
@@ -50,7 +51,7 @@ async def detect(event):
     pic_id = r.json()["id"]
     percentage = r_json["nsfw_score"] * 100
     link = f"https://api.deepai.org/job-view-file/{pic_id}/inputs/image.jpg"
-    result = f"<b>تم اكتشاف الاباحي غطيها يمعود:</b>\n<a href='{link}'>>>></a> <code>{percentage:.3f}%</code>\n\n"
+    result = f"<b>Detected Nudity :</b>\n<a href='{link}'>>>></a> <code>{percentage:.3f}%</code>\n\n"
     if detections := r_json["detections"]:
         for parts in detections:
             name = parts["name"]
@@ -60,4 +61,5 @@ async def detect(event):
         catevent,
         result,
         link_preview=False,
-        parse_mode="HTML",)
+        parse_mode="HTML",
+    )
