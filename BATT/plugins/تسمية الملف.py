@@ -2,7 +2,8 @@ import asyncio
 import os
 import time
 from datetime import datetime
-from pydub import AudioSegment  # تم استيراد مكتبة لمعالجة الملفات الصوتية
+from pydub import AudioSegment
+from tinytag import TinyTag  # استيراد مكتبة tinytag
 
 from BATT import lucmd9
 
@@ -62,10 +63,10 @@ async def _(event):
 
     # قم بفحص نوع الملف إذا كان MP3
     if downloaded_file_name.lower().endswith('.mp3'):
-        # تحميل الملف الصوتي
-        audio = AudioSegment.from_file(downloaded_file_name)
-        # استخراج عنوان الأغنية من الملف الصوتي
-        song_title = audio.tags['title'][0] if 'title' in audio.tags else None
+        # تحميل معلومات الوسوم باستخدام tinytag
+        tag = TinyTag.get(downloaded_file_name)
+        # استخراج عنوان الأغنية من المعلومات
+        song_title = tag.title if tag.title else None
         if song_title:
             # قم بإضافة اسم الأغنية إلى اسم الملف
             file_name = f"{song_title}.mp3"
