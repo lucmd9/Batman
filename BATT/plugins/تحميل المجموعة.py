@@ -54,13 +54,16 @@ async def get_media(event):
             if mediatype != "unknown":
                 await event.client.download_media(msg, tempdir)
                 i += 1
-                await event.edit(f"Downloading Media From this Channel.\n **DOWNLOADED : **`{i}`")
+                print(f"Downloaded Media From this Channel. DOWNLOADED: {i}")
 
         files_count = len(os.listdir(tempdir))
+        print(f"Successfully downloaded {files_count} number of media files from {channel_username} to tempdir")
         await event.edit(f"Successfully downloaded {files_count} number of media files from {channel_username} to tempdir")
 
     except Exception as e:
+        print(f"Error: {str(e)}")
         await event.edit(f"Error: {str(e)}")
+
 
 @lucmd9.ar_cmd(
     pattern="جيبها كلها(?:\s|$)([\s\S]*)",
