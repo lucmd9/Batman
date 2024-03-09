@@ -2,9 +2,10 @@ import asyncio
 import os
 import time
 from datetime import datetime
-from tinytag import TinyTag
-from pydub import AudioSegment
+import eyed3  # تم استيراد مكتبة eyed3
+
 from BATT import lucmd9
+
 from ..Config import Config
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.utils import reply_id
@@ -13,6 +14,7 @@ from . import progress, reply_id
 plugin_category = "utils"
 
 thumb_image_path = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, "thumb_image.jpg")
+
 
 @lucmd9.ar_cmd(
     pattern="تسمية ?(-f)? ([\s\S]*)",
@@ -28,7 +30,6 @@ thumb_image_path = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, "thumb_image.jpg"
     },
 )
 async def _(event):
-    "To rename and upload the file"
     thumb = thumb_image_path if os.path.exists(thumb_image_path) else None
     flags = event.pattern_match.group(1)
     forcedoc = bool(flags)
@@ -43,9 +44,17 @@ async def _(event):
         return await batevent.edit(
             "**Syntax : **`.rnup file name` as reply to a Telegram media"
         )
-    start = datetime.now()
+    
+    # جزء جديد يقوم بالتحقق مما إذا كان الملف هو MP3
     file_name = input_str
     reply_message = await event.get_reply_message()
+    if reply_message and reply_message.media and reply_message.media.document:
+        if reply_message.media.document.mime_type == "audio/mpeg":
+            audio_title = get_song_title(reply_message.file.name)
+            if audio_title:
+                file_name = f"{audio_title}.mp3"
+    
+    start = datetime.now()
     c_time = time.time()
     downloaded_file_name = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, file_name)
     downloaded_file_name = await event.client.download_media(
@@ -57,17 +66,6 @@ async def _(event):
     )
     end = datetime.now()
     ms_one = (end - start).seconds
-
-    # قم بفحص نوع الملف إذا كان MP3
-    if downloaded_file_name.lower().endswith('.mp3'):
-        # استخدام tinytag للحصول على معلومات الوسوم
-        tag = TinyTag.get(downloaded_file_name)
-        # استخدام اسم الأغنية إذا كان متاحا، وإلا استخدم اسم الملف
-        song_title = tag.title if tag.title else os.path.splitext(file_name)[0]
-        # قم بتغيير اسم الملف الفعلي
-        os.rename(downloaded_file_name, os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, f"{song_title}.mp3"))
-        downloaded_file_name = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, f"{song_title}.mp3")
-
     try:
         thumb = await reply_message.download_media(thumb=-1)
     except Exception:
@@ -94,3 +92,10 @@ async def _(event):
         batevent,
         f"`تم تحميل الملف في {ms_one} ثواني.\nAnd رفعة {ms_two} ثواني.`",
     )
+
+# دالة جديدة للحصول على اسم الأغنية باستخدام مكتبة eyed3
+def get_song_title(file_path):
+    audio = eyed3.load(file_path)
+    if audio.tag:
+        return audio.tag.title
+    return None
