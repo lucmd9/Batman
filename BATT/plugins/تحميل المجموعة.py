@@ -11,9 +11,15 @@ plugin_category = "tools"
 
 # تحديث دالة media_type
 async def media_type(msg):
-    # يجب أن تعيد قيمة تشير إلى نوع الوسائط أو "unknown" إذا لم يتم التعرف على النوع.
-    # يمكنك استبدال "unknown" بالقيم المناسبة لتحديد نوع الوسائط.
-    return "unknown"
+    try:
+        if msg.media:
+            return msg.media.document.mime_type.split("/")[0]
+        elif msg.text:
+            return "text"
+        else:
+            return "unknown"
+    except Exception:
+        return "unknown"
 
 @lucmd9.ar_cmd(
     pattern="جيبها(?:\s|$)([\s\S]*)",
@@ -56,7 +62,6 @@ async def get_media(event):
 
     output = output.decode("utf-8").strip()  # للتأكد من أن النص لا يحتوي على بادئة 'b'
     await event.edit(f"Successfully downloaded {output} number of media files from {channel_username} to tempdir")
-
 
 @lucmd9.ar_cmd(
     pattern="جيبها كلها(?:\s|$)([\s\S]*)",
