@@ -6,7 +6,7 @@ from BATT.core.managers import edit_or_reply
 plugin_category = "extra"
 
 
-@lucmd9.cat_cmd(
+@lucmd9.ar_cmd(
     pattern="شاومي ([\s\S]*)",
     command=("شاومي", plugin_category),
     info={
@@ -20,7 +20,7 @@ async def _(event):
     "اخر معلومات."
     link = event.pattern_match.group(1)
     firmware = "شاومي"
-    catevent = await edit_or_reply(event, "```اصبر```")
+    batevent = await edit_or_reply(event, "```اصبر```")
     async with event.client.conversation("@XiaomiGeeksBot") as conv:
         try:
             response = conv.wait_event(
@@ -62,7 +62,7 @@ async def _(event):
         except YouBlockedUserError:
             return await catevent.edit("```Unblock @XiaomiGeeksBot plox```")
         else:
-            await catevent.delete()
+            await batevent.delete()
             await event.client.forward_messages(event.chat_id, respond.message)
 
 
@@ -80,7 +80,7 @@ async def _(event):
     "To get quick spec information about device"
     link = event.pattern_match.group(1)
     specs = "specs"
-    catevent = await edit_or_reply(event, "```دصبر```")
+    batevent = await edit_or_reply(event, "```دصبر```")
     async with event.client.conversation("@XiaomiGeeksBot") as conv:
         try:
             response = conv.wait_event(
@@ -90,9 +90,9 @@ async def _(event):
             respond = await response
             await event.client.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
-            return await catevent.edit("```Unblock @XiaomiGeeksBot plox```")
+            return await batevent.edit("```Unblock @XiaomiGeeksBot plox```")
         else:
-            await catevent.delete()
+            await batevent.delete()
             await event.client.forward_messages(event.chat_id, respond.message)
 
 
@@ -120,9 +120,9 @@ async def _(event):
             respond = await response
             await event.client.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
-            return await catevent.edit("```Unblock @XiaomiGeeksBot plox```")
+            return await batevent.edit("```Unblock @XiaomiGeeksBot plox```")
         else:
-            await catevent.delete()
+            await batevent.delete()
             await event.client.forward_messages(event.chat_id, respond.message)
 
 
@@ -150,9 +150,9 @@ async def _(event):
             respond = await response
             await event.client.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
-            return await catevent.edit("```Unblock @XiaomiGeeksBot plox```")
+            return await batevent.edit("```Unblock @XiaomiGeeksBot plox```")
         else:
-            await catevent.delete()
+            await batevent.delete()
             await event.client.forward_messages(event.chat_id, respond.message)
 
 
@@ -180,9 +180,9 @@ async def _(event):
             respond = await response
             await event.client.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
-            return await catevent.edit("```Unblock @XiaomiGeeksBot plox```")
+            return await batevent.edit("```Unblock @XiaomiGeeksBot plox```")
         else:
-            await catevent.delete()
+            await batevent.delete()
             await event.client.forward_messages(event.chat_id, respond.message)
 
 
@@ -210,7 +210,7 @@ async def _(event):
             respond = await response
             await event.client.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
-            return await catevent.edit("```Unblock @XiaomiGeeksBot plox```")
+            return await batevent.edit("```Unblock @XiaomiGeeksBot plox```")
         else:
-            await catevent.delete()
+            await batevent.delete()
             await event.client.forward_messages(event.chat_id, respond.message)
