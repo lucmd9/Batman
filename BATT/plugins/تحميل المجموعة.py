@@ -26,42 +26,41 @@ async def media_type(msg):
     command=("جيبها", plugin_category),
     info={
         "header": "لتحميل الوسائط من القناة",
-        "description": "قم بتغير اسم المستخدم وعدد الرسائل الأخيرة للتحقق من الأمر \
+        "description": "قم بتغيير اسم المستخدم وعدد الرسائل الأخيرة للتحقق من الأمر \
               لذلك سيقوم اليوزربوت بتنزيل ملفات الوسائط من آخر عدد من الرسائل إلى الخادم ",
         "usage": "{tr}جيبها count channel_username",
         "examples": "{tr}جيبها 10 @يوزر القناة",
     },
 )
 async def get_media(event):
-    BAT = event.pattern_match.group(1)
-    if not BAT:
-        await event.edit("`يرجى تحديد عدد الرسائل واسم المستخدم للقناة`")
-        return
+    try:
+        BAT = event.pattern_match.group(1)
+        if not BAT:
+            return await event.edit("`يرجى تحديد عدد الرسائل واسم المستخدم للقناة`")
 
-    limit = int(BAT.split(" ")[0])
-    channel_username = str(BAT.split(" ")[1])
+        limit, channel_username = map(str, BAT.split(" ", 1))
+        limit = int(limit)
 
-    tempdir = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, channel_username)
-    with contextlib.suppress(FileExistsError):
-        os.makedirs(tempdir)
+        tempdir = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, channel_username)
+        with contextlib.suppress(FileExistsError):
+            os.makedirs(tempdir)
 
-    event = await edit_or_reply(event, "`يتم التحميل من هذة القناة.....`")
-    msgs = await event.client.get_messages(channel_username, limit=limit)
+        event = await edit_or_reply(event, "`يتم التحميل من هذه القناة.....`")
+        msgs = await event.client.get_messages(channel_username, limit=limit)
 
-    i = 0
-    for msg in msgs:
-        mediatype = await media_type(msg)
-        if mediatype != "unknown":
-            await event.client.download_media(msg, tempdir)
-            i += 1
-            await event.edit(f"Downloading Media From this Channel.\n **DOWNLOADED : **`{i}`")
+        i = 0
+        for msg in msgs:
+            mediatype = await media_type(msg)
+            if mediatype != "unknown":
+                await event.client.download_media(msg, tempdir)
+                i += 1
+                await event.edit(f"Downloading Media From this Channel.\n **DOWNLOADED : **`{i}`")
 
-    ps = subprocess.Popen(("ls", tempdir), stdout=subprocess.PIPE)
-    output = subprocess.check_output(("wc", "-l"), stdin=ps.stdout)
-    ps.wait()
+        files_count = len(os.listdir(tempdir))
+        await event.edit(f"Successfully downloaded {files_count} number of media files from {channel_username} to tempdir")
 
-    output = output.decode("utf-8").strip()  # للتأكد من أن النص لا يحتوي على بادئة 'b'
-    await event.edit(f"Successfully downloaded {output} number of media files from {channel_username} to tempdir")
+    except Exception as e:
+        await event.edit(f"Error: {str(e)}")
 
 @lucmd9.ar_cmd(
     pattern="جيبها كلها(?:\s|$)([\s\S]*)",
