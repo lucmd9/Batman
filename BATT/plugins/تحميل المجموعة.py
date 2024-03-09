@@ -8,7 +8,6 @@ from . import lucmd9, edit_or_reply
 
 plugin_category = "tools"
 
-#امر تحميل الوسائط من القناة
 @lucmd9.ar_cmd(
     pattern="جيبها(?:\s|$)([\s\S]*)",
     command=("جيبها", plugin_category),
@@ -22,31 +21,37 @@ plugin_category = "tools"
 )
 async def get_media(event):
     BAT = event.pattern_match.group(1)
+    if not BAT:
+        await event.edit("`يرجى تحديد عدد الرسائل واسم المستخدم للقناة`")
+        return
+
     limit = int(BAT.split(" ")[0])
     channel_username = str(BAT.split(" ")[1])
+
     tempdir = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, channel_username)
     with contextlib.suppress(BaseException):
         os.makedirs(tempdir)
+
     event = await edit_or_reply(event, "`يتم التحميل من هذة القناة.....`")
     msgs = await event.client.get_messages(channel_username, limit=limit)
+
     i = 0
     for msg in msgs:
         mediatype = await media_type(msg)
         if mediatype is not None:
             await event.client.download_media(msg, tempdir)
             i += 1
-            await event.edit(
-                f"Downloading Media From this Channel.\n **DOWNLOADED : **`{i}`"
-            )
+            await event.edit(f"Downloading Media From this Channel.\n **DOWNLOADED : **`{i}`")
+
     ps = subprocess.Popen(("ls", tempdir), stdout=subprocess.PIPE)
     output = subprocess.check_output(("wc", "-l"), stdin=ps.stdout)
     ps.wait()
+
     output = str(output)
     output = output.replace("b'", " ")
     output = output.replace("\\n'", " ")
-    await event.edit(
-        f"Successfully downloaded {output} number of media files from {channel_username} to tempdir"
-    )#ايع
+    
+    await event.edit(f"Successfully downloaded {output} number of media files from {channel_username} to tempdir")
 
 
 @lucmd9.ar_cmd(
