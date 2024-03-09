@@ -18,12 +18,14 @@ from . import ALIVE_NAME
 
 plugin_category = "extra"
 
+#كـتابة وتعـديل  @ll1ilt
+# SHRU ™
 async def amongus_gen(text: str, clr: int) -> str:
-    url = "https://github.com/BATT-AR/lucmd9-Resources/raw/master/Resources/Amongus"
+    url = "https://github.com/SHRU-AR/Qrh9-Resources/raw/master/Resources/Amongus/"
     font = ImageFont.truetype(
         BytesIO(
             get(
-                "https://github.com/BATT-AR/lucmd9-Resources/raw/master/Resources/fonts/bold.ttf"
+                "https://github.com/SHRU-AR/Qrh9-Resources/raw/master/Resources/fonts/bold.ttf"
             ).content
         ),
         60,
@@ -55,7 +57,7 @@ async def get_imposter_img(text: str) -> str:
         f"https://github.com/SHRU-AR/Qrh9-Resources/raw/master/Resources/imposter/impostor{randint(1,22)}.png"
     ).content
     font = get(
-        "https://github.com/BATT-AR/lucmd9-Resources/raw/master/Resources/fonts/bold.ttf"
+        "https://github.com/SHRU-AR/Qrh9-Resources/raw/master/Resources/fonts/roboto_regular.ttf"
     ).content
     font = BytesIO(font)
     font = ImageFont.truetype(font, 30)
@@ -96,7 +98,7 @@ async def _(event):
         event.chat_id, "CAADAQADRwADnjOcH98isYD5RJTwAg"
     )
     text2 = await event.reply(
-        f"[{ALIVE_NAME}]({USERNAME}) : لقـد عـملت اجـتماع هـام"
+        f"**[{ALIVE_NAME}]({USERNAME}) :** لقـد عـملت اجـتماع هـام"
     )
     await asyncio.sleep(3)
     await stcr1.delete()
@@ -105,65 +107,65 @@ async def _(event):
         event.chat_id, "CAADAQADRgADnjOcH9odHIXtfgmvAg"
     )
     text3 = await event.reply(
-        f"[{ALIVE_NAME}]({USERNAME}) : نحـن 3 يجـب ان نصوت علـى احـد او نخـسر "
+        f"**[{ALIVE_NAME}]({USERNAME}) :** نحـن 3 يجـب ان نصوت علـى احـد او نخـسر "
     )
-await asyncio.sleep(3)
+    await asyncio.sleep(3)
     await stcr2.delete()
     await text3.delete()
     stcr3 = await event.client.send_file(
         event.chat_id, "CAADAQADOwADnjOcH77v3Ap51R7gAg"
     )
-    text4 = await event.reply(f"- الاخـرين : أيــن??? ")
+    text4 = await event.reply(f"**- الاخـرين :** أيــن??? ")
     await asyncio.sleep(2)
-    await text4.edit(f"- الاخـرين : مــن ?? ")
+    await text4.edit(f"**- الاخـرين :** مــن ?? ")
     await asyncio.sleep(2)
     await text4.edit(
-        f"[{ALIVE_NAME}]({USERNAME}) : أنـه {name} , لقـد شاهـدت {name}  يستـخدم الفيـنت ,"
+        f"**[{ALIVE_NAME}]({USERNAME}) :** أنـه {name} , لقـد شاهـدت {name}  يستـخدم الفيـنت ,"
     )
     await asyncio.sleep(3)
-    await text4.edit(f"- الاخـرين :حسـنا .. صـوتوا علـى {name} ")
+    await text4.edit(f"**- الاخـرين :**حسـنا .. صـوتوا علـى {name} ")
     await asyncio.sleep(2)
     await stcr3.delete()
     await text4.delete()
     stcr4 = await event.client.send_file(
         event.chat_id, "CAADAQADLwADnjOcH-wxu-ehy6NRAg"
     )
-    batevent = await event.reply(f"᯽︙  {name} تـم استـبعاده .......")
+    catevent = await event.reply(f"**᯽︙  {name} تـم استـبعاده .......**")
     await asyncio.sleep(2)
-    await batevent.edit("ඞㅤㅤㅤㅤ ㅤㅤㅤㅤ")
+    await catevent.edit("ඞㅤㅤㅤㅤ ㅤㅤㅤㅤ")
     await asyncio.sleep(0.5)
-    await batevent.edit("ㅤඞㅤㅤㅤㅤ ㅤㅤㅤ")
+    await catevent.edit("ㅤඞㅤㅤㅤㅤ ㅤㅤㅤ")
     await asyncio.sleep(0.5)
-    await batevent.edit("ㅤㅤ ඞㅤㅤㅤㅤㅤㅤ")
+    await catevent.edit("ㅤㅤ ඞㅤㅤㅤㅤㅤㅤ")
     await asyncio.sleep(0.5)
-    await batevent.edit("ㅤㅤㅤ ඞㅤㅤㅤㅤㅤ")
+    await catevent.edit("ㅤㅤㅤ ඞㅤㅤㅤㅤㅤ")
     await asyncio.sleep(0.5)
-    await batevent.edit("ㅤㅤㅤㅤ ඞㅤㅤㅤㅤ")
+    await catevent.edit("ㅤㅤㅤㅤ ඞㅤㅤㅤㅤ")
     await asyncio.sleep(0.5)
-    await batevent.edit("ㅤㅤㅤㅤㅤ ඞㅤㅤㅤ")
+    await catevent.edit("ㅤㅤㅤㅤㅤ ඞㅤㅤㅤ")
     await asyncio.sleep(0.5)
-    await batevent.edit("ㅤㅤㅤㅤㅤㅤ ඞㅤㅤ")
+    await catevent.edit("ㅤㅤㅤㅤㅤㅤ ඞㅤㅤ")
     await asyncio.sleep(0.5)
-    await batevent.edit("ㅤㅤㅤㅤㅤㅤㅤ ඞㅤ")
+    await catevent.edit("ㅤㅤㅤㅤㅤㅤㅤ ඞㅤ")
     await asyncio.sleep(0.5)
-    await batevent.edit("ㅤㅤㅤㅤㅤㅤㅤㅤ ඞ")
+    await catevent.edit("ㅤㅤㅤㅤㅤㅤㅤㅤ ඞ")
     await asyncio.sleep(0.5)
-    await batevent.edit("ㅤㅤㅤㅤㅤㅤㅤㅤ ㅤ")
+    await catevent.edit("ㅤㅤㅤㅤㅤㅤㅤㅤ ㅤ")
     await asyncio.sleep(0.2)
     await stcr4.delete()
     if cmd == "":
-        await batevent.edit(
+        await catevent.edit(
             f". 　　　。　　　　•　 　ﾟ　　。 　　.\n .　　　 　　.　　　　　。　　 。　. 　\n\n  . 　　 。   　     ඞ         。 . 　　 • 　　　　•\n\n  ﾟ{name} لقـد كـان الـقاتل.      。　. 　 　       。　.                                        。　. \n                                   　.          。　  　. \n　'        بـاقـي 0 مـن الـقتلة    　 。　.  　　.                。　.        。 　     .          。 　            .               .         .    ,      。\n　　ﾟ　　　.　　.    ,　 　。　 　. 　 .     。"
         )
         await asyncio.sleep(4)
-        await batevent.delete()
+        await catevent.delete()
         await event.client.send_file(event.chat_id, "CAADAQADLQADnjOcH39IqwyR6Q_0Ag")
     elif cmd == "بريء":
         await catevent.edit(
             f". 　　　。　　　　•　 　ﾟ　　。 　　.\n .　　　 　　.　　　　　。　　 。　. 　\n\n  . 　　 。   　     ඞ         。 . 　　 • 　　　　•\n\n  ﾟ{name} لـم يـكن الـقاتل.      。　. 　 　       。　.                                        。　. \n                                   　.          。　  　. \n　'        بـاقـي 1 مـن الـقتلة    　 。　.  　　.                。　.        。 　     .          。 　            .               .         .    ,      。\n　　ﾟ　　　.　　.    ,　 　。　 　. 　 .     。 "
         )
         await asyncio.sleep(4)
-        await batevent.delete()
+        await catevent.delete()
         await event.client.send_file(event.chat_id, "CAADAQADQAADnjOcH-WOkB8DEctJAg")
 
 
@@ -181,33 +183,33 @@ async def _(event):
     "Find imposter with text animation."
     name = event.pattern_match.group(2)
     cmd = event.pattern_match.group(1).lower()
-    batevent = await edit_or_reply(event, f"{name} تـم اخـراجـه.......")
+    catevent = await edit_or_reply(event, f"{name} تـم اخـراجـه.......")
     await asyncio.sleep(2)
-    await batevent.edit("ඞㅤㅤㅤㅤ ㅤㅤㅤㅤ")
+    await catevent.edit("ඞㅤㅤㅤㅤ ㅤㅤㅤㅤ")
     await asyncio.sleep(0.8)
-    await batevent.edit("ㅤඞㅤㅤㅤㅤ ㅤㅤㅤ")
+    await catevent.edit("ㅤඞㅤㅤㅤㅤ ㅤㅤㅤ")
     await asyncio.sleep(0.8)
-    await batevent.edit("ㅤㅤ ඞㅤㅤㅤㅤㅤㅤ")
+    await catevent.edit("ㅤㅤ ඞㅤㅤㅤㅤㅤㅤ")
     await asyncio.sleep(0.8)
-    await batevent.edit("ㅤㅤㅤ ඞㅤㅤㅤㅤㅤ")
+    await catevent.edit("ㅤㅤㅤ ඞㅤㅤㅤㅤㅤ")
     await asyncio.sleep(0.8)
-    await batevent.edit("ㅤㅤㅤㅤ ඞㅤㅤㅤㅤ")
+    await catevent.edit("ㅤㅤㅤㅤ ඞㅤㅤㅤㅤ")
     await asyncio.sleep(0.8)
-    await batevent.edit("ㅤㅤㅤㅤㅤ ඞㅤㅤㅤ")
+    await catevent.edit("ㅤㅤㅤㅤㅤ ඞㅤㅤㅤ")
     await asyncio.sleep(0.8)
-    await batevent.edit("ㅤㅤㅤㅤㅤㅤ ඞㅤㅤ")
+    await catevent.edit("ㅤㅤㅤㅤㅤㅤ ඞㅤㅤ")
     await asyncio.sleep(0.8)
-    await batevent.edit("ㅤㅤㅤㅤㅤㅤㅤ ඞㅤ")
+    await catevent.edit("ㅤㅤㅤㅤㅤㅤㅤ ඞㅤ")
     await asyncio.sleep(0.8)
-    await batevent.edit("ㅤㅤㅤㅤㅤㅤㅤㅤ ඞ")
+    await catevent.edit("ㅤㅤㅤㅤㅤㅤㅤㅤ ඞ")
     await asyncio.sleep(0.8)
-    await batevent.edit("ㅤㅤㅤㅤㅤㅤㅤㅤ ㅤ")
+    await catevent.edit("ㅤㅤㅤㅤㅤㅤㅤㅤ ㅤ")
     await asyncio.sleep(0.2)
     if cmd == "":
-        await batevent.edit(
+        await catevent.edit(
             f". 　　　。　　　　•　 　ﾟ　　。 　　.\n .　　　 　　.　　　　　。　　 。　. 　\n\n  . 　　 。   　     ඞ         。 . 　　 • 　　　　•\n\n  ﾟ {name} لقـد كـان الـقاتل.      。　. 　 　       。　.                                        。　. \n                                   　.          。　  　. \n　'        بـاقـي 0 مـن الـقتلة    　 。　.  　　.                。　.        。 　     .          。 　            .               .         .    ,      。\n　　ﾟ　　　.　　.    ,　 　。　 　. 　 .     。"
         )
     elif cmd == "بريء":
-        await batevent.edit(
+        await catevent.edit(
             f". 　　　。　　　　•　 　ﾟ　　。 　　.\n .　　　 　　.　　　　　。　　 。　. 　\n\n  . 　　 。   　     ඞ         。 . 　　 • 　　　　•\n\n  ﾟ {name} لـم يـكن الـقاتـل.      。　. 　 　       。　.                                        。　. \n                                   　.          。　  　. \n　'       بـاقـي  1 مـن الـقتلة    　 。　.  　　.                。　.        。 　     .          。 　            .               .         .    ,      。\n　　ﾟ　　　.　　.    ,　 　。　 　. 　 .     。"
         )
