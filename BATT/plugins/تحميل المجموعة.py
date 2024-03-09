@@ -1,3 +1,4 @@
+#luc_md9
 import contextlib
 import os
 import subprocess
@@ -7,6 +8,12 @@ from ..helpers.tools import media_type
 from . import lucmd9, edit_or_reply
 
 plugin_category = "tools"
+
+# تحديث دالة media_type
+async def media_type(msg):
+    # يجب أن تعيد قيمة تشير إلى نوع الوسائط أو "unknown" إذا لم يتم التعرف على النوع.
+    # يمكنك استبدال "unknown" بالقيم المناسبة لتحديد نوع الوسائط.
+    return "unknown"
 
 @lucmd9.ar_cmd(
     pattern="جيبها(?:\s|$)([\s\S]*)",
@@ -38,7 +45,7 @@ async def get_media(event):
     i = 0
     for msg in msgs:
         mediatype = await media_type(msg)
-        if mediatype:
+        if mediatype != "unknown":
             await event.client.download_media(msg, tempdir)
             i += 1
             await event.edit(f"Downloading Media From this Channel.\n **DOWNLOADED : **`{i}`")
