@@ -2,6 +2,7 @@ import asyncio
 import os
 import time
 from datetime import datetime
+from pydub import AudioSegment  # تم استيراد مكتبة لمعالجة الملفات الصوتية
 
 from BATT import lucmd9
 
@@ -58,6 +59,20 @@ async def _(event):
     )
     end = datetime.now()
     ms_one = (end - start).seconds
+
+    # قم بفحص نوع الملف إذا كان MP3
+    if downloaded_file_name.lower().endswith('.mp3'):
+        # تحميل الملف الصوتي
+        audio = AudioSegment.from_file(downloaded_file_name)
+        # استخراج عنوان الأغنية من الملف الصوتي
+        song_title = audio.tags['title'][0] if 'title' in audio.tags else None
+        if song_title:
+            # قم بإضافة اسم الأغنية إلى اسم الملف
+            file_name = f"{song_title}.mp3"
+            # قم بتغيير اسم الملف الفعلي
+            os.rename(downloaded_file_name, os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, file_name))
+            downloaded_file_name = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, file_name)
+
     try:
         thumb = await reply_message.download_media(thumb=-1)
     except Exception:
