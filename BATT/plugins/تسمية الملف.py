@@ -4,6 +4,7 @@ import time
 from datetime import datetime
 from pydub import AudioSegment
 from pydub.silence import split_on_silence
+from tinytag import TinyTag  # استيراد مكتبة tinytag
 
 from BATT import lucmd9
 
@@ -63,8 +64,20 @@ async def _(event):
 
     # لتحويل الملف إلى mp3
     audio = AudioSegment.from_file(downloaded_file_name)
-    song_title = audio.tags['title'][0] if 'title' in audio.tags else None
-    audio.export(downloaded_file_name, format="mp3", tags={'title': song_title})
+    
+    # استخدام مكتبة tinytag للحصول على المعلومات الصوتية
+    tag = TinyTag.get(downloaded_file_name)
+    song_title = tag.title
+    artist_name = tag.artist
+
+    # إزالة الامتداد m4a من اسم الملف
+    downloaded_file_name = os.path.splitext(downloaded_file_name)[0] + ".mp3"
+
+    # إعادة تسمية الملف
+    if artist_name and song_title:
+        downloaded_file_name = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, f"{artist_name} - {song_title}.mp3")
+
+    audio.export(downloaded_file_name, format="mp3", tags={'title': song_title, 'artist': artist_name})
 
     try:
         thumb = await reply_message.download_media(thumb=-1)
