@@ -81,6 +81,6 @@ async def _(event):
     os.remove(downloaded_file_name)
     ms_two = (end_two - end).seconds
     await edit_delete(
-        catevent,
+        batevent,
         f"`تم تحميل الملف في {ms_one} ثواني.\nAnd رفعة {ms_two} ثواني.`",
     )
