@@ -64,42 +64,40 @@ async def get_media(event):
         print(f"Error: {str(e)}")
         await event.edit(f"Error: {str(e)}")
 
-
 @lucmd9.ar_cmd(
     pattern="جيبها كلها(?:\s|$)([\s\S]*)",
     command=("جيبها كلها", plugin_category),
     info={
-        "header": "لتحميل كلشي بالقناة ",
-        "description": "قم بتغير اسم المستخدم وعدد الرسائل الأخيرة للتحقق من الأمر \
+        "header": "لتحميل كلشي بالقناة",
+        "description": "قم بتغيير اسم المستخدم وعدد الرسائل الأخيرة للتحقق من الأمر \
               لذلك سيقوم السورس بتنزيل ملفات الوسائط من آخر عدد من الرسائل إلى الخادم ",
-        "note": "حبي السورس حده يحفط 3000 رسالة مو تبعص",
+        "note": "حبي السورس حده يحفظ 3000 رسالة مو تبعص",
         "usage": "{tr}جيبها كلها channel_username",
         "examples": "{tr}جيبها كلها @اسم القناة",
     },
 )
-async def get_media(event):
-    channel_username = event.pattern_match.group(1)
-    tempdir = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, channel_username)
-    with contextlib.suppress(BaseException):
-        os.makedirs(tempdir)
-    event = await edit_or_reply(event, "`يتم التحميل كل المحتوى .`")
-    msgs = await event.client.get_messages(channel_username, limit=3000)
-    i = 0
-    for msg in msgs:
-        mediatype = await media_type(msg)
-        if mediatype is not None:
-            await event.client.download_media(msg, tempdir)
-            i += 1
-            await event.edit(
-                f"Downloading Media From this Channel.\n **DOWNLOADED : **`{i}`"
-            )
-    ps = subprocess.Popen(("ls", tempdir), stdout=subprocess.PIPE)
-    output = subprocess.check_output(("wc", "-l"), stdin=ps.stdout)
-    ps.wait()
-    output = str(output)
-    output = output.replace("b'", "")
-    output = output.replace("\\n'", "")
-    await event.edit(
-        f"تم التحميل بنجاح {output} لعدد الفايل من {channel_username} "
-    )
-#🦇🦇🦇🦇🦇
+async def get_all_media(event):
+    try:
+        channel_username = event.pattern_match.group(1)
+        tempdir = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, channel_username)
+        with contextlib.suppress(FileExistsError):
+            os.makedirs(tempdir)
+
+        event = await edit_or_reply(event, "`يتم التحميل كل المحتوى .`")
+        msgs = await event.client.get_messages(channel_username, limit=3000)
+
+        i = 0
+        for msg in msgs:
+            mediatype = await media_type(msg)
+            if mediatype != "unknown":
+                await event.client.download_media(msg, tempdir)
+                i += 1
+                print(f"Downloaded Media From this Channel. DOWNLOADED: {i}")
+
+        files_count = len(os.listdir(tempdir))
+        print(f"Successfully downloaded {files_count} number of media files from {channel_username} to tempdir")
+        await event.edit(f"Successfully downloaded {files_count} number of media files from {channel_username} to tempdir")
+
+    except Exception as e:
+        print(f"Error: {str(e)}")
+        await event.edit(f"Error: {str(e)}")
