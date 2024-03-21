@@ -270,7 +270,7 @@ async def flag_race(event):
 
     race_end_time = datetime.now()
     time_taken = (race_end_time - Po).total_seconds()
-    winner = await lucmd9.get_user(response.sender_id)
+    winner = await lucmd9.get_entity(response.sender_id)
     await response.reply(f"🎉 حب مبروك [{winner.first_name}](tg://user?id={winner.id}) \n- ثواني: {int(time_taken)} !!", parse_mode="md")
 #جميع الحقوق لهذا الأمر لسورس الخفاش
 
