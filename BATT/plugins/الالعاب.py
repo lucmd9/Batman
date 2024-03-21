@@ -1,4 +1,4 @@
-from BATT import lucmd9
+اfrom BATT import lucmd9
 from ..core.managers import edit_or_reply
 from datetime import datetime
 import random
@@ -272,4 +272,41 @@ async def flag_race(event):
     time_taken = (race_end_time - Po).total_seconds()
     winner = await lucmd9.get_entity(response.sender_id)
     await response.reply(f"🎉 حب مبروك [{winner.first_name}](tg://user?id={winner.id}) \n- ثواني: {int(time_taken)} !!", parse_mode="md")
-#جميع الحقوق لهذا الأمر لسورس الخفاش 
+#جميع الحقوق لهذا الأمر لسورس الخفاش
+
+# قائمة العواصم مع الدول العربية
+capitals = {
+    "السعودية": "الرياض",
+    "الإمارات": "أبوظبي",
+    "مصر": "القاهرة",
+    "قطر": "الدوحة",
+    "عمان": "مسقط",
+    "البحرين": "المنامة",
+    "الأردن": "عمان",
+    "لبنان": "بيروت",
+    "فلسطين": "القدس",
+    "اليمن": "صنعاء",
+    "العراق": "بغداد",
+    # يمكنك إضافة المزيد من العواصم والدول هنا
+}
+
+@lucmd9.on(events.NewMessage(pattern='.سباق_العواصم'))
+async def capital_race(event):
+    # اختيار عشوائي لاسم الدولة والعاصمة
+    country, capital = random.choice(list(capitals.items()))
+    start_time = datetime.now()
+    await edit_or_reply(event, f"اول واحد يقول ما اسم عاصمة {country}؟")
+
+    async with lucmd9.conversation(event.chat_id) as conv:
+        response = await conv.wait_event(events.NewMessage(incoming=True, from_users=event.chat_id))
+
+    end_time = datetime.now()
+    time_taken = (end_time - start_time).total_seconds()
+    if response.text.strip().lower() == capital.lower():
+        winner = await lucmd9.get_entity(response.sender_id)
+        await response.reply(f"🎉 مبروك [{winner.first_name}](tg://user?id={winner.id}) \n- ثواني: {int(time_taken)} !!", parse_mode="md")
+    else:
+        await response.reply("للأسف، الإجابة غير صحيحة.")
+
+# قم بتسجيل الأمر
+Qrh9.register(cmds=["سباق_العواصم"]) 
