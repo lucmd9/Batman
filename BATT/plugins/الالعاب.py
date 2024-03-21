@@ -1,4 +1,4 @@
-اfrom BATT import lucmd9
+from BATT import lucmd9
 from ..core.managers import edit_or_reply
 from datetime import datetime
 import random
@@ -255,7 +255,7 @@ emojis = {
     "🇲🇹": "مالطا",
     "🇻🇦": "الفاتيكان",
 } 
-@lucmd9.on(events.NewMessage(pattern='.سباق_الأعلام'))
+@lucmd9.on(events.NewMessage(pattern='.اعلام'))
 async def flag_race(event):
     
     flag_Emoji, country = random.choice(list(emojis.items()))
@@ -290,7 +290,7 @@ capitals = {
     # يمكنك إضافة المزيد من العواصم والدول هنا
 }
 
-@lucmd9.on(events.NewMessage(pattern='.سباق_العواصم'))
+@lucmd9.on(events.NewMessage(pattern='.عواصم'))
 async def capital_race(event):
     # اختيار عشوائي لاسم الدولة والعاصمة
     country, capital = random.choice(list(capitals.items()))
@@ -307,6 +307,3 @@ async def capital_race(event):
         await response.reply(f"🎉 مبروك [{winner.first_name}](tg://user?id={winner.id}) \n- ثواني: {int(time_taken)} !!", parse_mode="md")
     else:
         await response.reply("للأسف، الإجابة غير صحيحة.")
-
-# قم بتسجيل الأمر
-Qrh9.register(cmds=["سباق_العواصم"]) 
