@@ -12,7 +12,8 @@ plugin_category = "fun"
 
 @lucmd9.on(events.NewMessage(pattern='.سباق'))
 async def emoji_race(event):
-    emojis = ["🍉", "🍎", "🍌", "🍇", "🍓", "🍍", "🍊", "🍐", "🍒", "🥝"]
+    emojis = ["🍉", "🍎", "🍌", "🍇", "🍓", "🍍", "🍊", "🍐", "🍒", "🥝", "🥱", "😴", '🤤", "😪", "😵", "🤐", "🥴", "🤢", "🤮", "🤧", "😷", "🤒", "🤕", "🤑", "🤠", "😈", "👿", "👹", "👺", "🤡", "👻", "☠️" ,"👽", "👾", "🤖", "🎃", "😺", "😸", "😹", "😻", "😼", "😽", "🙀"
+]
     race_Emoji = random.choice(emojis)
     Po = datetime.now()
     await edit_or_reply(event,f"اول واحد يرسل هذا الايموجي {race_Emoji} يربح نقطة!")
@@ -29,7 +30,7 @@ async def emoji_race(event):
     await response.reply(f"🎉 مبروك [{winner.first_name}](tg://user?id={winner.id}) \n- ثواني: {int(time_taken)} !!", parse_mode="md")
     
 
-@lucmd9.on(events.NewMessage(pattern='.اصابع'))
+@lucmd9.on(events.NewMessage(pattern='.ايد'))
 async def rock_paper_scissors(event):
     choices = {
         "حجرة": "ورقة",
