@@ -1,24 +1,22 @@
 
-import asyncio
 import base64
+import contextlib
 import io
-import urllib.parse
 import os
-from pathlib import Path
 
 from ShazamAPI import Shazam
 from telethon import types
-from telethon.errors.rpcerrorlist import YouBlockedUserError, ChatSendMediaForbiddenError
+from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.contacts import UnblockRequest as unblock
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from validators.url import url
 
 from ..core.logger import logging
 from ..core.managers import edit_delete, edit_or_reply
-from ..helpers.functions import delete_conv, name_dl, song_dl, video_dl, yt_search
+from ..helpers.functions import delete_conv, yt_search
 from ..helpers.tools import media_type
-from ..helpers.utils import _catutils, reply_id
-from . import lucmd9
+from ..helpers.utils import reply_id
+from . import lucmd9, song_download
 
 plugin_category = "utils"
 LOGS = logging.getLogger(__name__)
@@ -26,18 +24,19 @@ LOGS = logging.getLogger(__name__)
 # =========================================================== #
 #                           STRINGS                           #
 # =========================================================== #
-SONG_SEARCH_STRING = "<code>يجؤة الانتظار قليلا يتم البحث على المطلوب</code>"
-SONG_NOT_FOUND = "<code>عذرا لا يمكنني ايجاد اي اغنيه مثل هذه</code>"
-SONG_SENDING_STRING = "<code>جارِ الارسال انتظر قليلا...</code>"
+SONG_SEARCH_STRING = "<code>انتظر عزيزي دادورلك الاغنية</code>"
+SONG_NOT_FOUND = "<code>اعذرني مالكيت اي اغنية </code>"
+SONG_SENDING_STRING = "<code>دا ادزها الك انتظر...</code>"
 # =========================================================== #
 #                                                             #
 # =========================================================== #
+
 
 @lucmd9.ar_cmd(
     pattern="بحث(320)?(?:\s|$)([\s\S]*)",
     command=("بحث", plugin_category),
     info={
-        "header": "To get songs from youtube.",
+        "header": "للعثور على اغنيه من اليوتيوب",
         "description": "Basically this command searches youtube and send the first video as audio file.",
         "flags": {
             "320": "if you use song320 then you get 320k quality else 128k quality",
@@ -46,7 +45,7 @@ SONG_SENDING_STRING = "<code>جارِ الارسال انتظر قليلا...</c
         "examples": "{tr}song memories song",
     },
 )
-async def _(event):
+async def بحث(event):
     "To search songs"
     reply_to_id = await reply_id(event)
     reply = await event.get_reply_message()
@@ -55,73 +54,104 @@ async def _(event):
     elif reply and reply.message:
         query = reply.message
     else:
-        return await edit_or_reply(event, "⌔∮ يرجى الرد على ما تريد البحث عنه")
-    cat = base64.b64decode("QEFuZ3Rob24=")
-    catevent = await edit_or_reply(event, "⌔∮ جاري البحث عن المطلوب انتظر")
+        return await edit_or_reply(event, "`رد على الي تريد بحثه `")
+    cat = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    catevent = await edit_or_reply(event, "`لكيت الي تريده انتظر....`")
     video_link = await yt_search(str(query))
     if not url(video_link):
         return await catevent.edit(
-            f"⌔∮ عذرا لم استطع ايجاد مقاطع ذات صلة بـ `{query}`"
-        )#
-    cmd = event.pattern_match.group(1) #
+            f"اسف مالكيت اي مقطع او صوت ل `{query}`"
+        )
+    cmd = event.pattern_match.group(1)
     q = "320k" if cmd == "320" else "128k"
-    song_cmd = song_dl.format(QUALITY=q, video_link=video_link)
-    name_cmd = name_dl.format(video_link=video_link)
-    try:
+    song_file, catthumb, title = await song_download(video_link, catevent, quality=q)
+    await event.client.send_file(
+        event.chat_id,
+        song_file,
+        force_document=False,
+        caption=f"**Title:** `{title}`",
+        thumb=catthumb,
+        supports_streaming=True,
+        reply_to=reply_to_id,
+    )
+    await catevent.delete()
+    for files in (catthumb, song_file):
+        if files and os.path.exists(files):
+            os.remove(files)
+
+
+@lucmd9.ar_cmd(
+    pattern="يوت(?:\s|$)([\s\S]*)",
+    command=("يوت", plugin_category),
+    info={
+        "header": "To get video songs from youtube.",
+        "description": "Basically this command searches youtube and sends the first video",
+        "usage": "{tr}vsong <song name>",
+        "examples": "{tr}vsong memories song",
+    },
+)
+async def يوت(event):
+    "To search video songs"
+    reply_to_id = await reply_id(event)
+    reply = await event.get_reply_message()
+    if event.pattern_match.group(1):
+        query = event.pattern_match.group(1)
+    elif reply and reply.message:
+        query = reply.message
+    else:
+        return await edit_or_reply(event, "رد على الي تريدة")
+    cat = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    catevent = await edit_or_reply(event, "`اصبر لكيت شي....`")
+    video_link = await yt_search(str(query))
+    if not url(video_link):
+        return await catevent.edit(
+            f"اسف ما كدرت احمل الفيد او الصوت ل `{query}`"
+        )
+    with contextlib.suppress(BaseException):
         cat = Get(cat)
         await event.client(cat)
-    except BaseException:
-        pass
-    try:
-        stderr = (await _catutils.runcmd(song_cmd))[1]
-        # if stderr:
-        # await catevent.edit(f"**خطأ :** `{stderr}`")
-        catname, stderr = (await _catutils.runcmd(name_cmd))[:2]
-        if stderr:
-            return await catevent.edit(f"**خطأ :** `{stderr}`")
-        catname = os.path.splitext(catname)[0]
-        song_file = Path(f"{catname}.mp3")
-        catname = urllib.parse.unquote(catname)
-    except:
-        pass
-    if not os.path.exists(song_file):
-        return await catevent.edit(
-            f"⌔∮ عذرا لم استطع ايجاد مقاطع ذات صله بـ `{query}`"
-        )
-    await catevent.edit("**⌔∮ جارِ الارسال انتظر قليلاً**")
-    catthumb = Path(f"{catname}.jpg")
-    if not os.path.exists(catthumb):
-        catthumb = Path(f"{catname}.webp")
-    elif not os.path.exists(catthumb):
-        catthumb = None
-    title = catname.replace("./temp/", "").replace("_", "|")
-    try:
-        await event.client.send_file(
-            event.chat_id,
-            song_file,
-            force_document=False,
-            caption=f"**العنوان:** `{title}`",
-            thumb=catthumb,
-            supports_streaming=True,
-            reply_to=reply_to_id,
-        )
-        await catevent.delete()
-        for files in (catthumb, song_file):
-            if files and os.path.exists(files):
-                os.remove(files)
-    except ChatSendMediaForbiddenError as err:
-        await catevent.edit("لا يمكن ارسال المقطع الصوتي هنا")
-        LOGS.error(str(err))
+    vsong_file, catthumb, title = await song_download(video_link, catevent, video=True)
+    await event.client.send_file(
+        event.chat_id,
+        vsong_file,
+        caption=f"**Title:** `{title}`",
+        thumb=catthumb,
+        supports_streaming=True,
+        reply_to=reply_to_id,
+    )
+    await catevent.delete()
+    for files in (catthumb, vsong_file):
+        if files and os.path.exists(files):
+            os.remove(files)
 
-@lucmd9.ar_cmd(pattern="اسم الاغنية$")
+
+@lucmd9.ar_cmd(
+    pattern="(s(ha)?z(a)?m)(?:\s|$)([\s\S]*)",
+    command=("shazam", plugin_category),
+    info={
+        "header": "To reverse search song.",
+        "description": "Reverse search audio file using shazam api",
+        "flags": {"s": "To send the song of sazam match"},
+        "usage": [
+            "{tr}shazam <reply to voice/audio>",
+            "{tr}szm <reply to voice/audio>",
+            "{tr}szm s<reply to voice/audio>",
+        ],
+    },
+)
 async def shazamcmd(event):
+    "To reverse search song."
     reply = await event.get_reply_message()
-    mediatype = media_type(reply)
+    mediatype = await media_type(reply)
+    chat = "@DeezerMusicBot"
+    delete = False
+    flag = event.pattern_match.group(4)
     if not reply or not mediatype or mediatype not in ["Voice", "Audio"]:
         return await edit_delete(
-            event, "⌔∮ يرجى الرد على مقطع صوتي او بصمه للبحث عنها"
+            event, "__Reply to Voice clip or Audio clip to reverse search that song.__"
         )
-    catevent = await edit_or_reply(event, "**⌔∮ يتم معالجه المقطع الصوتي  .**")
+    catevent = await edit_or_reply(event, "__Downloading the audio clip...__")
+    name = "cat.mp3"
     try:
         for attr in getattr(reply.document, "attributes", []):
             if isinstance(attr, types.DocumentAttributeFilename):
@@ -139,20 +169,45 @@ async def shazamcmd(event):
     except Exception as e:
         LOGS.error(e)
         return await edit_delete(
-            catevent, f"**⌔∮ لقد حدث خطأ ما اثناء البحث عن اسم الاغنيه:**\n__{e}__"
+            catevent, f"**Error while reverse searching song:**\n__{e}__"
         )
 
-    image = track["images"]["background"]
-    song = track["share"]["subject"]
+    file = track["images"]["background"]
+    title = track["share"]["subject"]
+    slink = await yt_search(title)
+    if flag == "s":
+        deezer = track["hub"]["providers"][1]["actions"][0]["uri"][15:]
+        async with event.client.conversation(chat) as conv:
+            try:
+                purgeflag = await conv.send_message("/start")
+            except YouBlockedUserError:
+                await catub(unblock("DeezerMusicBot"))
+                purgeflag = await conv.send_message("/start")
+            await conv.get_response()
+            await event.client.send_read_acknowledge(conv.chat_id)
+            await conv.send_message(deezer)
+            await event.client.get_messages(chat)
+            song = await event.client.get_messages(chat)
+            await song[0].click(0)
+            await conv.get_response()
+            file = await conv.get_response()
+            await event.client.send_read_acknowledge(conv.chat_id)
+            delete = True
     await event.client.send_file(
-        event.chat_id, image, caption=f"**الاغنية:** `{song}`", reply_to=reply
+        event.chat_id,
+        file,
+        caption=f"<b>Song :</b> <code>{title}</code>\n<b>Song Link : <a href = {slink}/1>YouTube</a></b>",
+        reply_to=reply,
+        parse_mode="html",
     )
     await catevent.delete()
+    if delete:
+        await delete_conv(event, chat, purgeflag)
 
 
 @lucmd9.ar_cmd(
-    pattern="بحث2(?:\s|$)([\s\S]*)",
-    command=("بحث2", plugin_category),
+    pattern="ابحثلي(?:\s|$)([\s\S]*)",
+    command=("ابحثلي", plugin_category),
     info={
         "header": "To search songs and upload to telegram",
         "description": "Searches the song you entered in query and sends it quality of it is 320k",
@@ -171,7 +226,7 @@ async def _(event):
             purgeflag = await conv.send_message("/start")
         except YouBlockedUserError:
             await edit_or_reply(
-                catevent, "**Error:** Trying to unblock & retry, wait a sec..."
+                catevent, "**Error:** شيل البلوك من البلوك او تاكد من الاشتراك في القنوات و احذف المحادثه مع البوت وجربة تبحث"
             )
             await catub(unblock("songdl_bot"))
             purgeflag = await conv.send_message("/start")
@@ -183,7 +238,7 @@ async def _(event):
             hmm = await event.client.get_messages(chat, ids=hmm.id)
         baka = await event.client.get_messages(chat)
         if baka[0].message.startswith(
-            ("I don't like to say this but I failed to find any such song.")
+            ("شكد فكر ولاشي لكيت جرب البحث الاول.")
         ):
             await delete_conv(event, chat, purgeflag)
             return await edit_delete(
@@ -204,4 +259,4 @@ async def _(event):
         )
         await catevent.delete()
         await delete_conv(event, chat, purgeflag)
-        
+        #كتابه وتعديل سورس الخفاش
