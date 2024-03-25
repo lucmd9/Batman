@@ -311,6 +311,10 @@ async def capital_race(event):
     else:
         await response.reply("للأسف، الإجابة غير صحيحة.")
 #تبقى فكرتي واذا تكلي بايكه تاكل عير
+import akinator
+from telethon import events
+from telethon.tl.custom import Button
+
 @lucmd9.on(events.NewMessage(pattern=".akinator"))
 @lucmd9.ar_cmd(
     pattern="akinator$",
@@ -323,7 +327,7 @@ async def capital_race(event):
 )
 async def akinator_game(event):
     game = akinator.Akinator()
-    question = game.start_game(language='en')  #كومبي
+    question = game.start_game(language='ar')  
 
     async with lucmd9.conversation(event.chat_id) as conv:
         options = ["Yes", "No", "I don't know", "Maybe"]
@@ -344,15 +348,15 @@ async def akinator_game(event):
         response = await conv.wait_event(events.CallbackQuery())
         answer = response.data.decode('utf-8')
 
-        while game.progression <= 80:  #كومبي
+        while game.progression <= 80:  
             if answer == options[0]:
-                question = game.answer("y")  #كومبي
+                question = game.answer("y")  
             elif answer == options[1]:
-                question = game.answer("n")  #كومبي
+                question = game.answer("n")  
             elif answer == options[2]:
-                question = game.answer("idk")  #كومبي
+                question = game.answer("idk")  
             elif answer == options[3]:
-                question = game.answer("p")  # كومبي
+                question = game.answer("p") 
 
             message = await message.edit(question + "\nPlease choose one of the following options:",
                                           buttons=[
@@ -370,8 +374,7 @@ async def akinator_game(event):
             response = await conv.wait_event(events.CallbackQuery())
             answer = response.data.decode('utf-8')
 
-        game.win()  #كومبي
-
+        game.win()  
         transparent_button = Button.inline(' ', ' ')
         await message.edit(f"Is this your character: {game.first_guess['name']} ({game.first_guess['description']})? Were I correct?",
                             buttons=[
