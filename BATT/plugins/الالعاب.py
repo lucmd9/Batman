@@ -322,6 +322,11 @@ question_emoji = "❓"
 author_info = "\n\nMade with ❤️ by [dev -> @luc_md9](https://telegram.me/luc_md9)"
 
 #هااااا
+
+decor = "🌟✨🔮💫🌠"
+question_emoji = "❓"
+author_info = "\n\nMade with ❤️ by [dev -> @lucmd9](https://telegram.me/lucmd9)"
+
 @lucmd9.ar_cmd(events.NewMessage(pattern=".داركو"))
 @lucmd9.ar_cmd(
     pattern="داركو$",
@@ -334,7 +339,7 @@ author_info = "\n\nMade with ❤️ by [dev -> @luc_md9](https://telegram.me/luc
 )
 async def akinator_game(event):
     akibat = akinator.Akinator()
-    quesbat = akibat.start_game(language='ar')  # تحويل للعربية
+    quesbat = akibat.start_game(language='ar')
 
     async with event.client.conversation(event.chat_id) as conv:
         while akibat.progression <= 80:
