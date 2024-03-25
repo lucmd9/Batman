@@ -5,7 +5,6 @@ import random
 from telethon import events
 import emoji
 import asyncio
-import akinator
 
 plugin_category = "fun"
 
