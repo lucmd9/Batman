@@ -6,7 +6,6 @@ from telethon import events
 import emoji
 import asyncio
 import akinator
-from telethon.tl.custom import Button
 
 plugin_category = "fun"
 
@@ -327,14 +326,14 @@ decor = "🌟✨🔮💫🌠"
 question_emoji = "❓"
 author_info = "\n\nMade with ❤️ by [dev -> @lucmd9](https://telegram.me/lucmd9)"
 
-@lucmd9.ar_cmd(events.NewMessage(pattern=".داركو"))
+@lucmd9.ar_cmd(events.NewMessage(pattern=".سحر"))
 @lucmd9.ar_cmd(
-    pattern="داركو$",
-    command=("داركو", plugin_category),
+    pattern="سحر$",
+    command=("سحر", plugin_category),
     info={
-        "header": f"{decor} أمر الساحر دارك {decor}",
+        "header": f"{decor} أمر حلو {decor}",
         "description": "مارد حلو وبسيط.",
-        "usage": "{tr}داركو",
+        "usage": "{tr}سحر",
     },
 )
 async def akinator_game(event):
