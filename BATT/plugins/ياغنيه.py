@@ -206,8 +206,8 @@ async def shazamcmd(event):
 
 
 @lucmd9.ar_cmd(
-    pattern="ابحثلي(?:\s|$)([\s\S]*)",
-    command=("ابحثلي", plugin_category),
+    pattern="ابحث(?:\s|$)([\s\S]*)",
+    command=("ابحث", plugin_category),
     info={
         "header": "To search songs and upload to telegram",
         "description": "Searches the song you entered in query and sends it quality of it is 320k",
