@@ -311,7 +311,6 @@ async def capital_race(event):
     else:
         await response.reply("للأسف، الإجابة غير صحيحة.")
 #تبقى فكرتي واذا تكلي بايكه تاكل عير
-
 @lucmd9.on(events.NewMessage(pattern=".akinator"))
 @lucmd9.ar_cmd(
     pattern="akinator$",
@@ -345,16 +344,16 @@ async def akinator_game(event):
         response = await conv.wait_event(events.CallbackQuery())
         answer = response.data.decode('utf-8')
 
-        if answer == options[0]:
-            question = game.answer("y")  #كومبي
-        elif answer == options[1]:
-            question = game.answer("n")  #كومبي
-        elif answer == options[2]:
-            question = game.answer("idk")  #كومبي
-        elif answer == options[3]:
-            question = game.answer("p")  #كومبي
-
         while game.progression <= 80:  #كومبي
+            if answer == options[0]:
+                question = game.answer("y")  #كومبي
+            elif answer == options[1]:
+                question = game.answer("n")  #كومبي
+            elif answer == options[2]:
+                question = game.answer("idk")  #كومبي
+            elif answer == options[3]:
+                question = game.answer("p")  # كومبي
+
             message = await message.edit(question + "\nPlease choose one of the following options:",
                                           buttons=[
                                               transparent_button,
@@ -370,15 +369,6 @@ async def akinator_game(event):
 
             response = await conv.wait_event(events.CallbackQuery())
             answer = response.data.decode('utf-8')
-
-            if answer == options[0]:
-                question = game.answer("y") 
-            elif answer == options[1]:
-                question = game.answer("n")  #كومبي
-            elif answer == options[2]:
-                question = game.answer("idk")  #كومبي
-            elif answer == options[3]:
-                question = game.answer("p")  #كومبي
 
         game.win()  #كومبي
 
