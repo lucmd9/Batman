@@ -311,7 +311,7 @@ async def capital_race(event):
     else:
         await response.reply("للأسف، الإجابة غير صحيحة.")
 #تبقى فكرتي واذا تكلي بايكه تاكل عير
-@lucmd9.on(events.NewMessage(pattern=".داركو"))
+@lucmd9.on(events.NewMessage(pattern=".سحر"))
 @lucmd9.ar_cmd(
     pattern="داركو$",
     command=("داركو", plugin_category),
