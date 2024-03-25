@@ -341,7 +341,8 @@ async def akinator_game(event):
                                               transparent_button,
                                           ])
 
-        response = await conv.wait_event(events.CallbackQuery())
+        response = await conv.wait_event(events.NewMessage(from_users=event.sender_id))
+
         answer = response.data.decode('utf-8')
 
         while game.progression <= 80:
