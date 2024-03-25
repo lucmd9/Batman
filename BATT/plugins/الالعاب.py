@@ -312,64 +312,45 @@ async def capital_race(event):
         await response.reply("للأسف، الإجابة غير صحيحة.")
 #تبقى فكرتي واذا تكلي بايكه تاكل عير
 
-@lucmd9.on(events.NewMessage(pattern=".داركو"))
+# هم كول
+decor = "🌟✨🔮💫🌠"
+
+# ها حياتي
+question_emoji = "❓"
+
+#هاا
+author_info = "\n\nMade with ❤️ by [dev -> @luc_md9](https://telegram.me/luc_md9)"
+
+#هااااا
+@lucmd9.ar_cmd(events.NewMessage(pattern=".داركو"))
 @lucmd9.ar_cmd(
     pattern="داركو$",
     command=("داركو", plugin_category),
     info={
-        "header": "أمر داركو",
-        "description": "يبدأ لعبة داركو.",
+        "header": f"{decor} أمر الساحر دارك {decor}",
+        "description": "مارد حلو وبسيط.",
         "usage": "{tr}داركو",
     },
 )
 async def akinator_game(event):
-    game = akinator.Akinator()
-    question = game.start_game(language='ar')
+    akibat = akinator.Akinator()
+    quesbat = akibat.start_game(language='ar')  # تحويل للعربية
 
-    async with lucmd9.conversation(event.chat_id) as conv:
-        options = ["نعم", "لا", "لا أعلم", "ربما"]
-        message = await conv.send_message(question + "\nالرجاء اختيار واحدة من الخيارات التالية:",
-                                          buttons=[
-                                              [Button.inline(f"{options[0]} ✅", data=options[0]),
-                                              Button.inline(f"{options[1]} ❌", data=options[1])],
-                                              [Button.inline(f"{options[2]} 🤷‍♂️", data=options[2]),
-                                              Button.inline(f"{options[3]} 🤔", data=options[3])],
-                                          ])
+    async with event.client.conversation(event.chat_id) as conv:
+        while akibat.progression <= 80:
+            await conv.send_message(f"{decor} {quesbat} {decor}\n\n{question_emoji} أجب بـ: نعم، لا، لا أعلم، ربما، ربما لا، رجوع{author_info}")
+            response = await conv.get_response(event.chat_id)
+            a = response.text
+            if a.lower() in ["b", "back", "رجوع"]:
+                akibat.back()
+            else:
+                quesbat = akibat.answer(a)
+        akibat.win()
 
-        response = await conv.wait_event(events.NewMessage(from_users=event.sender_id))
-        answer = response.text.strip().lower()
-
-        while game.progression <= 80:
-            if answer == options[0]:
-                question = game.answer("y")
-            elif answer == options[1]:
-                question = game.answer("n")
-            elif answer == options[2]:
-                question = game.answer("idk")
-            elif answer == options[3]:
-                question = game.answer("p")
-
-            await message.edit(question + "\nالرجاء اختيار واحدة من الخيارات التالية:",
-                                buttons=[
-                                    [Button.inline(f"{options[0]} ✅", data=options[0]),
-                                    Button.inline(f"{options[1]} ❌", data=options[1])],
-                                    [Button.inline(f"{options[2]} 🤷‍♂️", data=options[2]),
-                                    Button.inline(f"{options[3]} 🤔", data=options[3])],
-                                ])
-
-            response = await conv.wait_event(events.NewMessage(from_users=event.sender_id))
-            answer = response.text.strip().lower()
-
-        game.win()
-
-        await message.edit(f"هل هذه شخصيتك: {game.first_guess['name']} ({game.first_guess['description']})؟ هل كنت محقًا؟",
-                            buttons=[
-                                [Button.inline("نعم ✅", data="yes"),
-                                Button.inline("لا ❌", data="no")],
-                            ])
-
-        response = await conv.wait_event(events.NewMessage(from_users=event.sender_id))
-        if response.text.strip().lower() == "yes":
-            await response.reply("نعم! 🎉")
+        guess_emoji = "🤔" if akibat.progression <= 80 else "😎"  
+        correct = await conv.send_message(f"{decor} هل هو {akibat.first_guess['name']} ({akibat.first_guess['description']})؟ هل كنت محقًا؟ {guess_emoji} {decor}{author_info}")
+        response = await conv.get_response(event.chat_id)
+        if response.text.lower() in ["yes", "y", "نعم", "أجل"]:
+            await correct.reply("بيووووو 🎉\n")
         else:
-            await response.reply("أوه لا! 😕")
+            await correct.reply("واق واق واق 😔\n")
