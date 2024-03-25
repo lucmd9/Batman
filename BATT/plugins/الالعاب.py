@@ -311,24 +311,25 @@ async def capital_race(event):
     else:
         await response.reply("للأسف، الإجابة غير صحيحة.")
 #تبقى فكرتي واذا تكلي بايكه تاكل عير
-@lucmd9.on(events.NewMessage(pattern=".سحر"))
+
+@lucmd9.on(events.NewMessage(pattern=".akinator"))
 @lucmd9.ar_cmd(
-    pattern="داركو$",
-    command=("داركو", plugin_category),
+    pattern="akinator$",
+    command=("akinator", plugin_category),
     info={
-        "header": "داركو",
-        "description": "الساحر داركو",
-        "usage": "{tr}داركو",
+        "header": "Akinator Command",
+        "description": "Starts the Akinator game.",
+        "usage": "{tr}akinator",
     },
 )
 async def akinator_game(event):
-    battakinator = akinator.Akinator()
-    batkinatorques = battakinator.start_game(language='ar')  #تحديد اللغه 
+    game = akinator.Akinator()
+    question = game.start_game(language='en')  #كومبي
 
     async with lucmd9.conversation(event.chat_id) as conv:
         options = ["Yes", "No", "I don't know", "Maybe"]
         transparent_button = Button.inline(' ', ' ')
-        message = await conv.send_message(q + "\nPlease choose one of the following options:",
+        message = await conv.send_message(question + "\nPlease choose one of the following options:",
                                           buttons=[
                                               transparent_button,
                                               Button.inline(f"{options[0]} ✅", data=options[0]),
@@ -345,16 +346,16 @@ async def akinator_game(event):
         answer = response.data.decode('utf-8')
 
         if answer == options[0]:
-            batkinatorques = battakinator.answer("y")
+            question = game.answer("y")  #كومبي
         elif answer == options[1]:
-            batkinatorques = battakinator.answer("n")
+            question = game.answer("n")  #كومبي
         elif answer == options[2]:
-            batkinatorques = battakinator.answer("idk")
+            question = game.answer("idk")  #كومبي
         elif answer == options[3]:
-            batkinatorques = battakinator.answer("p")
+            question = game.answer("p")  #كومبي
 
-        while battakinator.progression <= 75:
-            message = await message.edit(q + "\nPlease choose one of the following options:",
+        while game.progression <= 80:  #كومبي
+            message = await message.edit(question + "\nPlease choose one of the following options:",
                                           buttons=[
                                               transparent_button,
                                               Button.inline(f"{options[0]} ✅", data=options[0]),
@@ -371,21 +372,18 @@ async def akinator_game(event):
             answer = response.data.decode('utf-8')
 
             if answer == options[0]:
-                batkinatorques = battakinator.answer("y")
+                question = game.answer("y") 
             elif answer == options[1]:
-                batkinatorques = battakinator.answer("n")
+                question = game.answer("n")  #كومبي
             elif answer == options[2]:
-                batkinatorques = battakinator.answer("idk")
+                question = game.answer("idk")  #كومبي
             elif answer == options[3]:
-                batkinatorques = battakinator.answer("p")
-            else:
-                await conv.send_message("Invalid response! Please select one of the provided options.")
-                continue
+                question = game.answer("p")  #كومبي
 
-        battakinator.win()
+        game.win()  #كومبي
 
         transparent_button = Button.inline(' ', ' ')
-        await message.edit(f"Is this your character: {battakinator.first_guess['name']} ({battakinator.first_guess['description']})? Were I correct?",
+        await message.edit(f"Is this your character: {game.first_guess['name']} ({game.first_guess['description']})? Were I correct?",
                             buttons=[
                                 transparent_button,
                                 Button.inline("Yes ✅", data="yes"),
@@ -396,6 +394,6 @@ async def akinator_game(event):
 
         response = await conv.wait_event(events.CallbackQuery())
         if response.data.decode('utf-8') == "yes":
-            await response.edit("Yay! 🧛🏻‍♀️🎉")
+            await response.edit("Yay! 🎉")
         else:
-            await response.edit("Oops! 🧛🏻‍♀️")
+            await response.edit("Oops! 😕")
