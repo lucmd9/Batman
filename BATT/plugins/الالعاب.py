@@ -311,28 +311,24 @@ async def capital_race(event):
     else:
         await response.reply("للأسف، الإجابة غير صحيحة.")
 #تبقى فكرتي واذا تكلي بايكه تاكل عير
-import akinator
-from telethon import events
-from telethon.tl.custom import Button
-
-@lucmd9.on(events.NewMessage(pattern=".akinator"))
+@lucmd9.on(events.NewMessage(pattern=".داركو"))
 @lucmd9.ar_cmd(
-    pattern="akinator$",
-    command=("akinator", plugin_category),
+    pattern="داركو$",
+    command=("داركو", plugin_category),
     info={
-        "header": "Akinator Command",
-        "description": "Starts the Akinator game.",
-        "usage": "{tr}akinator",
+        "header": "أمر الأكيناتور",
+        "description": "يبدأ لعبة داركو.",
+        "usage": "{tr}داركو",
     },
 )
 async def akinator_game(event):
     game = akinator.Akinator()
-    question = game.start_game(language='ar')  
+    question = game.start_game(language='ar')
 
     async with lucmd9.conversation(event.chat_id) as conv:
-        options = ["Yes", "No", "I don't know", "Maybe"]
+        options = ["نعم", "لا", "لا أعلم", "ربما"]
         transparent_button = Button.inline(' ', ' ')
-        message = await conv.send_message(question + "\nPlease choose one of the following options:",
+        message = await conv.send_message(question + "\nالرجاء اختيار واحدة من الخيارات التالية:",
                                           buttons=[
                                               transparent_button,
                                               Button.inline(f"{options[0]} ✅", data=options[0]),
@@ -348,17 +344,17 @@ async def akinator_game(event):
         response = await conv.wait_event(events.CallbackQuery())
         answer = response.data.decode('utf-8')
 
-        while game.progression <= 80:  
+        while game.progression <= 80:
             if answer == options[0]:
-                question = game.answer("y")  
+                question = game.answer("y")
             elif answer == options[1]:
-                question = game.answer("n")  
+                question = game.answer("n")
             elif answer == options[2]:
-                question = game.answer("idk")  
+                question = game.answer("idk")
             elif answer == options[3]:
-                question = game.answer("p") 
+                question = game.answer("p")
 
-            message = await message.edit(question + "\nPlease choose one of the following options:",
+            message = await message.edit(question + "\nالرجاء اختيار واحدة من الخيارات التالية:",
                                           buttons=[
                                               transparent_button,
                                               Button.inline(f"{options[0]} ✅", data=options[0]),
@@ -374,19 +370,20 @@ async def akinator_game(event):
             response = await conv.wait_event(events.CallbackQuery())
             answer = response.data.decode('utf-8')
 
-        game.win()  
+        game.win()
+
         transparent_button = Button.inline(' ', ' ')
-        await message.edit(f"Is this your character: {game.first_guess['name']} ({game.first_guess['description']})? Were I correct?",
+        await message.edit(f"هل هذه شخصيتك: {game.first_guess['name']} ({game.first_guess['description']})؟ هل كنت محقًا؟",
                             buttons=[
                                 transparent_button,
-                                Button.inline("Yes ✅", data="yes"),
+                                Button.inline("نعم ✅", data="yes"),
                                 transparent_button,
-                                Button.inline("No ❌", data="no"),
+                                Button.inline("لا ❌", data="no"),
                                 transparent_button,
                             ])
 
         response = await conv.wait_event(events.CallbackQuery())
         if response.data.decode('utf-8') == "yes":
-            await response.edit("Yay! 🎉")
+            await response.edit("نعم! 🎉")
         else:
-            await response.edit("Oops! 😕")
+            await response.edit("أوه لا! 😕")
