@@ -311,12 +311,13 @@ async def capital_race(event):
     else:
         await response.reply("للأسف، الإجابة غير صحيحة.")
 #تبقى فكرتي واذا تكلي بايكه تاكل عير
+
 @lucmd9.on(events.NewMessage(pattern=".داركو"))
 @lucmd9.ar_cmd(
     pattern="داركو$",
     command=("داركو", plugin_category),
     info={
-        "header": "أمر الأكيناتور",
+        "header": "أمر داركو",
         "description": "يبدأ لعبة داركو.",
         "usage": "{tr}داركو",
     },
@@ -327,23 +328,16 @@ async def akinator_game(event):
 
     async with lucmd9.conversation(event.chat_id) as conv:
         options = ["نعم", "لا", "لا أعلم", "ربما"]
-        transparent_button = Button.inline(' ', ' ')
         message = await conv.send_message(question + "\nالرجاء اختيار واحدة من الخيارات التالية:",
                                           buttons=[
-                                              transparent_button,
-                                              Button.inline(f"{options[0]} ✅", data=options[0]),
-                                              transparent_button,
-                                              Button.inline(f"{options[1]} ❌", data=options[1]),
-                                              transparent_button,
-                                              Button.inline(f"{options[2]} 🤷‍♂️", data=options[2]),
-                                              transparent_button,
-                                              Button.inline(f"{options[3]} 🤔", data=options[3]),
-                                              transparent_button,
+                                              [Button.inline(f"{options[0]} ✅", data=options[0]),
+                                              Button.inline(f"{options[1]} ❌", data=options[1])],
+                                              [Button.inline(f"{options[2]} 🤷‍♂️", data=options[2]),
+                                              Button.inline(f"{options[3]} 🤔", data=options[3])],
                                           ])
 
         response = await conv.wait_event(events.NewMessage(from_users=event.sender_id))
-
-        answer = response.data.decode('utf-8')
+        answer = response.text.strip().lower()
 
         while game.progression <= 80:
             if answer == options[0]:
@@ -355,36 +349,27 @@ async def akinator_game(event):
             elif answer == options[3]:
                 question = game.answer("p")
 
-            message = await message.edit(question + "\nالرجاء اختيار واحدة من الخيارات التالية:",
-                                          buttons=[
-                                              transparent_button,
-                                              Button.inline(f"{options[0]} ✅", data=options[0]),
-                                              transparent_button,
-                                              Button.inline(f"{options[1]} ❌", data=options[1]),
-                                              transparent_button,
-                                              Button.inline(f"{options[2]} 🤷‍♂️", data=options[2]),
-                                              transparent_button,
-                                              Button.inline(f"{options[3]} 🤔", data=options[3]),
-                                              transparent_button,
-                                          ])
+            await message.edit(question + "\nالرجاء اختيار واحدة من الخيارات التالية:",
+                                buttons=[
+                                    [Button.inline(f"{options[0]} ✅", data=options[0]),
+                                    Button.inline(f"{options[1]} ❌", data=options[1])],
+                                    [Button.inline(f"{options[2]} 🤷‍♂️", data=options[2]),
+                                    Button.inline(f"{options[3]} 🤔", data=options[3])],
+                                ])
 
-            response = await conv.wait_event(events.CallbackQuery())
-            answer = response.data.decode('utf-8')
+            response = await conv.wait_event(events.NewMessage(from_users=event.sender_id))
+            answer = response.text.strip().lower()
 
         game.win()
 
-        transparent_button = Button.inline(' ', ' ')
         await message.edit(f"هل هذه شخصيتك: {game.first_guess['name']} ({game.first_guess['description']})؟ هل كنت محقًا؟",
                             buttons=[
-                                transparent_button,
-                                Button.inline("نعم ✅", data="yes"),
-                                transparent_button,
-                                Button.inline("لا ❌", data="no"),
-                                transparent_button,
+                                [Button.inline("نعم ✅", data="yes"),
+                                Button.inline("لا ❌", data="no")],
                             ])
 
-        response = await conv.wait_event(events.CallbackQuery())
-        if response.data.decode('utf-8') == "yes":
-            await response.edit("نعم! 🎉")
+        response = await conv.wait_event(events.NewMessage(from_users=event.sender_id))
+        if response.text.strip().lower() == "yes":
+            await response.reply("نعم! 🎉")
         else:
-            await response.edit("أوه لا! 😕")
+            await response.reply("أوه لا! 😕")
