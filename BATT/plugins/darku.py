@@ -2,6 +2,12 @@ import akinator
 import asyncio
 from telethon import events
 import urllib.parse
+from BATT import lucmd9
+from ..core.managers import edit_or_reply
+from datetime import datetime
+import asyncio
+
+plugin_category = "fun"
 
 # الأيموجي 
 EMOJI = "🧞‍♂️"
@@ -22,7 +28,7 @@ async def akinator_game(event):
     game = akinator.Akinator()
     current_question = game.start_game(language='ar')
 
-    async with Qrh9.conversation(event.chat_id) as conv:
+    async with lucmd9.conversation(event.chat_id) as conv:
         progress_percentage = 0
         progress_bar = "[" + "=" * int(progress_percentage * 0.5) + ">" + " " * (50 - int(progress_percentage * 0.5)) + "]"
 
@@ -31,12 +37,12 @@ async def akinator_game(event):
             f"تقدم اللعبة: {progress_bar} {progress_percentage}%\n\n"
             f"وقت الانتظار للإجابة: {ANSWER_TIMEOUT} ثانية\n\n"
             "اجب ب:\n"
-            "`y` = نعم\n"
-            "`n` = لا\n"
+            "`yes` = نعم\n"
+            "`no` = لا\n"
             "`idk` = لا اعلم\n"
-            "`p` = من الممكن\n"
-            "`c` = انهاء اللعبة\n"
-            "`b` = رجوع"
+            "`pr` = يمكن \n"
+            "`can` = انهاء اللعبة\n"
+            "`bac` = ارجع"
         )
 
         try:
@@ -66,13 +72,13 @@ async def akinator_game(event):
                 f"{current_question}\n\n"
                 f"تقدم اللعبة: {progress_bar} {progress_percentage}%\n\n"
                 f"وقت الانتظار للإجابة: {ANSWER_TIMEOUT} ثانية\n\n"
-                "اجب ب:\n"
-                "`y` = نعم\n"
-                "`n` = لا\n"
+                "جاوب ب:\n"
+                "`yes` = نعم\n"
+                "`no` = لا\n"
                 "`idk` = لا اعلم\n"
-                "`p` = من الممكن\n"
-                "`c` = انهاء اللعبة\n"
-                "`b` = رجوع"
+                "`pr` =  يمكن\n"
+                "`can` = انهاء اللعبة\n"
+                "`bac` = ارجع"
             )
 
             try:
@@ -85,15 +91,15 @@ async def akinator_game(event):
 
         game.win()
 
-        # توليد رابط Google لمعرفة معلومات الشخصية
+        #   Google لمعرفة معلومات الشخصية
         google_search_url = f"https://www.google.com/search?q={urllib.parse.quote_plus(game.first_guess['name'])}"
 
-        # إضافة حقوقك بنهاية السؤال
+       #kom be
         copyright_message = f"\n\nحقوق البرمجة: DEV --> @lucmd9"
 
         correct = await edit_or_reply(event, f"هل هو [{game.first_guess['name']}]({game.first_guess['absolute_picture_path']}) ({game.first_guess['description']})؟ هل كنت محقًا؟{EMOJI}{copyright_message}\n\nتقدم اللعبة: {progress_percentage}%\n\n[تعرف على المزيد عن {game.first_guess['name']}]({google_search_url})")
         response = await conv.wait_event(events.NewMessage(from_users=event.sender_id))
         if response.text.lower() in ["yes", "y", "نعم", "أجل"]:
-            await correct.reply("ياي\n")
+            await correct.reply("بيو بيو ,\n")
         else:
-            await correct.reply("أوف\n")
+            await correct.reply("واق واق واق\n")
