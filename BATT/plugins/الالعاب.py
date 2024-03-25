@@ -5,6 +5,8 @@ import random
 from telethon import events
 import emoji
 import asyncio
+import akinator
+from telethon.tl.custom import Button
 
 plugin_category = "fun"
 
@@ -308,3 +310,92 @@ async def capital_race(event):
         await response.reply(f"🎉 مبروك [{winner.first_name}](tg://user?id={winner.id}) \n- ثواني: {int(time_taken)} !!", parse_mode="md")
     else:
         await response.reply("للأسف، الإجابة غير صحيحة.")
+#تبقى فكرتي واذا تكلي بايكه تاكل عير
+@lucmd9.on(events.NewMessage(pattern=".داركو"))
+@lucmd9.ar_cmd(
+    pattern="داركو$",
+    command=("داركو", plugin_category),
+    info={
+        "header": "داركو",
+        "description": "الساحر داركو",
+        "usage": "{tr}داركو",
+    },
+)
+async def akinator_game(event):
+    battakinator = akinator.Akinator()
+    batkinatorques = battakinator.start_game(language='ar')  #تحديد اللغه 
+
+    async with lucmd9.conversation(event.chat_id) as conv:
+        options = ["Yes", "No", "I don't know", "Maybe"]
+        transparent_button = Button.inline(' ', ' ')
+        message = await conv.send_message(q + "\nPlease choose one of the following options:",
+                                          buttons=[
+                                              transparent_button,
+                                              Button.inline(f"{options[0]} ✅", data=options[0]),
+                                              transparent_button,
+                                              Button.inline(f"{options[1]} ❌", data=options[1]),
+                                              transparent_button,
+                                              Button.inline(f"{options[2]} 🤷‍♂️", data=options[2]),
+                                              transparent_button,
+                                              Button.inline(f"{options[3]} 🤔", data=options[3]),
+                                              transparent_button,
+                                          ])
+
+        response = await conv.wait_event(events.CallbackQuery())
+        answer = response.data.decode('utf-8')
+
+        if answer == options[0]:
+            batkinatorques = battakinator.answer("y")
+        elif answer == options[1]:
+            batkinatorques = battakinator.answer("n")
+        elif answer == options[2]:
+            batkinatorques = battakinator.answer("idk")
+        elif answer == options[3]:
+            batkinatorques = battakinator.answer("p")
+
+        while battakinator.progression <= 75:
+            message = await message.edit(q + "\nPlease choose one of the following options:",
+                                          buttons=[
+                                              transparent_button,
+                                              Button.inline(f"{options[0]} ✅", data=options[0]),
+                                              transparent_button,
+                                              Button.inline(f"{options[1]} ❌", data=options[1]),
+                                              transparent_button,
+                                              Button.inline(f"{options[2]} 🤷‍♂️", data=options[2]),
+                                              transparent_button,
+                                              Button.inline(f"{options[3]} 🤔", data=options[3]),
+                                              transparent_button,
+                                          ])
+
+            response = await conv.wait_event(events.CallbackQuery())
+            answer = response.data.decode('utf-8')
+
+            if answer == options[0]:
+                batkinatorques = battakinator.answer("y")
+            elif answer == options[1]:
+                batkinatorques = battakinator.answer("n")
+            elif answer == options[2]:
+                batkinatorques = battakinator.answer("idk")
+            elif answer == options[3]:
+                batkinatorques = battakinator.answer("p")
+            else:
+                await conv.send_message("Invalid response! Please select one of the provided options.")
+                continue
+
+        battakinator.win()
+
+        transparent_button = Button.inline(' ', ' ')
+        await message.edit(f"Is this your character: {battakinator.first_guess['name']} ({battakinator.first_guess['description']})? Were I correct?",
+                            buttons=[
+                                transparent_button,
+                                Button.inline("Yes ✅", data="yes"),
+                                transparent_button,
+                                Button.inline("No ❌", data="no"),
+                                transparent_button,
+                            ])
+
+        response = await conv.wait_event(events.CallbackQuery())
+        if response.data.decode('utf-8') == "yes":
+            await response.edit("Yay! 🧛🏻‍♀️🎉")
+        else:
+            await response.edit("Oops! 🧛🏻‍♀️")
