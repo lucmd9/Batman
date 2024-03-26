@@ -27,8 +27,7 @@ async def _(event):
         await event.edit("يتم تشغيل كوكل  bin")
         with webdriver.Chrome(options=chrome_options) as driver:
             input_str = event.pattern_match.group(1)
-            driver.get(input_str)
-            await event.edit("يتم تجميع..")#ولا راح يشتغل 
+            driver.get(input_str)#ولا راح يشتغل 
         await event.edit("يتم تجميع..")
         height = driver.execute_script("return Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);")
         width = driver.execute_script("return Math.max(document.body.scrollWidth, document.body.offsetWidth, document.documentElement.clientWidth, document.documentElement.scrollWidth, document.documentElement.offsetWidth);")
