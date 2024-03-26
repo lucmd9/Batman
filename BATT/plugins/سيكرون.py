@@ -14,7 +14,7 @@ CHROME = "/usr/bin/google-chrome"
 async def _(event):
     if event.fwd_from:
         return
-    await event.edit("اصبر....")
+   await edit_or_reply(event, "اصبر....")
     start = datetime.now()
     try:
         chrome_options = webdriver.ChromeOptions()
@@ -24,19 +24,19 @@ async def _(event):
         chrome_options.add_argument('--no-sandbox')
         chrome_options.add_argument('--disable-dev-shm-usage')
         chrome_options.binary_location = CHROME
-        await event.edit("يتم تشغيل كوكل  bin")
+        await edit_or_reply(event, "يتم تشغيل كوكل  bin")
         with webdriver.Chrome(options=chrome_options) as driver:
             input_str = event.pattern_match.group(1)
             driver.get(input_str)#ولا راح يشتغل 
-        await event.edit("يتم تجميع..")
+        await edit_or_reply(event, "يتم تجميع..")
         height = driver.execute_script("return Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);")
         width = driver.execute_script("return Math.max(document.body.scrollWidth, document.body.offsetWidth, document.documentElement.clientWidth, document.documentElement.scrollWidth, document.documentElement.offsetWidth);")
-        await event.edit("Painting web-page")
+        await edit_or_reply(event, "Painting web-page")
         driver.set_window_size(width + 100, height + 100)
         im_png = driver.get_screenshot_as_png()
         #هنا ينحفظ السكرين توضيح
         driver.close()
-        await event.edit("يتم ايقاف كروم bin")
+        await edit_or_reply(event, "يتم ايقاف كروم bin")
         message_id = event.message.id
         if event.reply_to_msg_id:
             message_id = event.reply_to_msg_id
@@ -53,7 +53,7 @@ async def _(event):
             )
         end = datetime.now()
         ms = (end - start).seconds
-        await event.edit(f"تم التقاط السكرين استغرق حوالي {ms} sec")
+        await edit_or_reply(event, f"تم التقاط السكرين استغرق حوالي {ms} sec")
     except Exception:
         await event.edit(traceback.format_exc())
         
