@@ -40,12 +40,12 @@ async def akinator_game(event):
             f"Level game: {progress_bar(progress_percentage)} {progress_percentage}%\n\n"
             f"Time wait: {ANSWER_TIMEOUT} sec\n\n"
             "Answer by :\n"
-            f"{emoji_yes} = نعم-answer\n"
-            f"{emoji_no} = كلا-answer\n"
-            f"{emoji_idk} = لا اعرف-answer\n"
-            f"{emoji_poss} = من الممكن-answer\n"
-            f"{emoji_cancel} = انهاء اللعبة-answer\n"
-            f"{emoji_back} = العودة"
+            f"{emoji_yes} = yes-answer\n"
+            f"{emoji_no} = no-answer\n"
+            f"{emoji_idk} = idk-answer\n"
+            f"{emoji_poss} = poss-answer\n"
+            f"{emoji_cancel} = cancel-answer\n"
+            f"{emoji_back} = back-answer"
         )
 
         try:
@@ -57,10 +57,10 @@ async def akinator_game(event):
             return
 
         while strongest.progression <= 75:
-            if a.lower() == "c":
+            if a.lower() == "cancel" or a.lower() == "c":
                 await question_msg.edit("Game canceled.")
                 return
-            elif a.lower() == "b":
+            elif a.lower() == "back" or a.lower() == "b":
                 try:
                     current_question = strongest.back()
                 except akinator.CantGoBackAnyFurther:
@@ -74,12 +74,12 @@ async def akinator_game(event):
                 f"Level game: {progress_bar(progress_percentage)} {progress_percentage}%\n\n"
                 f"Time wait: {ANSWER_TIMEOUT} sec\n\n"
                 "Answer by :\n"
-                f"{emoji_yes} = نعم-answer\n"
-                f"{emoji_no} = كلا-answer\n"
-                f"{emoji_idk} = لا اعرف-answer\n"
-                f"{emoji_poss} = من الممكن-answer\n"
-                f"{emoji_cancel} = انهاء اللعبة-answer\n"
-                f"{emoji_back} = العودة"
+                f"{emoji_yes} = yes-answer\n"
+                f"{emoji_no} = no-answer\n"
+                f"{emoji_idk} = idk-answer\n"
+                f"{emoji_poss} = poss-answer\n"
+                f"{emoji_cancel} = cancel-answer\n"
+                f"{emoji_back} = back-answer"
             )
 
             try:
@@ -98,7 +98,7 @@ async def akinator_game(event):
 
         correct = await edit_or_reply(event, f"Is he [{strongest.first_guess['name']}]({strongest.first_guess['absolute_picture_path']}) ({strongest.first_guess['description']})? am i right {power}{copyright_message}\n\nLevel game: {progress_percentage}%\n\n[Know more about {strongest.first_guess['name']}]({google})")
         response = await conv.wait_event(events.NewMessage(from_users=event.sender_id))
-        if response.text.lower() in ["yes", "y"]:
+        if response.text.lower() in ["yes", "y", "0"]:
             await correct.reply("Winner\n")
         else:
             await correct.reply("Loser\n")
