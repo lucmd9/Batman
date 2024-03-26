@@ -22,6 +22,8 @@ from .decorators import admin_cmd, sudo_cmd
 
 CHROME = "/usr/bin/google-chrome"
 
+plugin_category = "utils"
+
 @lucmd9(pattern="سكرن (.*)")
 async def screenshot(event):
     if event.fwd_from:
