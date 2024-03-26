@@ -25,9 +25,10 @@ async def _(event):
         chrome_options.add_argument('--disable-dev-shm-usage')
         chrome_options.binary_location = CHROME
         await event.edit("يتم تشغيل كوكل  bin")
-        async with webdriver.Chrome(options=chrome_options) as driver:
+        with webdriver.Chrome(options=chrome_options) as driver:
             input_str = event.pattern_match.group(1)
             driver.get(input_str)
+            await event.edit("يتم تجميع..")#ولا راح يشتغل 
         await event.edit("يتم تجميع..")
         height = driver.execute_script("return Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);")
         width = driver.execute_script("return Math.max(document.body.scrollWidth, document.body.offsetWidth, document.documentElement.clientWidth, document.documentElement.scrollWidth, document.documentElement.offsetWidth);")
@@ -56,4 +57,5 @@ async def _(event):
         await event.edit(f"تم التقاط السكرين استغرق حوالي {ms} sec")
     except Exception:
         await event.edit(traceback.format_exc())
+        
       #جميع حقوق لسورس الخفاش تبوكه انيجك
