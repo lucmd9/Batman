@@ -8,7 +8,7 @@ from datetime import datetime
 from selenium import webdriver
 from telethon import events
 from BATT import lucmd9
-from BATT import edit_or_reply
+from ..core.managers import edit_or_reply
 CHROME = "/usr/bin/google-chrome"
 
 @lucmd9.ar_cmd(pattern="سكرن (.*)") #خوش غلطه هنا جانت
