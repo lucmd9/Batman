@@ -41,10 +41,10 @@ async def akinator_game(event):
             f"Time wait: {ANSWER_TIMEOUT} sec\n\n"
             "Answer by :\n"
             f"{emoji_yes} = yes-answer\n"
-            f"{emoji_no} = no-answer\n"
-            f"{emoji_idk} = idk-answer\n"
-            f"{emoji_poss} = poss-answer\n"
-            f"{emoji_cancel} = cancel-answer\n"
+            f"{emoji_no} = (n)-answer\n"
+            f"{emoji_idk} = (idk)-answer\n"
+            f"{emoji_poss} = (p)-answer\n"
+            f"{emoji_cancel} = (c)-answer\n"
             f"{emoji_back} = back-answer"
         )
 
@@ -75,11 +75,11 @@ async def akinator_game(event):
                 f"Time wait: {ANSWER_TIMEOUT} sec\n\n"
                 "Answer by :\n"
                 f"{emoji_yes} = yes-answer\n"
-                f"{emoji_no} = no-answer\n"
-                f"{emoji_idk} = idk-answer\n"
-                f"{emoji_poss} = poss-answer\n"
-                f"{emoji_cancel} = cancel-answer\n"
-                f"{emoji_back} = back-answer"
+            f"{emoji_no} = (n)-answer\n"
+            f"{emoji_idk} = (idk)-answer\n"
+            f"{emoji_poss} = (p)-answer\n"
+            f"{emoji_cancel} = (c)-answer\n"
+            f"{emoji_back} = back-answer"
             )
 
             try:
@@ -96,7 +96,7 @@ async def akinator_game(event):
 
         copyright_message = f"\n\nCorner of Developer: DEV --> @lucmd9"
 
-        correct = await edit_or_reply(event, f"Is he [{strongest.first_guess['name']}]({strongest.first_guess['absolute_picture_path']}) ({strongest.first_guess['description']})? am i right {power}{copyright_message}\n\nLevel game: {progress_percentage}%\n\n[Know more about {strongest.first_guess['name']}]({google})")
+        correct = await edit_or_reply(event, f"Is he [{strongest.first_guess['name']}]({strongest.first_guess['absolute_picture_path']}) ({strongest.first_guess['description']}) am i right؟ {power}{copyright_message}\n\nLevel game: {progress_percentage}%\n\n[Know more about {strongest.first_guess['name']}]({google})")
         response = await conv.wait_event(events.NewMessage(from_users=event.sender_id))
         if response.text.lower() in ["yes", "y", "0"]:
             await correct.reply("Winner\n")
