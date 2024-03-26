@@ -21,23 +21,31 @@ def progress_bar(progress_percentage):
     command=("اندرو", plugin_category),
 )
 async def akinator_game(event):
-    strongest= akinator.Akinator()
+    strongest = akinator.Akinator()
     current_question = strongest.start_game(language='ar')
 
     async with lucmd9.conversation(event.chat_id) as conv:
         progress_percentage = 0
+
+        # تحديد الإيموجيات للاختيارات
+        emoji_yes = "✅"
+        emoji_no = "❌"
+        emoji_idk = "❓"
+        emoji_poss = "🤔"
+        emoji_cancel = "❗"
+        emoji_back = "🔙"
 
         question_msg = await edit_or_reply(event,
             f"{current_question}\n\n"
             f"Level game: {progress_bar(progress_percentage)} {progress_percentage}%\n\n"
             f"Time wait: {ANSWER_TIMEOUT} sec\n\n"
             "Answer by :\n"
-            "sure = نعم\n"
-            "no = كلا\n"
-            "idkoc = لا اعرف\n"
-            "poss = يمكن\n"
-            "cancel = انهاء اللعبة\n"
-            "back = العودة"
+            f"{emoji_yes} = نعم-answer\n"
+            f"{emoji_no} = كلا-answer\n"
+            f"{emoji_idk} = لا اعرف-answer\n"
+            f"{emoji_poss} = من الممكن-answer\n"
+            f"{emoji_cancel} = انهاء اللعبة-answer\n"
+            f"{emoji_back} = العودة"
         )
 
         try:
@@ -66,12 +74,12 @@ async def akinator_game(event):
                 f"Level game: {progress_bar(progress_percentage)} {progress_percentage}%\n\n"
                 f"Time wait: {ANSWER_TIMEOUT} sec\n\n"
                 "Answer by :\n"
-                "sure = نعم\n"
-                "no = لا\n"
-                "idkoc = لا اعرف\n"
-                "poss = من الممكن\n"
-                "cancel = انهاء اللعبة\n"
-                "back = العودة"
+                f"{emoji_yes} = نعم-answer\n"
+                f"{emoji_no} = كلا-answer\n"
+                f"{emoji_idk} = لا اعرف-answer\n"
+                f"{emoji_poss} = من الممكن-answer\n"
+                f"{emoji_cancel} = انهاء اللعبة-answer\n"
+                f"{emoji_back} = العودة"
             )
 
             try:
@@ -90,7 +98,7 @@ async def akinator_game(event):
 
         correct = await edit_or_reply(event, f"Is he [{strongest.first_guess['name']}]({strongest.first_guess['absolute_picture_path']}) ({strongest.first_guess['description']})? am i right {power}{copyright_message}\n\nLevel game: {progress_percentage}%\n\n[Know more about {strongest.first_guess['name']}]({google})")
         response = await conv.wait_event(events.NewMessage(from_users=event.sender_id))
-        if response.text.lower() in ["yes", "y", "نعم", "أجل"]:
+        if response.text.lower() in ["yes", "y"]:
             await correct.reply("Winner\n")
         else:
             await correct.reply("Loser\n")
