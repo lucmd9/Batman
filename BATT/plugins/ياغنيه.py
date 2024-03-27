@@ -143,7 +143,7 @@ async def _(event):
             purgeflag = await conv.send_message("/start")
         except YouBlockedUserError:
             await edit_or_reply(
-                batevent, "Error: شيل البلوك من البوت او اشترك بالقنوات الاجباري بالبوت وامسح المحادثه انت والبوت وجرب
+                batevent, "Error: شيل البلوك من البوت او اشترك بالقنوات الاجباري بالبوت وامسح المحادثه انت والبوت وجرب"
             await catub(unblock("songdl_bot"))
             purgeflag = await conv.send_message("/start")
         await conv.get_response()
