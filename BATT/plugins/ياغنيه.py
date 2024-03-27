@@ -14,7 +14,7 @@ from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.functions import delete_conv, yt_search
 from ..helpers.tools import media_type
 from ..helpers.utils import reply_id
-from . import lucmd9, song_download
+from . import lucmd9
 
 plugin_category = "utils"
 LOGS = logging.getLogger(name)
