@@ -11,7 +11,7 @@ from validators.url import url
 
 from ..core.logger import logging
 from ..core.managers import edit_delete, edit_or_reply
-from ..helpers.functions import delete_conv, yt_search
+from ..helpers.functions import delete_conv, yt_search , name_dl, song_dl, video_dl
 from ..helpers.tools import media_type
 from ..helpers.utils import reply_id
 from . import lucmd9
