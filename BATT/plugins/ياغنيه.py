@@ -105,9 +105,9 @@ async def _(event):
             f"مالكيت شي اسف {query}"
         )
     with contextlib.suppress(BaseException):
-        bat = Get(cat)
+        bat = Get(bat)
         await event.client(cat)
-    vsong_file, batthumb, title = await song_download(video_link, catevent, video=True)
+    vsong_file, batthumb, title = await song_download(video_link, batevent, video=True)
     await event.client.send_file(
         event.chat_id,
         vsong_file,
@@ -144,6 +144,7 @@ async def _(event):
         except YouBlockedUserError:
             await edit_or_reply(
                 batevent, "Error: شيل البلوك من البوت او اشترك بالقنوات الاجباري بالبوت وامسح المحادثه انت والبوت وجرب"
+            )
             await catub(unblock("songdl_bot"))
             purgeflag = await conv.send_message("/start")
         await conv.get_response()
