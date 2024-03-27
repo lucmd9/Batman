@@ -57,7 +57,7 @@ async def _(event):
     batevent = await edit_or_reply(event, "لكيته....")
     video_link = await yt_search(str(query))
     if not url(video_link):
-        return await catevent.edit(
+        return await batevent.edit(
             f"فكرر مالكيت شي`{query}`"
         )
     cmd = event.pattern_match.group(1)
