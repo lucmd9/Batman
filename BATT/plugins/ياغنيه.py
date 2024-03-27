@@ -77,7 +77,6 @@ async def _(event):
         if files and os.path.exists(files):
             os.remove(files)
 
-𝑨𝑵𝑮𝑬𝑳 𝟙𝟙:𝟙𝟙, [3/27/2024 12:59 PM]
 @lucmd9.ar_cmd(
     pattern="يوت(?:\s|$)([\s\S]*)",
     command=("يوت", plugin_category),
