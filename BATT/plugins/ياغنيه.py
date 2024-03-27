@@ -82,7 +82,7 @@ async def _(event):
     except:
         pass
     if not os.path.exists(song_file):
-        return await catevent.edit(
+        return await batevent.edit(
             f"⌔ اسف مالكيت شي  بـ {query}"
         )
     await batevent.edit("⌔لكيته....")
