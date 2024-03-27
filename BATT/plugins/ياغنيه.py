@@ -17,7 +17,7 @@ from ..helpers.utils import reply_id
 from . import lucmd9
 
 plugin_category = "utils"
-LOGS = logging.getLogger(name)
+LOGS = logging.getLogger(__name__)
 
 # =========================================================== #
 #                           STRINGS                           #
