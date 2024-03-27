@@ -14,7 +14,7 @@ from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.functions import delete_conv, yt_search
 from ..helpers.tools import media_type
 from ..helpers.utils import reply_id
-from . import lucmd9 , song_download
+from . import lucmd9
 
 plugin_category = "utils"
 LOGS = logging.getLogger(__name__)
@@ -62,21 +62,54 @@ async def _(event):
         )
     cmd = event.pattern_match.group(1)
     q = "320k" if cmd == "320" else "128k"
-    song_file, catthumb, title = await song_download(video_link, batevent, quality=q)
-    await event.client.send_file(
-        event.chat_id,
-        song_file,
-        force_document=False,
-        caption=f"Title: {title}",
-        thumb=batthumb,
-        supports_streaming=True,
-        reply_to=reply_to_id,
-    )
-    await batevent.delete()
-    for files in (batthumb, song_file):
-        if files and os.path.exists(files):
-            os.remove(files)
-
+    song_cmd = song_dl.format(QUALITY=q, video_link=video_link)
+    name_cmd = name_dl.format(video_link=video_link)
+    try:
+        bat = Get(cat)
+        await event.client(cat)
+    except BaseException:
+        pass
+    try:
+        stderr = (await _catutils.runcmd(song_cmd))[1]
+        # if stderr:
+        # await batevent.edit(f"خطأ : {stderr}")
+        batname, stderr = (await _catutils.runcmd(name_cmd))[:2]
+        if stderr:
+            return await batevent.edit(f"خطأ : {stderr}")
+        batname = os.path.splitext(batname)[0]
+        song_file = Path(f"{batname}.mp3")
+        batname = urllib.parse.unquote(batname)
+    except:
+        pass
+    if not os.path.exists(song_file):
+        return await catevent.edit(
+            f"⌔ اسف مالكيت شي  بـ {query}"
+        )
+    await batevent.edit("⌔لكيته....")
+    batthumb = Path(f"{batname}.jpg")
+    if not os.path.exists(batthumb):
+        batthumb = Path(f"{batname}.webp")
+    elif not os.path.exists(batthumb):
+        batthumb = None
+    title = batname.replace("./temp/", "").replace("_", "|")
+    try:
+        await event.client.send_file(
+            event.chat_id,
+            song_file,
+            force_document=False,
+            caption=f"title: {title}",
+            thumb=batthumb,
+            supports_streaming=True,
+            reply_to=reply_to_id,
+        )
+        await catevent.delete()
+        for files in (batthumb, song_file):
+            if files and os.path.exists(files):
+                os.remove(files)
+    except ChatSendMediaForbiddenError as err:
+        await catevent.edit("لا يمكن ارسال المقطع الصوتي هنا")
+        LOGS.error(str(err))
+        
 @lucmd9.ar_cmd(
     pattern="يوت(?:\s|$)([\s\S]*)",
     command=("يوت", plugin_category),
